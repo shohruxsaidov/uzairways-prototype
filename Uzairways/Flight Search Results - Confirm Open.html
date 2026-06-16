@@ -164,7 +164,7 @@
   .confirm-note{display:flex;gap:12px;align-items:flex-start;background:var(--surface-2);border:1px solid #ecdcd6;border-radius:var(--r-md);padding:14px 16px;margin:18px 0 22px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
   .confirm-note .ni{width:22px;height:22px;flex:none;display:flex;align-items:center;justify-content:center;}
   .confirm-note .ni svg{width:22px;height:22px;display:block;}
-  .cf-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .cf-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-height:60vh;overflow-y:auto;overflow-x:auto;padding-right:6px;}
   .cf-leghead{display:flex;align-items:center;gap:11px;font-size:19px;color:var(--ink-soft);font-weight:600;margin-bottom:12px;}
   .cf-leghead svg{width:24px;height:24px;flex:none;}
   .cf-leghead b,.cf-leghead{color:var(--ink);}
@@ -181,7 +181,7 @@
   .cf-strip{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;margin:16px 2px 4px;}
   .cf-dur{text-align:center;font-weight:700;font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;line-height:1.1;white-space:nowrap;}
   .cf-end .cf-tm{font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.01em;line-height:1.1;}
-  .cf-end .cf-ct{color:var(--ink-soft);font-size:12.5px;font-weight:700;margin-top:3px;}
+  .cf-end .cf-ct{color:var(--ink-soft);font-size:12.5px;font-weight:700;margin-top:3px;white-space:nowrap;}
   .cf-end .cf-dt{color:var(--muted);font-size:11.5px;margin-top:2px;}
   .cf-end.r{text-align:right;}
   .cf-mid{padding-top:2px;}
@@ -193,7 +193,7 @@
   .cf-stop span{font-size:11px;color:var(--muted);}
   .cf-stops{text-align:center;color:var(--muted);font-size:11.5px;margin-top:5px;}
   .cf-fares{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
-  .cf-fare{border:1px solid var(--line-card);border-radius:14px;display:flex;flex-direction:column;background:var(--surface);overflow:hidden;}
+  .cf-fare{min-width:300px;border:1px solid var(--line-card);border-radius:14px;display:flex;flex-direction:column;background:var(--surface);overflow:hidden;}
   .cf-fbadge{font-weight:800;font-size:13px;padding:9px 16px;}
   .cf-fbadge.cur{background:var(--bg-2);color:var(--ink);}
   .cf-fbadge.upb{background:#1f7a4d;color:#fff;}
@@ -674,7 +674,7 @@
 
     <!-- HY 77 — 3 stops -->
     <article class="flight-card">
-      <div class="tags"><span class="tag tag-stops">3 пересадки</span></div>
+      <div class="tags"><span class="tag tag-stops">2 пересадки</span></div>
       <div class="flight-body">
         <div class="flight-main">
           <div class="flight-id">
@@ -693,9 +693,6 @@
               <div class="stop"><div class="dot"></div><div class="code">CDV</div><div class="dur">59 мин</div>
                 <div class="tip"><b>Пересадка · CDV</b>Короткая стыковка 59 мин. Без смены терминала.</div></div>
               <div class="seg"></div>
-              <div class="stop"><div class="dot"></div><div class="code">PNG</div><div class="dur">1 ч 05 мин</div>
-                <div class="tip"><b>Пересадка · PNG</b>Длительность пересадки 1 ч 05 мин.</div></div>
-              <div class="seg"></div>
             </div>
             <div class="endpoint arr"><div class="time">22:00</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
           </div>
@@ -707,14 +704,14 @@
       </div>
       <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
       <div class="details">
-        <div class="det-leg"><span class="lt">11:00 →</span><span>Ташкент (TAS) → Бишкек (BSZ) → CDV → PNG → Москва (DME)</span><span class="ld">· 3 пересадки</span></div>
+        <div class="det-leg"><span class="lt">11:00 →</span><span>Ташкент (TAS) → Бишкек (BSZ) → CDV → Москва (DME)</span><span class="ld">· 2 пересадки</span></div>
         <div class="det-leg"><span class="lt">→ 22:00</span><span>Прибытие в Москву (DME)</span><span class="ld">· общее время 12 ч 45 мин</span></div>
       </div>
     </article>
 
     <!-- HY 2222 — 4 stops -->
     <article class="flight-card">
-      <div class="tags"><span class="tag tag-stops">4 пересадки</span></div>
+      <div class="tags"><span class="tag tag-stops">2 пересадки</span></div>
       <div class="flight-body">
         <div class="flight-main">
           <div class="flight-id">
@@ -730,14 +727,8 @@
               <div class="stop"><div class="dot"></div><div class="code">BSZ</div><div class="dur">1 ч 59 мин</div>
                 <div class="tip"><b>Пересадка · Бишкек (BSZ)</b>Аэропорт Манас, Кыргызстан. Длительность 1 ч 59 мин.</div></div>
               <div class="seg"></div>
-              <div class="stop"><div class="dot"></div><div class="code">CDV</div><div class="dur">59 мин</div>
-                <div class="tip"><b>Пересадка · CDV</b>Короткая стыковка 59 мин.</div></div>
-              <div class="seg"></div>
               <div class="stop"><div class="dot"></div><div class="code">AER</div><div class="dur">1 ч 01 мин</div>
                 <div class="tip"><b>Пересадка · Сочи (AER)</b>Длительность пересадки 1 ч 01 мин.</div></div>
-              <div class="seg"></div>
-              <div class="stop"><div class="dot"></div><div class="code">PNG</div><div class="dur">1 ч 05 мин</div>
-                <div class="tip"><b>Пересадка · PNG</b>Длительность пересадки 1 ч 05 мин.</div></div>
               <div class="seg"></div>
             </div>
             <div class="endpoint arr"><div class="time">19:00</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
@@ -750,7 +741,7 @@
       </div>
       <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
       <div class="details">
-        <div class="det-leg"><span class="lt">12:00 →</span><span>Ташкент (TAS) → BSZ → CDV → AER → PNG → Москва (DME)</span><span class="ld">· 4 пересадки</span></div>
+        <div class="det-leg"><span class="lt">12:00 →</span><span>Ташкент (TAS) → BSZ → AER → Москва (DME)</span><span class="ld">· 2 пересадки</span></div>
         <div class="det-leg"><span class="lt">→ 19:00</span><span>Прибытие в Москву (DME)</span><span class="ld">· общее время 16 ч</span></div>
       </div>
     </article>
@@ -931,17 +922,14 @@
     {title:'Ташкент — Москва · 2 мар · 10:00–15:22',total:'Общее время в пути 8 ч 22 мин',stops:'1 пересадка в городе Бишкек · 1 ч 59 мин',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
      segs:[S('HY 404','Uzbekistan Airways',true,'Boeing 767','4 ч','TAS','10:00 GMT+5','2 мар, пн','BSZ','14:00 GMT+5','2 мар, пн'),
            S('TK 5804','Turkish Airlines',false,'Boeing 767','3 ч 23 мин','BSZ','15:59 GMT+5','2 мар, пн','DME','15:22 GMT+3','2 мар, пн')],lay:['1 ч 59 мин']},
-    {title:'Ташкент — Москва · 2 мар · 11:00–22:00',total:'Общее время в пути 12 ч 45 мин',stops:'3 пересадки · Бишкек, Караганда, Наманган',eco:'от 4 000 000 UZS',biz:'от 14 000 000 UZS',
+    {title:'Ташкент — Москва · 2 мар · 11:00–22:00',total:'Общее время в пути 12 ч 45 мин',stops:'2 пересадки · Бишкек, Караганда',eco:'от 4 000 000 UZS',biz:'от 14 000 000 UZS',
      segs:[S('HY 77','Uzbekistan Airways',true,'Boeing 757','1 ч 30 мин','TAS','11:00 GMT+5','2 мар, пн','BSZ','12:30 GMT+5','2 мар, пн'),
            S('IZ 220','Avia Traffic',false,'Airbus A320','1 ч 20 мин','BSZ','14:29 GMT+5','2 мар, пн','CDV','15:49 GMT+5','2 мар, пн'),
-           S('KC 108','Air Astana',false,'Embraer 190','1 ч 40 мин','CDV','16:48 GMT+5','2 мар, пн','PNG','18:28 GMT+5','2 мар, пн'),
-           S('HY 781','Uzbekistan Airways',true,'Boeing 737','2 ч 32 мин','PNG','19:33 GMT+5','2 мар, пн','DME','22:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','59 мин','1 ч 05 мин']},
-    {title:'Ташкент — Москва · 2 мар · 12:00–19:00',total:'Общее время в пути 16 ч',stops:'4 пересадки · Бишкек, Караганда, Сочи, Наманган',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
+           S('HY 781','Uzbekistan Airways',true,'Boeing 737','5 ч 11 мин','CDV','16:48 GMT+5','2 мар, пн','DME','22:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','59 мин']},
+    {title:'Ташкент — Москва · 2 мар · 12:00–19:00',total:'Общее время в пути 16 ч',stops:'2 пересадки · Бишкек, Сочи',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
      segs:[S('HY 2222','Uzbekistan Airways',true,'Boeing 757','1 ч 30 мин','TAS','12:00 GMT+5','2 мар, пн','BSZ','13:30 GMT+5','2 мар, пн'),
-           S('IZ 222','Avia Traffic',false,'Airbus A320','1 ч 20 мин','BSZ','15:29 GMT+5','2 мар, пн','CDV','16:49 GMT+5','2 мар, пн'),
-           S('KC 116','Air Astana',false,'Embraer 190','2 ч 10 мин','CDV','17:48 GMT+5','2 мар, пн','AER','17:58 GMT+3','2 мар, пн'),
-           S('SU 1129','Aeroflot',false,'Airbus A321','3 ч 00 мин','AER','18:59 GMT+3','2 мар, пн','PNG','23:59 GMT+5','2 мар, пн'),
-           S('HY 783','Uzbekistan Airways',true,'Boeing 737','2 ч 16 мин','PNG','00:50 GMT+5','3 мар, вт','DME','19:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','59 мин','1 ч 01 мин','1 ч 05 мин']}
+           S('IZ 222','Avia Traffic',false,'Airbus A320','2 ч 30 мин','BSZ','15:29 GMT+5','2 мар, пн','AER','17:58 GMT+3','2 мар, пн'),
+           S('HY 783','Uzbekistan Airways',true,'Boeing 737','55 мин','AER','18:59 GMT+3','2 мар, пн','DME','19:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','1 ч 01 мин']}
   ];
 
   const mealSvg=c=>`<svg viewBox="0 0 20 20" fill="${c}"><path d="M10 1C8.02155 1.00046 6.09836 1.65252 4.52777 2.85536C2.95719 4.05821 1.82669 5.74484 1.31108 7.65447C0.795476 9.5641 0.923473 11.5904 1.67528 13.42C2.4271 15.2496 3.76085 16.7806 5.47031 17.7764L5.81403 12.97C5.25337 12.8152 4.75891 12.4809 4.40638 12.0184C4.05386 11.5559 3.86271 10.9906 3.86221 10.4091C3.86221 8.94043 4.47599 5.90908 6.52192 5.90908C8.56785 5.90908 9.18163 8.94043 9.18163 10.4091C9.18113 10.9906 8.98998 11.5559 8.63746 12.0184C8.28494 12.4809 7.79048 12.8152 7.22981 12.97L7.639 18.6849C9.18496 19.105 10.815 19.105 12.361 18.6849L12.807 12.3972C12.3578 12.293 11.9571 12.0397 11.6703 11.6787C11.3835 11.3176 11.2274 10.8701 11.2276 10.4091V6.31817C11.2276 6.20967 11.2707 6.10561 11.3474 6.0289C11.4241 5.95218 11.5282 5.90908 11.6367 5.90908C11.7453 5.90908 11.8493 5.95218 11.9261 6.0289C12.0028 6.10561 12.0459 6.20967 12.0459 6.31817V8.67043C12.0459 8.80605 12.0998 8.93612 12.1957 9.03202C12.2917 9.12792 12.4218 9.18179 12.5574 9.18179C12.6931 9.18179 12.8232 9.12792 12.9191 9.03202C13.015 8.93612 13.0689 8.80605 13.0689 8.67043V6.31817C13.0689 6.20967 13.112 6.10561 13.1887 6.0289C13.2655 5.95218 13.3696 5.90908 13.4781 5.90908C13.5866 5.90908 13.6907 5.95218 13.7674 6.0289C13.8442 6.10561 13.8873 6.20967 13.8873 6.31817V8.67043C13.8873 8.80605 13.9412 8.93612 14.0371 9.03202C14.133 9.12792 14.2631 9.18179 14.3987 9.18179C14.5344 9.18179 14.6645 9.12792 14.7604 9.03202C14.8563 8.93612 14.9102 8.80605 14.9102 8.67043V6.31817C14.9102 6.20967 14.9533 6.10561 15.0301 6.0289C15.1068 5.95218 15.2109 5.90908 15.3194 5.90908C15.4279 5.90908 15.532 5.95218 15.6088 6.0289C15.6855 6.10561 15.7286 6.20967 15.7286 6.31817V10.4091C15.7287 10.8701 15.5726 11.3176 15.2858 11.6787C14.999 12.0397 14.5984 12.293 14.1491 12.3972L14.5297 17.7764C16.2392 16.7806 17.5729 15.2496 18.3247 13.42C19.0765 11.5904 19.2045 9.5641 18.6889 7.65447C18.1733 5.74484 17.0428 4.05821 15.4722 2.85536C13.9016 1.65252 11.9784 1.00046 10 1Z"/></svg>`;
