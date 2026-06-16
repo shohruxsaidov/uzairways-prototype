@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Данные о пассажирах · Uzbekistan Airways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
+    --ink:#12174f; --ink-soft:#2a2f63; --accent:#8b273e; --accent-2:#a8324c;
+    --text:#20233f; --muted:#857d89; --muted-2:#a59ba6;
+    --line:#e7ddd5; --line-card:#efe7e2;
+    --good:#2f7350; --good-bg:#e7f0ea;
+    --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+    --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
+    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;}
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;}
+  .container{max-width:1160px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  .site-header{background:var(--ink);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);}
+  .hdr-inner{display:flex;align-items:center;gap:20px;height:64px;}
+  .logo{display:flex;align-items:center;flex:none;}
+  .logo svg{height:30px;width:auto;display:block;}
+  .site-nav{display:flex;gap:18px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82);flex:1;justify-content:center;}
+  .site-nav span{cursor:pointer;white-space:nowrap;}
+  .site-nav span:hover{color:#fff;}
+  .hdr-right{display:flex;align-items:center;gap:8px;flex:none;}
+  .hdr-ic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;background:transparent;transition:.15s;}
+  .hdr-ic:hover{background:rgba(255,255,255,.08);}
+  .hdr-ic svg{width:20px;height:20px;display:block;}
+  .hdr-lang{display:flex;align-items:center;gap:7px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;background:transparent;padding:8px 6px;border-radius:10px;transition:.15s;}
+  .hdr-lang:hover{background:rgba(255,255,255,.08);}
+  .hdr-lang svg{width:18px;height:18px;display:block;}
+  .hdr-div{width:1px;height:28px;background:rgba(255,255,255,.16);margin:0 2px;}
+  .hdr-profile{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:.15s;}
+  .hdr-profile:hover{background:rgba(255,255,255,.16);}
+  .hdr-profile svg{width:20px;height:20px;display:block;}
+  .btn-login{background:var(--accent);color:#fff;border-radius:12px;padding:9px 18px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;margin-left:4px;}
+  .btn-login:hover{background:var(--accent-2);}
+
+  /* ===== Passenger page ===== */
+  body{padding-bottom:60px;}
+  .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
+  /* Stepper */
+  .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
+  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
+  .step .dot{width:19px;height:19px;border-radius:50%;border:2px solid var(--muted-2);display:flex;align-items:center;justify-content:center;flex:none;}
+  .step.done{color:var(--ink);}
+  .step.done .dot{background:var(--good);border-color:var(--good);}
+  .step.done .dot svg{width:12px;height:12px;display:block;color:#fff;}
+  .step.active{color:var(--ink);}
+  .step.active .dot{border-color:var(--ink);background:var(--ink);}
+  .step.active .dot i{width:7px;height:7px;border-radius:50%;background:#fff;}
+  .step-line{flex:1;height:2px;background:var(--line);margin:0 9px;min-width:12px;}
+
+  .pax-title{text-align:center;margin-top:40px;}
+  .pax-title h1{font-size:34px;font-weight:900;letter-spacing:-.025em;color:var(--ink);}
+  .pax-title p{color:var(--muted);font-size:16px;margin-top:10px;}
+
+  /* Passenger card */
+  .pax-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-top:26px;overflow:hidden;}
+  .pax-head{display:flex;align-items:center;gap:12px;background:var(--surface-2);padding:18px 26px;cursor:pointer;}
+  .pax-head .pn{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;}
+  .pax-head h3{font-size:19px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .pax-head .chev{margin-left:auto;color:var(--ink);font-size:14px;transition:.2s;}
+  .pax-head .trash{margin-left:auto;width:34px;height:34px;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;transition:.15s;}
+  .pax-head .trash:hover{background:var(--surface);}
+  .pax-head .trash svg{width:20px;height:20px;display:block;}
+  .pax-head .trash + .chev{margin-left:14px;}
+  .pax-card.collapsed .chev{transform:rotate(-90deg);}
+  .pax-card.collapsed .pax-body{display:none;}
+  .pax-body{padding:28px 26px;display:grid;grid-template-columns:1fr 1fr auto 1fr;gap:22px 20px;align-items:end;}
+
+  .fld{display:flex;flex-direction:column;gap:7px;}
+  .fld label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.01em;}
+  .fld .inp{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 16px;font-family:var(--font);font-weight:600;font-size:15px;color:var(--ink);width:100%;outline:none;transition:.15s;}
+  .fld .inp::placeholder{color:var(--muted-2);font-weight:600;}
+  .fld .inp:focus{border-color:var(--ink);background:var(--surface);}
+  .fld .inp-ic{position:relative;}
+  .fld .inp-ic .inp{padding-right:44px;cursor:pointer;}
+  .fld .inp-ic .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink);pointer-events:none;}
+  .fld .inp-ic .ic svg{width:20px;height:20px;display:block;}
+  .fld.sel .inp{display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+  .fld.sel .chev{color:var(--muted);font-size:12px;}
+  .chev-i{width:13px;height:13px;display:inline-block;vertical-align:middle;flex:none;}
+
+  /* gender toggle */
+  .gender{display:flex;flex-direction:column;gap:7px;}
+  .gender .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:4px;gap:4px;}
+  .gender .seg button{flex:1;padding:10px 18px;border-radius:10px;font-family:var(--font);font-weight:700;font-size:14px;color:var(--muted);background:transparent;white-space:nowrap;transition:.15s;}
+  .gender .seg button.on{background:var(--accent);color:#fff;}
+
+  /* add buttons */
+  .add-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:24px;}
+  .add-pax{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;background:var(--surface);border:1px dashed var(--muted-2);border-radius:var(--r-md);padding:18px 16px;font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;transition:.15s;}
+  .add-pax:hover{border-color:var(--ink);border-style:solid;background:var(--surface-2);}
+  .add-pax:disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);border-style:solid;color:var(--muted-2);background:var(--bg);}
+  .add-pax:disabled .plus{background:var(--muted-2);}
+  .add-pax:disabled:hover{border-style:solid;background:var(--bg);border-color:var(--line);}
+  .add-pax .plus{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex:none;}
+
+  .pax-div{height:1px;background:var(--line);margin:34px 0;border:0;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .contact-grid .hint{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+
+  /* checkboxes */
+  .checks{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+  .chk{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:15px;color:var(--text);font-weight:600;}
+  .chk input{display:none;}
+  .chk .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--muted-2);background:var(--surface);flex:none;display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:1px;}
+  .chk .box svg{width:13px;height:13px;display:block;color:#fff;opacity:0;transition:.12s;}
+  .chk input:checked + .box{background:var(--accent);border-color:var(--accent);}
+  .chk input:checked + .box svg{opacity:1;}
+  .chk a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+  .chk.master{font-weight:800;color:var(--ink);font-size:15.5px;}
+  .sub-checks{display:flex;flex-direction:column;gap:14px;padding-left:34px;margin-top:2px;}
+
+  .pax-foot{display:flex;justify-content:flex-end;margin-top:38px;}
+  .btn-next{background:var(--accent);color:#fff;border-radius:var(--r-md);padding:16px 46px;font-family:var(--font);font-weight:800;font-size:16px;transition:.15s;}
+  .btn-next:hover{background:var(--accent-2);}
+
+  @media(max-width:820px){
+    .pax-body{grid-template-columns:1fr 1fr;}
+    .add-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .stepper{overflow-x:auto;}
+  }
+
+</style>
+</head>
+<body>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#12174f"/><circle cx="50" cy="42" r="20" fill="#FFD141"/><text x="50" y="92" font-family="sans-serif" font-size="13" font-weight="800" fill="#f5efe8" text-anchor="middle">UZ</text></svg>
+  </template>
+
+<!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container hdr-inner">
+      <a class="logo" href="Home.html" aria-label="Uzbekistan Airways"><svg viewBox="0 0 176 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><g clip-path="url(#uzlogo_clip)"><path fill-rule="evenodd" clip-rule="evenodd" d="M56.3995 3.32693H52.5518L50.9591 10.9441C50.4209 13.2843 50.0068 15.2486 47.3598 15.2486C45.9742 15.2486 45.1461 14.5856 45.1461 13.4887C45.1461 12.7013 45.3724 11.936 45.5187 11.2315L47.2356 3.32417H43.3878L41.7124 11.0463C41.5054 12.0189 41.2983 12.9085 41.2983 14.1518C41.2983 16.4919 43.4292 18.4149 47.2742 18.4149C52.6097 18.4149 53.8104 15.7432 54.6357 11.7702L56.394 3.32417L56.3995 3.32693ZM55.0746 18.1082L55.715 14.7955L64.959 6.63959H57.7631L58.4448 3.32693H70.5236L69.8611 6.63959L60.3466 14.7955H68.4534L67.7909 18.1082H55.0718H55.0746ZM69.5934 18.1082H76.8113C81.1339 18.0889 83.5325 16.1411 83.5325 13.1406C83.5325 11.8144 82.7458 10.5518 81.443 10.2424V10.2009C83.1378 9.82793 84.1729 8.50452 84.1729 6.55671C84.1729 4.9432 83.5518 3.32693 79.5605 3.32693H72.6738L69.5934 18.1082ZM75.8591 6.34949H78.3819C79.21 6.34949 80.3251 6.43238 80.3251 7.50989C80.3251 8.64819 79.5605 9.1455 78.0093 9.1455H75.2794L75.8591 6.35225V6.34949ZM74.7439 11.7315H77.4545C78.4482 11.7315 79.6875 11.8338 79.6875 13.2014C79.6875 14.7955 78.404 15.0856 77.0598 15.0856H74.0401L74.7439 11.7315ZM84.5262 18.1082H96.3565L97.0603 14.7955H89.0557L89.6353 11.9802H96.9554L97.5765 8.99907H90.2564L90.7311 6.63959H98.6723L99.3762 3.32693H87.5872L84.5262 18.1082ZM98.6916 18.1082L101.813 3.32693H105.661L104.441 9.1234H104.483L110.5 3.32693H115.587L108.535 9.4135L112.918 18.1082H108.535L105.496 11.8973L103.489 13.6158L102.537 18.1082H98.6889H98.6916ZM114.016 18.1082H117.864L120.945 3.32693H117.097L114.016 18.1082ZM120.696 13.1378H124.544C124.544 14.732 125.433 15.2486 127.254 15.2486C128.806 15.2486 129.446 14.5856 129.446 13.7788C129.446 12.309 127.213 12.1432 125.681 11.6044C123.84 10.9414 122.352 9.96883 122.352 7.79446C122.352 4.44036 125.391 3.01196 128.35 3.01196C131.494 3.01196 134.16 4.17236 134.058 7.77236H130.211C130.211 7.21427 130.026 6.81918 129.694 6.57052C129.344 6.30252 128.825 6.17819 128.143 6.17819C127.191 6.17819 126.2 6.57052 126.2 7.50436C126.2 8.43821 126.821 8.49899 128.888 9.05709C130.914 9.61519 133.294 10.6706 133.294 13.5688C133.294 16.1991 130.956 18.4121 126.633 18.4121C123.117 18.4121 120.657 16.6328 120.699 13.1323L120.696 13.1378ZM148.762 3.32693H136.228L135.565 6.63959H139.907L137.487 18.1082H141.334L143.755 6.63959H148.097L148.759 3.32693H148.762ZM144.089 18.1082L152.712 3.32693H156.601L159.022 18.1082H155.155L154.804 15.4586H149.612L148.124 18.1082H144.092H144.089ZM153.871 7.28057L151.1 12.6018H154.47L153.913 7.28057H153.871ZM159.908 18.1082H163.631L165.514 8.44097H165.555L168.967 18.1082H172.917L175.997 3.32693H172.274L170.433 12.9942H170.391L166.938 3.32693H162.988L159.908 18.1082Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M112.586 32.7916H115.112L116.045 31.1312H119.297L119.517 32.7916H121.941L120.425 23.5333H117.991L112.589 32.7916H112.586ZM118.717 26.0088H118.742L119.092 29.3408H116.981L118.717 26.0088ZM122.603 32.7916H125.013L126.942 23.5333H124.533L122.603 32.7916ZM130.531 25.3982H132.305C132.94 25.3982 133.6 25.5668 133.6 26.357C133.6 27.3543 132.849 27.6279 131.98 27.6279H130.061L130.528 25.3982H130.531ZM126.592 32.7916L128.51 23.5333H133.045C134.729 23.5333 136.012 23.9616 136.012 25.9315C136.012 27.3184 135.353 28.3048 133.901 28.512V28.5369C134.588 28.7054 134.848 29.1861 134.848 30.0813C134.848 30.7554 134.809 31.2748 134.809 31.8053C134.809 32.1286 134.809 32.5319 134.953 32.7916H132.529C132.49 32.6093 132.452 32.4408 132.452 32.2612C132.452 31.7804 132.515 31.2887 132.515 30.667C132.515 29.8492 132.165 29.421 131.309 29.421H129.703L129.004 32.7916H126.595H126.592ZM137.45 32.7916H139.874L142.389 26.5283H142.413V32.7916H144.837L149.228 23.5333H146.752L144.136 30.2774H144.111V23.5333H141.908L139.187 30.2774H139.162L139.225 23.5333H136.802L137.45 32.7916ZM146.739 32.7916L152.14 23.5333H154.575L156.09 32.7916H153.667L153.446 31.1312H150.194L149.261 32.7916H146.736H146.739ZM152.866 26.0088L151.13 29.3408H153.242L152.891 26.0088H152.866ZM158.18 32.7916H160.565L161.304 29.2911L165.839 23.5333H162.949L160.371 27.3847L159.27 23.5333H156.783L158.92 29.2911L158.18 32.7916ZM164.542 29.6779H166.952C166.952 30.6753 167.509 31.0013 168.649 31.0013C169.621 31.0013 170.024 30.5869 170.024 30.0813C170.024 29.1613 168.624 29.0563 167.667 28.7192C166.513 28.3048 165.58 27.6942 165.58 26.3321C165.58 24.2323 167.484 23.3372 169.337 23.3372C171.305 23.3372 172.977 24.0638 172.911 26.321H170.501C170.501 25.9702 170.385 25.7243 170.178 25.5695C169.958 25.401 169.635 25.3237 169.207 25.3237C168.611 25.3237 167.99 25.5695 167.99 26.1525C167.99 26.7355 168.379 26.7741 169.673 27.125C170.943 27.4759 172.434 28.1362 172.434 29.9514C172.434 31.5981 170.971 32.985 168.263 32.985C166.06 32.985 164.52 31.8689 164.545 29.6779H164.542Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3086 0.000194929C23.1405 -0.0203324 27.7829 1.86428 31.215 5.23967C34.647 8.61505 36.5878 13.2049 36.6107 18C36.5878 22.7951 34.647 27.3849 31.215 30.7603C27.7829 34.1357 23.1405 36.0203 18.3086 35.9998C13.4756 36.0221 8.83153 34.1382 5.39804 30.7626C1.96456 27.3871 0.0228381 22.7962 0 18C0.0228381 13.2038 1.96456 8.61294 5.39804 5.23737C8.83153 1.86179 13.4756 -0.0220581 18.3086 0.000194929Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3055 1.47185C22.7422 1.45304 27.0047 3.18352 30.156 6.2828C33.3073 9.38209 35.0893 13.5965 35.1102 17.9993C35.0893 22.4021 33.3073 26.6165 30.156 29.7158C27.0047 32.8151 22.7422 34.5456 18.3055 34.5268C13.8683 34.5464 9.60492 32.8163 6.45294 29.7169C3.30096 26.6176 1.51849 22.4027 1.49756 17.9993C1.51849 13.5959 3.30096 9.38103 6.45294 6.28165C9.60492 3.18227 13.8683 1.45218 18.3055 1.47185Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M30.11 22.0279C29.8622 22.361 29.5491 22.6409 29.1896 22.8507C28.83 23.0606 28.4313 23.1961 28.0176 23.2492L17.4653 23.2407C16.9389 22.974 16.8807 22.6035 17.4653 22.377H23.4313C23.6946 22.386 23.9562 22.3317 24.1938 22.2187C24.4314 22.1057 24.638 21.9374 24.7959 21.7281C26.5941 19.4109 28.6054 17.1988 30.1689 14.7077C29.605 15.3244 28.8458 15.7315 28.0169 15.8614H20.687C20.3421 15.8449 19.9986 15.9147 19.6881 16.0644C19.3775 16.214 19.1098 16.4388 18.9097 16.718L14.5143 22.2129C10.7317 26.6591 8.11157 16.8354 13.2288 18.3993L11.1364 15.8134C11.0175 15.679 10.8711 15.5712 10.7069 15.4974C10.5428 15.4236 10.3646 15.3855 10.1844 15.3855C10.0041 15.3855 9.82597 15.4236 9.66179 15.4974C9.49761 15.5712 9.35119 15.679 9.23232 15.8134C6.07931 19.7801 6.02112 25.8954 12.6599 26.4794H26.8452L30.1146 22.026L30.11 22.0279ZM27.9234 9.56127C27.7154 9.75132 27.4694 9.89576 27.2014 9.98521C26.9333 10.0746 26.6493 10.1071 26.3679 10.0804H19.9258C19.5752 10.0682 19.2262 10.1345 18.9049 10.2743C18.5835 10.4142 18.298 10.624 18.0695 10.8883L13.9599 16.0275L15.1179 17.4973L16.5303 15.768C16.7513 15.5174 17.0249 15.3178 17.332 15.1833C17.639 15.0487 17.972 14.9826 18.3075 14.9893H22.338C24.3193 14.9893 26.9498 10.7338 27.9241 9.55933L27.9234 9.56127Z" fill="#3C792F"/></g><defs><clipPath id="uzlogo_clip"><rect width="176" height="36" fill="#fff"/></clipPath></defs></svg></a>
+      <nav class="site-nav">
+        <span>Информация</span>
+        <span>Покупка и управление</span>
+        <span>Программа лояльности</span>
+        <span>О компании</span>
+        <span>Открытые данные</span>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-ic" aria-label="Поиск по сайту"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+        <button class="hdr-lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18" stroke-linecap="round"/><path d="M12 3c2.5 2.4 3.9 5.6 4 9-.1 3.4-1.5 6.6-4 9-2.5-2.4-3.9-5.6-4-9 .1-3.4 1.5-6.6 4-9Z"/></svg> Ru</button>
+        <span class="hdr-div"></span>
+        <button class="hdr-profile" aria-label="Профиль"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.2a6.7 6.7 0 0 1 13 0"/></svg></button>
+        <button class="btn-login">Войти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pax-main">
+
+    <!-- Stepper -->
+    <div class="stepper">
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
+      <div class="step-line"></div>
+      <div class="step active"><span class="dot"><i></i></span>Заполнение данных о пассажирах</div>
+      <div class="step-line"></div>
+      <div class="step"><span class="dot"></span>Выбор дополнительных услуг</div>
+      <div class="step-line"></div>
+      <div class="step"><span class="dot"></span>Детали и оплата</div>
+    </div>
+
+    <!-- Title -->
+    <div class="pax-title">
+      <h1>Данные о пассажирах</h1>
+      <p>Заполните данные как в документе, на который регистрируете билет</p>
+    </div>
+
+    <!-- Passengers -->
+    <div id="paxList">
+    <div class="pax-card" id="pax1" data-type="adult">
+      <div class="pax-head" data-toggle>
+        <h3>Взрослый пассажир 1</h3>
+        <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span>
+      </div>
+      <div class="pax-body">
+        <div class="fld"><label>Фамилия*</label><input class="inp" placeholder="Как в документе"></div>
+        <div class="fld"><label>Имя*</label><input class="inp" placeholder="Как в документе"></div>
+        <div class="gender"><label style="font-size:13px;font-weight:700;color:var(--muted);">Пол*</label>
+          <div class="seg"><button class="on" data-g>Мужчина</button><button data-g>Женщина</button></div>
+        </div>
+        <div class="fld"><label>Дата рождения*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
+
+        <div class="fld sel"><label>Тип документа</label><div class="inp"><span>Паспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div></div>
+        <div class="fld"><label>Серия и номер документа*</label><input class="inp" placeholder="AA 1234567"></div>
+        <div class="fld"><label>Срок действия документа*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
+        <div class="fld"><label>Номер UzAirPlus</label><input class="inp" placeholder="Необязательно"></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Add passengers -->
+    <div class="add-row">
+      <button class="add-pax" data-add="adult"><span class="plus">+</span> Добавить взрослого (от 12 лет)</button>
+      <button class="add-pax" data-add="child"><span class="plus">+</span> Добавить ребёнка (от 2 до 11 лет включительно)</button>
+      <button class="add-pax" data-add="infant"><span class="plus">+</span> Добавить младенца (до 2 лет)</button>
+    </div>
+
+    <hr class="pax-div">
+
+    <!-- Contact -->
+    <div class="contact-grid">
+      <div class="fld"><label>Номер телефона*</label><input class="inp" placeholder="+998 90 123 45 67"><div class="hint">Мы свяжемся по этому номеру при непредвиденных обстоятельствах</div></div>
+      <div class="fld"><label>Почта*</label><input class="inp" placeholder="example@mail.com"><div class="hint">На этот почтовый адрес мы пришлём вам билет и информацию о рейсе после оплаты</div></div>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="checks">
+      <label class="chk"><input type="checkbox" checked><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Заполнять данные автоматически в следующий раз</label>
+
+      <label class="chk master"><input type="checkbox" id="agreeAll"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Я ознакомлен и согласен с правилами и условиями:</label>
+      <div class="sub-checks">
+        <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Я ознакомлен и согласен с <a href="#">действующими правилами авиакомпании</a></span></label>
+        <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Я ознакомлен и согласен с <a href="#">правилами поведения на борту воздушного судна</a></span></label>
+        <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Я ознакомлен с <a href="#">требованиями к документам для въезда в страны назначения и транзита</a></span></label>
+        <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Я даю своё согласие на обработку своих персональных данных</label>
+      </div>
+    </div>
+
+    <div class="pax-foot">
+      <button class="btn-next" style="text-align: center">Продолжить</button>
+    </div>
+
+  </main>
+
+  <script>
+    const paxList=document.getElementById('paxList');
+    const calSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>';
+    const trashSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13M10 11v6M14 11v6"/></svg>';
+    const MAX=9;
+
+    function bodyHTML(){
+      return '<div class="pax-body">'
+        +'<div class="fld"><label>Фамилия*</label><input class="inp" placeholder="Как в документе"></div>'
+        +'<div class="fld"><label>Имя*</label><input class="inp" placeholder="Как в документе"></div>'
+        +'<div class="gender"><label style="font-size:13px;font-weight:700;color:var(--muted);">Пол*</label><div class="seg"><button class="on" data-g>Мужчина</button><button data-g>Женщина</button></div></div>'
+        +'<div class="fld"><label>Дата рождения*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic">'+calSvg+'</span></div></div>'
+        +'<div class="fld sel"><label>Тип документа</label><div class="inp"><span>Паспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div></div>'
+        +'<div class="fld"><label>Серия и номер документа*</label><input class="inp" placeholder="AA 1234567"></div>'
+        +'<div class="fld"><label>Срок действия документа*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic">'+calSvg+'</span></div></div>'
+        +'<div class="fld"><label>Номер UzAirPlus</label><input class="inp" placeholder="Необязательно"></div>'
+        +'</div>';
+    }
+    function makeCard(type){
+      const card=document.createElement('div');
+      card.className='pax-card';
+      card.dataset.type=type;
+      card.innerHTML='<div class="pax-head" data-toggle><h3></h3><button class="trash" type="button" aria-label="Удалить пассажира">'+trashSvg+'</button><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>'+bodyHTML();
+      return card;
+    }
+    function count(){ return paxList.querySelectorAll('.pax-card').length; }
+    function renumber(){
+      let a=0,c=0,i=0;
+      paxList.querySelectorAll('.pax-card').forEach(card=>{
+        const t=card.dataset.type||'adult';
+        let lbl;
+        if(t==='child'){ c++; lbl='Ребёнок '+c; }
+        else if(t==='infant'){ i++; lbl='Младенец '+i; }
+        else { a++; lbl='Взрослый пассажир '+a; }
+        card.querySelector('.pax-head h3').textContent=lbl;
+      });
+    }
+    function updateAddState(){
+      const full=count()>=MAX;
+      document.querySelectorAll('.add-pax').forEach(b=>b.disabled=full);
+    }
+
+    // delegated interactions inside the passenger list
+    paxList.addEventListener('click',e=>{
+      const tr=e.target.closest('.trash');
+      if(tr){ tr.closest('.pax-card').remove(); renumber(); updateAddState(); return; }
+      const g=e.target.closest('[data-g]');
+      if(g){ const seg=g.closest('.seg'); seg.querySelectorAll('[data-g]').forEach(x=>x.classList.remove('on')); g.classList.add('on'); return; }
+      const head=e.target.closest('.pax-head');
+      if(head){ head.closest('.pax-card').classList.toggle('collapsed'); }
+    });
+
+    // add buttons
+    document.querySelectorAll('.add-pax').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        if(count()>=MAX) return;
+        paxList.appendChild(makeCard(btn.dataset.add));
+        renumber(); updateAddState();
+      });
+    });
+    updateAddState();
+    // master agree → toggles all 4 sub-checkboxes
+    const master=document.getElementById('agreeAll');
+    const subs=[...document.querySelectorAll('.agree-sub')];
+    master.addEventListener('change',()=>{ subs.forEach(s=>s.checked=master.checked); });
+    subs.forEach(s=>s.addEventListener('change',()=>{ master.checked=subs.every(x=>x.checked); }));
+  </script>
+</body>
+</html>

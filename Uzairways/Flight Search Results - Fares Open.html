@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поиск рейсов · Ташкент — Москва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
+    --ink:#12174f; --ink-soft:#2a2f63; --accent:#8b273e; --accent-2:#a8324c;
+    --text:#20233f; --muted:#857d89; --muted-2:#a59ba6;
+    --line:#e7ddd5; --line-card:#efe7e2;
+    --good:#2f7350; --good-bg:#e7f0ea;
+    --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+    --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
+    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;}
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;}
+  .container{max-width:1160px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  .site-header{background:var(--ink);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);}
+  .hdr-inner{display:flex;align-items:center;gap:20px;height:64px;}
+  .logo{display:flex;align-items:center;flex:none;}
+  .logo svg{height:30px;width:auto;display:block;}
+  .site-nav{display:flex;gap:18px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82);flex:1;justify-content:center;}
+  .site-nav span{cursor:pointer;white-space:nowrap;}
+  .site-nav span:hover{color:#fff;}
+  .hdr-right{display:flex;align-items:center;gap:8px;flex:none;}
+  .hdr-ic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;background:transparent;transition:.15s;}
+  .hdr-ic:hover{background:rgba(255,255,255,.08);}
+  .hdr-ic svg{width:20px;height:20px;display:block;}
+  .hdr-lang{display:flex;align-items:center;gap:7px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;background:transparent;padding:8px 6px;border-radius:10px;transition:.15s;}
+  .hdr-lang:hover{background:rgba(255,255,255,.08);}
+  .hdr-lang svg{width:18px;height:18px;display:block;}
+  .hdr-div{width:1px;height:28px;background:rgba(255,255,255,.16);margin:0 2px;}
+  .hdr-profile{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:.15s;}
+  .hdr-profile:hover{background:rgba(255,255,255,.16);}
+  .hdr-profile svg{width:20px;height:20px;display:block;}
+  .btn-login{background:var(--accent);color:#fff;border-radius:12px;padding:9px 18px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;margin-left:4px;}
+  .btn-login:hover{background:var(--accent-2);}
+
+  /* ---------- Search card ---------- */
+  .search-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-xl);box-shadow:var(--sh-md);padding:22px;margin-top:26px;}
+  .route-row{display:grid;grid-template-columns:1fr 40px 1fr 190px 44px;gap:12px;align-items:center;}
+  .route-row + .route-row{margin-top:12px;}
+  .field-in{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 18px;font-weight:700;color:var(--ink);font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;transition:.15s;}
+  .field-in:hover{border-color:var(--ink);}
+  .field-in .code{color:var(--muted);font-weight:700;font-size:12.5px;letter-spacing:.06em;}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px;}
+  .chev-i{width:13px;height:13px;display:inline-block;vertical-align:middle;flex:none;}
+  .field-in.date .chev{color:var(--muted);font-size:12px;}
+  .del-btn{width:44px;height:46px;border-radius:var(--r-md);background:var(--bg);border:1px solid var(--line);color:var(--accent);display:flex;align-items:center;justify-content:center;}
+  .del-btn svg{width:20px;height:20px;display:block;}
+  .del-btn:hover{color:var(--accent);border-color:var(--accent);}
+  .search-foot{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap;}
+  .add-dir{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);font-size:14px;}
+  .add-dir .plus{width:24px;height:24px;border-radius:var(--r-pill);border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;}
+  .search-foot .spacer{flex:1;}
+  .mini-field{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 16px;font-weight:700;color:var(--ink);font-size:14px;display:flex;align-items:center;gap:8px;}
+  .mini-field.muted{color:var(--muted);font-weight:600;}
+  .btn{font-family:var(--font);font-weight:700;font-size:15px;border-radius:var(--r-md);padding:14px 26px;display:inline-flex;align-items:center;gap:9px;line-height:1;transition:.15s;}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{background:var(--accent-2);}
+  .btn-ink{background:var(--ink);color:#fff;}
+  .btn-ink:hover{background:var(--ink-soft);}
+
+  /* ---------- Trip summary ---------- */
+  .summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;}
+  .sum-card{background:var(--surface-2);border:1px solid #ecdcd6;border-radius:var(--r-lg);padding:18px 22px;display:flex;gap:18px;align-items:stretch;}
+  .sum-tab{flex:none;border-right:1px solid #e4cfc8;padding-right:18px;color:var(--muted);font-size:12px;font-weight:700;line-height:1.3;display:flex;flex-direction:column;justify-content:center;text-transform:uppercase;letter-spacing:.08em;}
+  .sum-tab b{display:block;color:var(--ink);font-size:20px;letter-spacing:-.01em;}
+  .sum-body{flex:1;}
+  .sum-body .rt{font-weight:800;font-size:18px;color:var(--ink);}
+  .sum-body .st{color:var(--muted);font-size:13.5px;margin-top:2px;}
+  .sum-body .pr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px;}
+  .sum-body .pr .lab{color:var(--muted);font-size:12.5px;}
+  .sum-body .pr .amt{font-weight:800;color:var(--ink);font-size:17px;white-space:nowrap;}
+
+  /* selected summary (after a fare is chosen) */
+  .sum-card.selected{background:var(--surface);border-color:var(--line-card);box-shadow:var(--sh-sm);}
+  .sum-card.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+  .sum-card.active .sum-tab{border-right-color:#e4cfc8;}
+  .sum-card.selected .sum-tab{border-right-color:var(--line);}
+  .sum-sel{position:relative;flex:1;padding-right:124px;}
+  .sum-sel .head{display:flex;align-items:center;gap:9px;flex-wrap:nowrap;white-space:nowrap;}
+  .sum-sel .rt2{font-weight:800;font-size:16px;color:var(--ink);white-space:nowrap;}
+  .sum-sel .marks{display:flex;}
+  .sum-sel .marks .air-ic{width:21px;height:21px;font-size:10px;}
+  .sum-sel .marks .air-ic + .air-ic{margin-left:-6px;}
+  .sum-sel .fno{font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;}
+  .sum-sel .line1{margin-top:9px;font-size:14px;color:var(--ink);}
+  .sum-sel .line1 b{font-weight:800;}
+  .sum-sel .line1 .ap{color:var(--muted);font-weight:700;font-size:12.5px;letter-spacing:.05em;}
+  .sum-sel .line1 .gap{display:inline-block;width:26px;}
+  .sum-sel .line2,.sum-sel .line3{color:var(--muted);font-size:12.5px;margin-top:4px;}
+  .sum-sel .edit{position:absolute;top:0;right:0;width:30px;height:30px;border-radius:var(--r-pill);background:var(--bg);border:1px solid var(--line);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:13px;}
+  .sum-sel .edit:hover{border-color:var(--ink);}
+  .sum-sel .rightcol{position:absolute;right:0;bottom:0;text-align:right;}
+  .sum-sel .clsbadge{font-weight:800;font-size:14px;color:var(--accent);}
+  .sum-sel .icons{display:flex;gap:6px;justify-content:flex-end;margin-top:9px;}
+  .sum-sel .icons svg{width:17px;height:17px;}
+
+  /* ---------- Results head ---------- */
+  .results-head{display:flex;align-items:center;gap:16px;margin:40px 0 18px;flex-wrap:wrap;}
+  .results-head h1{font-weight:800;font-size:32px;letter-spacing:-.015em;color:var(--ink);line-height:1.05;}
+  .info-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:14px;margin-left:auto;}
+  .info-link svg{width:18px;height:18px;flex:none;display:block;}
+
+  /* ---------- Date strip ---------- */
+  .date-strip{display:flex;align-items:stretch;gap:10px;}
+  .date-nav{width:48px;flex:none;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-md);color:var(--ink);font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-sm);}
+  .date-nav:hover{border-color:var(--ink);}
+  .date-track{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
+  .date-cell{background:var(--bg-2);border:1px solid transparent;border-radius:var(--r-md);padding:12px 10px;text-align:center;transition:.15s;}
+  .date-cell .d{font-weight:800;font-size:14px;color:var(--ink);}
+  .date-cell .p{font-size:11.5px;color:var(--muted);margin-top:7px;}
+  .date-cell:not(.is-disabled):hover{border-color:var(--ink);}
+  .date-cell.is-active{background:var(--accent);}
+  .date-cell.is-active .d{color:#fff;}
+  .date-cell.is-active .p{color:rgba(255,255,255,.85);}
+  .date-cell.is-disabled{opacity:.55;cursor:not-allowed;}
+  .date-cell.is-disabled .p{color:var(--accent);font-weight:600;}
+
+  /* ---------- Filter bar ---------- */
+  .filter-bar{display:flex;align-items:center;margin:22px 0 14px;gap:12px;}
+  .filter-note{color:var(--muted);font-size:13px;}
+  .filter-bar .spacer{flex:1;}
+  .chip{font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--surface);color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:.15s;}
+  .chip:hover{border-color:var(--ink);}
+  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .chip .chev{font-size:11px;opacity:.7;}
+
+  /* ---------- Sort dropdown ---------- */
+  .sort-wrap{position:relative;}
+  .sort-menu{position:absolute;right:0;top:calc(100% + 10px);width:308px;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:18px 20px 18px;z-index:40;display:none;}
+  .sort-menu.open{display:block;opacity:1;animation:sortpop .15s ease;}
+  @keyframes sortpop{from{transform:translateY(-6px)}to{transform:none}}
+  .sort-grp{margin-top:15px;}
+  .sort-grp:first-child{margin-top:0;}
+  .sort-grp .gh{font-weight:800;font-size:12.5px;color:var(--ink);margin-bottom:7px;}
+  .sort-opt{display:flex;align-items:center;gap:11px;padding:5px 0;cursor:pointer;font-size:13.5px;color:var(--ink-soft);}
+  .sort-opt input{position:absolute;opacity:0;width:0;height:0;}
+  .sort-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--muted-2);flex:none;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .sort-opt input:checked + .sort-radio{border-color:var(--accent);}
+  .sort-opt input:checked + .sort-radio::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .sort-opt:hover{color:var(--ink);}
+  .sort-opt:hover .sort-radio{border-color:var(--ink);}
+  .sort-apply{margin-top:19px;width:100%;background:var(--accent);color:#fff;border-radius:var(--r-md);padding:12px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;}
+  .sort-apply:hover{background:var(--accent-2);}
+
+  /* ---------- Confirm (round-trip) modal ---------- */
+  .modal.confirm{max-width:1180px;}
+  .confirm .modal-head{justify-content:flex-start;padding:0 44px 0 0;}
+  .confirm .modal-head h2{text-align:left;font-size:26px;}
+  .confirm-sub{color:var(--muted);font-size:14px;margin-top:8px;}
+  .confirm-note{display:flex;gap:12px;align-items:flex-start;background:var(--surface-2);border:1px solid #ecdcd6;border-radius:var(--r-md);padding:14px 16px;margin:18px 0 22px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+  .confirm-note .ni{width:22px;height:22px;flex:none;display:flex;align-items:center;justify-content:center;}
+  .confirm-note .ni svg{width:22px;height:22px;display:block;}
+  .cf-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .cf-leghead{display:flex;align-items:center;gap:11px;font-size:19px;color:var(--ink-soft);font-weight:600;margin-bottom:12px;}
+  .cf-leghead svg{width:24px;height:24px;flex:none;}
+  .cf-leghead b,.cf-leghead{color:var(--ink);}
+  .cf-leghead b{font-weight:800;color:var(--ink);}
+  .cf-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:18px;}
+  .cf-cardtop{display:flex;align-items:center;gap:10px;}
+  .cf-fno{font-weight:800;font-size:16px;color:var(--ink);}
+  .cf-ai{width:24px;height:24px;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .cf-ai svg{width:100%;height:100%;display:block;}
+  .cf-airtxt{font-weight:600;font-size:13.5px;color:var(--ink-soft);}
+  .cf-total{margin-left:auto;font-weight:600;font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+  .cf-edit{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none;cursor:pointer;margin-left:auto;}
+  .cf-edit:hover{background:var(--accent-2);}
+  .cf-strip{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;margin:16px 2px 4px;}
+  .cf-dur{text-align:center;font-weight:700;font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;line-height:1.1;white-space:nowrap;}
+  .cf-end .cf-tm{font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.01em;line-height:1.1;}
+  .cf-end .cf-ct{color:var(--ink-soft);font-size:12.5px;font-weight:700;margin-top:3px;}
+  .cf-end .cf-dt{color:var(--muted);font-size:11.5px;margin-top:2px;}
+  .cf-end.r{text-align:right;}
+  .cf-mid{padding-top:2px;}
+  .cf-bar{display:flex;align-items:center;gap:8px;}
+  .cf-ln{flex:1;height:2px;background:#1f7a4d;border-radius:2px;min-width:16px;}
+  .cf-mt{font-weight:700;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+  .cf-stop{text-align:center;white-space:nowrap;}
+  .cf-stop b{display:block;font-weight:800;font-size:12px;color:var(--ink);}
+  .cf-stop span{font-size:11px;color:var(--muted);}
+  .cf-stops{text-align:center;color:var(--muted);font-size:11.5px;margin-top:5px;}
+  .cf-fares{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+  .cf-fare{border:1px solid var(--line-card);border-radius:14px;display:flex;flex-direction:column;background:var(--surface);overflow:hidden;}
+  .cf-fbadge{font-weight:800;font-size:13px;padding:9px 16px;}
+  .cf-fbadge.cur{background:var(--bg-2);color:var(--ink);}
+  .cf-fbadge.upb{background:#1f7a4d;color:#fff;}
+  .cf-fname{font-weight:800;font-size:18px;color:var(--ink);padding:13px 16px 2px;white-space:nowrap;}
+  .cfd-list{padding:0 16px;}
+  .cfd-row{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line-card);}
+  .cfd-row:first-child{border-top:0;}
+  .cfd-row.full{align-items:start;}
+  .cfd-ic{width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .cfd-ic svg{width:21px;height:21px;}
+  .cfd-mid b{font-weight:800;font-size:13px;color:var(--ink);display:block;white-space:nowrap;}
+  .cfd-mid .d{color:var(--muted);font-size:11.5px;margin-top:2px;white-space:nowrap;}
+  .cfd-rt{text-align:right;}
+  .cfd-rt b{font-weight:800;font-size:12.5px;color:var(--ink);display:block;white-space:nowrap;}
+  .cfd-rt .d{color:var(--muted);font-size:11px;margin-top:2px;white-space:nowrap;}
+  .cfd-rt.val{font-weight:800;font-size:12.5px;color:var(--ink);white-space:nowrap;}
+  .cfd-rt.sub{font-weight:600;font-size:11.5px;color:var(--muted);white-space:nowrap;}
+  .cfd-tiers{display:flex;flex-direction:column;gap:5px;width:100%;}
+  .cfd-tiers .cfd-lab{font-weight:800;font-size:13px;color:var(--ink);margin-bottom:3px;white-space:nowrap;}
+  .cfd-tier{display:flex;justify-content:space-between;gap:8px;font-size:12px;}
+  .cfd-tier .tl{color:var(--muted);white-space:nowrap;}
+  .cfd-tier .tv{color:var(--ink);font-weight:600;white-space:nowrap;}
+  .cfd-tier .tv.free{color:var(--ink);font-weight:600;}
+  .cfd-tier .tv.better{color:#1f7a4d;font-weight:800;}
+  .cfd-rt b .better,.cfd-rt.val.better{color:#1f7a4d;font-weight:800;}
+  .cfd-mid .d.better{color:#1f7a4d;font-weight:800;}
+  .cfd-tier .tv.no{color:var(--muted-2);}
+  .cf-foot{padding:14px 16px 16px;margin-top:auto;}
+  .cf-curbtn{width:100%;background:var(--bg-2);color:var(--muted);border:0;border-radius:12px;padding:13px;font-family:var(--font);font-weight:800;font-size:15px;cursor:default;}
+  .cf-plus{text-align:center;font-weight:800;font-size:20px;color:var(--ink);margin-bottom:10px;}
+  .cf-selbtn{width:100%;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;}
+  .cf-selbtn:hover{background:var(--ink-soft);}
+  .confirm-actions{display:flex;justify-content:flex-end;gap:14px;margin-top:24px;}
+  .confirm-actions .btn-back{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:var(--r-md);padding:14px 26px;font-family:var(--font);font-weight:700;font-size:15px;cursor:pointer;}
+  .confirm-actions .btn-back:hover{border-color:var(--ink);}
+  .confirm-actions .btn-confirm{background:var(--accent);color:#fff;border-radius:var(--r-md);padding:14px 34px;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;}
+  .confirm-actions .btn-confirm:hover{background:var(--accent-2);}
+  /* confirm summary bar */
+  .cf-sumbar{display:flex;align-items:center;gap:30px;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:22px 28px;margin-top:26px;}
+  .cf-sb-pax{font-weight:700;font-size:17px;color:var(--ink);white-space:nowrap;}
+  .cf-sb-price{display:flex;flex-direction:column;gap:2px;}
+  .cf-sb-price .tot{font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1;white-space:nowrap;}
+  .cf-sb-price .lbl{font-size:13.5px;color:var(--muted);font-weight:600;}
+  .cf-sb-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
+  .cf-sb-details:hover{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;}
+  .cf-sb-confirm{margin-left:auto;background:var(--accent);color:#fff;border:0;border-radius:var(--r-md);padding:18px 56px;font-family:var(--font);font-weight:800;font-size:18px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .cf-sb-confirm:hover{background:var(--accent-2);}
+  @media(max-width:760px){.cf-sumbar{flex-wrap:wrap;gap:16px;}.cf-sb-confirm{margin-left:0;width:100%;}}
+  /* details (price breakdown) modal */
+  .det-overlay{z-index:130;align-items:center;}
+  .det-card{position:relative;background:var(--surface);border-radius:var(--r-lg);box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(620px,93vw);padding:34px 40px 32px;animation:pop .2s ease;}
+  .det-close{position:absolute;top:20px;right:22px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .det-close:hover{background:var(--bg-2);}
+  .det-title{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
+  .det-rows{display:flex;flex-direction:column;gap:14px;}
+  .det-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;}
+  .det-row .dl{color:var(--ink-soft);font-weight:600;}
+  .det-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .det-pen{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
+  .det-pen .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .det-card.pen-open .det-pen .chev{transform:rotate(180deg);}
+  .det-pen-body{display:none;padding:6px 0 2px;flex-direction:column;gap:14px;}
+  .det-card.pen-open .det-pen-body{display:flex;}
+  .pen-group{display:flex;flex-direction:column;gap:2px;}
+  .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
+  .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
+  .pen-d{font-weight:600;color:var(--ink-soft);font-size:14px;line-height:1.4;}
+  .det-points{color:var(--good);font-weight:700;font-size:16.5px;}
+  .det-points b{font-weight:900;}
+  .det-sep{height:1px;background:var(--line);border:0;margin:6px 0 2px;}
+  .det-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;letter-spacing:-.01em;color:var(--ink);margin-top:6px;}
+  /* upgrade warning modal */
+  .warn-overlay{z-index:120;align-items:center;}
+  .warn-card{position:relative;background:var(--surface);border-radius:var(--r-lg);box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(560px,92vw);padding:42px 46px 38px;text-align:center;animation:pop .2s ease;}
+  .warn-close{position:absolute;top:18px;right:20px;width:36px;height:36px;border:0;background:transparent;color:var(--ink);font-size:20px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .warn-close:hover{background:var(--bg-2);}
+  .warn-title{font-weight:900;font-size:30px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 18px;}
+  .warn-text{color:var(--muted);font-size:16px;line-height:1.55;max-width:430px;margin:0 auto 30px;}
+  .warn-text b{color:var(--ink);font-weight:800;}
+  .warn-confirm{background:var(--accent);color:#fff;border:0;border-radius:var(--r-md);padding:16px 40px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;min-width:280px;transition:.15s;}
+  .warn-confirm:hover{background:var(--accent-2);}
+  @media(max-width:1100px){.cf-cols{grid-template-columns:1fr;}}
+
+  /* ---------- Flight card ---------- */
+  .flight-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-xl);box-shadow:var(--sh-md);margin-bottom:18px;overflow:hidden;}
+  .tags{display:flex;gap:8px;padding:16px 26px 0;}
+  .tag{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);}
+  .tag-stops{background:var(--surface-2);color:var(--ink);}
+  .tag-fast{background:var(--good-bg);color:var(--good);}
+  .flight-body{display:grid;grid-template-columns:1fr 320px;}
+  .flight-main{padding:14px 26px 20px;}
+  .flight-id{display:flex;align-items:center;gap:14px;}
+  .flight-no{font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;}
+  .airlines{display:flex;align-items:center;}
+  .airlines .air-ic + .air-ic{margin-left:-8px;}
+  .air-ic{width:26px;height:26px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;border:2px solid var(--surface);}
+  .air-ic.uz{background:transparent;border:0;padding:0;overflow:hidden;} .air-ic.tk{background:#c0122e;} .air-ic.p1{background:#2a3c8f;}
+  .air-ic.uz svg{width:100%;height:100%;display:block;border-radius:50%;}
+  .flight-id .kind{color:var(--muted);font-weight:600;font-size:14px;}
+  .flight-id .kind.link{color:var(--ink-soft);}
+  .flight-id .total{margin-left:auto;color:var(--ink-soft);font-size:14px;font-weight:600;}
+
+  .route{display:flex;align-items:flex-start;gap:18px;margin-top:18px;}
+  .endpoint{flex:none;min-width:120px;}
+  .endpoint.arr{text-align:right;margin-left:auto;}
+  .endpoint .time{font-weight:800;font-size:27px;color:var(--ink);letter-spacing:-.01em;line-height:1;}
+  .endpoint .place{font-weight:700;font-size:13.5px;color:var(--ink-soft);margin-top:6px;}
+  .endpoint .date{color:var(--muted);font-size:12px;margin-top:3px;}
+  .path{flex:1;display:flex;align-items:center;padding-top:6px;min-width:120px;}
+  .seg{flex:1;height:2px;background:var(--line);border-radius:2px;position:relative;}
+  .seg.direct::after{content:"✈";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:13px;color:var(--accent);background:var(--surface);padding:0 8px;}
+  .seg.direct .seg-lab{position:absolute;left:50%;top:14px;transform:translateX(-50%);white-space:nowrap;color:var(--muted);font-size:12px;}
+  .stop{flex:none;position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer;}
+  .stop .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--surface);}
+  .stop .code{font-weight:800;font-size:12px;color:var(--ink);margin-top:6px;}
+  .stop .dur{font-size:10.5px;color:var(--muted);margin-top:1px;white-space:nowrap;}
+  .stop .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 14px;border-radius:var(--r-md);width:230px;font-size:12px;font-weight:500;line-height:1.45;box-shadow:var(--sh-lg);opacity:0;visibility:hidden;transition:.16s;z-index:20;}
+  .stop .tip b{font-weight:800;display:block;margin-bottom:3px;}
+  .stop .tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink);}
+  .stop:hover .tip{opacity:1;visibility:visible;}
+
+  .details-toggle{display:block;width:100%;text-align:center;color:var(--ink-soft);font-weight:700;font-size:13.5px;padding:14px;border-top:1px solid var(--line-card);}
+  .details-toggle:hover{color:var(--accent);}
+  .details-toggle .ar{display:inline-block;margin-left:6px;font-size:11px;transition:.2s;}
+  .flight-card.open .details-toggle .ar{transform:rotate(180deg);}
+  .details{display:none;padding:4px 26px 22px;border-top:1px solid var(--line-card);}
+  .flight-card.open .details{display:block;}
+  .det-leg{display:flex;gap:14px;align-items:center;padding:11px 0;color:var(--ink-soft);font-size:13.5px;border-top:1px dashed var(--line);}
+  .det-leg:first-child{border-top:0;}
+  .det-leg .lt{font-weight:800;color:var(--ink);min-width:96px;}
+  .det-leg .ld{color:var(--muted);}
+
+  /* fare cells */
+  .fare-cells{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px;align-items:stretch;}
+  .fare-cell{border-radius:16px;padding:15px 15px 16px;border:1px solid var(--line-card);box-shadow:var(--sh-sm);position:relative;transition:.15s;text-align:left;display:flex;flex-direction:column;}
+  .fare-cell.eco{background:linear-gradient(150deg,#fff4e3 0%,#fffefb 48%,#eff0f1 100%);}
+  .fare-cell.biz{background:linear-gradient(210deg,#f5e2d1 0%,#f3e6e2 55%,#f1dedc 100%);}
+  .fare-cell .cab{font-weight:800;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:7px;}
+  .fare-cell.biz .cab{color:var(--accent);}
+  .fare-cell .from{color:var(--muted);font-size:11.5px;margin-top:10px;}
+  .fare-cell .amt{font-weight:800;font-size:15px;color:var(--ink);margin-top:2px;letter-spacing:-.01em;line-height:1.15;display:flex;flex-direction:column;align-items:flex-start;}
+  .fare-cell .amt .num{white-space:nowrap;}
+  .fare-cell .amt .cur{font-size:13px;}
+  .fare-cell.biz .amt{color:var(--accent);}
+  .fare-cell .per{color:var(--muted-2);font-size:11px;margin-top:4px;}
+  .fare-cell .disc{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .fare-cell:hover{transform:translateY(-2px);box-shadow:var(--sh-md);}
+  .fare-cell.selected{box-shadow:inset 0 0 0 2px var(--accent),var(--sh-sm);}
+  .fare-cell.selected.eco{box-shadow:inset 0 0 0 2px var(--ink),var(--sh-sm);}
+  /* chosen-fare panel (после выбора тарифа) */
+  .fare-cells.chosen{display:block;padding:18px;}
+  .fare-chosen{background:#edeae6;border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;}
+  .fare-chosen .cab2{font-weight:800;font-size:13.5px;color:var(--ink);}
+  .fare-chosen .cab2 .fn{color:var(--accent);}
+  .fare-chosen .pr2{font-weight:800;font-size:19px;color:var(--ink);margin-top:5px;letter-spacing:-.01em;}
+  .fare-chosen .pr2 .cur{font-size:13px;font-weight:800;}
+  .fare-chosen .change{margin-top:13px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px;font-family:var(--font);font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;transition:.15s;}
+  .fare-chosen .change:hover{border-color:var(--ink);}
+
+  /* ===== Detail modal ===== */
+  .modal-overlay{position:fixed;inset:0;background:rgba(18,23,79,.55);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:100;overflow:auto;}
+  .modal-overlay[hidden]{display:none;}
+  .modal{background:var(--surface);border-radius:var(--r-xl);box-shadow:var(--sh-lg);width:100%;max-width:760px;position:relative;padding:30px 34px 28px;animation:pop .2s ease;}
+  @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+  .modal-close{position:absolute;top:22px;right:22px;width:40px;height:40px;border-radius:var(--r-pill);background:var(--bg);border:1px solid var(--line);color:var(--ink);font-size:15px;display:flex;align-items:center;justify-content:center;}
+  .modal-close:hover{background:var(--surface-2);}
+  .modal-head{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 36px;}
+  .modal-head h2{font-weight:800;font-size:21px;color:var(--ink);letter-spacing:-.01em;text-align:center;}
+  .modal-head .collapse{color:var(--ink);font-size:13px;flex:none;}
+  .modal-sub{display:flex;justify-content:space-between;gap:18px;margin-top:14px;color:var(--ink-soft);font-size:14px;font-weight:700;flex-wrap:wrap;}
+  .modal-sub .stops{color:var(--muted);font-weight:600;}
+  .modal-localnote{color:var(--muted);font-size:12.5px;margin:6px 0 16px;font-weight:700;}
+  .modal-body{display:flex;flex-direction:column;}
+  .modal-foot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;}
+  .btn-fare{border-radius:var(--r-md);padding:15px 16px;text-align:center;font-weight:700;font-size:14.5px;line-height:1.3;color:#fff;transition:.15s;}
+  .btn-fare b{display:block;font-weight:800;font-size:15px;margin-top:3px;}
+  .btn-fare.ink{background:var(--ink);} .btn-fare.ink:hover{background:var(--ink-soft);}
+  .btn-fare.accent{background:var(--accent);} .btn-fare.accent:hover{background:var(--accent-2);}
+  .seg-card{border:1px solid var(--line-card);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm);background:var(--surface);}
+  .seg-head{display:flex;align-items:center;gap:11px;background:var(--surface-2);padding:11px 16px;}
+  .seg-no{font-weight:800;font-size:14px;color:var(--ink);background:var(--surface);border:1px solid var(--line-card);padding:4px 9px;border-radius:8px;letter-spacing:.02em;}
+  .seg-air-ic{width:22px;height:22px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .seg-air{font-weight:600;font-size:13.5px;color:var(--ink-soft);}
+  .seg-craft{margin-left:auto;font-weight:700;font-size:12.5px;color:var(--muted);}
+  .seg-amenities{display:flex;gap:22px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line-card);flex-wrap:wrap;}
+  .amenity{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);font-weight:600;}
+  .amenity svg{width:19px;height:19px;flex:none;}
+  .amenity .info{width:16px;height:16px;flex:none;display:inline-flex;align-items:center;justify-content:center;}
+  .amenity .info svg{width:16px;height:16px;display:block;}
+  .amenity .info.pet-info{position:relative;cursor:pointer;}
+  .amenity-tip{display:none;position:fixed;width:300px;max-width:80vw;background:var(--surface);border:1px solid var(--line-card);border-radius:16px;box-shadow:0 16px 48px rgba(18,23,79,.18);padding:20px 22px;z-index:99999;text-align:left;cursor:default;}
+  .amenity-tip::after{content:"";position:absolute;bottom:100%;left:var(--arrow,50%);transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:var(--surface);border-left:1px solid var(--line-card);border-top:1px solid var(--line-card);margin-bottom:-6px;}
+  .info.pet-info.open .amenity-tip{display:block;}
+  .amenity-tip .at-ic{display:flex;justify-content:center;margin-bottom:10px;}
+  .amenity-tip .at-ic svg{width:26px;height:26px;}
+  .amenity-tip .at-title{text-align:center;font-weight:800;font-size:14px;color:var(--ink);margin-bottom:10px;}
+  .amenity-tip .at-body{font-size:13px;color:var(--ink-soft);line-height:1.5;font-weight:600;}
+  .amenity-tip .at-list{margin:0 0 10px;padding-left:18px;}
+  .amenity-tip .at-list li{font-size:13px;color:var(--ink-soft);line-height:1.5;font-weight:600;margin-bottom:3px;}
+  .amenity a{color:var(--accent);font-weight:700;}
+  .seg-legs{display:grid;grid-template-columns:auto 22px 1fr;gap:16px;padding:16px;}
+  .seg-rail{font-size:12px;color:var(--muted);display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:78px;}
+  .seg-rail b{color:var(--ink);font-size:13px;font-weight:800;}
+  .seg-spine{position:relative;}
+  .seg-spine::before{content:"";position:absolute;left:9px;top:7px;bottom:7px;width:2px;background:var(--line);}
+  .seg-spine .d{position:absolute;left:4px;width:12px;height:12px;border-radius:50%;border:3px solid var(--accent);background:var(--surface);box-sizing:border-box;}
+  .seg-spine .d.top{top:1px;} .seg-spine .d.bot{bottom:1px;}
+  .seg-stack{display:flex;flex-direction:column;justify-content:space-between;gap:28px;}
+  .leg-pt{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;}
+  .leg-pt .city{font-weight:800;font-size:14.5px;color:var(--ink);}
+  .leg-pt .meta{color:var(--muted);font-size:12.5px;margin-top:2px;max-width:340px;}
+  .leg-pt .meta .code{color:var(--ink-soft);font-weight:700;}
+  .leg-pt .time{text-align:right;flex:none;}
+  .leg-pt .time b{font-weight:800;font-size:15px;color:var(--ink);}
+  .leg-pt .time div{color:var(--muted);font-size:12px;margin-top:2px;}
+  .layover-bar{background:var(--surface-2);border:1px solid #ecdcd6;border-radius:var(--r-pill);text-align:center;font-weight:700;font-size:13px;color:var(--ink-soft);padding:9px 16px;margin:11px 0;}
+  @media(max-width:560px){.modal-foot{grid-template-columns:1fr;}.seg-legs{grid-template-columns:auto 18px 1fr;gap:10px;}}
+
+  /* ===== Fare selection modal ===== */
+  .modal.wide{max-width:1120px;}
+  .cabin-tabs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 18px;}
+  .cabin-tab{padding:15px;border-radius:14px;font-weight:800;font-size:18px;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:.15s;}
+  .cabin-tab:hover{border-color:var(--ink);}
+  .cabin-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .cabin-tab.active[data-cabin="business"]{background:var(--accent);border-color:var(--accent);}
+  .fare-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(202px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px;}
+  .fcard{border:1px solid var(--line-card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:var(--surface);box-shadow:var(--sh-sm);}
+  .fcard-head{padding:13px 14px;text-align:center;border-bottom:1px solid var(--line-card);background:var(--surface-2);height:98px;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+  .fcard.akcia .fcard-head{background:#eaf4ee;}
+  .fcard.sold{background:#f1f0ee;border-color:#e3e1dd;filter:grayscale(1);opacity:.72;}
+  .fcard.sold .fcard-head{background:#e7e5e1;}
+  .fcard .ribbon{background:#1f7a4d;color:#fff;font-weight:800;font-size:14px;padding:5px 6px;line-height:1.15;border-radius:8px;}
+  .fcard .nm{font-weight:800;font-size:16px;color:var(--ink);}
+  .fcard .cls{color:#12174f;font-weight:700;font-size:12.5px;}
+  .fcard .promo{color:#1f7a4d;font-weight:700;font-size:11.5px;}
+  .frow{padding:9px 13px;border-bottom:1px solid var(--line-card);font-size:12px;}
+  .frow .top{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);}
+  .frow .ic{width:16px;height:16px;flex:none;}
+  .frow .val{display:flex;justify-content:space-between;gap:8px;margin-top:4px;color:var(--ink-soft);}
+  .frow .val.muted{color:var(--muted);display:block;}
+  .frow .val .sub{color:var(--muted);font-size:11px;}
+  .frow .val .free{color:#1f7a4d;font-weight:800;}
+  .frow .tier{display:flex;justify-content:space-between;gap:8px;margin-top:4px;color:var(--ink-soft);font-size:11.5px;}
+  .frow .tier .t{color:var(--muted);}
+  .frow .tier .free{color:#1f7a4d;font-weight:800;}
+  .frow .tier .no{color:var(--muted-2);}
+  .fcard-foot{margin-top:auto;padding:13px;}
+  .fcard .perp{color:var(--muted);font-size:11px;}
+  .fcard .price{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:16px;color:var(--ink);margin-top:2px;}
+  .fcard .bd-toggle{color:var(--muted);font-size:12px;}
+  .fcard .bd{margin-top:8px;display:grid;gap:3px;}
+  .fcard .bd.hide{display:none;}
+  .fcard .bd .ln{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
+  .fbtn{width:100%;margin-top:12px;background:var(--accent);color:#fff;border-radius:12px;padding:11px;font-weight:800;font-size:14px;transition:.15s;}
+  .fbtn:hover{background:var(--accent-2);}
+  .fbtn .left{font-weight:600;font-size:10.5px;opacity:.85;display:block;margin-top:2px;}
+  .fbtn.sold{background:var(--bg-2);color:var(--muted);cursor:not-allowed;}
+
+  footer{padding:40px 0 70px;color:var(--muted-2);font-size:12.5px;text-align:center;}
+
+  @media(max-width:900px){
+    .route-row{grid-template-columns:1fr 30px 1fr;}
+    .route-row .field-in.date,.del-btn{grid-column:1 / -1;}
+    .flight-body{grid-template-columns:1fr;}
+    .fare-cells{border-left:0;border-top:1px solid var(--line-card);}
+    .summary{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container hdr-inner">
+      <a class="logo" href="Home.html" aria-label="Uzbekistan Airways"><svg viewBox="0 0 176 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><g clip-path="url(#uzlogo_clip)"><path fill-rule="evenodd" clip-rule="evenodd" d="M56.3995 3.32693H52.5518L50.9591 10.9441C50.4209 13.2843 50.0068 15.2486 47.3598 15.2486C45.9742 15.2486 45.1461 14.5856 45.1461 13.4887C45.1461 12.7013 45.3724 11.936 45.5187 11.2315L47.2356 3.32417H43.3878L41.7124 11.0463C41.5054 12.0189 41.2983 12.9085 41.2983 14.1518C41.2983 16.4919 43.4292 18.4149 47.2742 18.4149C52.6097 18.4149 53.8104 15.7432 54.6357 11.7702L56.394 3.32417L56.3995 3.32693ZM55.0746 18.1082L55.715 14.7955L64.959 6.63959H57.7631L58.4448 3.32693H70.5236L69.8611 6.63959L60.3466 14.7955H68.4534L67.7909 18.1082H55.0718H55.0746ZM69.5934 18.1082H76.8113C81.1339 18.0889 83.5325 16.1411 83.5325 13.1406C83.5325 11.8144 82.7458 10.5518 81.443 10.2424V10.2009C83.1378 9.82793 84.1729 8.50452 84.1729 6.55671C84.1729 4.9432 83.5518 3.32693 79.5605 3.32693H72.6738L69.5934 18.1082ZM75.8591 6.34949H78.3819C79.21 6.34949 80.3251 6.43238 80.3251 7.50989C80.3251 8.64819 79.5605 9.1455 78.0093 9.1455H75.2794L75.8591 6.35225V6.34949ZM74.7439 11.7315H77.4545C78.4482 11.7315 79.6875 11.8338 79.6875 13.2014C79.6875 14.7955 78.404 15.0856 77.0598 15.0856H74.0401L74.7439 11.7315ZM84.5262 18.1082H96.3565L97.0603 14.7955H89.0557L89.6353 11.9802H96.9554L97.5765 8.99907H90.2564L90.7311 6.63959H98.6723L99.3762 3.32693H87.5872L84.5262 18.1082ZM98.6916 18.1082L101.813 3.32693H105.661L104.441 9.1234H104.483L110.5 3.32693H115.587L108.535 9.4135L112.918 18.1082H108.535L105.496 11.8973L103.489 13.6158L102.537 18.1082H98.6889H98.6916ZM114.016 18.1082H117.864L120.945 3.32693H117.097L114.016 18.1082ZM120.696 13.1378H124.544C124.544 14.732 125.433 15.2486 127.254 15.2486C128.806 15.2486 129.446 14.5856 129.446 13.7788C129.446 12.309 127.213 12.1432 125.681 11.6044C123.84 10.9414 122.352 9.96883 122.352 7.79446C122.352 4.44036 125.391 3.01196 128.35 3.01196C131.494 3.01196 134.16 4.17236 134.058 7.77236H130.211C130.211 7.21427 130.026 6.81918 129.694 6.57052C129.344 6.30252 128.825 6.17819 128.143 6.17819C127.191 6.17819 126.2 6.57052 126.2 7.50436C126.2 8.43821 126.821 8.49899 128.888 9.05709C130.914 9.61519 133.294 10.6706 133.294 13.5688C133.294 16.1991 130.956 18.4121 126.633 18.4121C123.117 18.4121 120.657 16.6328 120.699 13.1323L120.696 13.1378ZM148.762 3.32693H136.228L135.565 6.63959H139.907L137.487 18.1082H141.334L143.755 6.63959H148.097L148.759 3.32693H148.762ZM144.089 18.1082L152.712 3.32693H156.601L159.022 18.1082H155.155L154.804 15.4586H149.612L148.124 18.1082H144.092H144.089ZM153.871 7.28057L151.1 12.6018H154.47L153.913 7.28057H153.871ZM159.908 18.1082H163.631L165.514 8.44097H165.555L168.967 18.1082H172.917L175.997 3.32693H172.274L170.433 12.9942H170.391L166.938 3.32693H162.988L159.908 18.1082Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M112.586 32.7916H115.112L116.045 31.1312H119.297L119.517 32.7916H121.941L120.425 23.5333H117.991L112.589 32.7916H112.586ZM118.717 26.0088H118.742L119.092 29.3408H116.981L118.717 26.0088ZM122.603 32.7916H125.013L126.942 23.5333H124.533L122.603 32.7916ZM130.531 25.3982H132.305C132.94 25.3982 133.6 25.5668 133.6 26.357C133.6 27.3543 132.849 27.6279 131.98 27.6279H130.061L130.528 25.3982H130.531ZM126.592 32.7916L128.51 23.5333H133.045C134.729 23.5333 136.012 23.9616 136.012 25.9315C136.012 27.3184 135.353 28.3048 133.901 28.512V28.5369C134.588 28.7054 134.848 29.1861 134.848 30.0813C134.848 30.7554 134.809 31.2748 134.809 31.8053C134.809 32.1286 134.809 32.5319 134.953 32.7916H132.529C132.49 32.6093 132.452 32.4408 132.452 32.2612C132.452 31.7804 132.515 31.2887 132.515 30.667C132.515 29.8492 132.165 29.421 131.309 29.421H129.703L129.004 32.7916H126.595H126.592ZM137.45 32.7916H139.874L142.389 26.5283H142.413V32.7916H144.837L149.228 23.5333H146.752L144.136 30.2774H144.111V23.5333H141.908L139.187 30.2774H139.162L139.225 23.5333H136.802L137.45 32.7916ZM146.739 32.7916L152.14 23.5333H154.575L156.09 32.7916H153.667L153.446 31.1312H150.194L149.261 32.7916H146.736H146.739ZM152.866 26.0088L151.13 29.3408H153.242L152.891 26.0088H152.866ZM158.18 32.7916H160.565L161.304 29.2911L165.839 23.5333H162.949L160.371 27.3847L159.27 23.5333H156.783L158.92 29.2911L158.18 32.7916ZM164.542 29.6779H166.952C166.952 30.6753 167.509 31.0013 168.649 31.0013C169.621 31.0013 170.024 30.5869 170.024 30.0813C170.024 29.1613 168.624 29.0563 167.667 28.7192C166.513 28.3048 165.58 27.6942 165.58 26.3321C165.58 24.2323 167.484 23.3372 169.337 23.3372C171.305 23.3372 172.977 24.0638 172.911 26.321H170.501C170.501 25.9702 170.385 25.7243 170.178 25.5695C169.958 25.401 169.635 25.3237 169.207 25.3237C168.611 25.3237 167.99 25.5695 167.99 26.1525C167.99 26.7355 168.379 26.7741 169.673 27.125C170.943 27.4759 172.434 28.1362 172.434 29.9514C172.434 31.5981 170.971 32.985 168.263 32.985C166.06 32.985 164.52 31.8689 164.545 29.6779H164.542Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3086 0.000194929C23.1405 -0.0203324 27.7829 1.86428 31.215 5.23967C34.647 8.61505 36.5878 13.2049 36.6107 18C36.5878 22.7951 34.647 27.3849 31.215 30.7603C27.7829 34.1357 23.1405 36.0203 18.3086 35.9998C13.4756 36.0221 8.83153 34.1382 5.39804 30.7626C1.96456 27.3871 0.0228381 22.7962 0 18C0.0228381 13.2038 1.96456 8.61294 5.39804 5.23737C8.83153 1.86179 13.4756 -0.0220581 18.3086 0.000194929Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3055 1.47185C22.7422 1.45304 27.0047 3.18352 30.156 6.2828C33.3073 9.38209 35.0893 13.5965 35.1102 17.9993C35.0893 22.4021 33.3073 26.6165 30.156 29.7158C27.0047 32.8151 22.7422 34.5456 18.3055 34.5268C13.8683 34.5464 9.60492 32.8163 6.45294 29.7169C3.30096 26.6176 1.51849 22.4027 1.49756 17.9993C1.51849 13.5959 3.30096 9.38103 6.45294 6.28165C9.60492 3.18227 13.8683 1.45218 18.3055 1.47185Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M30.11 22.0279C29.8622 22.361 29.5491 22.6409 29.1896 22.8507C28.83 23.0606 28.4313 23.1961 28.0176 23.2492L17.4653 23.2407C16.9389 22.974 16.8807 22.6035 17.4653 22.377H23.4313C23.6946 22.386 23.9562 22.3317 24.1938 22.2187C24.4314 22.1057 24.638 21.9374 24.7959 21.7281C26.5941 19.4109 28.6054 17.1988 30.1689 14.7077C29.605 15.3244 28.8458 15.7315 28.0169 15.8614H20.687C20.3421 15.8449 19.9986 15.9147 19.6881 16.0644C19.3775 16.214 19.1098 16.4388 18.9097 16.718L14.5143 22.2129C10.7317 26.6591 8.11157 16.8354 13.2288 18.3993L11.1364 15.8134C11.0175 15.679 10.8711 15.5712 10.7069 15.4974C10.5428 15.4236 10.3646 15.3855 10.1844 15.3855C10.0041 15.3855 9.82597 15.4236 9.66179 15.4974C9.49761 15.5712 9.35119 15.679 9.23232 15.8134C6.07931 19.7801 6.02112 25.8954 12.6599 26.4794H26.8452L30.1146 22.026L30.11 22.0279ZM27.9234 9.56127C27.7154 9.75132 27.4694 9.89576 27.2014 9.98521C26.9333 10.0746 26.6493 10.1071 26.3679 10.0804H19.9258C19.5752 10.0682 19.2262 10.1345 18.9049 10.2743C18.5835 10.4142 18.298 10.624 18.0695 10.8883L13.9599 16.0275L15.1179 17.4973L16.5303 15.768C16.7513 15.5174 17.0249 15.3178 17.332 15.1833C17.639 15.0487 17.972 14.9826 18.3075 14.9893H22.338C24.3193 14.9893 26.9498 10.7338 27.9241 9.55933L27.9234 9.56127Z" fill="#3C792F"/></g><defs><clipPath id="uzlogo_clip"><rect width="176" height="36" fill="#fff"/></clipPath></defs></svg></a>
+      <nav class="site-nav">
+        <span>Информация</span>
+        <span>Покупка и управление</span>
+        <span>Программа лояльности</span>
+        <span>О компании</span>
+        <span>Открытые данные</span>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-ic" aria-label="Поиск по сайту"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+        <button class="hdr-lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18" stroke-linecap="round"/><path d="M12 3c2.5 2.4 3.9 5.6 4 9-.1 3.4-1.5 6.6-4 9-2.5-2.4-3.9-5.6-4-9 .1-3.4 1.5-6.6 4-9Z"/></svg> Ru</button>
+        <span class="hdr-div"></span>
+        <button class="hdr-profile" aria-label="Профиль"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.2a6.7 6.7 0 0 1 13 0"/></svg></button>
+        <button class="btn-login">Войти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== Search card ===== -->
+    <section class="search-card">
+      <div class="route-row">
+        <div class="field-in">Ташкент, Узбекистан <span class="code">TAS</span></div>
+        <div class="arrow">→</div>
+        <div class="field-in">Москва, Россия <span class="code">DME</span></div>
+        <div class="field-in date">2 мар, пн <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>
+        <div></div>
+      </div>
+      <div class="route-row">
+        <div class="field-in">Москва, Россия <span class="code">DME</span></div>
+        <div class="arrow">→</div>
+        <div class="field-in">Ташкент, Узбекистан <span class="code">TAS</span></div>
+        <div class="field-in date">9 мар, пн <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>
+        <button class="del-btn" title="Удалить направление" aria-label="Удалить направление"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5584 4.35841C16.2167 4.22508 14.875 4.12508 13.525 4.05008V4.04175L13.3417 2.95841C13.2167 2.19175 13.0334 1.04175 11.0834 1.04175H8.90005C6.95838 1.04175 6.77505 2.14175 6.64172 2.95008L6.46672 4.01675C5.69172 4.06675 4.91672 4.11675 4.14172 4.19175L2.44172 4.35841C2.09172 4.39175 1.84172 4.70008 1.87505 5.04175C1.90838 5.38341 2.20838 5.63341 2.55838 5.60008L4.25838 5.43341C8.62505 5.00008 13.0251 5.16675 17.4417 5.60841C17.4667 5.60841 17.4834 5.60841 17.5084 5.60841C17.8251 5.60841 18.1 5.36675 18.1334 5.04175C18.1584 4.70008 17.9084 4.39175 17.5584 4.35841Z" fill="currentColor"/><path d="M16.025 6.78325C15.825 6.57492 15.55 6.45825 15.2666 6.45825H4.73329C4.44995 6.45825 4.16662 6.57492 3.97495 6.78325C3.78329 6.99159 3.67495 7.27492 3.69162 7.56659L4.20829 16.1166C4.29995 17.3833 4.41662 18.9666 7.32495 18.9666H12.675C15.5833 18.9666 15.7 17.3916 15.7916 16.1166L16.3083 7.57492C16.325 7.27492 16.2166 6.99159 16.025 6.78325ZM11.3833 14.7916H8.60829C8.26662 14.7916 7.98329 14.5083 7.98329 14.1666C7.98329 13.8249 8.26662 13.5416 8.60829 13.5416H11.3833C11.725 13.5416 12.0083 13.8249 12.0083 14.1666C12.0083 14.5083 11.725 14.7916 11.3833 14.7916ZM12.0833 11.4583H7.91662C7.57495 11.4583 7.29162 11.1749 7.29162 10.8333C7.29162 10.4916 7.57495 10.2083 7.91662 10.2083H12.0833C12.425 10.2083 12.7083 10.4916 12.7083 10.8333C12.7083 11.1749 12.425 11.4583 12.0833 11.4583Z" fill="currentColor"/></svg></button>
+      </div>
+      <div class="search-foot">
+        <div class="add-dir"><span class="plus">+</span> Добавить направление</div>
+        <div class="spacer"></div>
+        <div class="mini-field muted">Промокод</div>
+        <div class="mini-field">1 взр <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>
+        <div class="mini-field">UZS <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>
+        <button class="btn btn-accent">Обновить поиск</button>
+      </div>
+    </section>
+
+    <!-- ===== Trip summary ===== -->
+    <section class="summary">
+      <div class="sum-card" id="sumOut">
+        <div class="sum-tab">Туда<b>2 марта</b>пн</div>
+        <div class="sum-body">
+          <div class="rt">Ташкент — Москва</div>
+          <div class="st">Рейс ещё не выбран</div>
+          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>
+        </div>
+      </div>
+      <div class="sum-card" id="sumRet">
+        <div class="sum-tab">Обратно<b>9 марта</b>пн</div>
+        <div class="sum-body">
+          <div class="rt">Москва — Ташкент</div>
+          <div class="st">Рейс ещё не выбран</div>
+          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Results head ===== -->
+    <div class="results-head">
+      <h1 id="resHeading">Выберите рейс из Ташкента в Москву</h1>
+      <a class="info-link" href="#"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Информация перед полётом</a>
+    </div>
+
+    <!-- ===== Date strip ===== -->
+    <div class="date-strip">
+      <button class="date-nav" id="datePrev">‹</button>
+      <div class="date-track">
+        <button class="date-cell"><div class="d">28 фев, сб</div><div class="p">5 000 000 UZS</div></button>
+        <button class="date-cell is-disabled"><div class="d">1 мар, вск</div><div class="p">нет рейсов</div></button>
+        <button class="date-cell is-active"><div class="d">2 мар, пн</div><div class="p">5 000 000 UZS</div></button>
+        <button class="date-cell"><div class="d">3 мар, вт</div><div class="p">5 000 000 UZS</div></button>
+        <button class="date-cell is-disabled"><div class="d">4 мар, ср</div><div class="p">мест нет</div></button>
+        <button class="date-cell"><div class="d">5 мар, чт</div><div class="p">5 000 000 UZS</div></button>
+        <button class="date-cell"><div class="d">6 мар, пт</div><div class="p">5 000 000 UZS</div></button>
+      </div>
+      <button class="date-nav" id="dateNext">›</button>
+    </div>
+
+    <!-- ===== Filter bar ===== -->
+    <div class="filter-bar">
+      <span class="filter-note">Время вылета и прилёта местное</span>
+      <div class="spacer"></div>
+      <button class="chip">Прямые рейсы</button>
+      <div class="sort-wrap">
+        <button class="chip" id="sortBtn">Сортировка <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+        <div class="sort-menu" id="sortMenu">
+          <div class="sort-grp">
+            <div class="gh">По цене</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="price-asc" checked><span class="sort-radio"></span>Сначала дешёвые</label>
+          </div>
+          <div class="sort-grp">
+            <div class="gh">По времени вылета</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="dep-late"><span class="sort-radio"></span>С поздним вылетом</label>
+            <label class="sort-opt"><input type="radio" name="sort" value="dep-early"><span class="sort-radio"></span>С ранним вылетом</label>
+          </div>
+          <div class="sort-grp">
+            <div class="gh">По времени прилёта</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="arr-late"><span class="sort-radio"></span>С поздним прилётом</label>
+            <label class="sort-opt"><input type="radio" name="sort" value="arr-early"><span class="sort-radio"></span>С ранним прилётом</label>
+          </div>
+          <div class="sort-grp">
+            <div class="gh">По пересадкам</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="stops-min"><span class="sort-radio"></span>Сначала без пересадок</label>
+          </div>
+          <div class="sort-grp">
+            <div class="gh">По длительности</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="fastest"><span class="sort-radio"></span>Самые быстрые</label>
+          </div>
+          <div class="sort-grp">
+            <div class="gh">По перевозчику</div>
+            <label class="sort-opt"><input type="radio" name="sort" value="carrier-direct"><span class="sort-radio"></span>Прямые рейсы Uzbekistan Airways</label>
+            <label class="sort-opt"><input type="radio" name="sort" value="carrier-interline"><span class="sort-radio"></span>Интерлайн рейсы</label>
+          </div>
+          <button class="sort-apply" id="sortApply">Применить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Flight cards ===== -->
+
+    <!-- HY 202 — direct -->
+    <article class="flight-card">
+      <div class="tags"><span class="tag tag-stops">Прямой рейс</span><span class="tag tag-fast">Самый быстрый</span></div>
+      <div class="flight-body">
+        <div class="flight-main">
+          <div class="flight-id">
+            <span class="flight-no">HY 202</span>
+            <span class="airlines"><span class="air-ic uz"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span></span>
+            <span class="kind">Рейс Uzbekistan Airways</span>
+            <span class="total">Общее время в пути 6 ч 45 мин</span>
+          </div>
+          <div class="route">
+            <div class="endpoint"><div class="time">09:00</div><div class="place">Ташкент, TAS</div><div class="date">2 мар, пн</div></div>
+            <div class="path"><div class="seg direct"><span class="seg-lab">Без пересадок</span></div></div>
+            <div class="endpoint arr"><div class="time">14:00</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
+          </div>
+        </div>
+        <div class="fare-cells">
+          <button class="fare-cell eco"><div class="cab">Economy <span class="disc">%</span></div><div class="from">от</div><div class="amt"><span class="num">5 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+          <button class="fare-cell biz"><div class="cab">Business</div><div class="from">от</div><div class="amt"><span class="num">15 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+        </div>
+      </div>
+      <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+      <div class="details">
+        <div class="det-leg"><span class="lt">09:00 → 14:00</span><span>Ташкент (TAS) → Москва (DME)</span><span class="ld">· HY 202 · Boeing 787-800 · Economy</span></div>
+        <div class="det-leg"><span class="lt">Багаж</span><span>Ручная кладь 8 кг</span><span class="ld">· 1 место 23 кг в Economy</span></div>
+      </div>
+    </article>
+
+    <!-- HY 404 — 1 stop -->
+    <article class="flight-card">
+      <div class="tags"><span class="tag tag-stops">1 пересадка</span><span class="tag tag-fast">Самый быстрый</span></div>
+      <div class="flight-body">
+        <div class="flight-main">
+          <div class="flight-id">
+            <span class="flight-no">HY 404</span>
+            <span class="airlines"><span class="air-ic uz"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span><span class="air-ic tk">✈</span></span>
+            <span class="kind link">Интерлайн рейс</span>
+            <span class="total">Общее время в пути 8 ч 22 мин</span>
+          </div>
+          <div class="route">
+            <div class="endpoint"><div class="time">10:00</div><div class="place">Ташкент, TAS</div><div class="date">2 мар, пн</div></div>
+            <div class="path">
+              <div class="seg"></div>
+              <div class="stop">
+                <div class="dot"></div><div class="code">BSZ</div><div class="dur">1 ч 59 мин</div>
+                <div class="tip"><b>Пересадка · Бишкек (BSZ)</b>Аэропорт Манас, Кыргызстан. Прилёт 14:00 — вылет 15:59. Длительность 1 ч 59 мин.</div>
+              </div>
+              <div class="seg"></div>
+            </div>
+            <div class="endpoint arr"><div class="time">15:22</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
+          </div>
+        </div>
+        <div class="fare-cells">
+          <button class="fare-cell eco"><div class="cab">Economy</div><div class="from">от</div><div class="amt"><span class="num">5 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+          <button class="fare-cell biz"><div class="cab">Business</div><div class="from">от</div><div class="amt"><span class="num">15 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+        </div>
+      </div>
+      <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+      <div class="details">
+        <div class="det-leg"><span class="lt">10:00 → 14:00</span><span>Ташкент (TAS) → Бишкек (BSZ)</span><span class="ld">· HY 404 · Economy</span></div>
+        <div class="det-leg"><span class="lt">Пересадка</span><span>Бишкек (BSZ) · 1 ч 59 мин</span><span class="ld">· смена самолёта</span></div>
+        <div class="det-leg"><span class="lt">15:59 → 15:22</span><span>Бишкек (BSZ) → Москва (DME)</span><span class="ld">· партнёрский рейс</span></div>
+      </div>
+    </article>
+
+    <!-- HY 77 — 3 stops -->
+    <article class="flight-card">
+      <div class="tags"><span class="tag tag-stops">3 пересадки</span></div>
+      <div class="flight-body">
+        <div class="flight-main">
+          <div class="flight-id">
+            <span class="flight-no">HY 77</span>
+            <span class="airlines"><span class="air-ic uz"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span><span class="air-ic p1">✈</span></span>
+            <span class="kind link">Интерлайн рейс</span>
+            <span class="total">Общее время в пути 12 ч 45 мин</span>
+          </div>
+          <div class="route">
+            <div class="endpoint"><div class="time">11:00</div><div class="place">Ташкент, TAS</div><div class="date">2 мар, пн</div></div>
+            <div class="path">
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">BSZ</div><div class="dur">1 ч 59 мин</div>
+                <div class="tip"><b>Пересадка · Бишкек (BSZ)</b>Аэропорт Манас, Кыргызстан. Длительность пересадки 1 ч 59 мин.</div></div>
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">CDV</div><div class="dur">59 мин</div>
+                <div class="tip"><b>Пересадка · CDV</b>Короткая стыковка 59 мин. Без смены терминала.</div></div>
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">PNG</div><div class="dur">1 ч 05 мин</div>
+                <div class="tip"><b>Пересадка · PNG</b>Длительность пересадки 1 ч 05 мин.</div></div>
+              <div class="seg"></div>
+            </div>
+            <div class="endpoint arr"><div class="time">22:00</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
+          </div>
+        </div>
+        <div class="fare-cells">
+          <button class="fare-cell eco"><div class="cab">Economy</div><div class="from">от</div><div class="amt"><span class="num">4 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+          <button class="fare-cell biz"><div class="cab">Business</div><div class="from">от</div><div class="amt"><span class="num">14 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+        </div>
+      </div>
+      <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+      <div class="details">
+        <div class="det-leg"><span class="lt">11:00 →</span><span>Ташкент (TAS) → Бишкек (BSZ) → CDV → PNG → Москва (DME)</span><span class="ld">· 3 пересадки</span></div>
+        <div class="det-leg"><span class="lt">→ 22:00</span><span>Прибытие в Москву (DME)</span><span class="ld">· общее время 12 ч 45 мин</span></div>
+      </div>
+    </article>
+
+    <!-- HY 2222 — 4 stops -->
+    <article class="flight-card">
+      <div class="tags"><span class="tag tag-stops">4 пересадки</span></div>
+      <div class="flight-body">
+        <div class="flight-main">
+          <div class="flight-id">
+            <span class="flight-no">HY 2222</span>
+            <span class="airlines"><span class="air-ic uz"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span><span class="air-ic p1">✈</span></span>
+            <span class="kind link">Интерлайн рейс</span>
+            <span class="total">Общее время в пути 16 ч</span>
+          </div>
+          <div class="route">
+            <div class="endpoint"><div class="time">12:00</div><div class="place">Ташкент, TAS</div><div class="date">2 мар, пн</div></div>
+            <div class="path">
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">BSZ</div><div class="dur">1 ч 59 мин</div>
+                <div class="tip"><b>Пересадка · Бишкек (BSZ)</b>Аэропорт Манас, Кыргызстан. Длительность 1 ч 59 мин.</div></div>
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">CDV</div><div class="dur">59 мин</div>
+                <div class="tip"><b>Пересадка · CDV</b>Короткая стыковка 59 мин.</div></div>
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">AER</div><div class="dur">1 ч 01 мин</div>
+                <div class="tip"><b>Пересадка · Сочи (AER)</b>Длительность пересадки 1 ч 01 мин.</div></div>
+              <div class="seg"></div>
+              <div class="stop"><div class="dot"></div><div class="code">PNG</div><div class="dur">1 ч 05 мин</div>
+                <div class="tip"><b>Пересадка · PNG</b>Длительность пересадки 1 ч 05 мин.</div></div>
+              <div class="seg"></div>
+            </div>
+            <div class="endpoint arr"><div class="time">19:00</div><div class="place">Москва, DME</div><div class="date">2 мар, пн</div></div>
+          </div>
+        </div>
+        <div class="fare-cells">
+          <button class="fare-cell eco"><div class="cab">Economy</div><div class="from">от</div><div class="amt"><span class="num">5 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+          <button class="fare-cell biz"><div class="cab">Business</div><div class="from">от</div><div class="amt"><span class="num">15 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+        </div>
+      </div>
+      <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+      <div class="details">
+        <div class="det-leg"><span class="lt">12:00 →</span><span>Ташкент (TAS) → BSZ → CDV → AER → PNG → Москва (DME)</span><span class="ld">· 4 пересадки</span></div>
+        <div class="det-leg"><span class="lt">→ 19:00</span><span>Прибытие в Москву (DME)</span><span class="ld">· общее время 16 ч</span></div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ===== Flight detail modal ===== -->
+  <div class="modal-overlay" id="detailModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" aria-label="Закрыть">✕</button>
+      <div class="modal-head"><h2 id="mTitle"></h2><button class="collapse" aria-label="Свернуть">▴</button></div>
+      <div class="modal-sub"><span id="mTotal"></span><span class="stops" id="mStops"></span></div>
+      <div class="modal-localnote">Время вылета и прилёта местное</div>
+      <div class="modal-body" id="mBody"></div>
+      <div class="modal-foot">
+        <button class="btn-fare ink">Выбрать тариф Economy <b id="mEco"></b></button>
+        <button class="btn-fare accent">Выбрать тариф Business <b id="mBiz"></b></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Fare selection modal ===== -->
+  <div class="modal-overlay" id="fareModal" hidden>
+    <div class="modal wide" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close-fare aria-label="Закрыть">✕</button>
+      <div class="modal-head"><h2 id="fTitle"></h2><button class="collapse" data-close-fare aria-label="Свернуть"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></button></div>
+      <div class="cabin-tabs">
+        <button class="cabin-tab" data-cabin="economy">Economy</button>
+        <button class="cabin-tab" data-cabin="business">Business</button>
+      </div>
+      <div class="fare-grid" id="fareGrid"></div>
+    </div>
+  </div>
+
+  <!-- ===== Confirm (round-trip) modal ===== -->
+  <div class="modal-overlay" id="confirmModal" hidden>
+    <div class="modal confirm" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close-confirm aria-label="Закрыть">✕</button>
+      <div class="modal-head"><h2>Подтвердите выбранные билеты</h2></div>
+      <div class="confirm-sub">Если выбранные вами билеты отображены правильно, нажмите на кнопку «Подтвердить»</div>
+      <div class="confirm-note"><span class="ni"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0059 8L11.9969 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Если бронирование включает разные тарифы, применяются правила более низкого тарифа. Например, при «Saver» в одну сторону и «Comfort» обратно — правила возврата и обмена тарифа «Saver».</span></div>
+      <div class="cf-cols" id="cfCols"></div>
+      <div class="cf-sumbar">
+        <div class="cf-sb-pax" id="cfPaxCount">1 взрослый пассажир</div>
+        <div class="cf-sb-price">
+          <div class="tot" id="cfTotal">— UZS</div>
+          <div class="lbl">за всех пассажиров</div>
+        </div>
+        <button class="cf-sb-details" id="cfDetails">Детали</button>
+        <button class="cf-sb-confirm btn-confirm">Подтвердить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Upgrade warning modal ===== -->
+  <div class="modal-overlay warn-overlay" id="warnModal" hidden>
+    <div class="warn-card" role="dialog" aria-modal="true">
+      <button class="warn-close" id="warnClose" aria-label="Закрыть">✕</button>
+      <h3 class="warn-title">Внимание!</h3>
+      <p class="warn-text">Тариф «<b id="warnFare">—</b>» будет применён ко всем направлениям.</p>
+      <button class="warn-confirm" id="warnConfirm">Подтвердить</button>
+    </div>
+  </div>
+
+  <!-- ===== Details (price breakdown) modal ===== -->
+  <div class="modal-overlay det-overlay" id="detModal" hidden>
+    <div class="det-card" role="dialog" aria-modal="true">
+      <button class="det-close" id="detClose" aria-label="Закрыть">✕</button>
+      <h3 class="det-title">Детали</h3>
+      <div class="det-rows">
+        <div class="det-row"><span class="dl" id="detOut">Туда: —</span><span class="dv" id="detOutP">—</span></div>
+        <div class="det-row"><span class="dl" id="detRet">Обратно: —</span><span class="dv" id="detRetP">—</span></div>
+        <div class="det-row"><span class="dl">Топливный сбор</span><span class="dv" id="detFuel">—</span></div>
+        <div class="det-row"><span class="dl">Таксы и сборы</span><span class="dv" id="detTax">—</span></div>
+        <div>
+          <button class="det-pen" id="detPenBtn">Штрафы <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+          <div class="det-pen-body">
+            <div class="pen-group">
+              <div class="pen-h">Переоформление авиабилета до вылета</div>
+              <div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div>
+            </div>
+            <div class="pen-group">
+              <div class="pen-h">Удержание при возврате авиабилета до вылета</div>
+              <div class="pen-d">Штраф за возврат - Цена UZS</div>
+              <div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div>
+            </div>
+            <div class="pen-group">
+              <div class="pen-h">Переоформление авиабилета после вылета <span class="pen-i">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</span></div>
+            </div>
+            <div class="pen-group">
+              <div class="pen-h">Удержание при возврате авиабилета после вылета</div>
+              <div class="pen-d">Штраф за возврат - Цена UZS</div>
+              <div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div>
+            </div>
+          </div>
+        </div>
+        <div class="det-points">+ <b id="detPoints">5 000</b> баллов UzAirPlus</div>
+        <hr class="det-sep">
+        <div class="det-total">Итого: <span id="detTotal" style="margin-left:8px;">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Uzbekistan Airways · демонстрационный прототип в дизайн-концепте</footer>
+
+<script>
+  // ---- Date selection ----
+  document.querySelectorAll('.date-cell').forEach(cell=>{
+    cell.addEventListener('click',()=>{
+      if(cell.classList.contains('is-disabled'))return;
+      document.querySelectorAll('.date-cell').forEach(c=>c.classList.remove('is-active'));
+      cell.classList.add('is-active');
+    });
+  });
+
+  // ---- Filter chips ----
+  document.querySelectorAll('.filter-bar .chip').forEach(chip=>{
+    if(chip.textContent.includes('Сортировка'))return;
+    chip.addEventListener('click',()=>chip.classList.toggle('on'));
+  });
+
+  // ---- Sort dropdown ----
+  (function(){
+    const btn=document.getElementById('sortBtn'), menu=document.getElementById('sortMenu');
+    if(!btn||!menu)return;
+    btn.addEventListener('click',e=>{ e.stopPropagation(); menu.classList.toggle('open'); });
+    menu.addEventListener('click',e=>e.stopPropagation());
+    document.addEventListener('click',()=>menu.classList.remove('open'));
+    document.getElementById('sortApply').addEventListener('click',()=>{
+      const sel=menu.querySelector('input[name="sort"]:checked');
+      const def = sel && sel.value!=='price-asc';
+      btn.classList.toggle('on', !!def);
+      menu.classList.remove('open');
+    });
+  })();
+
+  // ---- Fare cell → open fare list (Economy/Business on each flight card) ----
+  const _origCells=new WeakMap();
+  function bindFareCells(card,i){
+    const cells=card.querySelectorAll('.fare-cell');
+    cells.forEach(cell=>cell.addEventListener('click',()=>{
+      cells.forEach(c=>c.classList.remove('selected'));
+      cell.classList.add('selected');
+      window.currentFlight=(window.leg==='return'?RFLIGHTS:FLIGHTS)[i];
+      openFareModal(cell.classList.contains('biz')?'business':'economy');
+    }));
+  }
+  // Collapse a flight card's fare area into the chosen-fare panel + «Изменить тариф»
+  function chooseFare(card,i,cabin,fareName,cls,price){
+    const wrap=card.querySelector('.fare-cells');
+    if(!_origCells.has(wrap)) _origCells.set(wrap, wrap.innerHTML);
+    const cabRu=cabin==='business'?'Business':'Economy';
+    const m=String(price).match(/^(.*?)(\s*UZS)?$/);
+    const priceHtml = m&&m[2] ? m[1]+'<span class="cur"> UZS</span>' : price;
+    wrap.classList.add('chosen');
+    wrap.innerHTML='<div class="fare-chosen"><div class="cab2">'+cabRu+' <span class="fn">'+fareName+' '+cls+'</span></div><div class="pr2">'+priceHtml+'</div><button class="change">Изменить тариф</button></div>';
+    wrap.querySelector('.change').addEventListener('click',()=>{
+      wrap.classList.remove('chosen');
+      wrap.innerHTML=_origCells.get(wrap);
+      bindFareCells(card,i);
+    });
+  }
+  document.querySelectorAll('.flight-card').forEach((card,i)=>bindFareCells(card,i));
+
+  // ================= Flight detail modal =================
+  const AP={
+    TAS:{city:'Ташкент, Узбекистан',name:'Ташкентский международный аэропорт им. Ислама Каримова',term:'Терминал 1'},
+    DME:{city:'Москва, Россия',name:'Московский аэропорт Домодедово им. М. В. Ломоносова',term:'Терминал 1'},
+    BSZ:{city:'Бишкек, Кыргызстан',name:'Международный аэропорт Манас',term:'Терминал 1'},
+    CDV:{city:'Караганда, Казахстан',name:'Аэропорт Сары-Арка',term:'Терминал 1'},
+    AER:{city:'Сочи, Россия',name:'Международный аэропорт Сочи',term:'Терминал 1'},
+    PNG:{city:'Наманган, Узбекистан',name:'Международный аэропорт Наманган',term:'Терминал 1'}
+  };
+  const S=(no,airline,own,craft,dur,fc,ft,fd,tc,tt,td)=>({no,airline,own,craft,dur,from:{code:fc,time:ft,date:fd},to:{code:tc,time:tt,date:td}});
+  const FLIGHTS=[
+    {title:'Ташкент — Москва · 2 мар · 09:00–14:00',total:'Общее время в пути 6 ч 45 мин',stops:'Прямой рейс',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
+     segs:[S('HY 202','Uzbekistan Airways',true,'Boeing 787-800','6 ч 45 мин','TAS','09:00 GMT+5','2 мар, пн','DME','14:00 GMT+3','2 мар, пн')],lay:[]},
+    {title:'Ташкент — Москва · 2 мар · 10:00–15:22',total:'Общее время в пути 8 ч 22 мин',stops:'1 пересадка в городе Бишкек · 1 ч 59 мин',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
+     segs:[S('HY 404','Uzbekistan Airways',true,'Boeing 767','4 ч','TAS','10:00 GMT+5','2 мар, пн','BSZ','14:00 GMT+5','2 мар, пн'),
+           S('TK 5804','Turkish Airlines',false,'Boeing 767','3 ч 23 мин','BSZ','15:59 GMT+5','2 мар, пн','DME','15:22 GMT+3','2 мар, пн')],lay:['1 ч 59 мин']},
+    {title:'Ташкент — Москва · 2 мар · 11:00–22:00',total:'Общее время в пути 12 ч 45 мин',stops:'3 пересадки · Бишкек, Караганда, Наманган',eco:'от 4 000 000 UZS',biz:'от 14 000 000 UZS',
+     segs:[S('HY 77','Uzbekistan Airways',true,'Boeing 757','1 ч 30 мин','TAS','11:00 GMT+5','2 мар, пн','BSZ','12:30 GMT+5','2 мар, пн'),
+           S('IZ 220','Avia Traffic',false,'Airbus A320','1 ч 20 мин','BSZ','14:29 GMT+5','2 мар, пн','CDV','15:49 GMT+5','2 мар, пн'),
+           S('KC 108','Air Astana',false,'Embraer 190','1 ч 40 мин','CDV','16:48 GMT+5','2 мар, пн','PNG','18:28 GMT+5','2 мар, пн'),
+           S('HY 781','Uzbekistan Airways',true,'Boeing 737','2 ч 32 мин','PNG','19:33 GMT+5','2 мар, пн','DME','22:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','59 мин','1 ч 05 мин']},
+    {title:'Ташкент — Москва · 2 мар · 12:00–19:00',total:'Общее время в пути 16 ч',stops:'4 пересадки · Бишкек, Караганда, Сочи, Наманган',eco:'от 5 000 000 UZS',biz:'от 15 000 000 UZS',
+     segs:[S('HY 2222','Uzbekistan Airways',true,'Boeing 757','1 ч 30 мин','TAS','12:00 GMT+5','2 мар, пн','BSZ','13:30 GMT+5','2 мар, пн'),
+           S('IZ 222','Avia Traffic',false,'Airbus A320','1 ч 20 мин','BSZ','15:29 GMT+5','2 мар, пн','CDV','16:49 GMT+5','2 мар, пн'),
+           S('KC 116','Air Astana',false,'Embraer 190','2 ч 10 мин','CDV','17:48 GMT+5','2 мар, пн','AER','17:58 GMT+3','2 мар, пн'),
+           S('SU 1129','Aeroflot',false,'Airbus A321','3 ч 00 мин','AER','18:59 GMT+3','2 мар, пн','PNG','23:59 GMT+5','2 мар, пн'),
+           S('HY 783','Uzbekistan Airways',true,'Boeing 737','2 ч 16 мин','PNG','00:50 GMT+5','3 мар, вт','DME','19:00 GMT+3','2 мар, пн')],lay:['1 ч 59 мин','59 мин','1 ч 01 мин','1 ч 05 мин']}
+  ];
+
+  const mealSvg=c=>`<svg viewBox="0 0 20 20" fill="${c}"><path d="M10 1C8.02155 1.00046 6.09836 1.65252 4.52777 2.85536C2.95719 4.05821 1.82669 5.74484 1.31108 7.65447C0.795476 9.5641 0.923473 11.5904 1.67528 13.42C2.4271 15.2496 3.76085 16.7806 5.47031 17.7764L5.81403 12.97C5.25337 12.8152 4.75891 12.4809 4.40638 12.0184C4.05386 11.5559 3.86271 10.9906 3.86221 10.4091C3.86221 8.94043 4.47599 5.90908 6.52192 5.90908C8.56785 5.90908 9.18163 8.94043 9.18163 10.4091C9.18113 10.9906 8.98998 11.5559 8.63746 12.0184C8.28494 12.4809 7.79048 12.8152 7.22981 12.97L7.639 18.6849C9.18496 19.105 10.815 19.105 12.361 18.6849L12.807 12.3972C12.3578 12.293 11.9571 12.0397 11.6703 11.6787C11.3835 11.3176 11.2274 10.8701 11.2276 10.4091V6.31817C11.2276 6.20967 11.2707 6.10561 11.3474 6.0289C11.4241 5.95218 11.5282 5.90908 11.6367 5.90908C11.7453 5.90908 11.8493 5.95218 11.9261 6.0289C12.0028 6.10561 12.0459 6.20967 12.0459 6.31817V8.67043C12.0459 8.80605 12.0998 8.93612 12.1957 9.03202C12.2917 9.12792 12.4218 9.18179 12.5574 9.18179C12.6931 9.18179 12.8232 9.12792 12.9191 9.03202C13.015 8.93612 13.0689 8.80605 13.0689 8.67043V6.31817C13.0689 6.20967 13.112 6.10561 13.1887 6.0289C13.2655 5.95218 13.3696 5.90908 13.4781 5.90908C13.5866 5.90908 13.6907 5.95218 13.7674 6.0289C13.8442 6.10561 13.8873 6.20967 13.8873 6.31817V8.67043C13.8873 8.80605 13.9412 8.93612 14.0371 9.03202C14.133 9.12792 14.2631 9.18179 14.3987 9.18179C14.5344 9.18179 14.6645 9.12792 14.7604 9.03202C14.8563 8.93612 14.9102 8.80605 14.9102 8.67043V6.31817C14.9102 6.20967 14.9533 6.10561 15.0301 6.0289C15.1068 5.95218 15.2109 5.90908 15.3194 5.90908C15.4279 5.90908 15.532 5.95218 15.6088 6.0289C15.6855 6.10561 15.7286 6.20967 15.7286 6.31817V10.4091C15.7287 10.8701 15.5726 11.3176 15.2858 11.6787C14.999 12.0397 14.5984 12.293 14.1491 12.3972L14.5297 17.7764C16.2392 16.7806 17.5729 15.2496 18.3247 13.42C19.0765 11.5904 19.2045 9.5641 18.6889 7.65447C18.1733 5.74484 17.0428 4.05821 15.4722 2.85536C13.9016 1.65252 11.9784 1.00046 10 1Z"/></svg>`;
+  const pawSvg=c=>`<svg viewBox="8 388 18 19" fill="${c}"><path d="M14.1231 395.115C13.6886 395.109 13.2701 394.959 12.9389 394.691C12.248 394.088 11.8295 393.254 11.7711 392.363C11.5889 390.584 12.6089 389.533 13.7106 389.416C13.976 389.388 14.2447 389.411 14.5006 389.484C14.7565 389.557 14.9943 389.678 15.2 389.84C15.5069 390.104 15.7561 390.422 15.9332 390.777C16.1103 391.133 16.2118 391.518 16.232 391.911C16.4 393.57 15.596 395.115 14.1231 395.115ZM10.3732 399.399C9.93874 399.392 9.52015 399.242 9.18896 398.974C8.49812 398.371 8.07959 397.537 8.02124 396.647C7.83899 394.867 8.85896 393.817 9.96068 393.7C10.2261 393.672 10.4947 393.695 10.7505 393.768C11.0064 393.841 11.2443 393.962 11.4501 394.124C11.757 394.387 12.0062 394.705 12.1833 395.061C12.3604 395.416 12.4619 395.801 12.4821 396.194C12.6501 397.853 11.8079 399.399 10.3732 399.399ZM19.8769 395.115C18.596 395.124 17.6015 393.569 17.7717 391.908C17.7919 391.516 17.8935 391.131 18.0706 390.775C18.2477 390.42 18.4968 390.102 18.8037 389.838C19.0092 389.677 19.2465 389.557 19.5017 389.484C19.7569 389.412 20.0247 389.389 20.2894 389.416C21.3911 389.533 22.4111 390.584 22.2289 392.363C22.1707 393.254 21.7522 394.089 21.0611 394.692C20.7298 394.959 20.3113 395.109 19.8769 395.115ZM23.6268 399.399C22.2304 399.399 21.3514 397.852 21.5216 396.192C21.5418 395.799 21.6434 395.414 21.8205 395.059C21.9976 394.703 22.2467 394.385 22.5536 394.122C22.7588 393.96 22.996 393.839 23.2513 393.766C23.5065 393.693 23.7745 393.67 24.0393 393.697C25.141 393.815 26.161 394.865 25.9788 396.644C25.9206 397.535 25.5021 398.37 24.811 398.973C24.4801 399.241 24.0614 399.392 23.6268 399.399ZM19.9999 406.537C19.3588 406.55 18.7257 406.4 18.1647 406.105C17.8056 405.925 17.4059 405.831 17 405.831C16.5941 405.831 16.1944 405.925 15.8353 406.105C13.5756 407.31 10.9417 405.986 11.0002 402.968C11.0002 399.659 14.3803 396.543 17 396.543C19.6197 396.543 22.9998 399.658 22.9998 402.968C22.9998 405.07 21.7661 406.537 19.9999 406.537Z"/></svg>`;
+  const GRN='#2f7350', GRY='#a59ba6';
+  const amenities=own=> own
+    ? `<div class="amenity">${mealSvg(GRN)} Стандартное питание на борту <span class="info pet-info" tabindex="0"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="amenity-tip"><div class="at-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#12174f" stroke-width="1.5"/><path d="M12 16L12 11" stroke="#12174f" stroke-width="1.5" stroke-linecap="round"/><path d="M12.0054 8L11.9964 8" stroke="#12174f" stroke-width="2" stroke-linecap="round"/></svg></div><div class="at-title">Стандартное питание на борту</div><ul class="at-list"><li>Овощной салат или овощная закуска</li><li>Горячее блюдо из мяса говядины или курицы</li><li>Свежий хлеб и/или булочка</li><li>Минеральная вода, прохладительные напитки</li><li>Горячие напитки: чай чёрный, зелёный, кофе растворимый.</li></ul><div class="at-body">Вам предлагается двухразовое горячее питание.</div></div></span></div>`+
+      `<div class="amenity">${pawSvg(GRN)} Можно с животными <span class="info pet-info" tabindex="0"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="amenity-tip"><div class="at-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#12174f" stroke-width="1.5"/><path d="M12 16L12 11" stroke="#12174f" stroke-width="1.5" stroke-linecap="round"/><path d="M12.0054 8L11.9964 8" stroke="#12174f" stroke-width="2" stroke-linecap="round"/></svg></div><div class="at-title">Условия перевозки животных</div><div class="at-body">Допускаются собаки, кошки и птицы. Можно перевозить одну переноску с одним или двумя животными одного вида либо до трёх животных одного приплода возрастом не старше 6 месяцев.</div></div></span></div>`
+    : `<div class="amenity" style="gap:6px">${mealSvg(GRY)}${pawSvg(GRY)}<span>Информацию о питании и провозке животных уточняйте <a href="#">на сайте перевозчика</a></span></div>`;
+  const pt=p=>{const a=AP[p.code];return `<div class="leg-pt"><div><div class="city">${a.city}</div><div class="meta">${a.name} <span class="code">(${p.code})</span> ${a.term}</div></div><div class="time"><b>${p.time}</b><div>${p.date}</div></div></div>`;};
+  const segCard=s=>`<div class="seg-card"><div class="seg-head"><span class="seg-no">${s.no}</span><span class="seg-air-ic">✈</span><span class="seg-air">Рейс выполняет ${s.airline}</span><span class="seg-craft">${s.craft}</span></div><div class="seg-amenities">${amenities(s.own)}</div><div class="seg-legs"><div class="seg-rail">Время в пути:<b>${s.dur}</b></div><div class="seg-spine"><span class="d top"></span><span class="d bot"></span></div><div class="seg-stack">${pt(s.from)}${pt(s.to)}</div></div></div>`;
+
+  const ov=document.getElementById('detailModal');
+  function openModal(f){
+    window.currentFlight=f;
+    document.getElementById('mTitle').textContent=f.title;
+    document.getElementById('mTotal').textContent=f.total;
+    document.getElementById('mStops').textContent=f.stops;
+    document.getElementById('mEco').textContent=f.eco;
+    document.getElementById('mBiz').textContent=f.biz;
+    let html='';
+    f.segs.forEach((s,i)=>{html+=segCard(s); if(i<f.lay.length) html+=`<div class="layover-bar">Пересадка в аэропорту · ${f.lay[i]}</div>`;});
+    document.getElementById('mBody').innerHTML=html;
+    ov.hidden=false; document.body.style.overflow='hidden';
+  }
+  function closeModal(){ov.hidden=true; document.body.style.overflow='';}
+
+  document.querySelectorAll('.flight-card').forEach((card,i)=>{
+    const t=card.querySelector('.details-toggle');
+    if(t) t.addEventListener('click',()=>openModal((window.leg==='return'?RFLIGHTS:FLIGHTS)[i]));
+  });
+  ov.addEventListener('click',e=>{ if(e.target===ov) closeModal(); });
+  document.querySelector('.modal-close').addEventListener('click',closeModal);
+  document.querySelector('.modal-head .collapse').addEventListener('click',closeModal);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!ov.hidden) closeModal(); });
+
+  // ================= Fare selection modal =================
+  const _BD=[['Тариф','3 500 000 UZS'],['Топливный сбор','250 000 UZS'],['Таксы и сборы','700 000 UZS']];
+  const _REISS=[['в день вылета','500 000 UZS'],['перед вылетом','700 000 UZS'],['после вылета','не разрешено']];
+  const _REF_PAID=[['в день вылета','500 000 UZS'],['перед вылетом','700 000 UZS'],['после вылета','не разрешено']];
+  const _REF_FREE=[['в день вылета','бесплатно',1],['перед вылетом','700 000 UZS'],['после вылета','не разрешено']];
+  const _CREISS=[['в день вылета','бесплатно',1],['перед вылетом','бесплатно',1],['после вылета','350 000 UZS']];
+  const _CREF=[['в день вылета','бесплатно',1],['перед вылетом','бесплатно',1],['после вылета','бесплатно',1]];
+  const _CBD=[['Тариф','4 800 000 UZS'],['Топливный сбор','350 000 UZS'],['Таксы и сборы','850 000 UZS']];
+  const ECON=[
+    {nm:'Акция',akcia:1,cls:'Class A',carryon:{t:'не включена',ok:0},bag:{t:'можно оформить за доплату',ok:0},seat:{t:'можно оформить за доплату',ok:0},up:'2 000 баллов UzAirPlus',reiss:_REISS,ref:_REF_PAID,reissG:'Платно',refG:'Недоступно',price:'4 000 000 UZS',bd:[['Тариф','3 500 000 UZS']],left:'осталось 1 место'},
+    {nm:'Saver',cls:'Class B',carryon:{t:'8 кг',s:'20 * 20 * 20 см',cnt:'1 сумка',ok:1},bag:{t:'можно оформить за доплату',ok:0},seat:{t:'можно оформить за доплату',ok:0},up:'2 000 баллов UzAirPlus',reiss:_REISS,ref:_REF_FREE,reissG:'Платно',refG:'в день вылета',price:'4 500 000 UZS',bd:[['Тариф','3 500 000 UZS']],left:'осталось 1 место'},
+    {nm:'Lite',cls:'Class B',carryon:{t:'8 кг',s:'20 * 20 * 20 см',cnt:'1 сумка',ok:1},bag:{t:'можно оформить за доплату',ok:0},seat:{t:'можно оформить за доплату',ok:0},up:'2 000 баллов UzAirPlus',reiss:_REF_FREE,ref:_REF_FREE,reissG:'Платно',refG:'в день вылета',price:'4 500 000 UZS',bd:[['Тариф','3 500 000 UZS']],left:'осталось 1 место'},
+    {nm:'Smart',cls:'Class B',carryon:{t:'8 кг',s:'20 * 20 * 20 см',cnt:'1 сумка',ok:1},bag:{t:'можно оформить за доплату',ok:0},seat:{t:'можно оформить за доплату',ok:0},up:'2 000 баллов UzAirPlus',reiss:_REISS,ref:_REF_FREE,reissG:'Платно',refG:'в день вылета',price:'4 500 000 UZS',bd:[['Тариф','3 500 000 UZS']],left:null},
+    {nm:'Comfort',cls:'Class B',carryon:{t:'8 кг',s:'20 * 20 * 20 см',cnt:'2 сумки',ok:1},bag:{t:'20 кг',s:'50 * 40 * 30 см',cnt:'2 места',ok:1},seat:{t:'бесплатный',ok:1},up:'2 000 баллов UzAirPlus',reiss:_CREISS,ref:_CREF,reissG:'Платно',refG:'в день вылета',price:'4 500 000 UZS',bd:[['Тариф','3 500 000 UZS']],left:'осталось 1 место'}
+  ];
+  const _scale=(s,k)=>{const n=parseInt(String(s).replace(/\D/g,''),10)*k;return n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' UZS';};
+  const _BREISS=[['в день вылета','бесплатно',1],['перед вылетом','бесплатно',1],['после вылета','500 000 UZS']];
+  const _BREF=[['в день вылета','бесплатно',1],['перед вылетом','бесплатно',1],['после вылета','500 000 UZS']];
+  const BUS=[
+    {nm:'PRO',cls:'Business',carryon:{t:'2 × 8 кг',s:'20 * 40 * 55 см',cnt:'2 сумки',ok:1},bag:{t:'32 кг',s:'2 места по 32 кг',cnt:'2 места',ok:1},seat:{t:'бесплатный',ok:1},up:'8 030 баллов UzAirPlus',reiss:_REISS,ref:[['в день вылета','бесплатно',1],['перед вылетом','700 000 UZS'],['после вылета','не разрешено']],reissG:'Платно',refG:'в день вылета',price:'13 500 000 UZS',bd:[['Тариф','11 500 000 UZS'],['Топливный сбор','750 000 UZS'],['Таксы и сборы','1 250 000 UZS']],left:'осталось 4 места'},
+    {nm:'ELITE',cls:'Business',carryon:{t:'2 × 8 кг',s:'20 * 40 * 55 см',cnt:'2 сумки',ok:1},bag:{t:'40 кг',s:'2 места по 40 кг',cnt:'2 места',ok:1},seat:{t:'бесплатный',ok:1},up:'19 800 баллов UzAirPlus',reiss:_BREISS,ref:_BREF,reissG:'бесплатно',refG:'бесплатно',price:'15 000 000 UZS',bd:[['Тариф','12 800 000 UZS'],['Топливный сбор','750 000 UZS'],['Таксы и сборы','1 450 000 UZS']],left:'осталось 9 мест'}
+  ];
+  const FARES={economy:ECON,business:BUS};
+  const GN='#1f7a4d', RD='#8b273e', NK='#12174f';
+  const IC={
+    bag:c=>`<svg class="ic" viewBox="0 0 20 20" fill="${c}"><path d="M2.5 1.875C2.5 1.70924 2.56585 1.55027 2.68306 1.43306C2.80027 1.31585 2.95924 1.25 3.125 1.25H6.875C7.04076 1.25 7.19973 1.31585 7.31694 1.43306C7.43415 1.55027 7.5 1.70924 7.5 1.875V6.25H8.125C8.62228 6.25 9.09919 6.44754 9.45083 6.79917C9.80246 7.15081 10 7.62772 10 8.125V8.75H8.75V8.125C8.75 7.95924 8.68415 7.80027 8.56694 7.68306C8.44973 7.56585 8.29076 7.5 8.125 7.5H1.875C1.70924 7.5 1.55027 7.56585 1.43306 7.68306C1.31585 7.80027 1.25 7.95924 1.25 8.125V16.875C1.25 17.0408 1.31585 17.1997 1.43306 17.3169C1.55027 17.4342 1.70924 17.5 1.875 17.5H5V18.75H3.125V19.0625C3.125 19.3111 3.02623 19.5496 2.85041 19.7254C2.6746 19.9012 2.43614 20 2.1875 20C1.93886 20 1.7004 19.9012 1.52459 19.7254C1.34877 19.5496 1.25 19.3111 1.25 19.0625V18.6437C0.884278 18.5144 0.567661 18.2749 0.343785 17.9581C0.11991 17.6413 -0.0002031 17.2629 2.57796e-07 16.875V8.125C2.57796e-07 7.62772 0.197544 7.15081 0.549175 6.79917C0.900806 6.44754 1.37772 6.25 1.875 6.25H2.5V1.875ZM3.75 6.25H6.25V2.5H3.75V6.25Z"/><path d="M3.125 8.75C3.29076 8.75 3.44973 8.81585 3.56694 8.93306C3.68415 9.05027 3.75 9.20924 3.75 9.375V15.625C3.75 15.7908 3.68415 15.9497 3.56694 16.0669C3.44973 16.1842 3.29076 16.25 3.125 16.25C2.95924 16.25 2.80027 16.1842 2.68306 16.0669C2.56585 15.9497 2.5 15.7908 2.5 15.625V9.375C2.5 9.20924 2.56585 9.05027 2.68306 8.93306C2.80027 8.81585 2.95924 8.75 3.125 8.75ZM15.625 10V9.375C15.625 8.87772 15.4275 8.40081 15.0758 8.04917C14.7242 7.69754 14.2473 7.5 13.75 7.5H12.5C12.0027 7.5 11.5258 7.69754 11.1742 8.04917C10.8225 8.40081 10.625 8.87772 10.625 9.375V10H10V20H16.25V10H15.625ZM12.5 8.75H13.75C13.9158 8.75 14.0747 8.81585 14.1919 8.93306C14.3092 9.05027 14.375 9.20924 14.375 9.375V10H11.875V9.375C11.875 9.20924 11.9408 9.05027 12.0581 8.93306C12.1753 8.81585 12.3342 8.75 12.5 8.75ZM6.25 11.875C6.25 11.3777 6.44754 10.9008 6.79917 10.5492C7.15081 10.1975 7.62772 10 8.125 10H8.75V20H8.125C7.62772 20 7.15081 19.8025 6.79917 19.4508C6.44754 19.0992 6.25 18.6223 6.25 18.125V11.875ZM17.5 20V10H18.125C18.6223 10 19.0992 10.1975 19.4508 10.5492C19.8025 10.9008 20 11.3777 20 11.875V18.125C20 18.6223 19.8025 19.0992 19.4508 19.4508C19.0992 19.8025 18.6223 20 18.125 20H17.5Z"/></svg>`,
+    carryon:c=>`<svg class="ic" viewBox="1 0 18 20" fill="${c}"><path d="M17.7598 6.61719C17.6439 6.5005 17.506 6.40797 17.3542 6.34494C17.2023 6.28191 17.0394 6.24964 16.875 6.25H14.375V5.625C14.375 4.46468 13.9141 3.35188 13.0936 2.53141C12.2731 1.71094 11.1603 1.25 10 1.25C8.83968 1.25 7.72688 1.71094 6.90641 2.53141C6.08594 3.35188 5.625 4.46468 5.625 5.625V6.25H3.125C2.79348 6.25 2.47554 6.3817 2.24112 6.61612C2.0067 6.85054 1.875 7.16848 1.875 7.5V15.9375C1.875 17.4609 3.16406 18.75 4.6875 18.75H15.3125C16.0494 18.7502 16.7572 18.4621 17.2844 17.9473C17.5497 17.6941 17.761 17.3899 17.9055 17.0529C18.0499 16.7158 18.1246 16.353 18.125 15.9863V7.5C18.1255 7.33601 18.0935 7.17355 18.0308 7.02201C17.9681 6.87048 17.876 6.73288 17.7598 6.61719ZM6.875 5.625C6.875 4.7962 7.20424 4.00134 7.79029 3.41529C8.37634 2.82924 9.1712 2.5 10 2.5C10.8288 2.5 11.6237 2.82924 12.2097 3.41529C12.7958 4.00134 13.125 4.7962 13.125 5.625V6.25H6.875V5.625ZM14.375 9.375C14.375 10.5353 13.9141 11.6481 13.0936 12.4686C12.2731 13.2891 11.1603 13.75 10 13.75C8.83968 13.75 7.72688 13.2891 6.90641 12.4686C6.08594 11.6481 5.625 10.5353 5.625 9.375V8.75C5.625 8.58424 5.69085 8.42527 5.80806 8.30806C5.92527 8.19085 6.08424 8.125 6.25 8.125C6.41576 8.125 6.57473 8.19085 6.69194 8.30806C6.80915 8.42527 6.875 8.58424 6.875 8.75V9.375C6.875 10.2038 7.20424 10.9987 7.79029 11.5847C8.37634 12.1708 9.1712 12.5 10 12.5C10.8288 12.5 11.6237 12.1708 12.2097 11.5847C12.7958 10.9987 13.125 10.2038 13.125 9.375V8.75C13.125 8.58424 13.1908 8.42527 13.3081 8.30806C13.4253 8.19085 13.5842 8.125 13.75 8.125C13.9158 8.125 14.0747 8.19085 14.1919 8.30806C14.3092 8.42527 14.375 8.58424 14.375 8.75V9.375Z"/></svg>`,
+    seat:c=>`<svg class="ic" viewBox="0 0 20 20" fill="${c}"><path d="M3.35482 3.82979C4.25983 4.49302 5.50483 4.26143 6.13483 3.31397C6.76984 2.36122 6.54981 1.05055 5.64485 0.382092C4.73983 -0.286417 3.49483 -0.0548294 2.85982 0.89792C2.22982 1.85062 2.44985 3.16128 3.35482 3.82979Z"/><path d="M3.96501 15.2207L2.00001 5.26172H0L1.995 15.5312C2.36498 18.0999 4.46498 20.0001 6.93501 20.0001H14V17.8946H6.92999C5.45001 17.8946 4.19001 16.7576 3.96501 15.2207Z"/><path d="M14.23 13.6836H9.35004L8.32503 9.36733C9.90002 10.3043 11.605 10.9938 13.475 10.6517V8.41463C11.8451 8.73574 10.035 8.12511 8.78506 7.10397L7.14007 5.75644C6.91507 5.57223 6.65009 5.44062 6.37507 5.35638C6.06007 5.26164 5.72009 5.23533 5.38507 5.29322L5.36009 5.2985C4.13511 5.52485 3.31508 6.75128 3.53009 8.04088L4.88511 14.2731C5.15511 15.7628 6.39012 16.8418 7.83012 16.8418H14.6801L18.5001 20L20.0001 18.4209L14.23 13.6836Z"/></svg>`,
+    up:c=>`<svg class="ic" viewBox="5 177 18 19" fill="${c}"><path d="M17.4917 178.167H10.5084C7.47508 178.167 5.66675 179.975 5.66675 183.008V189.983C5.66675 193.025 7.47508 194.833 10.5084 194.833H17.4834C20.5167 194.833 22.3251 193.025 22.3251 189.992V183.008C22.3334 179.975 20.5251 178.167 17.4917 178.167ZM11.0584 183.983L13.5584 181.483C13.6167 181.425 13.6834 181.383 13.7584 181.35C13.9084 181.283 14.0834 181.283 14.2334 181.35C14.3084 181.383 14.3751 181.425 14.4334 181.483L16.9334 183.983C17.1751 184.225 17.1751 184.625 16.9334 184.867C16.8084 184.992 16.6501 185.05 16.4917 185.05C16.3334 185.05 16.1751 184.992 16.0501 184.867L14.6167 183.433V188.592C14.6167 188.933 14.3334 189.217 13.9917 189.217C13.6501 189.217 13.3667 188.933 13.3667 188.592V183.433L11.9334 184.867C11.6917 185.108 11.2917 185.108 11.0501 184.867C10.8084 184.625 10.8167 184.233 11.0584 183.983ZM19.2001 190.85C17.5251 191.408 15.7667 191.692 14.0001 191.692C12.2334 191.692 10.4751 191.408 8.80008 190.85C8.47508 190.742 8.30008 190.383 8.40841 190.058C8.51675 189.733 8.87508 189.55 9.20008 189.667C12.3001 190.7 15.7084 190.7 18.8084 189.667C19.1334 189.558 19.4917 189.733 19.6001 190.058C19.7001 190.392 19.5251 190.742 19.2001 190.85Z"/></svg>`,
+    ref:c=>`<svg class="ic" viewBox="11 285 18 19" fill="${c}"><path d="M16.5083 302.833L23.4916 302.833C26.5249 302.833 28.3333 301.025 28.3333 297.992L28.3333 291.017C28.3333 287.975 26.5249 286.167 23.4916 286.167L16.5166 286.167C13.4833 286.167 11.6749 287.975 11.6749 291.008L11.6749 297.992C11.6666 301.025 13.4749 302.833 16.5083 302.833ZM15.3916 296.4L16.6999 295.092C16.8249 294.967 16.9833 294.908 17.1416 294.908C17.2999 294.908 17.4583 294.967 17.5833 295.092C17.8249 295.333 17.8249 295.733 17.5833 295.975L17.3666 296.192L21.5999 296.192C22.6666 296.192 23.5416 295.325 23.5416 294.25C23.5416 293.175 22.6749 292.308 21.5999 292.308L17.4999 292.308C17.1583 292.308 16.8749 292.025 16.8749 291.683C16.8749 291.342 17.1583 291.058 17.4999 291.058L21.5999 291.058C23.3583 291.058 24.7916 292.492 24.7916 294.25C24.7916 296.008 23.3583 297.442 21.5999 297.442L17.3083 297.442L17.5833 297.708C17.8249 297.95 17.8249 298.35 17.5833 298.592C17.3416 298.833 16.9416 298.833 16.6999 298.592L15.3916 297.283C15.1499 297.033 15.1499 296.642 15.3916 296.4Z"/></svg>`,
+    reiss:c=>`<svg class="ic" viewBox="8 236 18 19" fill="${c}"><path d="M20.4917 237.167H13.5084C10.4751 237.167 8.66675 238.975 8.66675 242.008V248.983C8.66675 252.025 10.4751 253.833 13.5084 253.833H20.4834C23.5167 253.833 25.3251 252.025 25.3251 248.992V242.008C25.3334 238.975 23.5251 237.167 20.4917 237.167ZM17.0001 250.708C15.5084 250.708 14.3417 249.967 13.5501 249.233V249.825C13.5501 250.167 13.2667 250.45 12.9251 250.45C12.5834 250.45 12.3001 250.167 12.3001 249.825V247.533C12.3001 247.192 12.5834 246.908 12.9251 246.908H14.9917C15.3334 246.908 15.6167 247.192 15.6167 247.533C15.6167 247.875 15.3334 248.158 14.9917 248.158H14.2417C14.8584 248.775 15.8167 249.458 17.0001 249.458C19.1834 249.458 20.9584 247.683 20.9584 245.5C20.9584 245.158 21.2417 244.875 21.5834 244.875C21.9251 244.875 22.2084 245.158 22.2084 245.5C22.2084 248.375 19.8751 250.708 17.0001 250.708ZM22.2084 243.45C22.2084 243.475 22.2084 243.5 22.2084 243.517C22.2001 243.608 22.1751 243.692 22.1334 243.767C22.0917 243.842 22.0334 243.908 21.9584 243.967C21.9001 244.008 21.8334 244.042 21.7584 244.067C21.7001 244.083 21.6417 244.092 21.5834 244.092H19.5584C19.2167 244.092 18.9334 243.808 18.9334 243.467C18.9334 243.125 19.2167 242.842 19.5584 242.842H20.2501C19.5834 242.225 18.5084 241.542 17.0167 241.542C14.8334 241.542 13.0584 243.317 13.0584 245.5C13.0584 245.842 12.7751 246.125 12.4334 246.125C12.0917 246.125 11.7917 245.842 11.7917 245.5C11.7917 242.625 14.1251 240.292 17.0001 240.292C18.7917 240.292 20.1084 241.067 20.9584 241.808V241.175C20.9584 240.833 21.2417 240.55 21.5834 240.55C21.9251 240.55 22.2084 240.833 22.2084 241.175V243.45Z"/></svg>`
+  };
+  const _tiers=arr=>arr.map(r=>{const cls=r[2]?'free':(r[1]==='не разрешено'?'no':'');return `<div class="tier"><span class="t">${r[0]}</span><span class="${cls}">${r[1]}</span></div>`;}).join('');
+  const _lug=(icon,label,o)=>{const col=o.ok?GN:RD; const v=o.s?`<div class="val"><span>${o.t}</span><span class="sub">${o.s}</span></div>`:`<div class="val muted">${o.t}</div>`; return `<div class="frow"><div class="top">${IC[icon](col)}<span>${label}</span></div>${v}</div>`;};
+  const _seat=o=>{const col=o.ok?GN:RD; const v=o.ok?`<div class="val"><span class="free">${o.t}</span></div>`:`<div class="val muted">${o.t}</div>`; return `<div class="frow"><div class="top">${IC.seat(col)}<span>Выбор места</span></div>${v}</div>`;};
+  const _simple=(icon,label,val)=>`<div class="frow"><div class="top">${IC[icon](NK)}<span>${label}</span></div><div class="val">${val}</div></div>`;
+  const _statusRow=(icon,label,val)=>`<div class="frow"><div class="top">${IC[icon](NK)}<span>${label}</span></div><div class="val muted">${val}</div></div>`;
+  const _tierRow=(icon,label,arr)=>`<div class="frow"><div class="top">${IC[icon](NK)}<span>${label}</span></div>${_tiers(arr)}</div>`;
+  const fareCard=f=>`<div class="fcard ${f.akcia?'akcia':''} ${f.left?'':'sold'}">
+    <div class="fcard-head">${f.akcia?`<div class="ribbon">Акция</div>`:`<div class="nm">${f.nm}</div>`}<div class="cls">${f.cls}</div></div>
+    ${_lug('carryon','Ручная кладь',f.carryon)}
+    ${_lug('bag','Багаж',f.bag)}
+    ${_seat(f.seat)}
+    ${_statusRow('reiss','Переоформление',f.reissG)}
+    ${_statusRow('ref','Возврат',f.refG)}
+    <div class="fcard-foot"><div class="perp">за 1 взрослого</div><div class="price"><span>${f.price}</span><button class="bd-toggle" aria-label="Детали"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></button></div><div class="bd">${f.bd.map(b=>`<div class="ln"><span>${b[0]}</span><span>${b[1]}</span></div>`).join('')}</div>${f.left?`<button class="fbtn">Выбрать<span class="left">${f.left}</span></button>`:`<button class="fbtn sold" disabled>Нет мест</button>`}</div>
+  </div>`;
+
+  const fov=document.getElementById('fareModal');
+  function openFareModal(cabin){
+    window.activeCabin=cabin;
+    document.getElementById('fTitle').textContent=(window.currentFlight&&window.currentFlight.title)||'Ташкент — Москва';
+    document.querySelectorAll('.cabin-tab').forEach(t=>t.classList.toggle('active',t.dataset.cabin===cabin));
+    document.getElementById('fareGrid').innerHTML=FARES[cabin].map(fareCard).join('');
+    fov.hidden=false; document.body.style.overflow='hidden';
+  }
+  function closeFare(){ fov.hidden=true; document.body.style.overflow=''; }
+  document.querySelector('.modal-foot .btn-fare.ink').addEventListener('click',()=>{ closeModal(); openFareModal('economy'); });
+  document.querySelector('.modal-foot .btn-fare.accent').addEventListener('click',()=>{ closeModal(); openFareModal('business'); });
+  fov.addEventListener('click',e=>{ if(e.target===fov) closeFare(); });
+  document.querySelectorAll('[data-close-fare]').forEach(b=>b.addEventListener('click',closeFare));
+  document.querySelectorAll('.cabin-tab').forEach(t=>t.addEventListener('click',()=>openFareModal(t.dataset.cabin)));
+  document.getElementById('fareGrid').addEventListener('click',e=>{
+    const bt=e.target.closest('.bd-toggle'); if(bt){ bt.closest('.fcard').querySelector('.bd').classList.toggle('hide'); return; }
+    const fb=e.target.closest('.fbtn'); if(fb&&!fb.classList.contains('sold')){
+      const card=fb.closest('.fcard');
+      const nm=card.querySelector('.ribbon')?'Акция':(card.querySelector('.nm')?card.querySelector('.nm').textContent:'');
+      const cls=card.querySelector('.cls')?card.querySelector('.cls').textContent:'';
+      const price=card.querySelector('.price span')?card.querySelector('.price span').textContent:'';
+      const cabin=(document.querySelector('.cabin-tab.active')||{}).dataset?document.querySelector('.cabin-tab.active').dataset.cabin:'economy';
+      window._pick={nm,cls,price,cabin};
+      closeFare();
+      selectFare(window.currentFlight, (nm+' '+cls).trim(), price);
+    }
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!fov.hidden) closeFare(); });
+
+  // ================= Round-trip leg flow =================
+  window.leg='outbound';
+  const RNO=['HY 567','HY 999','HY 22','HY 3456'];
+  const RT=[['09:00','14:00'],['10:00','15:59'],['11:00','22:00'],['12:00','19:00']];
+  const ONO=['HY 202','HY 404','HY 77','HY 2222'];
+  const OT=[['09:00','14:00'],['10:00','15:22'],['11:00','22:00'],['12:00','19:00']];
+  // Build return-leg detail data by reversing each outbound itinerary
+  function reverseFlight(f,no,t0,t1){
+    const codes=[f.segs[0].from.code,...f.segs.map(s=>s.to.code)];
+    const rev=codes.slice().reverse();
+    const n=f.segs.length, segs=[];
+    for(let k=0;k<n;k++){
+      const orig=f.segs[n-1-k];
+      segs.push({no:orig.no,airline:orig.airline,own:orig.own,craft:orig.craft,dur:orig.dur,
+        from:{code:rev[k],   time:(k===0?   t0+' GMT+3':orig.to.time),   date:'9 мар, пн'},
+        to:  {code:rev[k+1], time:(k===n-1? t1+' GMT+5':orig.from.time), date:'9 мар, пн'}});
+    }
+    return {...f,no,title:'Москва — Ташкент · 9 мар · '+t0+'–'+t1,segs,lay:f.lay.slice().reverse()};
+  }
+  const RFLIGHTS=FLIGHTS.map((f,i)=>reverseFlight(f,RNO[i],RT[i][0],RT[i][1]));
+
+  const _ck='<svg viewBox="0 0 24 24" fill="none" stroke="#1f7a4d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
+  function selSummary(flight,fareLabel){
+    const a=flight.segs[0].from, b=flight.segs[flight.segs.length-1].to;
+    const ac=AP[a.code].city.split(',')[0], bc=AP[b.code].city.split(',')[0];
+    const marks='<span class="air-ic uz"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span>'+(flight.segs.length>1?'<span class="air-ic '+(flight.segs.length>2?'p1':'tk')+'">✈</span>':'');
+    const nstop=flight.segs.length-1;
+    const stopLine = nstop===0 ? 'Без пересадок'
+      : nstop===1 ? 'Пересадка в г. '+AP[flight.segs[0].to.code].city.split(',')[0]+' ('+flight.lay[0]+')'
+      : nstop+' пересадки';
+    const icons=[IC.carryon(GN),IC.bag(GN),IC.seat(GN),pawSvg('#1f7a4d')].join('');
+    return `<div class="sum-sel">
+      <button class="edit" title="Изменить рейс">✎</button>
+      <div class="head"><span class="rt2">${ac} — ${bc}</span><span class="marks">${marks}</span><span class="fno">${flight.no||flight.segs[0].no}</span></div>
+      <div class="line1"><b>${a.time.split(' ')[0]}</b> <span class="ap">${a.code}</span><span class="gap"></span><span class="ap">${b.code}</span> <b>${b.time.split(' ')[0]}</b></div>
+      <div class="line2">${stopLine}</div>
+      <div class="line3">${flight.total}</div>
+      <div class="rightcol"><div class="clsbadge">${fareLabel}</div><div class="icons">${icons}</div></div>
+    </div>`;
+  }
+  function resetLeg(arr,which){
+    document.querySelectorAll('.flight-card').forEach((card,i)=>{
+      card.querySelector('.flight-no').textContent=(which==='return'?RNO:ONO)[i];
+      const places=card.querySelectorAll('.route .endpoint .place');
+      const times=card.querySelectorAll('.route .endpoint .time');
+      if(places.length>=2){ places[0].textContent=which==='return'?'Москва, DME':'Ташкент, TAS'; places[1].textContent=which==='return'?'Ташкент, TAS':'Москва, DME'; }
+      if(times.length>=2){ times[0].textContent=arr[i][0]; times[1].textContent=arr[i][1]; }
+    });
+    const days=which==='return'
+      ? ['7 мар, сб','8 мар, вск','9 мар, пн','10 мар, вт','11 мар, ср','12 мар, чт','13 мар, пт']
+      : ['28 фев, сб','1 мар, вск','2 мар, пн','3 мар, вт','4 мар, ср','5 мар, чт','6 мар, пт'];
+    document.querySelectorAll('.date-track .date-cell .d').forEach((d,i)=>{ if(days[i]) d.textContent=days[i]; });
+  }
+  function _setActiveLeg(which){
+    const out=document.getElementById('sumOut'), ret=document.getElementById('sumRet');
+    if(out) out.classList.toggle('active', which==='out');
+    if(ret) ret.classList.toggle('active', which==='ret');
+  }
+  _setActiveLeg('out');
+  function goReturnLeg(){
+    window.leg='return';
+    _setActiveLeg('ret');
+    document.getElementById('resHeading').textContent='Выберите рейс из Москвы в Ташкент';
+    resetLeg(RT,'return');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function backToOutbound(){
+    window.leg='outbound';
+    _setActiveLeg('out');
+    document.getElementById('resHeading').textContent='Выберите рейс из Ташкента в Москву';
+    resetLeg(OT,'outbound');
+    const out=document.getElementById('sumOut');
+    out.classList.remove('selected');
+    out.querySelector('.sum-body').innerHTML='<div class="rt">Ташкент — Москва</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function selectFare(flight,fareLabel,price){
+    if(!flight) return;
+    window._retUpgraded=false;
+    const pick=window._pick||{};
+    const sel={flight,fareLabel,price,nm:pick.nm,cls:pick.cls,cabin:pick.cabin||'economy'};
+    if(window.editing){
+      const which=window.editing; window.editing=null;
+      if(which==='out'){ window.outSel=sel; const out=document.getElementById('sumOut'); out.classList.add('selected'); out.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel); out.querySelector('.edit').addEventListener('click',backToOutbound); }
+      else{ window.retSel=sel; const ret=document.getElementById('sumRet'); ret.classList.add('selected'); ret.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel); }
+      openConfirm();
+      return;
+    }
+    if(window.leg==='outbound'){
+      window.outSel=sel;
+      const out=document.getElementById('sumOut');
+      out.classList.add('selected');
+      out.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel);
+      out.querySelector('.edit').addEventListener('click',backToOutbound);
+      goReturnLeg();
+    }else{
+      window.retSel=sel;
+      const ret=document.getElementById('sumRet');
+      ret.classList.add('selected');
+      ret.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel);
+      ret.querySelector('.edit').addEventListener('click',()=>{
+        ret.classList.remove('selected');
+        ret.querySelector('.sum-body').innerHTML='<div class="rt">Москва — Ташкент</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+      if(window.outSel){ _setActiveLeg(null); openConfirm(); }
+    }
+  }
+
+  // ================= Confirm (round-trip) modal =================
+  const _CABLBL={economy:'Эконом',business:'Бизнес'};
+  const _ORDER=['Акция','Saver','Lite','Smart','Comfort'];
+  const _BORDER=['PRO','ELITE'];
+  const _STEP={'Акция':400000,'Saver':300000,'Lite':350000,'Smart':500000}; // econ→next econ tier upcharge
+  const _crossSvg='<svg class="mk" viewBox="0 0 24 24" fill="none" stroke="#8b273e" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  const _checkSvg='<svg class="mk" viewBox="0 0 24 24" fill="none" stroke="#1f7a4d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
+  function _parseUZS(s){ return parseInt(String(s).replace(/\D/g,''),10)||0; }
+  function _findFare(cabin,nm){ return (FARES[cabin]||[]).find(f=>f.nm===nm)||null; }
+  function _upgradeOf(cabin,nm){
+    if(cabin==='economy'){
+      if(nm!=='Comfort'){ const g=_findFare('economy','Comfort'); if(g&&g.left) return {cabin:'economy',nm:'Comfort'}; }
+      return {cabin:'business',nm:'PRO'};
+    }
+    const j=_BORDER.indexOf(nm);
+    for(let k=j+1;k<_BORDER.length;k++){ const g=_findFare('business',_BORDER[k]); if(g&&g.left) return {cabin:'business',nm:_BORDER[k]}; }
+    return null;
+  }
+  function _seatVal(o){ return 'Бесплатный'; }
+  function _rank(v){ return v==='не разрешено'?0:(v==='бесплатно'?2:1); }
+  function _g(v,on){ return on?`<span class="better">${v}</span>`:v; }
+  function _tierRows(arr,carr){
+    return (arr||[]).map((r,i)=>{ const v=r[1]; const cls=(v==='не разрешено')?'no':(v==='бесплатно'?'free':''); const b=carr&&carr[i]&&_rank(v)>_rank(carr[i][1]); return `<div class="cfd-tier"><span class="tl">${r[0]}</span><span class="tv ${cls}${b?' better':''}">${v}</span></div>`; }).join('');
+  }
+  function _lugRow(icon,label,o,co){
+    const cnt=o.cnt||'1 место';
+    const b=co!=null && o.ok;
+    const right = o.ok ? `<div class="cfd-rt"><b>${_g(cnt,b)}</b><span class="d">${o.s||''}</span></div>` : `<div class="cfd-rt"><b>—</b><span class="d">за доплату</span></div>`;
+    return `<div class="cfd-row"><span class="cfd-ic">${IC[icon]('#12174f')}</span><div class="cfd-mid"><b>${label}</b><span class="d">${o.ok?o.t:'не включено'}</span></div>${right}</div>`;
+  }
+  function _valRow(icon,label,val,muted,better){
+    const cls=better?'val better':(muted?'sub':'val');
+    return `<div class="cfd-row"><span class="cfd-ic">${IC[icon]('#12174f')}</span><div class="cfd-mid"><b>${label}</b></div><div class="cfd-rt ${cls}">${val}</div></div>`;
+  }
+  function _tierBlock(icon,label,arr,carr){
+    return `<div class="cfd-row full"><span class="cfd-ic">${IC[icon]('#12174f')}</span><div class="cfd-tiers"><div class="cfd-lab">${label}</div>${_tierRows(arr,carr)}</div></div>`;
+  }
+  function _upRow(val,better){
+    return `<div class="cfd-row"><span class="cfd-ic">${IC.up('#12174f')}</span><div class="cfd-mid"><b>Апгрейд класса</b><span class="d${better?' better':''}">${val}</span></div></div>`;
+  }
+  function _cfDetail(f,cmp){
+    if(!f) return '';
+    const seatB = !!cmp;
+    const upB = cmp && f.up && f.up!=='нет' && f.up!==(cmp.up||'нет');
+    return `<div class="cfd-list">${_lugRow('carryon','Ручная кладь',f.carryon,cmp&&cmp.carryon)}${_lugRow('bag','Багаж',f.bag,cmp&&cmp.bag)}${_valRow('seat','Выбор места',_seatVal(f.seat),false,seatB)}${_upRow(f.up||'нет',upB)}${_tierBlock('reiss','Переоформление',f.reiss,cmp&&cmp.reiss)}${_tierBlock('ref','Возврат',f.ref,cmp&&cmp.ref)}</div>`;
+  }
+  function _stripMid(f){
+    const segs=f.segs, n=segs.length, t=s=>String(s).replace(/\s*GMT[+-]\d+/,'');
+    if(n<=1) return '<div class="cf-dur">'+(f.total||'')+'</div><div class="cf-bar"><span class="cf-ln"></span></div><div class="cf-stops">Без остановок</div>';
+    let bar='<span class="cf-ln"></span>';
+    for(let i=0;i<n-1;i++){ const sa=segs[i].to, sd=segs[i+1].from, ap=AP[sa.code]; bar+=`<span class="cf-mt">${t(sa.time)}</span><div class="cf-stop"><b>${ap.city.split(',')[0]}, ${sa.code}</b><span>${(f.lay&&f.lay[i])||''}</span></div><span class="cf-mt">${t(sd.time)}</span><span class="cf-ln"></span>`; }
+    return `<div class="cf-dur">${f.total||''}</div><div class="cf-bar">${bar}</div>`;
+  }
+  function _legHTML(sel,dir){
+    const f=sel.flight;
+    const fno=(f.segs[0]&&f.segs[0].no)||f.no||'';
+    const dep=f.segs[0].from, arr=f.segs[f.segs.length-1].to;
+    const depAP=AP[dep.code], arrAP=AP[arr.code];
+    const total=(f.total||'').replace('Общее время в пути ','');
+    const stops=f.segs.length>1?(f.segs.length-1)+' пересадка':'Без остановок';
+    const cur=_findFare(sel.cabin,sel.nm);
+    const upT=_upgradeOf(sel.cabin,sel.nm);
+    const up=upT?_findFare(upT.cabin,upT.nm):null;
+    let delta=0;
+    if(up){
+      delta=_parseUZS(up.price)-_parseUZS(cur?cur.price:sel.price);
+      if(delta<=0 && upT.cabin===sel.cabin && sel.cabin==='economy' && _STEP[sel.nm]!=null) delta=_STEP[sel.nm];
+    }
+    const t=s=>String(s).replace(/\s*GMT[+-]\d+/,'');
+    const head=dir==='out'
+      ? '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.20195 21.4995L10.102 21.4995L14.852 13.4245L20.077 13.4245C20.8655 13.4245 21.502 12.788 21.502 11.9995C21.502 11.211 20.8655 10.5745 20.077 10.5745L14.852 10.5745L10.102 2.49951L8.20195 2.49951L10.577 10.5745L5.35195 10.5745L3.92695 8.19951L2.50195 8.19951L3.45195 11.9995L2.50195 15.7995L3.92695 15.7995L5.35195 13.4245L10.577 13.4245L8.20195 21.4995Z" fill="#12174F"/></svg> Перелёт туда: <b>'+depAP.city.split(',')[0]+' — '+arrAP.city.split(',')[0]+'</b>'
+      : '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)"><path d="M8.20195 21.4995L10.102 21.4995L14.852 13.4245L20.077 13.4245C20.8655 13.4245 21.502 12.788 21.502 11.9995C21.502 11.211 20.8655 10.5745 20.077 10.5745L14.852 10.5745L10.102 2.49951L8.20195 2.49951L10.577 10.5745L5.35195 10.5745L3.92695 8.19951L2.50195 8.19951L3.45195 11.9995L2.50195 15.7995L3.92695 15.7995L5.35195 13.4245L10.577 13.4245L8.20195 21.4995Z" fill="#12174F"/></svg> Перелёт обратно: <b>'+depAP.city.split(',')[0]+' — '+arrAP.city.split(',')[0]+'</b>';
+    const curName=(cur&&cur.nm)||sel.nm||'';
+    const curCard=
+      `<div class="cf-fare"><div class="cf-fbadge cur">Ваш тариф</div><div class="cf-fname">${curName}</div>${_cfDetail(cur)}<div class="cf-foot"><button class="cf-curbtn" disabled>Выбран</button></div></div>`;
+    const upCard= (up && dir!=='out' && !window._retUpgraded)?
+      `<div class="cf-fare up"><div class="cf-fbadge upb">Выгодное предложение</div><div class="cf-fname">${up.nm}</div>${_cfDetail(up,cur)}<div class="cf-foot"><div class="cf-plus">+ ${delta.toLocaleString('ru-RU')} UZS</div><button class="cf-selbtn" data-dir="${dir}" data-upcabin="${upT.cabin}" data-upnm="${up.nm}">Выбрать</button></div></div>`
+      : '';
+    return `<div class="cf-leg">
+      <div class="cf-leghead">${head}</div>
+      <div class="cf-card">
+        <div class="cf-cardtop"><span class="cf-fno">${fno}</span><span class="cf-ai"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7599C21.2039 15.9982 20.9816 16.1984 20.7263 16.3486C20.471 16.4988 20.1879 16.5957 19.8941 16.6337L12.4015 16.6276C12.0277 16.4368 11.9864 16.1717 12.4015 16.0097H16.6376C16.8246 16.0161 17.0104 15.9772 17.1791 15.8964C17.3478 15.8155 17.4945 15.6951 17.6066 15.5454C18.8834 13.8874 20.3115 12.3047 21.4216 10.5223C21.0213 10.9635 20.4822 11.2548 19.8937 11.3478H14.689C14.4442 11.3359 14.2003 11.3859 13.9798 11.493C13.7592 11.6001 13.5692 11.7609 13.4271 11.9606L10.3062 15.8922C7.62029 19.0735 5.75989 12.0447 9.39339 13.1636L7.90768 11.3134C7.82327 11.2172 7.71931 11.1401 7.60273 11.0873C7.48616 11.0345 7.35966 11.0072 7.23168 11.0072C7.1037 11.0072 6.9772 11.0345 6.86062 11.0873C6.74405 11.1401 6.64008 11.2172 6.55568 11.3134C4.31689 14.1516 4.27557 18.527 8.98946 18.9449H19.0617L21.3831 15.7585L21.3799 15.7599ZM19.8273 6.84001C19.6796 6.97599 19.5049 7.07934 19.3146 7.14334C19.1243 7.20733 18.9226 7.23055 18.7227 7.21145H14.1486C13.8996 7.20272 13.6518 7.25014 13.4237 7.3502C13.1955 7.45027 12.9928 7.60041 12.8305 7.78948L9.91246 11.4666L10.7347 12.5182L11.7376 11.2809C11.8945 11.1016 12.0888 10.9588 12.3068 10.8625C12.5248 10.7663 12.7612 10.7189 12.9995 10.7238H15.8614C17.2681 10.7238 19.136 7.67898 19.8277 6.83862L19.8273 6.84001Z" fill="#3C792F"/></svg></span><span class="cf-airtxt">Рейс Uzbekistan Airways</span><button class="cf-edit" data-dir="${dir}" aria-label="Изменить">✎</button></div>
+        <div class="cf-strip">
+          <div class="cf-end"><div class="cf-tm">${t(dep.time)}</div><div class="cf-ct">${depAP.city.split(',')[0]}, ${dep.code}</div><div class="cf-dt">${dep.date}</div></div>
+          <div class="cf-mid">${_stripMid(f)}</div>
+          <div class="cf-end r"><div class="cf-tm">${t(arr.time)}</div><div class="cf-ct">${arrAP.city.split(',')[0]}, ${arr.code}</div><div class="cf-dt">${arr.date}</div></div>
+        </div>
+        <div class="cf-fares">${curCard}${upCard}</div>
+      </div>
+    </div>`;
+  }
+  const cfov=document.getElementById('confirmModal');
+  const CF_FUEL=300000, CF_TAXES=700000, CF_POINTS=5000;
+  function _uzs(n){ return n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' UZS'; }
+  function _fareDesc(sel){ const cab=(sel.cabin==='business')?'Business':'Economy'; return cab+' '+(sel.nm||''); }
+  function _cfTotalNum(){ return _parseUZS(window.outSel.price)+_parseUZS(window.retSel.price)+CF_FUEL+CF_TAXES; }
+  function openConfirm(){
+    if(!window.outSel||!window.retSel) return;
+    document.getElementById('cfCols').innerHTML=_legHTML(window.outSel,'out')+_legHTML(window.retSel,'ret');
+    const tEl=document.getElementById('cfTotal');
+    if(tEl) tEl.textContent=_uzs(_cfTotalNum());
+    cfov.hidden=false; document.body.style.overflow='hidden';
+  }
+  // ---- Details (price breakdown) ----
+  const detOv=document.getElementById('detModal');
+  function openDetails(){
+    if(!window.outSel||!window.retSel) return;
+    document.getElementById('detOut').textContent='Туда: '+_fareDesc(window.outSel);
+    document.getElementById('detRet').textContent='Обратно: '+_fareDesc(window.retSel);
+    document.getElementById('detOutP').textContent=_uzs(_parseUZS(window.outSel.price));
+    document.getElementById('detRetP').textContent=_uzs(_parseUZS(window.retSel.price));
+    document.getElementById('detFuel').textContent=_uzs(CF_FUEL);
+    document.getElementById('detTax').textContent=_uzs(CF_TAXES);
+    document.getElementById('detPoints').textContent=CF_POINTS.toLocaleString('ru-RU').replace(/\u00a0/g,' ');
+    document.getElementById('detTotal').textContent=_uzs(_cfTotalNum());
+    detOv.querySelector('.det-card').classList.remove('pen-open');
+    detOv.hidden=false; document.body.style.overflow='hidden';
+  }
+  function closeDetails(){ detOv.hidden=true; if(!cfov.hidden) document.body.style.overflow='hidden'; else document.body.style.overflow=''; }
+  document.getElementById('detClose').addEventListener('click',closeDetails);
+  detOv.addEventListener('click',e=>{ if(e.target===detOv) closeDetails(); });
+  document.getElementById('detPenBtn').addEventListener('click',()=>{ detOv.querySelector('.det-card').classList.toggle('pen-open'); });
+  document.getElementById('cfDetails').addEventListener('click',openDetails);
+  function closeConfirm(){ cfov.hidden=true; document.body.style.overflow=''; }
+  cfov.addEventListener('click',e=>{ if(e.target===cfov) closeConfirm(); });
+  document.querySelectorAll('[data-close-confirm]').forEach(b=>b.addEventListener('click',closeConfirm));
+  document.querySelector('.confirm .btn-confirm').addEventListener('click',()=>{ window.location.href='Passenger Data.html'; });
+  // edit pencil → return to that leg's fare grid with its cabin pre-selected
+  cfov.addEventListener('click',e=>{
+    const pen=e.target.closest('.cf-edit'); if(!pen) return;
+    const dir=pen.dataset.dir;
+    const sel=dir==='out'?window.outSel:window.retSel;
+    if(!sel){ closeConfirm(); return; }
+    window.editing=dir;
+    window.currentFlight=sel.flight;
+    closeConfirm();
+    openFareModal(sel.cabin);
+  });
+  // upgrade button → warn that the fare applies to all directions, then apply on confirm
+  const warnOv=document.getElementById('warnModal');
+  function openWarn(cabin,nm){
+    window._pendingUp={cabin,nm};
+    document.getElementById('warnFare').textContent=nm;
+    warnOv.hidden=false; document.body.style.overflow='hidden';
+  }
+  function closeWarn(){ warnOv.hidden=true; if(!cfov.hidden) document.body.style.overflow='hidden'; else document.body.style.overflow=''; }
+  function _applyFareTo(dir,cabin,nm){
+    const sel=dir==='out'?window.outSel:window.retSel;
+    if(!sel) return;
+    const nf=_findFare(cabin,nm);
+    sel.cabin=cabin; sel.nm=nm; sel.cls=nf?nf.cls:sel.cls; sel.price=nf?nf.price:sel.price;
+    sel.fareLabel=(nm+' '+(nf?nf.cls:'')).trim();
+    const sum=dir==='out'?document.getElementById('sumOut'):document.getElementById('sumRet');
+    if(sum){ sum.querySelector('.sum-body').innerHTML=selSummary(sel.flight,sel.fareLabel);
+      if(dir==='out'){ const ed=sum.querySelector('.edit'); if(ed) ed.addEventListener('click',backToOutbound); } }
+  }
+  cfov.addEventListener('click',e=>{
+    const up=e.target.closest('.cf-selbtn'); if(!up) return;
+    openWarn(up.dataset.upcabin, up.dataset.upnm);
+  });
+  document.getElementById('warnConfirm').addEventListener('click',()=>{
+    const p=window._pendingUp; if(!p){ closeWarn(); return; }
+    _applyFareTo('out',p.cabin,p.nm);
+    _applyFareTo('ret',p.cabin,p.nm);
+    window._retUpgraded=true;
+    closeWarn(); openConfirm();
+  });
+  document.getElementById('warnClose').addEventListener('click',closeWarn);
+  warnOv.addEventListener('click',e=>{ if(e.target===warnOv) closeWarn(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!cfov.hidden) closeConfirm(); });
+  window.currentFlight=FLIGHTS[1]; openFareModal('economy');
+</script>
+  <script>
+    (function(){
+      function posTip(icon){
+        var tip=icon.querySelector('.amenity-tip'); if(!tip) return;
+        var r=icon.getBoundingClientRect();
+        tip.style.top=(r.bottom+12)+'px';
+        var w=tip.offsetWidth||300;
+        var left=r.left+r.width/2-w/2;
+        left=Math.max(10,Math.min(left,window.innerWidth-w-10));
+        tip.style.left=left+'px';
+        tip.style.setProperty('--arrow',(r.left+r.width/2-left)+'px');
+      }
+      document.addEventListener('click',function(e){
+        var icon=e.target.closest('.info.pet-info');
+        document.querySelectorAll('.info.pet-info.open').forEach(function(p){ if(p!==icon) p.classList.remove('open'); });
+        if(icon && !e.target.closest('.amenity-tip')){
+          e.stopPropagation();
+          var willOpen=!icon.classList.contains('open');
+          icon.classList.toggle('open');
+          if(willOpen) posTip(icon);
+        }
+      });
+      window.addEventListener('scroll',function(){var o=document.querySelector('.info.pet-info.open');if(o)posTip(o);},true);
+    })();
+  </script>
+</body>
+</html>
