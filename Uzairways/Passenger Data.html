@@ -49,6 +49,14 @@
   .pdd-points{color:var(--good);font-weight:700;font-size:16.5px;padding:7px 0;}
   .pdd-sep{height:1px;background:var(--line);border:0;margin:8px 0 2px;}
   .pdd-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;color:var(--ink);margin-top:8px;}
+  .visa-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(760px,94vw);padding:46px 54px 44px;text-align:center;}
+  .visa-msg{font-weight:800;font-size:20px;line-height:1.5;color:var(--ink);max-width:none;margin:0 auto 34px;white-space:nowrap;}
+  .visa-actions{display:flex;gap:20px;justify-content:center;}
+  .visa-btn{flex:1;max-width:240px;padding:18px 24px;border-radius:14px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;}
+  .visa-btn.yes{background:var(--accent);color:#fff;border:0;}
+  .visa-btn.yes:hover{background:var(--accent-2);}
+  .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
+  .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
   .pdd-pen{padding:7px 0;}
   .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
   .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
@@ -83,7 +91,7 @@
   .btn-login:hover{background:var(--accent-2);}
 
   /* ===== Passenger page ===== */
-  body{padding-bottom:60px;}
+  body{padding-bottom:130px;}
   .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
   /* Stepper */
   .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
@@ -148,6 +156,7 @@
   /* contact */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   .contact-grid .hint{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .contact-grid .inp{background:#fff;}
 
   /* checkboxes */
   .checks{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
@@ -348,7 +357,7 @@
         <div class="lbl">за всех пассажиров</div>
       </div>
       <button class="pd-details" id="pdDetailsBtn">Детали</button>
-      <button class="pd-confirm">Подтвердить</button>
+      <button class="pd-confirm" id="pdConfirmBtn">Подтвердить</button>
     </div>
   </div>
   <div class="pdd-ov" id="pddModal" hidden>
@@ -381,6 +390,28 @@
       ov.addEventListener('click',function(e){ if(e.target===ov) ov.hidden=true; });
       document.getElementById('pddPenBtn').addEventListener('click',function(){ this.closest('.pdd-pen').classList.toggle('open'); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape') ov.hidden=true; });
+    })();
+  </script>
+  <div class="pdd-ov" id="visaModal" hidden>
+    <div class="visa-card" role="dialog" aria-modal="true">
+      <button class="pdd-close" id="visaClose" aria-label="Закрыть">✕</button>
+      <div class="visa-msg">Напоминаем, что для перелёта во многие страны требуется виза.<br>Пожалуйста, убедитесь, что она у вас есть.</div>
+      <div class="visa-actions">
+        <button class="visa-btn yes" id="visaYes">У меня есть виза</button>
+        <button class="visa-btn no" id="visaNo">Мне виза не нужна</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var ov=document.getElementById('visaModal');
+      function close(){ ov.hidden=true; }
+      document.getElementById('pdConfirmBtn').addEventListener('click',function(){ ov.hidden=false; });
+      document.getElementById('visaClose').addEventListener('click',close);
+      document.getElementById('visaYes').addEventListener('click',close);
+      document.getElementById('visaNo').addEventListener('click',close);
+      ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
     })();
   </script>
 </body>

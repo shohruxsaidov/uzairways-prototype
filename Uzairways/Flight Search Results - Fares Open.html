@@ -341,17 +341,25 @@
   .fare-cell .per{color:var(--muted-2);font-size:11px;margin-top:4px;}
   .fare-cell .disc{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
   .fare-cell:hover{transform:translateY(-2px);box-shadow:var(--sh-md);}
+  .fare-cell.biz.unavailable{cursor:default;}
+  .fare-cell.biz.unavailable:hover{transform:none;box-shadow:var(--sh-sm);}
+  .fare-cell.biz.unavailable .cab{justify-content:space-between;}
+  .fare-cell .biz-info{display:inline-flex;align-items:center;}
+  .fare-cell .biz-info svg{width:18px;height:18px;display:block;}
+  .fare-cell.biz.unavailable .na{flex:1;display:flex;align-items:center;color:var(--muted-2);font-weight:700;font-size:15px;}
   .fare-cell.selected{box-shadow:inset 0 0 0 2px var(--accent),var(--sh-sm);}
   .fare-cell.selected.eco{box-shadow:inset 0 0 0 2px var(--ink),var(--sh-sm);}
   /* chosen-fare panel (после выбора тарифа) */
   .fare-cells.chosen{display:block;padding:18px;}
-  .fare-chosen{background:#edeae6;border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;}
-  .fare-chosen .cab2{font-weight:800;font-size:13.5px;color:var(--ink);}
-  .fare-chosen .cab2 .fn{color:var(--accent);}
-  .fare-chosen .pr2{font-weight:800;font-size:19px;color:var(--ink);margin-top:5px;letter-spacing:-.01em;}
+  .fare-chosen{background:var(--surface);border:1px solid var(--line-card);border-radius:16px;padding:16px 16px;box-shadow:var(--sh-sm);}
+  .fare-chosen .fc-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .fare-chosen .fc-lbl{font-weight:800;font-size:14px;color:var(--ink);}
+  .fare-chosen .fc-cab{font-weight:800;font-size:14px;color:var(--accent);}
+  .fare-chosen .fc-fare{text-align:right;font-weight:800;font-size:14px;color:var(--accent);margin-top:6px;}
+  .fare-chosen .pr2{font-weight:800;font-size:20px;color:var(--ink);margin-top:8px;letter-spacing:-.01em;text-align:center;}
   .fare-chosen .pr2 .cur{font-size:13px;font-weight:800;}
-  .fare-chosen .change{margin-top:13px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px;font-family:var(--font);font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;transition:.15s;}
-  .fare-chosen .change:hover{border-color:var(--ink);}
+  .fare-chosen .change{margin-top:13px;width:100%;background:var(--accent);border:0;border-radius:12px;padding:13px;font-family:var(--font);font-weight:800;font-size:15px;color:#fff;cursor:pointer;transition:.15s;}
+  .fare-chosen .change:hover{background:var(--accent-2);}
 
   /* ===== Detail modal ===== */
   .modal-overlay{position:fixed;inset:0;background:rgba(18,23,79,.55);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:100;overflow:auto;}
@@ -628,7 +636,7 @@
 
     <!-- HY 404 — 1 stop -->
     <article class="flight-card">
-      <div class="tags"><span class="tag tag-stops">1 пересадка</span><span class="tag tag-fast">Самый быстрый</span></div>
+      <div class="tags"><span class="tag tag-stops">1 пересадка</span></div>
       <div class="flight-body">
         <div class="flight-main">
           <div class="flight-id">
@@ -727,7 +735,7 @@
         </div>
         <div class="fare-cells">
           <button class="fare-cell eco"><div class="cab">Economy</div><div class="from">от</div><div class="amt"><span class="num">5 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
-          <button class="fare-cell biz"><div class="cab">Business</div><div class="from">от</div><div class="amt"><span class="num">15 000 000</span><span class="cur">UZS</span></div><div class="per">за 1 взрослого</div></button>
+          <div class="fare-cell biz unavailable"><div class="cab">Business <span class="biz-info"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0002 1.66671C5.41683 1.66671 1.66683 5.41671 1.66683 10C1.66683 14.5834 5.41683 18.3334 10.0002 18.3334C14.5835 18.3334 18.3335 14.5834 18.3335 10C18.3335 5.41671 14.5835 1.66671 10.0002 1.66671Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 13.3334L10 9.16671" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.0044 6.66663L9.99691 6.66663" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="na">Недоступен</div></div>
         </div>
       </div>
       <button class="details-toggle">Показать детали рейса <span class="ar"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
@@ -764,6 +772,16 @@
         <button class="cabin-tab" data-cabin="business">Business</button>
       </div>
       <div class="fare-grid" id="fareGrid"></div>
+    </div>
+  </div>
+
+  <!-- ===== Business unavailable modal ===== -->
+  <div class="modal-overlay warn-overlay" id="bizNaModal" hidden>
+    <div class="warn-card" role="dialog" aria-modal="true">
+      <button class="warn-close" id="bizNaClose" aria-label="Закрыть">✕</button>
+      <h3 class="warn-title">Внимание!</h3>
+      <p class="warn-text">«<b>Business</b>» недоступен с тарифом «<b>Lite</b>» на направлении «Туда».<br>Чтобы выбрать <b>Business</b>, измените тариф на «<b>Smart</b>», «<b>Comfort</b>», «<b>Pro</b>» или «<b>Elite</b>».</p>
+      <button class="warn-confirm" id="bizNaChange">Изменить тариф</button>
     </div>
   </div>
 
@@ -888,7 +906,7 @@
     const m=String(price).match(/^(.*?)(\s*UZS)?$/);
     const priceHtml = m&&m[2] ? m[1]+'<span class="cur"> UZS</span>' : price;
     wrap.classList.add('chosen');
-    wrap.innerHTML='<div class="fare-chosen"><div class="cab2">'+cabRu+' <span class="fn">'+fareName+' '+cls+'</span></div><div class="pr2">'+priceHtml+'</div><button class="change">Изменить тариф</button></div>';
+    wrap.innerHTML='<div class="fare-chosen"><div class="fc-top"><span class="fc-lbl">Ваш тариф</span><span class="fc-cab">'+cabRu+'</span></div><div class="fc-fare">'+fareName+' '+cls+'</div><div class="pr2">'+priceHtml+'</div><button class="change">Изменить тариф</button></div>';
     wrap.querySelector('.change').addEventListener('click',()=>{
       wrap.classList.remove('chosen');
       wrap.innerHTML=_origCells.get(wrap);
@@ -927,7 +945,7 @@
   const pawSvg=c=>`<svg viewBox="8 388 18 19" fill="${c}"><path d="M14.1231 395.115C13.6886 395.109 13.2701 394.959 12.9389 394.691C12.248 394.088 11.8295 393.254 11.7711 392.363C11.5889 390.584 12.6089 389.533 13.7106 389.416C13.976 389.388 14.2447 389.411 14.5006 389.484C14.7565 389.557 14.9943 389.678 15.2 389.84C15.5069 390.104 15.7561 390.422 15.9332 390.777C16.1103 391.133 16.2118 391.518 16.232 391.911C16.4 393.57 15.596 395.115 14.1231 395.115ZM10.3732 399.399C9.93874 399.392 9.52015 399.242 9.18896 398.974C8.49812 398.371 8.07959 397.537 8.02124 396.647C7.83899 394.867 8.85896 393.817 9.96068 393.7C10.2261 393.672 10.4947 393.695 10.7505 393.768C11.0064 393.841 11.2443 393.962 11.4501 394.124C11.757 394.387 12.0062 394.705 12.1833 395.061C12.3604 395.416 12.4619 395.801 12.4821 396.194C12.6501 397.853 11.8079 399.399 10.3732 399.399ZM19.8769 395.115C18.596 395.124 17.6015 393.569 17.7717 391.908C17.7919 391.516 17.8935 391.131 18.0706 390.775C18.2477 390.42 18.4968 390.102 18.8037 389.838C19.0092 389.677 19.2465 389.557 19.5017 389.484C19.7569 389.412 20.0247 389.389 20.2894 389.416C21.3911 389.533 22.4111 390.584 22.2289 392.363C22.1707 393.254 21.7522 394.089 21.0611 394.692C20.7298 394.959 20.3113 395.109 19.8769 395.115ZM23.6268 399.399C22.2304 399.399 21.3514 397.852 21.5216 396.192C21.5418 395.799 21.6434 395.414 21.8205 395.059C21.9976 394.703 22.2467 394.385 22.5536 394.122C22.7588 393.96 22.996 393.839 23.2513 393.766C23.5065 393.693 23.7745 393.67 24.0393 393.697C25.141 393.815 26.161 394.865 25.9788 396.644C25.9206 397.535 25.5021 398.37 24.811 398.973C24.4801 399.241 24.0614 399.392 23.6268 399.399ZM19.9999 406.537C19.3588 406.55 18.7257 406.4 18.1647 406.105C17.8056 405.925 17.4059 405.831 17 405.831C16.5941 405.831 16.1944 405.925 15.8353 406.105C13.5756 407.31 10.9417 405.986 11.0002 402.968C11.0002 399.659 14.3803 396.543 17 396.543C19.6197 396.543 22.9998 399.658 22.9998 402.968C22.9998 405.07 21.7661 406.537 19.9999 406.537Z"/></svg>`;
   const GRN='#2f7350', GRY='#a59ba6';
   const amenities=own=> own
-    ? `<div class="amenity">${mealSvg(GRN)} Стандартное питание на борту <span class="info pet-info" tabindex="0"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="amenity-tip"><div class="at-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#12174f" stroke-width="1.5"/><path d="M12 16L12 11" stroke="#12174f" stroke-width="1.5" stroke-linecap="round"/><path d="M12.0054 8L11.9964 8" stroke="#12174f" stroke-width="2" stroke-linecap="round"/></svg></div><div class="at-title">Стандартное питание на борту</div><ul class="at-list"><li>Овощной салат или овощная закуска</li><li>Горячее блюдо из мяса говядины или курицы</li><li>Свежий хлеб и/или булочка</li><li>Минеральная вода, прохладительные напитки</li><li>Горячие напитки: чай чёрный, зелёный, кофе растворимый.</li></ul><div class="at-body">Вам предлагается двухразовое горячее питание.</div></div></span></div>`+
+    ? `<div class="amenity">${mealSvg(GRN)} Стандартное питание на борту <span class="info pet-info meal-info" tabindex="0"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="amenity-tip"><div class="at-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#12174f" stroke-width="1.5"/><path d="M12 16L12 11" stroke="#12174f" stroke-width="1.5" stroke-linecap="round"/><path d="M12.0054 8L11.9964 8" stroke="#12174f" stroke-width="2" stroke-linecap="round"/></svg></div><div class="at-title">Стандартное питание на борту</div><ul class="at-list"><li>Овощной салат или овощная закуска</li><li>Горячее блюдо из мяса говядины или курицы</li><li>Свежий хлеб и/или булочка</li><li>Минеральная вода, прохладительные напитки</li><li>Горячие напитки: чай чёрный, зелёный, кофе растворимый.</li></ul><div class="at-body">Вам предлагается двухразовое горячее питание.</div></div></span></div>`+
       `<div class="amenity">${pawSvg(GRN)} Можно с животными <span class="info pet-info" tabindex="0"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="amenity-tip"><div class="at-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#12174f" stroke-width="1.5"/><path d="M12 16L12 11" stroke="#12174f" stroke-width="1.5" stroke-linecap="round"/><path d="M12.0054 8L11.9964 8" stroke="#12174f" stroke-width="2" stroke-linecap="round"/></svg></div><div class="at-title">Условия перевозки животных</div><div class="at-body">Допускаются собаки, кошки и птицы. Можно перевозить одну переноску с одним или двумя животными одного вида либо до трёх животных одного приплода возрастом не старше 6 месяцев.</div></div></span></div>`
     : `<div class="amenity" style="gap:6px">${mealSvg(GRY)}${pawSvg(GRY)}<span>Информацию о питании и провозке животных уточняйте <a href="#">на сайте перевозчика</a></span></div>`;
   const pt=p=>{const a=AP[p.code];return `<div class="leg-pt"><div><div class="city">${a.city}</div><div class="meta">${a.name} <span class="code">(${p.code})</span> ${a.term}</div></div><div class="time"><b>${p.time}</b><div>${p.date}</div></div></div>`;};
@@ -1110,6 +1128,13 @@
     out.querySelector('.sum-body').innerHTML='<div class="rt">Ташкент — Москва</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
     window.scrollTo({top:0,behavior:'smooth'});
   }
+  function editLeg(dir){
+    const sel = dir==='out'?window.outSel:window.retSel;
+    if(!sel) return;
+    window.editing=dir;
+    window.currentFlight=sel.flight;
+    openFareModal(sel.cabin||'economy');
+  }
   function selectFare(flight,fareLabel,price){
     if(!flight) return;
     window._retUpgraded=false;
@@ -1117,7 +1142,7 @@
     const sel={flight,fareLabel,price,nm:pick.nm,cls:pick.cls,cabin:pick.cabin||'economy'};
     if(window.editing){
       const which=window.editing; window.editing=null;
-      if(which==='out'){ window.outSel=sel; const out=document.getElementById('sumOut'); out.classList.add('selected'); out.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel); out.querySelector('.edit').addEventListener('click',backToOutbound); }
+      if(which==='out'){ window.outSel=sel; const out=document.getElementById('sumOut'); out.classList.add('selected'); out.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel); out.querySelector('.edit').addEventListener('click',function(){ editLeg('out'); }); }
       else{ window.retSel=sel; const ret=document.getElementById('sumRet'); ret.classList.add('selected'); ret.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel); }
       openConfirm();
       return;
@@ -1127,17 +1152,14 @@
       const out=document.getElementById('sumOut');
       out.classList.add('selected');
       out.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel);
-      out.querySelector('.edit').addEventListener('click',backToOutbound);
+      out.querySelector('.edit').addEventListener('click',function(){ editLeg('out'); });
       goReturnLeg();
     }else{
       window.retSel=sel;
       const ret=document.getElementById('sumRet');
       ret.classList.add('selected');
       ret.querySelector('.sum-body').innerHTML=selSummary(flight,fareLabel);
-      ret.querySelector('.edit').addEventListener('click',()=>{
-        ret.classList.remove('selected');
-        ret.querySelector('.sum-body').innerHTML='<div class="rt">Москва — Ташкент</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
-      });
+      ret.querySelector('.edit').addEventListener('click',function(){ editLeg('ret'); });
       window.scrollTo({top:0,behavior:'smooth'});
       if(window.outSel){ _setActiveLeg(null); openConfirm(); }
     }
@@ -1191,7 +1213,7 @@
   }
   function _stripMid(f){
     const segs=f.segs, n=segs.length, t=s=>String(s).replace(/\s*GMT[+-]\d+/,'');
-    if(n<=1) return '<div class="cf-dur">'+(f.total||'')+'</div><div class="cf-bar"><span class="cf-ln"></span></div><div class="cf-stops">Без остановок</div>';
+    if(n<=1) return '<div class="cf-dur">'+(f.total||'')+'</div><div class="cf-bar"><span class="cf-ln"></span></div><div class="cf-stops">Без пересадок</div>';
     let bar='<span class="cf-ln"></span>';
     for(let i=0;i<n-1;i++){ const sa=segs[i].to, sd=segs[i+1].from, ap=AP[sa.code]; bar+=`<span class="cf-mt">${t(sa.time)}</span><div class="cf-stop"><b>${ap.city.split(',')[0]}, ${sa.code}</b><span>${(f.lay&&f.lay[i])||''}</span></div><span class="cf-mt">${t(sd.time)}</span><span class="cf-ln"></span>`; }
     return `<div class="cf-dur">${f.total||''}</div><div class="cf-bar">${bar}</div>`;
@@ -1202,7 +1224,7 @@
     const dep=f.segs[0].from, arr=f.segs[f.segs.length-1].to;
     const depAP=AP[dep.code], arrAP=AP[arr.code];
     const total=(f.total||'').replace('Общее время в пути ','');
-    const stops=f.segs.length>1?(f.segs.length-1)+' пересадка':'Без остановок';
+    const stops=f.segs.length>1?(f.segs.length-1)+' пересадка':'Без пересадок';
     const cur=_findFare(sel.cabin,sel.nm);
     const upT=_upgradeOf(sel.cabin,sel.nm);
     const up=upT?_findFare(upT.cabin,upT.nm):null;
@@ -1239,6 +1261,21 @@
   function _uzs(n){ return n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' UZS'; }
   function _fareDesc(sel){ const cab=(sel.cabin==='business')?'Business':'Economy'; return cab+' '+(sel.nm||''); }
   function _cfTotalNum(){ return _parseUZS(window.outSel.price)+_parseUZS(window.retSel.price)+CF_FUEL+CF_TAXES; }
+  // Business unavailable modal
+  (function(){
+    var ov=document.getElementById('bizNaModal');
+    if(!ov) return;
+    function close(){ ov.hidden=true; document.body.style.overflow=''; }
+    document.addEventListener('click',function(e){
+      if(e.target.closest('.fare-cell.biz.unavailable .biz-info')||e.target.closest('.fare-cell.biz.unavailable')){
+        ov.hidden=false; document.body.style.overflow='hidden';
+      }
+    });
+    document.getElementById('bizNaClose').addEventListener('click',close);
+    var ch=document.getElementById('bizNaChange'); if(ch) ch.addEventListener('click',function(){ close(); var fc=document.querySelector('.flight-card:last-of-type .fare-cell.eco'); if(fc) fc.click(); });
+    ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  })();
   function openConfirm(){
     if(!window.outSel||!window.retSel) return;
     document.getElementById('cfCols').innerHTML=_legHTML(window.outSel,'out')+_legHTML(window.retSel,'ret');
@@ -1297,7 +1334,7 @@
     sel.fareLabel=(nm+' '+(nf?nf.cls:'')).trim();
     const sum=dir==='out'?document.getElementById('sumOut'):document.getElementById('sumRet');
     if(sum){ sum.querySelector('.sum-body').innerHTML=selSummary(sel.flight,sel.fareLabel);
-      if(dir==='out'){ const ed=sum.querySelector('.edit'); if(ed) ed.addEventListener('click',backToOutbound); } }
+      { const ed=sum.querySelector('.edit'); if(ed) ed.addEventListener('click',function(){ editLeg(dir); }); } }
   }
   cfov.addEventListener('click',e=>{
     const up=e.target.closest('.cf-selbtn'); if(!up) return;
@@ -1328,7 +1365,7 @@
         tip.style.setProperty('--arrow',(r.left+r.width/2-left)+'px');
       }
       document.addEventListener('click',function(e){
-        var icon=e.target.closest('.info.pet-info');
+        var icon=null;
         document.querySelectorAll('.info.pet-info.open').forEach(function(p){ if(p!==icon) p.classList.remove('open'); });
         if(icon && !e.target.closest('.amenity-tip')){
           e.stopPropagation();
@@ -1338,6 +1375,14 @@
         }
       });
       window.addEventListener('scroll',function(){var o=document.querySelector('.info.pet-info.open');if(o)posTip(o);},true);
+      document.addEventListener('mouseover',function(e){
+        var icon=e.target.closest('.info.pet-info');
+        if(icon && !icon.classList.contains('open')){ icon.classList.add('open'); posTip(icon); }
+      });
+      document.addEventListener('mouseout',function(e){
+        var icon=e.target.closest('.info.pet-info');
+        if(icon && !icon.contains(e.relatedTarget)){ icon.classList.remove('open'); }
+      });
     })();
   </script>
 </body>
