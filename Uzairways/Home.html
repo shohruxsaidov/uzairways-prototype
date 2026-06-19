@@ -760,7 +760,7 @@
       }
       function open(){ dd.hidden=false; render(); document.dispatchEvent(new CustomEvent('dd:open',{detail:'calDD'})); }
       function close(){ dd.hidden=true; }
-      fld.querySelector('.hs-val').addEventListener('click',function(e){ e.stopPropagation(); dd.hidden?open():close(); });
+      fld.addEventListener('click',function(e){ if(dd.contains(e.target)) return; e.stopPropagation(); dd.hidden?open():close(); });
       document.getElementById('calPrev').addEventListener('click',function(e){ e.stopPropagation(); view.m--; if(view.m<0){view.m=11;view.y--;} render(); });
       document.getElementById('calNext').addEventListener('click',function(e){ e.stopPropagation(); view.m++; if(view.m>11){view.m=0;view.y++;} render(); });
       grid.addEventListener('click',function(e){
@@ -831,7 +831,7 @@
       }
       function open(){ dd.hidden=false; sync(); document.dispatchEvent(new CustomEvent('dd:open',{detail:'paxDD'})); }
       function close(){ dd.hidden=true; }
-      fld.querySelector('.hs-val').addEventListener('click',function(e){ e.stopPropagation(); dd.hidden?open():close(); });
+      fld.addEventListener('click',function(e){ if(dd.contains(e.target)) return; e.stopPropagation(); dd.hidden?open():close(); });
       dd.addEventListener('click',function(e){
         var b=e.target.closest('.pax-btn'); if(!b) return;
         var key=b.getAttribute('data-pax'), dir=+b.getAttribute('data-dir');
@@ -863,7 +863,7 @@
       function mark(){ opts.forEach(function(o){ o.classList.toggle('active', o.getAttribute('data-label')===payText.textContent.trim()); }); }
       function open(){ dd.hidden=false; mark(); document.dispatchEvent(new CustomEvent('dd:open',{detail:'payDD'})); }
       function close(){ dd.hidden=true; }
-      fld.querySelector('.hs-val').addEventListener('click',function(e){ e.stopPropagation(); dd.hidden?open():close(); });
+      fld.addEventListener('click',function(e){ if(dd.contains(e.target)) return; e.stopPropagation(); dd.hidden?open():close(); });
       dd.addEventListener('click',function(e){
         var o=e.target.closest('.pay-opt'); if(!o) return;
         e.stopPropagation();
