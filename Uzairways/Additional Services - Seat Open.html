@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дополнительные услуги · Uzbekistan Airways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
+    --ink:#12174f; --ink-soft:#2a2f63; --accent:#8b273e; --accent-2:#a8324c;
+    --text:#20233f; --muted:#857d89; --muted-2:#a59ba6;
+    --line:#e7ddd5; --line-card:#efe7e2;
+    --good:#2f7350; --good-bg:#e7f0ea;
+    --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+    --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
+    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;}
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;}
+  .container{max-width:1160px;margin:0 auto;padding:0 28px;}
+  .pd-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--surface);border:1px solid var(--line-card);box-shadow:0 -2px 24px rgba(18,23,79,.08);}
+  .pd-bar-inner{display:flex;align-items:center;gap:30px;padding:18px 28px;}
+  .pd-pax{display:flex;align-items:center;gap:20px;}
+  .pd-pax .pdx{display:flex;align-items:center;gap:6px;font-weight:800;font-size:17px;color:var(--ink);}
+  .pd-pax .pdx svg{width:20px;height:20px;}
+  .pd-price{display:flex;flex-direction:column;gap:2px;}
+  .pd-price .tot{font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1;white-space:nowrap;}
+  .pd-price .lbl{font-size:13.5px;color:var(--muted);font-weight:600;}
+  .pd-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
+  .pd-details:hover{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;}
+  .pd-confirm{margin-left:auto;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:15px 52px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .pd-confirm:hover{background:var(--accent-2);}
+  body{padding-bottom:96px;}
+  .pdd-ov{position:fixed;inset:0;background:rgba(18,23,79,.4);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .pdd-ov[hidden]{display:none;}
+  .pdd-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(560px,94vw);padding:34px 40px 32px;}
+  .pdd-close{position:absolute;top:20px;right:22px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .pdd-close:hover{background:var(--bg-2);}
+  .pdd-title{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
+  .pdd-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;padding:7px 0;}
+  .pdd-row .dl{color:var(--ink-soft);font-weight:600;}
+  .pdd-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pdd-points{color:var(--good);font-weight:700;font-size:16.5px;padding:7px 0;}
+  .pdd-sep{height:1px;background:var(--line);border:0;margin:8px 0 2px;}
+  .pdd-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;color:var(--ink);margin-top:8px;}
+  .visa-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(760px,94vw);padding:46px 54px 44px;text-align:center;}
+  .visa-msg{font-weight:800;font-size:20px;line-height:1.5;color:var(--ink);max-width:none;margin:0 auto 34px;white-space:nowrap;}
+  .visa-actions{display:flex;gap:20px;justify-content:center;}
+  .visa-btn{flex:1;max-width:240px;padding:18px 24px;border-radius:14px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;}
+  .visa-btn.yes{background:var(--accent);color:#fff;border:0;}
+  .visa-btn.yes:hover{background:var(--accent-2);}
+  .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
+  .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
+  .pdd-pen{padding:7px 0;}
+  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
+  .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .pdd-pen.open .pdd-penbtn .chev{transform:rotate(180deg);}
+  .pdd-penbody{display:none;flex-direction:column;gap:14px;padding:10px 0 2px;}
+  .pdd-pen.open .pdd-penbody{display:flex;}
+  .pdd-penbody .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
+  .pdd-penbody .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
+  .pdd-penbody .pen-d{font-weight:600;color:var(--ink-soft);font-size:14px;line-height:1.4;}
+  @media(max-width:680px){.pd-bar-inner{flex-wrap:wrap;gap:14px;}.pd-confirm{margin-left:0;width:100%;}}
+
+  /* ---------- Header ---------- */
+  .site-header{background:var(--ink);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);}
+  .hdr-inner{display:flex;align-items:center;gap:24px;height:64px;width:100%;max-width:none;padding:0 32px;}
+  .logo{display:flex;align-items:center;flex:none;}
+  .logo svg{height:30px;width:auto;display:block;}
+  .site-nav{display:flex;gap:18px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82);flex:1;justify-content:center;}
+  .site-nav span{cursor:pointer;white-space:nowrap;}
+  .site-nav span:hover{color:#fff;}
+  .hdr-right{display:flex;align-items:center;gap:8px;flex:none;}
+  .hdr-ic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;background:transparent;transition:.15s;}
+  .hdr-ic:hover{background:rgba(255,255,255,.08);}
+  .hdr-ic svg{width:20px;height:20px;display:block;}
+  .hdr-lang{display:flex;align-items:center;gap:7px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;background:transparent;padding:8px 6px;border-radius:10px;transition:.15s;}
+  .hdr-lang:hover{background:rgba(255,255,255,.08);}
+  .hdr-lang svg{width:18px;height:18px;display:block;}
+  .hdr-div{width:1px;height:28px;background:rgba(255,255,255,.16);margin:0 2px;}
+  .hdr-profile{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:.15s;}
+  .hdr-profile:hover{background:rgba(255,255,255,.16);}
+  .hdr-profile svg{width:20px;height:20px;display:block;}
+  .btn-login{background:var(--accent);color:#fff;border-radius:12px;padding:9px 18px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;margin-left:4px;}
+  .btn-login:hover{background:var(--accent-2);}
+
+  /* ===== Passenger page ===== */
+  body{padding-bottom:130px;}
+  .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
+  /* Stepper */
+  .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
+  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
+  .step .dot{width:19px;height:19px;border-radius:50%;border:2px solid var(--muted-2);display:flex;align-items:center;justify-content:center;flex:none;}
+  .step.done{color:var(--ink);}
+  .step.done .dot{background:var(--good);border-color:var(--good);}
+  .step.done .dot svg{width:12px;height:12px;display:block;color:#fff;}
+  .step.active{color:var(--ink);}
+  .step.active .dot{border-color:var(--ink);background:var(--ink);}
+  .step.active .dot i{width:7px;height:7px;border-radius:50%;background:#fff;}
+  .step-line{flex:1;height:2px;background:var(--line);margin:0 9px;min-width:12px;}
+
+  .pax-title{text-align:center;margin-top:40px;}
+  .pax-title h1{font-size:34px;font-weight:900;letter-spacing:-.025em;color:var(--ink);}
+  .pax-title p{color:var(--muted);font-size:16px;margin-top:10px;}
+
+  /* Passenger card */
+  .pax-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-top:26px;overflow:hidden;}
+  .pax-head{display:flex;align-items:center;gap:12px;background:rgb(239,229,226);padding:18px 26px;cursor:pointer;}
+  .pax-head .pn{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;}
+  .pax-head h3{font-size:19px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .pax-head .chev{margin-left:auto;color:var(--ink);font-size:14px;transition:.2s;}
+  .pax-head .trash{margin-left:auto;width:34px;height:34px;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;transition:.15s;}
+  .pax-head .trash:hover{background:var(--surface);}
+  .pax-head .trash svg{width:20px;height:20px;display:block;}
+  .pax-head .trash + .chev{margin-left:14px;}
+  .pax-card.collapsed .chev{transform:rotate(-90deg);}
+  .pax-card.collapsed .pax-body{display:none;}
+  .pax-body{padding:28px 26px;display:grid;grid-template-columns:1fr 1fr auto 1fr;gap:22px 20px;align-items:end;}
+
+  .fld{display:flex;flex-direction:column;gap:7px;}
+  .fld label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.01em;}
+  .fld .inp{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 16px;font-family:var(--font);font-weight:600;font-size:15px;color:var(--ink);width:100%;outline:none;transition:.15s;}
+  .fld .inp::placeholder{color:var(--muted-2);font-weight:600;}
+  .fld .inp:focus{border-color:var(--ink);background:var(--surface);}
+  .fld .inp-ic{position:relative;}
+  .fld .inp-ic .inp{padding-right:44px;cursor:pointer;}
+  .fld .inp-ic .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink);pointer-events:none;}
+  .fld .inp-ic .ic svg{width:20px;height:20px;display:block;}
+  .fld.sel .inp{display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+  .fld.sel .chev{color:var(--muted);font-size:12px;}
+  .chev-i{width:13px;height:13px;display:inline-block;vertical-align:middle;flex:none;}
+
+  /* gender toggle */
+  .gender{display:flex;flex-direction:column;gap:7px;}
+  .gender .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:4px;gap:4px;}
+  .gender .seg button{flex:1;padding:10px 18px;border-radius:10px;font-family:var(--font);font-weight:700;font-size:14px;color:var(--muted);background:transparent;white-space:nowrap;transition:.15s;}
+  .gender .seg button.on{background:var(--accent);color:#fff;}
+
+  /* add buttons */
+  .add-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:24px;}
+  .add-pax{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;background:var(--surface);border:1px dashed var(--muted-2);border-radius:var(--r-md);padding:18px 16px;font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;transition:.15s;}
+  .add-pax:hover{border-color:var(--ink);border-style:solid;background:var(--surface-2);}
+  .add-pax:disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);border-style:solid;color:var(--muted-2);background:var(--bg);}
+  .add-pax:disabled .plus{background:var(--muted-2);}
+  .add-pax:disabled:hover{border-style:solid;background:var(--bg);border-color:var(--line);}
+  .add-pax .plus{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex:none;}
+
+  .pax-div{height:1px;background:var(--line);margin:34px 0;border:0;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .contact-grid .hint{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .contact-grid .inp{background:#fff;}
+
+  /* checkboxes */
+  .checks{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+  .chk{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:15px;color:var(--text);font-weight:600;}
+  .chk input{display:none;}
+  .chk .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--muted-2);background:var(--surface);flex:none;display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:1px;}
+  .chk .box svg{width:13px;height:13px;display:block;color:#fff;opacity:0;transition:.12s;}
+  .chk input:checked + .box{background:var(--accent);border-color:var(--accent);}
+  .chk input:checked + .box svg{opacity:1;}
+  .chk a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+  .chk.master{font-weight:800;color:var(--ink);font-size:15.5px;}
+  .sub-checks{display:flex;flex-direction:column;gap:14px;padding-left:34px;margin-top:2px;}
+
+  .pax-foot{display:flex;justify-content:flex-end;margin-top:38px;}
+  .btn-next{background:var(--accent);color:#fff;border-radius:var(--r-md);padding:16px 46px;font-family:var(--font);font-weight:800;font-size:16px;transition:.15s;}
+  .btn-next:hover{background:var(--accent-2);}
+
+  @media(max-width:820px){
+    .pax-body{grid-template-columns:1fr 1fr;}
+    .add-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .stepper{overflow-x:auto;}
+  }
+
+  /* ===== Additional services ===== */
+  .svc-summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+  .svc-leg{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:12px 22px;display:flex;gap:16px;}
+  .svc-leg .leg-tab{flex:none;width:80px;border-right:1px solid var(--line);padding-right:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
+  .svc-leg .leg-tab .lt{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;}
+  .svc-leg .leg-tab .ld{font-weight:900;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.1;}
+  .svc-leg .leg-tab .lm{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .svc-leg .leg-body{flex:1;min-width:0;}
+  .svc-leg .lb-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .svc-leg .lb-route{font-weight:800;font-size:15px;color:var(--ink);}
+  .svc-leg .lb-fno{font-weight:800;font-size:14px;color:var(--accent);}
+  .svc-leg .lb-times{font-size:15px;color:var(--muted);margin-top:8px;font-weight:700;}
+  .svc-leg .lb-times b{color:var(--ink);font-weight:800;}
+  .svc-leg .lb-meta{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .svc-leg .lb-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+  .svc-leg .lb-cls{font-weight:800;font-size:15px;color:var(--accent);margin-top:8px;}
+  .svc-leg .roundel{width:22px;height:22px;flex:none;}
+  .svc-leg .roundel.roundel-pair{width:50px;height:22px;}
+  .svc-leg .roundel svg{width:100%;height:100%;display:block;}
+
+  .svc-h{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:38px 0 24px;}
+  .svc-list{display:flex;flex-direction:column;gap:20px;}
+  .svc-row{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
+  .svc-pic{background:var(--bg-2);min-height:210px;}
+  .svc-pic image-slot{width:100%;height:100%;display:block;}
+  .svc-info{padding:24px 28px;display:flex;flex-direction:column;}
+  .svc-info h4{font-weight:800;font-size:18px;color:var(--ink);}
+  .svc-info .desc{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:560px;}
+  .svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:18px;}
+  .svc-col{position:relative;}
+  .svc-col + .svc-col{padding-left:30px;border-left:1px solid var(--line);}
+  .svc-col .sc-route{font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:10px;}
+  .svc-pax{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:14px;padding:5px 0;}
+  .svc-pax .nm{font-weight:700;color:var(--ink);}
+  .svc-pax .st{color:var(--muted);font-weight:600;}
+  .svc-pax .st.set{color:var(--good);}
+  .svc-foot{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:auto;padding-top:18px;}
+  .svc-price{font-weight:900;font-size:18px;color:var(--ink);white-space:nowrap;}
+  .svc-price.free{color:var(--good);}
+  .svc-pick{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 44px;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-pick:hover{background:var(--accent);}
+  .svc-pick.done{background:var(--good);}
+  .svc-actions{display:flex;flex-direction:row;align-items:center;gap:18px;}
+  .svc-cancel{background:none;border:0;color:var(--muted);font-family:var(--font);font-weight:600;font-size:13.5px;cursor:pointer;padding:0;}
+  .svc-cancel:hover{color:var(--accent);}
+  .svc-pax .st .st-del{background:none;border:0;padding:0;margin-left:8px;cursor:pointer;color:var(--muted-2);vertical-align:middle;display:inline-flex;}
+  .svc-pax .st .st-del svg{width:15px;height:15px;display:block;}
+  .svc-pax .st .st-del:hover{color:var(--accent);}
+  .svc-links{margin-top:12px;}
+  .svc-links a{display:block;color:#2a6fdb;font-weight:700;font-size:13.5px;margin-top:5px;text-decoration:none;}
+  .svc-links a:hover{text-decoration:underline;}
+  .svc-foot .svc-price-lbl{font-weight:900;font-size:17px;color:var(--ink);text-align:right;line-height:1.3;white-space:nowrap;}
+  .svc-cancel{background:var(--bg-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:12px;padding:11px 32px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-cancel:hover{border-color:var(--accent);color:var(--accent);}
+  @media(max-width:860px){
+    .svc-summary{grid-template-columns:1fr;}
+    .svc-row{grid-template-columns:1fr;}
+    .svc-cols{grid-template-columns:1fr;}
+    .svc-col + .svc-col{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:14px;}
+  }
+  /* ===== Seat selection modal ===== */
+  .seat-ov{position:fixed;inset:0;background:rgba(18,23,79,.45);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .seat-ov[hidden]{display:none;}
+  .seat-card{position:relative;background:var(--surface);border-radius:22px;box-shadow:0 30px 80px rgba(18,23,79,.24);width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;}
+  .seat-head{position:relative;padding:22px 30px;border-bottom:1px solid var(--line);text-align:center;flex:none;}
+  .seat-title{font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.01em;}
+  .seat-close{position:absolute;top:15px;right:18px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .seat-close:hover{background:var(--bg-2);}
+  .seat-legs{display:flex;align-items:center;gap:14px;padding:18px 30px 6px;flex:none;}
+  .seat-pin{flex:none;width:34px;height:34px;color:var(--accent);display:flex;align-items:center;justify-content:center;}
+  .seat-pin svg{width:30px;height:30px;}
+  .seat-leg{flex:1;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-family:var(--font);font-weight:800;font-size:15px;color:var(--ink-soft);background:#f5efe8;cursor:pointer;transition:.15s;text-align:center;}
+  .seat-leg:hover{border-color:var(--accent);color:var(--accent);}
+  .seat-leg.active{background:var(--ink);color:#fff;border-style:solid;border-color:var(--ink);}
+  .seat-body{display:grid;grid-template-columns:1fr 264px;gap:22px;padding:14px 30px 26px;overflow:hidden;flex:1;min-height:0;}
+  .seat-main{display:flex;flex-direction:column;min-height:0;}
+  .seat-plane{background:#f5efe8;border:1px solid var(--line);border-radius:10px;text-align:center;font-weight:800;font-size:14px;letter-spacing:.04em;color:var(--ink-soft);padding:11px 0;margin-bottom:14px;flex:none;}
+  .seat-scroll{overflow-y:auto;padding-right:6px;min-height:0;overscroll-behavior:contain;}
+  .seat-scroll::-webkit-scrollbar{width:8px;}
+  .seat-scroll::-webkit-scrollbar-thumb{background:#efe6dd;border-radius:4px;}
+  .seat-colhdr,.seat-row{display:grid;grid-template-columns:repeat(3,40px) 44px repeat(3,40px);gap:12px;justify-content:center;align-items:center;}
+  .seat-colhdr{margin-bottom:8px;position:sticky;top:0;background:var(--surface);z-index:1;padding-bottom:4px;}
+  .seat-colhdr span{text-align:center;font-weight:800;font-size:13px;color:var(--muted-2);}
+  .seat-row{margin-bottom:12px;}
+  .seat-num{text-align:center;font-weight:700;font-size:14px;color:var(--muted);}
+  .seat{width:40px;height:40px;border-radius:9px;border:1.5px solid transparent;cursor:pointer;transition:.12s;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:transparent;}
+  .seat.free{background:#27AE60;}
+  .seat.paid{background:#1C5185;}
+  .seat.norec{position:relative;}
+  .seat.norec::after{content:"";position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:20px;height:4px;border-radius:2px;background:#fff;}
+  .seat.unavail{background:rgba(39,174,96,.08);background-image:repeating-linear-gradient(-45deg,#27AE60 0 2px,transparent 2px 6px);cursor:not-allowed;}
+  .seat .sico{width:18px;height:18px;color:#fff;display:flex;}
+  .seat .sico svg{width:100%;height:100%;}
+  .seat:hover:not(.occ):not(.unavail):not(.sel){filter:brightness(.94);transform:translateY(-1px);}
+  .seat.occ{background:#fff;border:1.5px dashed rgba(18,23,79,.28);cursor:not-allowed;}
+  .seat.sel{background:#1C5185;color:#fff;border-radius:50%;border-color:#1C5185;box-shadow:0 0 0 4px rgba(28,81,133,.2);}
+  .seat.norec.sel::after{display:none;}
+  .seat-foot{display:flex;justify-content:space-between;padding:14px 2px 4px;}
+  .seat-lav{width:60px;height:46px;border-radius:8px;background:rgba(18,23,79,.06);display:flex;align-items:center;justify-content:center;color:var(--muted-2);}
+  .seat-lav svg{width:22px;height:22px;}
+  .seat-side{display:flex;flex-direction:column;min-height:0;}
+  .seat-confirm{margin-top:18px;flex:none;width:100%;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 0;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;}
+  .seat-confirm:hover{background:var(--accent-hover,#a8324c);}
+  .seat-paxlist{display:flex;flex-direction:column;gap:10px;}
+  .seat-pax{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;background:#f5efe8;cursor:pointer;transition:.15s;text-align:left;font-family:var(--font);}
+  .seat-pax:hover{border-color:var(--accent);}
+  .seat-pax.active{border-color:var(--accent);background:var(--surface);box-shadow:0 4px 14px rgba(139,39,62,.1);}
+  .seat-pax .nm{font-weight:800;font-size:14px;color:var(--ink);}
+  .seat-pax .pr{display:flex;flex-direction:column;align-items:flex-end;}
+  .seat-pax .pr b{font-weight:900;font-size:14px;color:var(--ink);}
+  .seat-pax .pr span{font-size:12px;color:var(--muted);}
+  .seat-pax .st{font-size:13px;color:var(--muted);font-weight:600;}
+  .seat-pax.set .st{color:var(--good);}
+  .seat-sep{border:0;border-top:1px solid var(--line);margin:18px 0;}
+  .seat-legend{display:flex;flex-direction:column;gap:13px;}
+  .seat-lg{display:flex;align-items:center;gap:12px;}
+  .seat-lg .sw{flex:none;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .seat-lg .sw svg{width:15px;height:15px;color:#fff;}
+  .sw.occ{background:#fff;border:1.5px dashed rgba(18,23,79,.28);}
+  .sw.paid{background:#1C5185;}
+  .sw.free{background:#27AE60;}
+  .sw.child,.sw.pet,.sw.norec{background:#27AE60;}
+  .sw.norec{position:relative;}
+  .sw.norec::before{content:"";position:absolute;left:50%;bottom:3px;transform:translateX(-50%);width:13px;height:2.5px;border-radius:2px;background:#fff;}
+  .sw.unavail{background:rgba(39,174,96,.08);background-image:repeating-linear-gradient(-45deg,#27AE60 0 2px,transparent 2px 6px);}
+  .sw.sel{background:rgba(28,81,133,.2);border-radius:50%;}
+  .sw.sel::before{content:"";width:19px;height:19px;border-radius:50%;background:#1C5185;}
+  .seat-lg .lgt{font-weight:600;font-size:12.5px;color:var(--ink);line-height:1.25;}
+  @media(max-width:760px){
+    .seat-body{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#12174f"/><circle cx="50" cy="42" r="20" fill="#FFD141"/><text x="50" y="92" font-family="sans-serif" font-size="13" font-weight="800" fill="#f5efe8" text-anchor="middle">UZ</text></svg>
+  </template>
+
+<!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container hdr-inner">
+      <a class="logo" href="Home.html" aria-label="Uzbekistan Airways"><svg viewBox="0 0 176 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><g clip-path="url(#uzlogo_clip)"><path fill-rule="evenodd" clip-rule="evenodd" d="M56.3995 3.32693H52.5518L50.9591 10.9441C50.4209 13.2843 50.0068 15.2486 47.3598 15.2486C45.9742 15.2486 45.1461 14.5856 45.1461 13.4887C45.1461 12.7013 45.3724 11.936 45.5187 11.2315L47.2356 3.32417H43.3878L41.7124 11.0463C41.5054 12.0189 41.2983 12.9085 41.2983 14.1518C41.2983 16.4919 43.4292 18.4149 47.2742 18.4149C52.6097 18.4149 53.8104 15.7432 54.6357 11.7702L56.394 3.32417L56.3995 3.32693ZM55.0746 18.1082L55.715 14.7955L64.959 6.63959H57.7631L58.4448 3.32693H70.5236L69.8611 6.63959L60.3466 14.7955H68.4534L67.7909 18.1082H55.0718H55.0746ZM69.5934 18.1082H76.8113C81.1339 18.0889 83.5325 16.1411 83.5325 13.1406C83.5325 11.8144 82.7458 10.5518 81.443 10.2424V10.2009C83.1378 9.82793 84.1729 8.50452 84.1729 6.55671C84.1729 4.9432 83.5518 3.32693 79.5605 3.32693H72.6738L69.5934 18.1082ZM75.8591 6.34949H78.3819C79.21 6.34949 80.3251 6.43238 80.3251 7.50989C80.3251 8.64819 79.5605 9.1455 78.0093 9.1455H75.2794L75.8591 6.35225V6.34949ZM74.7439 11.7315H77.4545C78.4482 11.7315 79.6875 11.8338 79.6875 13.2014C79.6875 14.7955 78.404 15.0856 77.0598 15.0856H74.0401L74.7439 11.7315ZM84.5262 18.1082H96.3565L97.0603 14.7955H89.0557L89.6353 11.9802H96.9554L97.5765 8.99907H90.2564L90.7311 6.63959H98.6723L99.3762 3.32693H87.5872L84.5262 18.1082ZM98.6916 18.1082L101.813 3.32693H105.661L104.441 9.1234H104.483L110.5 3.32693H115.587L108.535 9.4135L112.918 18.1082H108.535L105.496 11.8973L103.489 13.6158L102.537 18.1082H98.6889H98.6916ZM114.016 18.1082H117.864L120.945 3.32693H117.097L114.016 18.1082ZM120.696 13.1378H124.544C124.544 14.732 125.433 15.2486 127.254 15.2486C128.806 15.2486 129.446 14.5856 129.446 13.7788C129.446 12.309 127.213 12.1432 125.681 11.6044C123.84 10.9414 122.352 9.96883 122.352 7.79446C122.352 4.44036 125.391 3.01196 128.35 3.01196C131.494 3.01196 134.16 4.17236 134.058 7.77236H130.211C130.211 7.21427 130.026 6.81918 129.694 6.57052C129.344 6.30252 128.825 6.17819 128.143 6.17819C127.191 6.17819 126.2 6.57052 126.2 7.50436C126.2 8.43821 126.821 8.49899 128.888 9.05709C130.914 9.61519 133.294 10.6706 133.294 13.5688C133.294 16.1991 130.956 18.4121 126.633 18.4121C123.117 18.4121 120.657 16.6328 120.699 13.1323L120.696 13.1378ZM148.762 3.32693H136.228L135.565 6.63959H139.907L137.487 18.1082H141.334L143.755 6.63959H148.097L148.759 3.32693H148.762ZM144.089 18.1082L152.712 3.32693H156.601L159.022 18.1082H155.155L154.804 15.4586H149.612L148.124 18.1082H144.092H144.089ZM153.871 7.28057L151.1 12.6018H154.47L153.913 7.28057H153.871ZM159.908 18.1082H163.631L165.514 8.44097H165.555L168.967 18.1082H172.917L175.997 3.32693H172.274L170.433 12.9942H170.391L166.938 3.32693H162.988L159.908 18.1082Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M112.586 32.7916H115.112L116.045 31.1312H119.297L119.517 32.7916H121.941L120.425 23.5333H117.991L112.589 32.7916H112.586ZM118.717 26.0088H118.742L119.092 29.3408H116.981L118.717 26.0088ZM122.603 32.7916H125.013L126.942 23.5333H124.533L122.603 32.7916ZM130.531 25.3982H132.305C132.94 25.3982 133.6 25.5668 133.6 26.357C133.6 27.3543 132.849 27.6279 131.98 27.6279H130.061L130.528 25.3982H130.531ZM126.592 32.7916L128.51 23.5333H133.045C134.729 23.5333 136.012 23.9616 136.012 25.9315C136.012 27.3184 135.353 28.3048 133.901 28.512V28.5369C134.588 28.7054 134.848 29.1861 134.848 30.0813C134.848 30.7554 134.809 31.2748 134.809 31.8053C134.809 32.1286 134.809 32.5319 134.953 32.7916H132.529C132.49 32.6093 132.452 32.4408 132.452 32.2612C132.452 31.7804 132.515 31.2887 132.515 30.667C132.515 29.8492 132.165 29.421 131.309 29.421H129.703L129.004 32.7916H126.595H126.592ZM137.45 32.7916H139.874L142.389 26.5283H142.413V32.7916H144.837L149.228 23.5333H146.752L144.136 30.2774H144.111V23.5333H141.908L139.187 30.2774H139.162L139.225 23.5333H136.802L137.45 32.7916ZM146.739 32.7916L152.14 23.5333H154.575L156.09 32.7916H153.667L153.446 31.1312H150.194L149.261 32.7916H146.736H146.739ZM152.866 26.0088L151.13 29.3408H153.242L152.891 26.0088H152.866ZM158.18 32.7916H160.565L161.304 29.2911L165.839 23.5333H162.949L160.371 27.3847L159.27 23.5333H156.783L158.92 29.2911L158.18 32.7916ZM164.542 29.6779H166.952C166.952 30.6753 167.509 31.0013 168.649 31.0013C169.621 31.0013 170.024 30.5869 170.024 30.0813C170.024 29.1613 168.624 29.0563 167.667 28.7192C166.513 28.3048 165.58 27.6942 165.58 26.3321C165.58 24.2323 167.484 23.3372 169.337 23.3372C171.305 23.3372 172.977 24.0638 172.911 26.321H170.501C170.501 25.9702 170.385 25.7243 170.178 25.5695C169.958 25.401 169.635 25.3237 169.207 25.3237C168.611 25.3237 167.99 25.5695 167.99 26.1525C167.99 26.7355 168.379 26.7741 169.673 27.125C170.943 27.4759 172.434 28.1362 172.434 29.9514C172.434 31.5981 170.971 32.985 168.263 32.985C166.06 32.985 164.52 31.8689 164.545 29.6779H164.542Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3086 0.000194929C23.1405 -0.0203324 27.7829 1.86428 31.215 5.23967C34.647 8.61505 36.5878 13.2049 36.6107 18C36.5878 22.7951 34.647 27.3849 31.215 30.7603C27.7829 34.1357 23.1405 36.0203 18.3086 35.9998C13.4756 36.0221 8.83153 34.1382 5.39804 30.7626C1.96456 27.3871 0.0228381 22.7962 0 18C0.0228381 13.2038 1.96456 8.61294 5.39804 5.23737C8.83153 1.86179 13.4756 -0.0220581 18.3086 0.000194929Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3055 1.47185C22.7422 1.45304 27.0047 3.18352 30.156 6.2828C33.3073 9.38209 35.0893 13.5965 35.1102 17.9993C35.0893 22.4021 33.3073 26.6165 30.156 29.7158C27.0047 32.8151 22.7422 34.5456 18.3055 34.5268C13.8683 34.5464 9.60492 32.8163 6.45294 29.7169C3.30096 26.6176 1.51849 22.4027 1.49756 17.9993C1.51849 13.5959 3.30096 9.38103 6.45294 6.28165C9.60492 3.18227 13.8683 1.45218 18.3055 1.47185Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M30.11 22.0279C29.8622 22.361 29.5491 22.6409 29.1896 22.8507C28.83 23.0606 28.4313 23.1961 28.0176 23.2492L17.4653 23.2407C16.9389 22.974 16.8807 22.6035 17.4653 22.377H23.4313C23.6946 22.386 23.9562 22.3317 24.1938 22.2187C24.4314 22.1057 24.638 21.9374 24.7959 21.7281C26.5941 19.4109 28.6054 17.1988 30.1689 14.7077C29.605 15.3244 28.8458 15.7315 28.0169 15.8614H20.687C20.3421 15.8449 19.9986 15.9147 19.6881 16.0644C19.3775 16.214 19.1098 16.4388 18.9097 16.718L14.5143 22.2129C10.7317 26.6591 8.11157 16.8354 13.2288 18.3993L11.1364 15.8134C11.0175 15.679 10.8711 15.5712 10.7069 15.4974C10.5428 15.4236 10.3646 15.3855 10.1844 15.3855C10.0041 15.3855 9.82597 15.4236 9.66179 15.4974C9.49761 15.5712 9.35119 15.679 9.23232 15.8134C6.07931 19.7801 6.02112 25.8954 12.6599 26.4794H26.8452L30.1146 22.026L30.11 22.0279ZM27.9234 9.56127C27.7154 9.75132 27.4694 9.89576 27.2014 9.98521C26.9333 10.0746 26.6493 10.1071 26.3679 10.0804H19.9258C19.5752 10.0682 19.2262 10.1345 18.9049 10.2743C18.5835 10.4142 18.298 10.624 18.0695 10.8883L13.9599 16.0275L15.1179 17.4973L16.5303 15.768C16.7513 15.5174 17.0249 15.3178 17.332 15.1833C17.639 15.0487 17.972 14.9826 18.3075 14.9893H22.338C24.3193 14.9893 26.9498 10.7338 27.9241 9.55933L27.9234 9.56127Z" fill="#3C792F"/></g><defs><clipPath id="uzlogo_clip"><rect width="176" height="36" fill="#fff"/></clipPath></defs></svg></a>
+      <nav class="site-nav">
+        <span>Информация</span>
+        <span>Покупка и управление</span>
+        <span>Программа лояльности</span>
+        <span>О компании</span>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-ic" aria-label="Поиск по сайту"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+        <button class="hdr-lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18" stroke-linecap="round"/><path d="M12 3c2.5 2.4 3.9 5.6 4 9-.1 3.4-1.5 6.6-4 9-2.5-2.4-3.9-5.6-4-9 .1-3.4 1.5-6.6 4-9Z"/></svg> Ru</button>
+        <span class="hdr-div"></span>
+        <button class="hdr-profile" aria-label="Профиль"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.2a6.7 6.7 0 0 1 13 0"/></svg></button>
+        <button class="btn-login">Войти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pax-main">
+
+    <!-- Stepper -->
+    <div class="stepper">
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
+      <div class="step-line"></div>
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Заполнение данных о пассажирах</div>
+      <div class="step-line"></div>
+      <div class="step active"><span class="dot"><i></i></span>Выбор дополнительных услуг</div>
+      <div class="step-line"></div>
+      <div class="step"><span class="dot"></span>Детали и оплата</div>
+    </div>
+
+    <!-- Trip summary -->
+    <div class="svc-summary">
+      <div class="svc-leg">
+        <div class="leg-tab" style="text-align: left; width: 80px"><div class="lt">Туда</div><div class="ld" style="text-align: left">2 марта</div><div class="lm">пн</div></div>
+        <div class="leg-body">
+          <div class="lb-top"><span class="lb-route">Ташкент — Москва</span><span class="roundel roundel-pair"><svg width="60" height="26" viewBox="0 0 60 26" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clipUZTR)"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.3515 0.091578C54.8825 0.779509 59.9963 6.27779 59.9963 13.0226C59.9963 20.195 54.1963 25.995 47.0204 25.995C39.8446 25.995 34.0015 20.195 34.0015 13.0226C34.0015 5.84847 39.8015 0.00537109 47.0204 0.00537109C47.4497 0.00537109 47.9222 0.0484745 48.3515 0.091578ZM49.0394 25.0933C55.6997 23.9761 60.2101 17.6623 59.0946 10.9605C58.148 5.41917 53.6377 1.38123 48.3101 0.822613C47.2359 0.693302 46.1187 0.736406 45.0015 0.908819C43.6687 1.12261 42.4222 1.55192 41.3066 2.15365C47.1497 4.17261 50.3291 7.22261 50.5428 10.3157C50.6722 12.2485 49.7704 13.6243 48.567 14.7399L56.9032 14.1812C57.117 14.1812 57.2032 14.4399 56.9463 14.5261L37.0515 20.195C39.0722 22.9881 42.2084 24.8347 45.6877 25.1795C46.8049 25.3071 47.9222 25.3071 49.0394 25.0933ZM43.5825 13.2795C44.6566 9.19848 43.4118 4.90365 40.4463 2.62606C36.4084 5.20365 34.0446 10.0157 34.9032 15.0416C35.1618 16.7157 35.7635 18.2192 36.6222 19.5519C39.8015 18.6916 42.5946 17.0174 43.5825 13.2795Z" fill="white"/><path d="M49.0397 25.0936C55.7 23.9763 60.2104 17.6625 59.0948 10.9608C58.1483 5.41942 53.6379 1.38149 48.3104 0.822867C47.2362 0.693557 46.119 0.736661 45.0017 0.909074C43.669 1.12287 42.4224 1.55218 41.3069 2.1539C47.15 4.17287 50.3293 7.22287 50.5431 10.316C50.6724 12.2487 49.7707 13.6246 48.5673 14.7401L56.9035 14.1815C57.1173 14.1815 57.2035 14.4401 56.9466 14.5263L37.0517 20.1953C39.0724 22.9884 42.2086 24.8349 45.6879 25.1798C46.8052 25.3074 47.9224 25.3074 49.0397 25.0936ZM43.5828 13.2798C44.6569 9.19873 43.4121 4.9039 40.4466 2.62632C36.4086 5.2039 34.0448 10.016 34.9035 15.0418C35.1621 16.716 35.7638 18.2194 36.6224 19.5522C39.8017 18.6918 42.5948 17.0177 43.5828 13.2798Z" fill="#C70A0C"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/><defs><clipPath id="clipUZTR"><rect width="26" height="26" fill="white" transform="translate(34)"/></clipPath></defs></svg></span><span class="lb-fno">HY 404</span></div>
+          <div class="lb-times"><b>10:00</b> TAS&nbsp; - &nbsp;DME <b>15:22</b></div>
+          <div class="lb-meta">Пересадка в г. Бишкек (1 ч 59 мин)</div>
+          <div class="lb-meta">Общее время в пути 8 ч 22 мин</div>
+          <div class="lb-cls" style="text-align:right;">Comfort Class B</div>
+        </div>
+      </div>
+      <div class="svc-leg">
+        <div class="leg-tab"><div class="lt">Обратно</div><div class="ld" style="text-align: left">9 марта</div><div class="lm">пн</div></div>
+        <div class="leg-body">
+          <div class="lb-top"><span class="lb-route">Москва — Ташкент</span><span class="roundel"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/></svg></span><span class="lb-fno">HY 555</span></div>
+          <div class="lb-times"><b>10:00</b> DME&nbsp; — &nbsp;TAS <b>18:00</b></div>
+          <div class="lb-meta">Прямой рейс</div>
+          <div class="lb-meta">Общее время в пути 6 ч</div>
+          <div class="lb-cls" style="text-align:right;">Saver Class B</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="svc-h">Дополнительные услуги для вашего комфорта</h2>
+
+    <div class="svc-list" id="svcList">
+      <div class="svc-row" data-svc="seat">
+        <div class="svc-pic"><image-slot id="svcSeat" shape="rect" placeholder="Картинка" style="height: 276px"></image-slot></div>
+        <div class="svc-info">
+          <h4>Выбор места</h4>
+          <div class="desc">Подберите для себя удобное место, чтобы провести перелёт с комфортом</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="seatCancelBtn" hidden style="width: 164px">Отменить</button><button class="svc-pick" id="seatPickBtn">Выбрать</button></div></div>
+        </div>
+      </div>
+      <div class="svc-row" data-svc="bag">
+        <div class="svc-pic"><image-slot id="svcBag" shape="rect" placeholder="Картинка" style="height: 296px"></image-slot></div>
+        <div class="svc-info" style="height: 296px">
+          <h4>Дополнительный багаж</h4>
+          <div class="desc" style="white-space: nowrap">Оформите дополнительный багаж сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+        </div>
+      </div>
+      <div class="svc-row" data-svc="sport">
+        <div class="svc-pic"><image-slot id="svcSport" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4>Перевозка спортивного инвентаря</h4>
+          <div class="desc">Оформите спортивный инвентарь сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+        </div>
+      </div>
+      <div class="svc-row" data-svc="meal">
+        <div class="svc-pic"><image-slot id="svcMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4>Специальное питание</h4>
+          <div class="desc">Если вам не нравится стандартное питание на борту, вы можете выбрать другое по своим предпочтениям</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price free">Бесплатно</span><button class="svc-pick">Выбрать</button></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-pic"><image-slot id="svcPaidMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4>Платное питание</h4>
+          <div class="desc">Вы можете заказать дополнительное питание к стандартному или специальному</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-pic"><image-slot id="svcPet" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4>Перевозка животных</h4>
+          <div class="desc">В багаже, под креслом или рядом с вами на соседнем кресле</div>
+          <div class="svc-cols">
+            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+              <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
+              <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
+            </div>
+          </div>
+          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-pic"><image-slot id="svcInsurance" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4>Страхование багажа от ALFA INVEST</h4>
+          <div class="desc">Если ваш багаж повредят, задержат или потеряют при перевозке, мы возместим ущерб. Страховка распространяется на багаж, дополнительный багаж, спортивный инвентарь и клетки для животных суммарной стоимостью до 10 000 000 UZS.</div>
+          <div class="svc-links"><a href="#">Условия страхования</a><a href="#">Страховые случаи</a><a href="#">Публичная оферта</a></div>
+          <div class="svc-foot"><span class="svc-price-lbl" style="white-space:nowrap">Цена за всех пассажиров: 111 000 UZS за кг</span><button class="svc-cancel">Отменить</button></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    document.querySelectorAll(".svc-pick").forEach(function(btn){
+      if(btn.id==="seatPickBtn") return;
+      btn.addEventListener("click",function(){
+        var row=btn.closest(".svc-row");
+        var done=btn.classList.toggle("done");
+        btn.textContent=done?"Выбрано":"Выбрать";
+        row.querySelectorAll(".svc-pax .st").forEach(function(st){
+          if(done){ st.textContent="Выбрано"; st.classList.add("set"); }
+          else { st.textContent="Не выбрано"; st.classList.remove("set"); }
+        });
+      });
+    });
+  </script>
+  <div class="pd-bar">
+    <div class="container pd-bar-inner">
+      <div class="pd-pax"><span class="pdx"><b>2</b><svg viewBox="4 0 12 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span><span class="pdx"><b>1</b><svg viewBox="50 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span><span class="pdx"><b>1</b><svg viewBox="95 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span></div>
+      <div class="pd-price">
+        <div class="tot">9 500 000 UZS</div>
+        <div class="lbl">за всех пассажиров</div>
+      </div>
+      <button class="pd-details" id="pdDetailsBtn">Детали</button>
+      <button class="pd-confirm" id="pdConfirmBtn">Продолжить</button>
+    </div>
+  </div>
+  <div class="pdd-ov" id="pddModal" hidden>
+    <div class="pdd-card" role="dialog" aria-modal="true">
+      <button class="pdd-close" id="pddClose" aria-label="Закрыть">✕</button>
+      <h3 class="pdd-title">Детали</h3>
+      <div class="pdd-row"><span class="dl">Туда: Economy Comfort</span><span class="dv">6 000 000 UZS</span></div>
+      <div class="pdd-row"><span class="dl">Обратно: Economy Comfort</span><span class="dv">6 000 000 UZS</span></div>
+      <div class="pdd-row"><span class="dl">Топливный сбор</span><span class="dv">300 000 UZS</span></div>
+      <div class="pdd-row"><span class="dl">Таксы и сборы</span><span class="dv">700 000 UZS</span></div>
+      <div class="pdd-pen">
+        <button class="pdd-penbtn" id="pddPenBtn">Штрафы <span class="chev">▾</span></button>
+        <div class="pdd-penbody">
+          <div class="pen-group"><div class="pen-h">Переоформление авиабилета до вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
+          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета до вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
+          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета <span class="pen-i">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</span></div></div>
+          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета после вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
+        </div>
+      </div>
+      <div class="pdd-points">+ 5 000 баллов UzAirPlus</div>
+      <hr class="pdd-sep">
+      <div class="pdd-total">Итого: <span style="margin-left:8px;">13 000 000 UZS</span></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var ov=document.getElementById('pddModal');
+      document.getElementById('pdDetailsBtn').addEventListener('click',function(){ ov.hidden=false; });
+      document.getElementById('pddClose').addEventListener('click',function(){ ov.hidden=true; });
+      ov.addEventListener('click',function(e){ if(e.target===ov) ov.hidden=true; });
+      document.getElementById('pddPenBtn').addEventListener('click',function(){ this.closest('.pdd-pen').classList.toggle('open'); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') ov.hidden=true; });
+    })();
+  </script>
+  <div class="seat-ov" id="seatModal" hidden>
+    <div class="seat-card" role="dialog" aria-modal="true">
+      <div class="seat-head">
+        <h3 class="seat-title">Места на борту</h3>
+        <button class="seat-close" id="seatClose" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="seat-legs">
+        <button class="seat-leg active" data-leg="out">Ташкент — Москва</button>
+        <button class="seat-leg" data-leg="ret">Москва — Ташкент</button>
+      </div>
+      <div class="seat-body">
+        <div class="seat-main">
+          <div class="seat-plane">BOEING-787</div>
+          <div class="seat-scroll">
+            <div class="seat-colhdr"><span>A</span><span>B</span><span>C</span><span></span><span>D</span><span>E</span><span>F</span></div>
+            <div id="seatMap"></div>
+            <div class="seat-foot">
+              <div class="seat-lav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="15.5" cy="12" r="1"/></svg></div>
+              <div class="seat-lav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="15.5" cy="12" r="1"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <aside class="seat-side">
+          <div class="seat-paxlist" id="seatPaxList"></div>
+          <hr class="seat-sep">
+          <div class="seat-legend">
+            <div class="seat-lg"><span class="sw occ"></span><span class="lgt">Место занято</span></div>
+            <div class="seat-lg"><span class="sw paid"></span><span class="lgt">Платное место</span></div>
+            <div class="seat-lg"><span class="sw free"></span><span class="lgt">Бесплатное место</span></div>
+            <div class="seat-lg"><span class="sw child"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M7.90039 5.49941C7.90039 5.16801 8.16899 4.89941 8.50039 4.89941C8.83179 4.89941 9.10039 5.16801 9.10039 5.49941C9.10039 5.83081 8.83179 6.09941 8.50039 6.09941C8.16899 6.09941 7.90039 5.83081 7.90039 5.49941Z"/><path d="M10.8984 5.49941C10.8984 5.16801 11.167 4.89941 11.4984 4.89941C11.8298 4.89941 12.0984 5.16801 12.0984 5.49941C12.0984 5.83081 11.8298 6.09941 11.4984 6.09941C11.167 6.09941 10.8984 5.83081 10.8984 5.49941Z"/><path d="M9.80722 13.4123C8.47702 14.0535 7.01422 14.4415 5.47522 14.5349C5.29962 13.8263 5.19922 13.0207 5.19922 12.1011C5.19922 11.5493 5.25542 11.0151 5.35682 10.5049C6.57542 11.8187 8.35502 12.8315 9.80722 13.4123Z"/><path d="M14.8 12.0995C14.8 16.4611 12.651 18.3995 9.99995 18.3995C8.15515 18.3995 6.55555 17.4575 5.75195 15.4165C9.32955 15.1405 12.5122 13.3917 14.6538 10.5693C14.7472 11.0597 14.8 11.5713 14.8 12.0995Z"/><path d="M5.64453 9.45181C5.78293 9.06021 5.95253 8.69261 6.14673 8.34961C7.02193 9.52981 8.42093 10.2994 9.99973 10.2994C11.5785 10.2994 12.9773 9.52981 13.8527 8.34981C14.0451 8.68981 14.2141 9.05341 14.3517 9.44121C13.4189 10.8352 12.2311 11.9836 10.8599 12.8346C9.32873 12.3446 6.90453 11.099 5.64453 9.45181Z"/><path d="M9.99961 9.39961C12.15 9.39961 13.8996 7.65001 13.8996 5.49961C13.8996 3.34921 12.15 1.59961 9.99961 1.59961C7.84921 1.59961 6.09961 3.34921 6.09961 5.49961C6.09961 7.65001 7.84921 9.39961 9.99961 9.39961ZM9.07861 2.65941C8.83481 3.49221 9.16121 4.60781 9.99941 4.70601C10.4412 4.75781 10.6236 4.07241 10.2202 3.86381C10.1256 3.80061 10.0516 3.71821 9.99801 3.62521C9.69601 3.10081 10.263 2.46621 10.8438 2.63621C12.087 3.00021 12.9996 4.14001 12.9996 5.49961C12.9996 7.36781 11.2828 8.84281 9.34421 8.42981C8.19621 8.18521 7.27841 7.24281 7.05661 6.09021C6.75221 4.50821 7.70241 3.10741 9.07861 2.65941Z"/></svg></span><span class="lgt">Места для пассажиров с детьми</span></div>
+            <div class="seat-lg"><span class="sw pet"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M19.166 17.4998H18.1002L16.9994 14.209C16.8336 13.7119 16.5159 13.2795 16.0911 12.9728C15.6662 12.6662 15.1558 12.5007 14.6319 12.4998H11.666C11.224 12.4998 10.8001 12.3242 10.4875 12.0117C10.1749 11.6991 9.99935 11.2752 9.99935 10.8332H14.9994C15.2204 10.8332 15.4323 10.7454 15.5886 10.5891C15.7449 10.4328 15.8327 10.2208 15.8327 9.99983C15.8327 9.77881 15.7449 9.56685 15.5886 9.41057C15.4323 9.25429 15.2204 9.16649 14.9994 9.16649H9.99935V6.66649C9.99434 6.62881 9.98682 6.59151 9.97685 6.55483C10.7657 6.35699 11.4551 5.87756 11.915 5.20681C12.375 4.53607 12.5739 3.7203 12.4742 2.91312C12.3746 2.10594 11.9832 1.36305 11.3739 0.82434C10.7646 0.285632 9.97933 -0.0117188 9.16602 -0.0117188C8.35271 -0.0117188 7.56746 0.285632 6.95814 0.82434C6.34882 1.36305 5.95748 2.10594 5.85781 2.91312C5.75814 3.7203 5.95702 4.53607 6.41699 5.20681C6.87697 5.87756 7.5663 6.35699 8.35518 6.55483C8.34521 6.59151 8.33769 6.62881 8.33268 6.66649V10.8332C8.33443 11.7032 8.67628 12.5381 9.28525 13.1595C9.89421 13.7809 10.722 14.1396 11.5919 14.159C11.4395 15.0698 11.038 15.9205 10.4317 16.6171C9.82544 17.3136 9.03813 17.8286 8.15707 18.105C7.276 18.3814 6.3356 18.4084 5.44011 18.1831C4.54462 17.9577 3.72903 17.4888 3.08375 16.8283C2.43847 16.1677 1.98872 15.3414 1.78434 14.4409C1.57996 13.5404 1.62895 12.6009 1.92588 11.7265C2.2228 10.8521 2.75606 10.0771 3.46653 9.48723C4.17701 8.89739 5.03695 8.51583 5.95102 8.38483C6.16993 8.35344 6.36741 8.23638 6.50002 8.05939C6.63262 7.88241 6.68948 7.65999 6.6581 7.44108C6.62672 7.22216 6.50965 7.02468 6.33267 6.89208C6.15568 6.75947 5.93326 6.70261 5.71435 6.73399C4.48432 6.91041 3.32808 7.42708 2.3761 8.22572C1.42412 9.02435 0.714287 10.0732 0.326713 11.2538C-0.060861 12.4344 -0.110754 13.6999 0.182665 14.9073C0.476083 16.1148 1.10113 17.2162 1.98728 18.0874C2.87343 18.9585 3.98541 19.5646 5.19773 19.8373C6.41005 20.11 7.67446 20.0384 8.84828 19.6307C10.0221 19.223 11.0586 18.4953 11.8408 17.5298C12.623 16.5643 13.1199 15.3994 13.2752 14.1665H14.6319C14.8068 14.1665 14.9774 14.2215 15.1193 14.3238C15.2613 14.4261 15.3674 14.5705 15.4227 14.7365L16.7094 18.5965C16.7646 18.7624 16.8706 18.9067 17.0124 19.009C17.1542 19.1112 17.3245 19.1664 17.4994 19.1665H19.166C19.387 19.1665 19.599 19.0787 19.7553 18.9224C19.9116 18.7661 19.9994 18.5542 19.9994 18.3332C19.9994 18.1121 19.9116 17.9002 19.7553 17.7439C19.599 17.5876 19.387 17.4998 19.166 17.4998ZM7.49935 3.33316C7.49935 3.00352 7.5971 2.68129 7.78023 2.40721C7.96337 2.13313 8.22367 1.91951 8.52821 1.79336C8.83276 1.66721 9.16787 1.63421 9.49117 1.69852C9.81447 1.76283 10.1114 1.92156 10.3445 2.15465C10.5776 2.38774 10.7364 2.68471 10.8007 3.00801C10.865 3.33131 10.832 3.66642 10.7058 3.97097C10.5797 4.27551 10.366 4.53581 10.092 4.71894C9.81789 4.90208 9.49565 4.99983 9.16602 4.99983C8.72399 4.99983 8.30007 4.82423 7.98751 4.51167C7.67495 4.19911 7.49935 3.77519 7.49935 3.33316Z"/></svg></span><span class="lgt">Места для пассажиров с ограниченной подвижностью</span></div>
+            <div class="seat-lg"><span class="sw norec"></span><span class="lgt">Неоткидываемое кресло</span></div>
+            <div class="seat-lg"><span class="sw unavail"></span><span class="lgt">Место недоступно</span></div>
+            <div class="seat-lg"><span class="sw sel"></span><span class="lgt">Выбранное место</span></div>
+          </div>
+          <button class="seat-confirm" id="seatConfirm">Подтвердить</button>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var ov=document.getElementById('seatModal');
+      var openBtn=document.getElementById('seatPickBtn');
+      var mapEl=document.getElementById('seatMap');
+      var paxListEl=document.getElementById('seatPaxList');
+      var ROWS=23, COLS=['A','B','C','D','E','F'];
+      var SEATMAP=['oooooo','pppppp','pppppp','pppppp','pppppp','nnnnnn','xxxxxx','xxxxxx','oooooo','oooooo','pppppp','pppffc','cffppp','pppooo','pppooo','oooppp','pppppp','pppppp','ffoffo','ooffff','ooofff','fftooo','fffooo'];
+      var STCLASS={o:'occ',p:'paid',f:'free',n:'free norec',x:'unavail',c:'free',t:'free'};
+      var STICO={c:'child',t:'pet'};
+      function getSt(code){ var r=parseInt(code,10), col=code.replace(/[0-9]/g,''); return SEATMAP[r-1][COLS.indexOf(col)]; }
+      var PRICE={paid:'350 000 UZS',free:'Бесплатно'};
+      var CHILDSVG='<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7.90039 5.49941C7.90039 5.16801 8.16899 4.89941 8.50039 4.89941C8.83179 4.89941 9.10039 5.16801 9.10039 5.49941C9.10039 5.83081 8.83179 6.09941 8.50039 6.09941C8.16899 6.09941 7.90039 5.83081 7.90039 5.49941Z"/><path d="M10.8984 5.49941C10.8984 5.16801 11.167 4.89941 11.4984 4.89941C11.8298 4.89941 12.0984 5.16801 12.0984 5.49941C12.0984 5.83081 11.8298 6.09941 11.4984 6.09941C11.167 6.09941 10.8984 5.83081 10.8984 5.49941Z"/><path d="M9.80722 13.4123C8.47702 14.0535 7.01422 14.4415 5.47522 14.5349C5.29962 13.8263 5.19922 13.0207 5.19922 12.1011C5.19922 11.5493 5.25542 11.0151 5.35682 10.5049C6.57542 11.8187 8.35502 12.8315 9.80722 13.4123Z"/><path d="M14.8 12.0995C14.8 16.4611 12.651 18.3995 9.99995 18.3995C8.15515 18.3995 6.55555 17.4575 5.75195 15.4165C9.32955 15.1405 12.5122 13.3917 14.6538 10.5693C14.7472 11.0597 14.8 11.5713 14.8 12.0995Z"/><path d="M5.64453 9.45181C5.78293 9.06021 5.95253 8.69261 6.14673 8.34961C7.02193 9.52981 8.42093 10.2994 9.99973 10.2994C11.5785 10.2994 12.9773 9.52981 13.8527 8.34981C14.0451 8.68981 14.2141 9.05341 14.3517 9.44121C13.4189 10.8352 12.2311 11.9836 10.8599 12.8346C9.32873 12.3446 6.90453 11.099 5.64453 9.45181Z"/><path d="M9.99961 9.39961C12.15 9.39961 13.8996 7.65001 13.8996 5.49961C13.8996 3.34921 12.15 1.59961 9.99961 1.59961C7.84921 1.59961 6.09961 3.34921 6.09961 5.49961C6.09961 7.65001 7.84921 9.39961 9.99961 9.39961ZM9.07861 2.65941C8.83481 3.49221 9.16121 4.60781 9.99941 4.70601C10.4412 4.75781 10.6236 4.07241 10.2202 3.86381C10.1256 3.80061 10.0516 3.71821 9.99801 3.62521C9.69601 3.10081 10.263 2.46621 10.8438 2.63621C12.087 3.00021 12.9996 4.14001 12.9996 5.49961C12.9996 7.36781 11.2828 8.84281 9.34421 8.42981C8.19621 8.18521 7.27841 7.24281 7.05661 6.09021C6.75221 4.50821 7.70241 3.10741 9.07861 2.65941Z"/></svg>';
+      var PETSVG='<svg viewBox="0 0 20 20" fill="currentColor"><path d="M19.166 17.4998H18.1002L16.9994 14.209C16.8336 13.7119 16.5159 13.2795 16.0911 12.9728C15.6662 12.6662 15.1558 12.5007 14.6319 12.4998H11.666C11.224 12.4998 10.8001 12.3242 10.4875 12.0117C10.1749 11.6991 9.99935 11.2752 9.99935 10.8332H14.9994C15.2204 10.8332 15.4323 10.7454 15.5886 10.5891C15.7449 10.4328 15.8327 10.2208 15.8327 9.99983C15.8327 9.77881 15.7449 9.56685 15.5886 9.41057C15.4323 9.25429 15.2204 9.16649 14.9994 9.16649H9.99935V6.66649C9.99434 6.62881 9.98682 6.59151 9.97685 6.55483C10.7657 6.35699 11.4551 5.87756 11.915 5.20681C12.375 4.53607 12.5739 3.7203 12.4742 2.91312C12.3746 2.10594 11.9832 1.36305 11.3739 0.82434C10.7646 0.285632 9.97933 -0.0117188 9.16602 -0.0117188C8.35271 -0.0117188 7.56746 0.285632 6.95814 0.82434C6.34882 1.36305 5.95748 2.10594 5.85781 2.91312C5.75814 3.7203 5.95702 4.53607 6.41699 5.20681C6.87697 5.87756 7.5663 6.35699 8.35518 6.55483C8.34521 6.59151 8.33769 6.62881 8.33268 6.66649V10.8332C8.33443 11.7032 8.67628 12.5381 9.28525 13.1595C9.89421 13.7809 10.722 14.1396 11.5919 14.159C11.4395 15.0698 11.038 15.9205 10.4317 16.6171C9.82544 17.3136 9.03813 17.8286 8.15707 18.105C7.276 18.3814 6.3356 18.4084 5.44011 18.1831C4.54462 17.9577 3.72903 17.4888 3.08375 16.8283C2.43847 16.1677 1.98872 15.3414 1.78434 14.4409C1.57996 13.5404 1.62895 12.6009 1.92588 11.7265C2.2228 10.8521 2.75606 10.0771 3.46653 9.48723C4.17701 8.89739 5.03695 8.51583 5.95102 8.38483C6.16993 8.35344 6.36741 8.23638 6.50002 8.05939C6.63262 7.88241 6.68948 7.65999 6.6581 7.44108C6.62672 7.22216 6.50965 7.02468 6.33267 6.89208C6.15568 6.75947 5.93326 6.70261 5.71435 6.73399C4.48432 6.91041 3.32808 7.42708 2.3761 8.22572C1.42412 9.02435 0.714287 10.0732 0.326713 11.2538C-0.060861 12.4344 -0.110754 13.6999 0.182665 14.9073C0.476083 16.1148 1.10113 17.2162 1.98728 18.0874C2.87343 18.9585 3.98541 19.5646 5.19773 19.8373C6.41005 20.11 7.67446 20.0384 8.84828 19.6307C10.0221 19.223 11.0586 18.4953 11.8408 17.5298C12.623 16.5643 13.1199 15.3994 13.2752 14.1665H14.6319C14.8068 14.1665 14.9774 14.2215 15.1193 14.3238C15.2613 14.4261 15.3674 14.5705 15.4227 14.7365L16.7094 18.5965C16.7646 18.7624 16.8706 18.9067 17.0124 19.009C17.1542 19.1112 17.3245 19.1664 17.4994 19.1665H19.166C19.387 19.1665 19.599 19.0787 19.7553 18.9224C19.9116 18.7661 19.9994 18.5542 19.9994 18.3332C19.9994 18.1121 19.9116 17.9002 19.7553 17.7439C19.599 17.5876 19.387 17.4998 19.166 17.4998ZM7.49935 3.33316C7.49935 3.00352 7.5971 2.68129 7.78023 2.40721C7.96337 2.13313 8.22367 1.91951 8.52821 1.79336C8.83276 1.66721 9.16787 1.63421 9.49117 1.69852C9.81447 1.76283 10.1114 1.92156 10.3445 2.15465C10.5776 2.38774 10.7364 2.68471 10.8007 3.00801C10.865 3.33131 10.832 3.66642 10.7058 3.97097C10.5797 4.27551 10.366 4.53581 10.092 4.71894C9.81789 4.90208 9.49565 4.99983 9.16602 4.99983C8.72399 4.99983 8.30007 4.82423 7.98751 4.51167C7.67495 4.19911 7.49935 3.77519 7.49935 3.33316Z"/></svg>';
+      // seat states come from SEATMAP grid (same for both legs)
+      var PAX=[{nm:'IVANOV IVAN'},{nm:'IVANOV ALEXEY'}];
+      var state={out:[null,null],ret:[null,null]};
+      var leg='out', activePax=0;
+
+      function buildMap(){
+        var h='';
+        for(var r=1;r<=ROWS;r++){
+          var rowStr=SEATMAP[r-1];
+          h+='<div class="seat-row">';
+          for(var i=0;i<6;i++){
+            if(i===3) h+='<div class="seat-num">'+r+'</div>';
+            var ch=rowStr[i], code=r+COLS[i], ico=STICO[ch]||'';
+            h+='<div class="seat '+STCLASS[ch]+'" data-code="'+code+'" data-st="'+ch+'"'+(ico?' data-ico="'+ico+'"':'')+'></div>';
+          }
+          h+='</div>';
+        }
+        mapEl.innerHTML=h;
+      }
+      function refresh(){
+        var picks=state[leg];
+        mapEl.querySelectorAll('.seat').forEach(function(s){
+          var ch=s.dataset.st, code=s.dataset.code;
+          s.classList.remove('sel');
+          var ic=s.dataset.ico, icHTML=ic==='child'?CHILDSVG:(ic==='pet'?PETSVG:'');
+          if(ch==='o'||ch==='x'){ s.innerHTML=''; return; }
+          var pi=picks.indexOf(code);
+          if(pi>=0){ s.classList.add('sel'); s.textContent=code; }
+          else { s.innerHTML=icHTML?'<span class="sico">'+icHTML+'</span>':''; }
+        });
+        var ph='';
+        PAX.forEach(function(p,idx){
+          var code=picks[idx];
+          var act=idx===activePax?' active':'';
+          if(code){
+            var price=getSt(code)==='p'?PRICE.paid:PRICE.free;
+            ph+='<button class="seat-pax set'+act+'" data-idx="'+idx+'"><span class="nm">'+p.nm+'</span><span class="pr"><b>Место '+code+'</b><span>'+price+'</span></span></button>';
+          } else {
+            ph+='<button class="seat-pax'+act+'" data-idx="'+idx+'"><span class="nm">'+p.nm+'</span><span class="st">Не выбрано</span></button>';
+          }
+        });
+        paxListEl.innerHTML=ph;
+      }
+      function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '); }
+      var TRASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13M10 11v6M14 11v6"/></svg>';
+      function syncCard(){
+        var any=state.out.some(Boolean)||state.ret.some(Boolean);
+        var row=openBtn.closest('.svc-row');
+        var cols=row.querySelectorAll('.svc-col');
+        [['out',0],['ret',1]].forEach(function(pair){
+          var col=cols[pair[1]]; if(!col) return;
+          col.querySelectorAll('.svc-pax').forEach(function(px,idx){
+            var st=px.querySelector('.st'); var code=state[pair[0]][idx];
+            if(code){ st.innerHTML='Место '+code+'<button class="st-del" data-leg="'+pair[0]+'" data-idx="'+idx+'" aria-label="Удалить">'+TRASH+'</button>'; st.classList.add('set'); }
+            else { st.textContent='Не выбрано'; st.classList.remove('set'); }
+          });
+        });
+        var n=0; ['out','ret'].forEach(function(lg){ state[lg].forEach(function(c){ if(c) n++; }); });
+        var priceEl=row.querySelector('.svc-price');
+        var cancelEl=document.getElementById('seatCancelBtn');
+        openBtn.classList.toggle('done',any);
+        if(any){
+          priceEl.textContent='Итого: '+fmt(n*200000)+' UZS';
+          openBtn.textContent='Изменить';
+          if(cancelEl) cancelEl.hidden=false;
+        } else {
+          priceEl.textContent='От 200 000 UZS';
+          openBtn.textContent='Выбрать';
+          if(cancelEl) cancelEl.hidden=true;
+        }
+      }
+
+      mapEl.addEventListener('click',function(e){
+        var s=e.target.closest('.seat'); if(!s) return; var stx=s.dataset.st; if(stx==='o'||stx==='x') return;
+        var code=s.dataset.code, picks=state[leg];
+        var existing=picks.indexOf(code);
+        if(existing>=0){ picks[existing]=null; refresh(); syncCard(); return; }
+        picks[activePax]=code;
+        // advance active to next unset passenger
+        var next=picks.indexOf(null);
+        if(next>=0) activePax=next;
+        refresh(); syncCard();
+      });
+      paxListEl.addEventListener('click',function(e){
+        var b=e.target.closest('.seat-pax'); if(!b) return;
+        activePax=parseInt(b.dataset.idx,10); refresh();
+      });
+      ov.querySelector('.seat-legs').addEventListener('click',function(e){
+        var b=e.target.closest('.seat-leg'); if(!b) return;
+        ov.querySelectorAll('.seat-leg').forEach(function(x){x.classList.remove('active');});
+        b.classList.add('active'); leg=b.dataset.leg; activePax=0; refresh();
+      });
+      function open(){ ov.hidden=false; refresh(); document.body.style.overflow='hidden'; }
+      function close(){ ov.hidden=true; document.body.style.overflow=''; }
+      openBtn.addEventListener('click',open);
+      document.getElementById('seatClose').addEventListener('click',close);
+      document.getElementById('seatConfirm').addEventListener('click',function(){ syncCard(); close(); });
+      // card-side: delete a single seat via trash icon
+      openBtn.closest('.svc-row').querySelector('.svc-cols').addEventListener('click',function(e){
+        var d=e.target.closest('.st-del'); if(!d) return;
+        state[d.dataset.leg][parseInt(d.dataset.idx,10)]=null;
+        if(!ov.hidden) refresh();
+        syncCard();
+      });
+      // card-side: Отменить clears all
+      var cancelBtn=document.getElementById('seatCancelBtn');
+      if(cancelBtn) cancelBtn.addEventListener('click',function(){ state={out:[null,null],ret:[null,null]}; activePax=0; if(!ov.hidden) refresh(); syncCard(); });
+      ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+      buildMap(); refresh();
+      open();
+    })();
+  </script>
+  <script src="image-slot.js"></script>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#12174f"/>
+      <g transform="translate(50 50)" fill="none" stroke="#f5efe8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-16 4 L16 4 M-12 4 L-6 -14 M16 4 L8 -16 L2 -16 L6 4"/>
+      </g>
+    </svg>
+  </template>
+</body>
+</html>

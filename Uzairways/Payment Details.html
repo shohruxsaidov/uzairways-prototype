@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Детали и оплата · Uzbekistan Airways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
+    --ink:#12174f; --ink-soft:#2a2f63; --accent:#8b273e; --accent-2:#a8324c;
+    --text:#20233f; --muted:#857d89; --muted-2:#a59ba6;
+    --line:#e7ddd5; --line-card:#efe7e2;
+    --good:#2f7350; --good-bg:#e7f0ea;
+    --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+    --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
+    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;}
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;}
+  .container{max-width:1160px;margin:0 auto;padding:0 28px;}
+  .pd-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--surface);border:1px solid var(--line-card);box-shadow:0 -2px 24px rgba(18,23,79,.08);}
+  .pd-bar-inner{display:flex;align-items:center;gap:30px;padding:18px 28px;}
+  .pd-pax{display:flex;align-items:center;gap:20px;}
+  .pd-pax .pdx{display:flex;align-items:center;gap:6px;font-weight:800;font-size:17px;color:var(--ink);}
+  .pd-pax .pdx svg{width:20px;height:20px;}
+  .pd-price{display:flex;flex-direction:column;gap:2px;}
+  .pd-price .tot{font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1;white-space:nowrap;}
+  .pd-price .lbl{font-size:13.5px;color:var(--muted);font-weight:600;}
+  .pd-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
+  .pd-details:hover{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;}
+  .pd-confirm{margin-left:auto;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:15px 52px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .pd-confirm:hover{background:var(--accent-2);}
+  body{padding-bottom:96px;}
+  .pdd-ov{position:fixed;inset:0;background:rgba(18,23,79,.4);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .pdd-ov[hidden]{display:none;}
+  .pdd-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(560px,94vw);padding:34px 40px 32px;}
+  .pdd-close{position:absolute;top:20px;right:22px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .pdd-close:hover{background:var(--bg-2);}
+  .pdd-title{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
+  .pdd-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;padding:7px 0;}
+  .pdd-row .dl{color:var(--ink-soft);font-weight:600;}
+  .pdd-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pdd-points{color:var(--good);font-weight:700;font-size:16.5px;padding:7px 0;}
+  .pdd-sep{height:1px;background:var(--line);border:0;margin:8px 0 2px;}
+  .pdd-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;color:var(--ink);margin-top:8px;}
+  .visa-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(760px,94vw);padding:46px 54px 44px;text-align:center;}
+  .visa-msg{font-weight:800;font-size:20px;line-height:1.5;color:var(--ink);max-width:none;margin:0 auto 34px;white-space:nowrap;}
+  .visa-actions{display:flex;gap:20px;justify-content:center;}
+  .visa-btn{flex:1;max-width:240px;padding:18px 24px;border-radius:14px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;}
+  .visa-btn.yes{background:var(--accent);color:#fff;border:0;}
+  .visa-btn.yes:hover{background:var(--accent-2);}
+  .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
+  .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
+  .pdd-pen{padding:7px 0;}
+  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
+  .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .pdd-pen.open .pdd-penbtn .chev{transform:rotate(180deg);}
+  .pdd-penbody{display:none;flex-direction:column;gap:14px;padding:10px 0 2px;}
+  .pdd-pen.open .pdd-penbody{display:flex;}
+  .pdd-penbody .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
+  .pdd-penbody .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
+  .pdd-penbody .pen-d{font-weight:600;color:var(--ink-soft);font-size:14px;line-height:1.4;}
+  @media(max-width:680px){.pd-bar-inner{flex-wrap:wrap;gap:14px;}.pd-confirm{margin-left:0;width:100%;}}
+
+  /* ---------- Header ---------- */
+  .site-header{background:var(--ink);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);}
+  .hold-timer{position:fixed;top:80px;right:28px;z-index:500;display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line-card);border-radius:14px;box-shadow:var(--sh-md);padding:18px 22px;max-width:340px;}
+  .hold-timer .ht-time{font-size:30px;font-weight:900;color:#1f4e9c;font-variant-numeric:tabular-nums;letter-spacing:.01em;line-height:1;}
+  .hold-timer .ht-desc{font-size:14.5px;font-weight:600;color:#1f4e9c;line-height:1.35;}
+  .hold-timer.expired .ht-time{color:var(--accent);}
+  .hdr-inner{display:flex;align-items:center;gap:24px;height:64px;width:100%;max-width:none;padding:0 32px;}
+  .logo{display:flex;align-items:center;flex:none;}
+  .logo svg{height:30px;width:auto;display:block;}
+  .site-nav{display:flex;gap:18px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82);flex:1;justify-content:center;}
+  .site-nav span{cursor:pointer;white-space:nowrap;}
+  .site-nav span:hover{color:#fff;}
+  .hdr-right{display:flex;align-items:center;gap:8px;flex:none;}
+  .hdr-ic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;background:transparent;transition:.15s;}
+  .hdr-ic:hover{background:rgba(255,255,255,.08);}
+  .hdr-ic svg{width:20px;height:20px;display:block;}
+  .hdr-lang{display:flex;align-items:center;gap:7px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;background:transparent;padding:8px 6px;border-radius:10px;transition:.15s;}
+  .hdr-lang:hover{background:rgba(255,255,255,.08);}
+  .hdr-lang svg{width:18px;height:18px;display:block;}
+  .hdr-div{width:1px;height:28px;background:rgba(255,255,255,.16);margin:0 2px;}
+  .hdr-profile{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:.15s;}
+  .hdr-profile:hover{background:rgba(255,255,255,.16);}
+  .hdr-profile svg{width:20px;height:20px;display:block;}
+  .btn-login{background:var(--accent);color:#fff;border-radius:12px;padding:9px 18px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;margin-left:4px;}
+  .btn-login:hover{background:var(--accent-2);}
+
+  /* ===== Passenger page ===== */
+  body{padding-bottom:130px;}
+  .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
+  /* Stepper */
+  .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
+  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
+  .step .dot{width:19px;height:19px;border-radius:50%;border:2px solid var(--muted-2);display:flex;align-items:center;justify-content:center;flex:none;}
+  .step.done{color:var(--ink);}
+  .step.done .dot{background:var(--good);border-color:var(--good);}
+  .step.done .dot svg{width:12px;height:12px;display:block;color:#fff;}
+  .step.active{color:var(--ink);}
+  .step.active .dot{border-color:var(--ink);background:var(--ink);}
+  .step.active .dot i{width:7px;height:7px;border-radius:50%;background:#fff;}
+  .step-line{flex:1;height:2px;background:var(--line);margin:0 9px;min-width:12px;}
+
+  .pax-title{text-align:center;margin-top:40px;}
+  .pax-title h1{font-size:34px;font-weight:900;letter-spacing:-.025em;color:var(--ink);}
+  .pax-title p{color:var(--muted);font-size:16px;margin-top:10px;}
+
+  /* Passenger card */
+  .pax-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);margin-top:26px;overflow:hidden;}
+  .pax-head{display:flex;align-items:center;gap:12px;background:rgb(239,229,226);padding:18px 26px;cursor:pointer;}
+  .pax-head .pn{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;}
+  .pax-head h3{font-size:19px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .pax-head .chev{margin-left:auto;color:var(--ink);font-size:14px;transition:.2s;}
+  .pax-head .trash{margin-left:auto;width:34px;height:34px;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;transition:.15s;}
+  .pax-head .trash:hover{background:var(--surface);}
+  .pax-head .trash svg{width:20px;height:20px;display:block;}
+  .pax-head .trash + .chev{margin-left:14px;}
+  .pax-card.collapsed .chev{transform:rotate(-90deg);}
+  .pax-card.collapsed .pax-body{display:none;}
+  .pax-body{padding:28px 26px;display:grid;grid-template-columns:1fr 1fr auto 1fr;gap:22px 20px;align-items:end;}
+
+  .fld{display:flex;flex-direction:column;gap:7px;}
+  .fld label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.01em;}
+  .fld .inp{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 16px;font-family:var(--font);font-weight:600;font-size:15px;color:var(--ink);width:100%;outline:none;transition:.15s;}
+  .fld .inp::placeholder{color:var(--muted-2);font-weight:600;}
+  .fld .inp:focus{border-color:var(--ink);background:var(--surface);}
+  .fld .inp-ic{position:relative;}
+  .fld .inp-ic .inp{padding-right:44px;cursor:pointer;}
+  .fld .inp-ic .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink);pointer-events:none;}
+  .fld .inp-ic .ic svg{width:20px;height:20px;display:block;}
+  .fld.sel .inp{display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+  .fld.sel .chev{color:var(--muted);font-size:12px;}
+  .chev-i{width:13px;height:13px;display:inline-block;vertical-align:middle;flex:none;}
+
+  /* gender toggle */
+  .gender{display:flex;flex-direction:column;gap:7px;}
+  .gender .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:4px;gap:4px;}
+  .gender .seg button{flex:1;padding:10px 18px;border-radius:10px;font-family:var(--font);font-weight:700;font-size:14px;color:var(--muted);background:transparent;white-space:nowrap;transition:.15s;}
+  .gender .seg button.on{background:var(--accent);color:#fff;}
+
+  /* add buttons */
+  .add-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:24px;}
+  .add-pax{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;background:var(--surface);border:1px dashed var(--muted-2);border-radius:var(--r-md);padding:18px 16px;font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;transition:.15s;}
+  .add-pax:hover{border-color:var(--ink);border-style:solid;background:var(--surface-2);}
+  .add-pax:disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);border-style:solid;color:var(--muted-2);background:var(--bg);}
+  .add-pax:disabled .plus{background:var(--muted-2);}
+  .add-pax:disabled:hover{border-style:solid;background:var(--bg);border-color:var(--line);}
+  .add-pax .plus{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex:none;}
+
+  .pax-div{height:1px;background:var(--line);margin:34px 0;border:0;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .contact-grid .hint{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .contact-grid .inp{background:#fff;}
+
+  /* checkboxes */
+  .checks{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+  .chk{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:15px;color:var(--text);font-weight:600;}
+  .chk input{display:none;}
+  .chk .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--muted-2);background:var(--surface);flex:none;display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:1px;}
+  .chk .box svg{width:13px;height:13px;display:block;color:#fff;opacity:0;transition:.12s;}
+  .chk input:checked + .box{background:var(--accent);border-color:var(--accent);}
+  .chk input:checked + .box svg{opacity:1;}
+  .chk a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+  .chk.master{font-weight:800;color:var(--ink);font-size:15.5px;}
+  .sub-checks{display:flex;flex-direction:column;gap:14px;padding-left:34px;margin-top:2px;}
+
+  .pax-foot{display:flex;justify-content:flex-end;margin-top:38px;}
+  .btn-next{background:var(--accent);color:#fff;border-radius:var(--r-md);padding:16px 46px;font-family:var(--font);font-weight:800;font-size:16px;transition:.15s;}
+  .btn-next:hover{background:var(--accent-2);}
+
+  @media(max-width:820px){
+    .pax-body{grid-template-columns:1fr 1fr;}
+    .add-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .stepper{overflow-x:auto;}
+  }
+
+  /* ===== Additional services ===== */
+  .svc-summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+  .svc-leg{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:12px 22px;display:flex;gap:16px;}
+  .svc-leg .leg-tab{flex:none;width:80px;border-right:1px solid var(--line);padding-right:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
+  .svc-leg .leg-tab .lt{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;}
+  .svc-leg .leg-tab .ld{font-weight:900;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.1;}
+  .svc-leg .leg-tab .lm{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .svc-leg .leg-body{flex:1;min-width:0;}
+  .svc-leg .lb-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .svc-leg .lb-route{font-weight:800;font-size:15px;color:var(--ink);}
+  .svc-leg .lb-fno{font-weight:800;font-size:14px;color:var(--accent);}
+  .svc-leg .lb-times{font-size:15px;color:var(--muted);margin-top:8px;font-weight:700;}
+  .svc-leg .lb-times b{color:var(--ink);font-weight:800;}
+  .svc-leg .lb-meta{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .svc-leg .lb-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+  .svc-leg .lb-cls{font-weight:800;font-size:15px;color:var(--accent);margin-top:8px;}
+  .svc-leg .roundel{width:22px;height:22px;flex:none;}
+  .svc-leg .roundel.roundel-pair{width:50px;height:22px;}
+  .svc-leg .roundel svg{width:100%;height:100%;display:block;}
+
+  .svc-h{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:38px 0 24px;}
+  .svc-list{display:flex;flex-direction:column;gap:20px;}
+  .svc-row{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
+  .svc-pic{background:var(--bg-2);min-height:210px;}
+  .svc-pic image-slot{width:100%;height:100%;display:block;}
+  .svc-info{padding:24px 28px;display:flex;flex-direction:column;}
+  .svc-info h4{font-weight:800;font-size:18px;color:var(--ink);}
+  .svc-info .desc{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:560px;}
+  .svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:18px;}
+  .svc-col{position:relative;}
+  .svc-col + .svc-col{padding-left:30px;border-left:1px solid var(--line);}
+  .svc-col .sc-route{font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:10px;}
+  .svc-pax{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:14px;padding:5px 0;}
+  .svc-pax .nm{font-weight:700;color:var(--ink);}
+  .svc-pax .st{color:var(--muted);font-weight:600;}
+  .svc-pax .st.set{color:var(--good);}
+  .svc-foot{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:auto;padding-top:18px;}
+  .svc-price{font-weight:900;font-size:18px;color:var(--ink);white-space:nowrap;}
+  .svc-price.free{color:var(--good);}
+  .svc-pick{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 44px;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-pick:hover{background:var(--accent);}
+  .svc-pick.done{background:var(--good);}
+  .svc-actions{display:flex;flex-direction:row;align-items:center;gap:18px;}
+  .svc-cancel{background:none;border:0;color:var(--muted);font-family:var(--font);font-weight:600;font-size:13.5px;cursor:pointer;padding:0;}
+  .svc-cancel:hover{color:var(--accent);}
+  .svc-pax .st .st-del{background:none;border:0;padding:0;margin-left:8px;cursor:pointer;color:var(--muted-2);vertical-align:middle;display:inline-flex;}
+  .svc-pax .st .st-del svg{width:15px;height:15px;display:block;}
+  .svc-pax .st .st-del:hover{color:var(--accent);}
+  .svc-links{margin-top:12px;}
+  .svc-links a{display:block;color:#2a6fdb;font-weight:700;font-size:13.5px;margin-top:5px;text-decoration:none;}
+  .svc-links a:hover{text-decoration:underline;}
+  .svc-foot .svc-price-lbl{font-weight:900;font-size:17px;color:var(--ink);text-align:right;line-height:1.3;white-space:nowrap;}
+  .svc-cancel{background:var(--bg-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:12px;padding:11px 32px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-cancel:hover{border-color:var(--accent);color:var(--accent);}
+  @media(max-width:860px){
+    .svc-summary{grid-template-columns:1fr;}
+    .svc-row{grid-template-columns:1fr;}
+    .svc-cols{grid-template-columns:1fr;}
+    .svc-col + .svc-col{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:14px;}
+  }
+  /* ===== Seat selection modal ===== */
+  .seat-ov{position:fixed;inset:0;background:rgba(18,23,79,.45);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .seat-ov[hidden]{display:none;}
+  .seat-card{position:relative;background:var(--surface);border-radius:22px;box-shadow:0 30px 80px rgba(18,23,79,.24);width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;}
+  .seat-head{position:relative;padding:22px 30px;border-bottom:1px solid var(--line);text-align:center;flex:none;}
+  .seat-title{font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.01em;}
+  .seat-close{position:absolute;top:15px;right:18px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .seat-close:hover{background:var(--bg-2);}
+  .seat-legs{display:flex;align-items:center;gap:14px;padding:18px 30px 6px;flex:none;}
+  .seat-pin{flex:none;width:34px;height:34px;color:var(--accent);display:flex;align-items:center;justify-content:center;}
+  .seat-pin svg{width:30px;height:30px;}
+  .seat-leg{flex:1;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-family:var(--font);font-weight:800;font-size:15px;color:var(--ink-soft);background:#f5efe8;cursor:pointer;transition:.15s;text-align:center;}
+  .seat-leg:hover{border-color:var(--accent);color:var(--accent);}
+  .seat-leg.active{background:var(--ink);color:#fff;border-style:solid;border-color:var(--ink);}
+  .seat-body{display:grid;grid-template-columns:1fr 264px;gap:22px;padding:14px 30px 26px;overflow:hidden;flex:1;min-height:0;}
+  .seat-main{display:flex;flex-direction:column;min-height:0;}
+  .seat-plane{background:#f5efe8;border:1px solid var(--line);border-radius:10px;text-align:center;font-weight:800;font-size:14px;letter-spacing:.04em;color:var(--ink-soft);padding:11px 0;margin-bottom:14px;flex:none;}
+  .seat-scroll{overflow-y:auto;padding-right:6px;min-height:0;overscroll-behavior:contain;}
+  .seat-scroll::-webkit-scrollbar{width:8px;}
+  .seat-scroll::-webkit-scrollbar-thumb{background:#efe6dd;border-radius:4px;}
+  .seat-colhdr,.seat-row{display:grid;grid-template-columns:repeat(3,40px) 44px repeat(3,40px);gap:12px;justify-content:center;align-items:center;}
+  .seat-colhdr{margin-bottom:8px;position:sticky;top:0;background:var(--surface);z-index:1;padding-bottom:4px;}
+  .seat-colhdr span{text-align:center;font-weight:800;font-size:13px;color:var(--muted-2);}
+  .seat-row{margin-bottom:12px;}
+  .seat-num{text-align:center;font-weight:700;font-size:14px;color:var(--muted);}
+  .seat{width:40px;height:40px;border-radius:9px;border:1.5px solid transparent;cursor:pointer;transition:.12s;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:transparent;}
+  .seat.free{background:#27AE60;}
+  .seat.paid{background:#1C5185;}
+  .seat.norec{position:relative;}
+  .seat.norec::after{content:"";position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:20px;height:4px;border-radius:2px;background:#fff;}
+  .seat.unavail{background:rgba(39,174,96,.08);background-image:repeating-linear-gradient(-45deg,#27AE60 0 2px,transparent 2px 6px);cursor:not-allowed;}
+  .seat .sico{width:18px;height:18px;color:#fff;display:flex;}
+  .seat .sico svg{width:100%;height:100%;}
+  .seat:hover:not(.occ):not(.unavail):not(.sel){filter:brightness(.94);transform:translateY(-1px);}
+  .seat.occ{background:#fff;border:1.5px dashed rgba(18,23,79,.28);cursor:not-allowed;}
+  .seat.sel{background:#1C5185;color:#fff;border-radius:50%;border-color:#1C5185;box-shadow:0 0 0 4px rgba(28,81,133,.2);}
+  .seat.norec.sel::after{display:none;}
+  .seat-foot{display:flex;justify-content:space-between;padding:14px 2px 4px;}
+  .seat-lav{width:60px;height:46px;border-radius:8px;background:rgba(18,23,79,.06);display:flex;align-items:center;justify-content:center;color:var(--muted-2);}
+  .seat-lav svg{width:22px;height:22px;}
+  .seat-side{display:flex;flex-direction:column;min-height:0;}
+  .seat-confirm{margin-top:18px;flex:none;width:100%;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 0;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;}
+  .seat-confirm:hover{background:var(--accent-hover,#a8324c);}
+  .seat-paxlist{display:flex;flex-direction:column;gap:10px;}
+  .seat-pax{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;background:#f5efe8;cursor:pointer;transition:.15s;text-align:left;font-family:var(--font);}
+  .seat-pax:hover{border-color:var(--accent);}
+  .seat-pax.active{border-color:var(--accent);background:var(--surface);box-shadow:0 4px 14px rgba(139,39,62,.1);}
+  .seat-pax .nm{font-weight:800;font-size:14px;color:var(--ink);}
+  .seat-pax .pr{display:flex;flex-direction:column;align-items:flex-end;}
+  .seat-pax .pr b{font-weight:900;font-size:14px;color:var(--ink);}
+  .seat-pax .pr span{font-size:12px;color:var(--muted);}
+  .seat-pax .st{font-size:13px;color:var(--muted);font-weight:600;}
+  .seat-pax.set .st{color:var(--good);}
+  .seat-sep{border:0;border-top:1px solid var(--line);margin:18px 0;}
+  .seat-legend{display:flex;flex-direction:column;gap:13px;}
+  .seat-lg{display:flex;align-items:center;gap:12px;}
+  .seat-lg .sw{flex:none;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .seat-lg .sw svg{width:15px;height:15px;color:#fff;}
+  .sw.occ{background:#fff;border:1.5px dashed rgba(18,23,79,.28);}
+  .sw.paid{background:#1C5185;}
+  .sw.free{background:#27AE60;}
+  .sw.child,.sw.pet,.sw.norec{background:#27AE60;}
+  .sw.norec{position:relative;}
+  .sw.norec::before{content:"";position:absolute;left:50%;bottom:3px;transform:translateX(-50%);width:13px;height:2.5px;border-radius:2px;background:#fff;}
+  .sw.unavail{background:rgba(39,174,96,.08);background-image:repeating-linear-gradient(-45deg,#27AE60 0 2px,transparent 2px 6px);}
+  .sw.sel{background:rgba(28,81,133,.2);border-radius:50%;}
+  .sw.sel::before{content:"";width:19px;height:19px;border-radius:50%;background:#1C5185;}
+  .seat-lg .lgt{font-weight:600;font-size:12.5px;color:var(--ink);line-height:1.25;}
+  @media(max-width:760px){
+    .seat-body{grid-template-columns:1fr;}
+  }
+
+  /* ===== Детали и оплата ===== */
+  .pay-main{max-width:1000px;margin:0 auto;padding:0 28px;}
+  .pay-h{text-align:center;font-weight:800;font-size:30px;letter-spacing:-.02em;color:var(--ink);margin:6px 0 28px;}
+  .pay-pass{display:flex;flex-direction:column;gap:22px;}
+  .pay-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:22px 24px 24px;}
+  .pay-cardhd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin-bottom:16px;}
+  .pay-name{font-weight:900;font-size:19px;color:var(--ink);letter-spacing:-.01em;}
+  .pay-type{font-weight:600;font-size:15px;color:var(--muted);text-align:center;}
+  .pay-tot{font-weight:900;font-size:18px;color:var(--ink);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pay-legs{display:flex;flex-direction:column;gap:12px;}
+  .pay-leg{background:var(--bg);border:1px solid var(--line-card);border-radius:var(--r-md);overflow:hidden;transition:.15s;}
+  .pay-leghd{display:flex;align-items:center;gap:16px;padding:15px 18px;cursor:pointer;}
+  .pay-leghd .lg-dir{font-weight:800;font-size:15px;color:var(--ink);min-width:64px;}
+  .pay-leghd .lg-route{font-weight:600;font-size:14.5px;color:var(--ink-soft);}
+  .pay-leghd .lg-pay{margin-left:auto;font-weight:600;font-size:14px;color:var(--muted);white-space:nowrap;}
+  .pay-leghd .lg-pay b{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;}
+  .pay-chev{flex:none;width:22px;height:22px;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+  .pay-chev svg{width:20px;height:20px;display:block;}
+  .pay-leg.open .pay-chev{transform:rotate(180deg);}
+  .pay-legdetail{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .pay-leg.open .pay-legdetail{max-height:760px;}
+  .pay-legdetail-in{padding:0;border-top:2px solid #fff;}
+  .pay-drow{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:7px 0;font-size:14.5px;}
+  .pay-drow .dl{color:var(--ink-soft);font-weight:600;}
+  .pay-drow .dv{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pay-svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding:18px;}
+  .pay-svc-col{border:1.5px solid #fff;border-radius:12px;padding:14px 20px 16px;}
+  .pay-svc-h{font-weight:800;font-size:15px;color:var(--ink);margin:0 0 6px;}
+  .pay-svc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:8px 0;}
+  .pay-svc-row .sl{font-weight:700;font-size:14.5px;color:var(--ink-soft);line-height:1.3;}
+  .pay-svc-row .sl small{display:block;font-weight:600;font-size:12px;color:var(--muted-2);margin-top:2px;}
+  .pay-svc-row .sv{font-weight:800;font-size:14px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;align-self:center;}
+  .pay-svc-row .sv.free{font-weight:700;}
+  .pay-svc-info{display:inline-flex;width:15px;height:15px;margin-left:5px;vertical-align:-2px;color:var(--muted-2);}
+  .pay-svc-info svg{width:15px;height:15px;}
+  .pay-methods{margin-top:18px;display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .pay-grand-frame{margin-top:34px;background:#fff;border-radius:var(--r-xl);box-shadow:var(--sh-md);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .pay-grand-frame .g-ttl{font-weight:800;font-size:24px;color:var(--ink);letter-spacing:-.02em;}
+  .pay-grand-frame .g-lbl{font-size:14px;color:var(--muted);font-weight:600;margin-top:3px;}
+  .pay-grand-frame .g-amt{font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pay-methods-l{flex:1;min-width:320px;}
+  .pay-mlabel{font-weight:700;font-size:17px;color:var(--ink);margin-bottom:16px;}
+  .pay-tiles{display:flex;gap:18px;flex-wrap:wrap;}
+  .pay-tile{position:relative;width:128px;height:84px;border:1.5px solid var(--line);border-radius:var(--r-md);background:var(--surface);cursor:pointer;transition:.15s;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .pay-tile:hover{border-color:var(--accent);}
+  .pay-tile.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,39,62,.14);}
+  .pay-tile.sel::after{content:"";position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:var(--accent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");background-size:13px;background-repeat:no-repeat;background-position:center;}
+  .pay-tile image-slot{width:100%;height:100%;display:block;}
+  .pay-mcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .pay-mcard .mc-logo img{height:34px;display:block;width:auto;}
+  .pay-mcard .mc-logo .mc-word{font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1;}
+  .pay-mcard{position:relative;display:flex;align-items:center;gap:20px;width:100%;background:#fff;border:1.5px solid var(--line-card);border-radius:18px;box-shadow:var(--sh-md);padding:18px 26px;cursor:pointer;text-align:left;font-family:var(--font);transition:.15s;}
+  .pay-mcard:hover{border-color:var(--accent);}
+  .pay-mcard.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,39,62,.14);}
+  .pay-mcard .mc-body{flex:1;min-width:0;}
+  .pay-mcard .mc-lbl{font-weight:700;font-size:15px;color:#12174f;margin-bottom:9px;letter-spacing:-.01em;}
+  .pay-mcard .mc-logo{display:flex;align-items:center;height:34px;}
+  .pay-mcard .mc-logo svg{height:34px;display:block;width:auto;}
+  .pay-mcard .mc-chev{flex:none;width:22px;height:22px;color:#12174f;}
+  .pay-mcard .mc-chev svg{width:22px;height:22px;display:block;}
+  .pay-methods-r{display:flex;flex-direction:column;align-items:flex-end;gap:14px;}
+  .pay-grand{text-align:right;}
+  .pay-grand .g-sum{font-weight:900;font-size:22px;color:var(--ink);letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pay-grand .g-lbl{font-size:14px;color:var(--muted);font-weight:600;}
+  .pay-go{background:var(--accent);color:#fff;border-radius:14px;padding:15px 64px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;}
+  .pay-go:hover{background:var(--accent-2);}
+  @media(max-width:720px){ .pay-cardhd{grid-template-columns:1fr;gap:6px;} .pay-type,.pay-tot{text-align:left;} .pay-methods{flex-direction:column;align-items:stretch;} .pay-methods-r{align-items:stretch;} }
+
+</style>
+</head>
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#12174f"/><circle cx="50" cy="42" r="20" fill="#FFD141"/><text x="50" y="92" font-family="sans-serif" font-size="13" font-weight="800" fill="#f5efe8" text-anchor="middle">UZ</text></svg>
+  </template>
+<!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container hdr-inner">
+      <a class="logo" href="Home.html" aria-label="Uzbekistan Airways"><svg viewBox="0 0 176 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><g clip-path="url(#uzlogo_clip)"><path fill-rule="evenodd" clip-rule="evenodd" d="M56.3995 3.32693H52.5518L50.9591 10.9441C50.4209 13.2843 50.0068 15.2486 47.3598 15.2486C45.9742 15.2486 45.1461 14.5856 45.1461 13.4887C45.1461 12.7013 45.3724 11.936 45.5187 11.2315L47.2356 3.32417H43.3878L41.7124 11.0463C41.5054 12.0189 41.2983 12.9085 41.2983 14.1518C41.2983 16.4919 43.4292 18.4149 47.2742 18.4149C52.6097 18.4149 53.8104 15.7432 54.6357 11.7702L56.394 3.32417L56.3995 3.32693ZM55.0746 18.1082L55.715 14.7955L64.959 6.63959H57.7631L58.4448 3.32693H70.5236L69.8611 6.63959L60.3466 14.7955H68.4534L67.7909 18.1082H55.0718H55.0746ZM69.5934 18.1082H76.8113C81.1339 18.0889 83.5325 16.1411 83.5325 13.1406C83.5325 11.8144 82.7458 10.5518 81.443 10.2424V10.2009C83.1378 9.82793 84.1729 8.50452 84.1729 6.55671C84.1729 4.9432 83.5518 3.32693 79.5605 3.32693H72.6738L69.5934 18.1082ZM75.8591 6.34949H78.3819C79.21 6.34949 80.3251 6.43238 80.3251 7.50989C80.3251 8.64819 79.5605 9.1455 78.0093 9.1455H75.2794L75.8591 6.35225V6.34949ZM74.7439 11.7315H77.4545C78.4482 11.7315 79.6875 11.8338 79.6875 13.2014C79.6875 14.7955 78.404 15.0856 77.0598 15.0856H74.0401L74.7439 11.7315ZM84.5262 18.1082H96.3565L97.0603 14.7955H89.0557L89.6353 11.9802H96.9554L97.5765 8.99907H90.2564L90.7311 6.63959H98.6723L99.3762 3.32693H87.5872L84.5262 18.1082ZM98.6916 18.1082L101.813 3.32693H105.661L104.441 9.1234H104.483L110.5 3.32693H115.587L108.535 9.4135L112.918 18.1082H108.535L105.496 11.8973L103.489 13.6158L102.537 18.1082H98.6889H98.6916ZM114.016 18.1082H117.864L120.945 3.32693H117.097L114.016 18.1082ZM120.696 13.1378H124.544C124.544 14.732 125.433 15.2486 127.254 15.2486C128.806 15.2486 129.446 14.5856 129.446 13.7788C129.446 12.309 127.213 12.1432 125.681 11.6044C123.84 10.9414 122.352 9.96883 122.352 7.79446C122.352 4.44036 125.391 3.01196 128.35 3.01196C131.494 3.01196 134.16 4.17236 134.058 7.77236H130.211C130.211 7.21427 130.026 6.81918 129.694 6.57052C129.344 6.30252 128.825 6.17819 128.143 6.17819C127.191 6.17819 126.2 6.57052 126.2 7.50436C126.2 8.43821 126.821 8.49899 128.888 9.05709C130.914 9.61519 133.294 10.6706 133.294 13.5688C133.294 16.1991 130.956 18.4121 126.633 18.4121C123.117 18.4121 120.657 16.6328 120.699 13.1323L120.696 13.1378ZM148.762 3.32693H136.228L135.565 6.63959H139.907L137.487 18.1082H141.334L143.755 6.63959H148.097L148.759 3.32693H148.762ZM144.089 18.1082L152.712 3.32693H156.601L159.022 18.1082H155.155L154.804 15.4586H149.612L148.124 18.1082H144.092H144.089ZM153.871 7.28057L151.1 12.6018H154.47L153.913 7.28057H153.871ZM159.908 18.1082H163.631L165.514 8.44097H165.555L168.967 18.1082H172.917L175.997 3.32693H172.274L170.433 12.9942H170.391L166.938 3.32693H162.988L159.908 18.1082Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M112.586 32.7916H115.112L116.045 31.1312H119.297L119.517 32.7916H121.941L120.425 23.5333H117.991L112.589 32.7916H112.586ZM118.717 26.0088H118.742L119.092 29.3408H116.981L118.717 26.0088ZM122.603 32.7916H125.013L126.942 23.5333H124.533L122.603 32.7916ZM130.531 25.3982H132.305C132.94 25.3982 133.6 25.5668 133.6 26.357C133.6 27.3543 132.849 27.6279 131.98 27.6279H130.061L130.528 25.3982H130.531ZM126.592 32.7916L128.51 23.5333H133.045C134.729 23.5333 136.012 23.9616 136.012 25.9315C136.012 27.3184 135.353 28.3048 133.901 28.512V28.5369C134.588 28.7054 134.848 29.1861 134.848 30.0813C134.848 30.7554 134.809 31.2748 134.809 31.8053C134.809 32.1286 134.809 32.5319 134.953 32.7916H132.529C132.49 32.6093 132.452 32.4408 132.452 32.2612C132.452 31.7804 132.515 31.2887 132.515 30.667C132.515 29.8492 132.165 29.421 131.309 29.421H129.703L129.004 32.7916H126.595H126.592ZM137.45 32.7916H139.874L142.389 26.5283H142.413V32.7916H144.837L149.228 23.5333H146.752L144.136 30.2774H144.111V23.5333H141.908L139.187 30.2774H139.162L139.225 23.5333H136.802L137.45 32.7916ZM146.739 32.7916L152.14 23.5333H154.575L156.09 32.7916H153.667L153.446 31.1312H150.194L149.261 32.7916H146.736H146.739ZM152.866 26.0088L151.13 29.3408H153.242L152.891 26.0088H152.866ZM158.18 32.7916H160.565L161.304 29.2911L165.839 23.5333H162.949L160.371 27.3847L159.27 23.5333H156.783L158.92 29.2911L158.18 32.7916ZM164.542 29.6779H166.952C166.952 30.6753 167.509 31.0013 168.649 31.0013C169.621 31.0013 170.024 30.5869 170.024 30.0813C170.024 29.1613 168.624 29.0563 167.667 28.7192C166.513 28.3048 165.58 27.6942 165.58 26.3321C165.58 24.2323 167.484 23.3372 169.337 23.3372C171.305 23.3372 172.977 24.0638 172.911 26.321H170.501C170.501 25.9702 170.385 25.7243 170.178 25.5695C169.958 25.401 169.635 25.3237 169.207 25.3237C168.611 25.3237 167.99 25.5695 167.99 26.1525C167.99 26.7355 168.379 26.7741 169.673 27.125C170.943 27.4759 172.434 28.1362 172.434 29.9514C172.434 31.5981 170.971 32.985 168.263 32.985C166.06 32.985 164.52 31.8689 164.545 29.6779H164.542Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3086 0.000194929C23.1405 -0.0203324 27.7829 1.86428 31.215 5.23967C34.647 8.61505 36.5878 13.2049 36.6107 18C36.5878 22.7951 34.647 27.3849 31.215 30.7603C27.7829 34.1357 23.1405 36.0203 18.3086 35.9998C13.4756 36.0221 8.83153 34.1382 5.39804 30.7626C1.96456 27.3871 0.0228381 22.7962 0 18C0.0228381 13.2038 1.96456 8.61294 5.39804 5.23737C8.83153 1.86179 13.4756 -0.0220581 18.3086 0.000194929Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.3055 1.47185C22.7422 1.45304 27.0047 3.18352 30.156 6.2828C33.3073 9.38209 35.0893 13.5965 35.1102 17.9993C35.0893 22.4021 33.3073 26.6165 30.156 29.7158C27.0047 32.8151 22.7422 34.5456 18.3055 34.5268C13.8683 34.5464 9.60492 32.8163 6.45294 29.7169C3.30096 26.6176 1.51849 22.4027 1.49756 17.9993C1.51849 13.5959 3.30096 9.38103 6.45294 6.28165C9.60492 3.18227 13.8683 1.45218 18.3055 1.47185Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M30.11 22.0279C29.8622 22.361 29.5491 22.6409 29.1896 22.8507C28.83 23.0606 28.4313 23.1961 28.0176 23.2492L17.4653 23.2407C16.9389 22.974 16.8807 22.6035 17.4653 22.377H23.4313C23.6946 22.386 23.9562 22.3317 24.1938 22.2187C24.4314 22.1057 24.638 21.9374 24.7959 21.7281C26.5941 19.4109 28.6054 17.1988 30.1689 14.7077C29.605 15.3244 28.8458 15.7315 28.0169 15.8614H20.687C20.3421 15.8449 19.9986 15.9147 19.6881 16.0644C19.3775 16.214 19.1098 16.4388 18.9097 16.718L14.5143 22.2129C10.7317 26.6591 8.11157 16.8354 13.2288 18.3993L11.1364 15.8134C11.0175 15.679 10.8711 15.5712 10.7069 15.4974C10.5428 15.4236 10.3646 15.3855 10.1844 15.3855C10.0041 15.3855 9.82597 15.4236 9.66179 15.4974C9.49761 15.5712 9.35119 15.679 9.23232 15.8134C6.07931 19.7801 6.02112 25.8954 12.6599 26.4794H26.8452L30.1146 22.026L30.11 22.0279ZM27.9234 9.56127C27.7154 9.75132 27.4694 9.89576 27.2014 9.98521C26.9333 10.0746 26.6493 10.1071 26.3679 10.0804H19.9258C19.5752 10.0682 19.2262 10.1345 18.9049 10.2743C18.5835 10.4142 18.298 10.624 18.0695 10.8883L13.9599 16.0275L15.1179 17.4973L16.5303 15.768C16.7513 15.5174 17.0249 15.3178 17.332 15.1833C17.639 15.0487 17.972 14.9826 18.3075 14.9893H22.338C24.3193 14.9893 26.9498 10.7338 27.9241 9.55933L27.9234 9.56127Z" fill="#3C792F"/></g><defs><clipPath id="uzlogo_clip"><rect width="176" height="36" fill="#fff"/></clipPath></defs></svg></a>
+      <nav class="site-nav">
+        <span>Информация</span>
+        <span>Покупка и управление</span>
+        <span>Программа лояльности</span>
+        <span>О компании</span>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-ic" aria-label="Поиск по сайту"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+        <button class="hdr-lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18" stroke-linecap="round"/><path d="M12 3c2.5 2.4 3.9 5.6 4 9-.1 3.4-1.5 6.6-4 9-2.5-2.4-3.9-5.6-4-9 .1-3.4 1.5-6.6 4-9Z"/></svg> Ru</button>
+        <span class="hdr-div"></span>
+        <button class="hdr-profile" aria-label="Профиль"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.2a6.7 6.7 0 0 1 13 0"/></svg></button>
+        <button class="btn-login">Войти</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hold-timer" id="holdTimer">
+    <span class="ht-time" id="holdTime" style="color: rgb(18, 23, 79)">00:20:00</span>
+    <span class="ht-desc" style="color: rgb(168, 50, 76)">Неоплаченное бронирование будет аннулировано по истечении 20 минут</span>
+  </div>
+  <script>
+    (function(){
+      var el=document.getElementById('holdTime');
+      var box=document.getElementById('holdTimer');
+      if(!el) return;
+      var t=20*60;
+      function pad(n){return (n<10?'0':'')+n;}
+      function tick(){
+        var h=Math.floor(t/3600), m=Math.floor((t%3600)/60), s=t%60;
+        el.textContent=pad(h)+':'+pad(m)+':'+pad(s);
+        if(t<=0){ box.classList.add('expired'); return; }
+        t--; setTimeout(tick,1000);
+      }
+      tick();
+    })();
+  </script>
+
+  <main class="pay-main">
+
+    <div class="stepper">
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
+      <div class="step-line"></div>
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Заполнение данных о пассажирах</div>
+      <div class="step-line"></div>
+      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор дополнительных услуг</div>
+      <div class="step-line"></div>
+      <div class="step active"><span class="dot"><i></i></span>Детали и оплата</div>
+    </div>
+    <h2 class="pay-h">Детали и оплата</h2>
+    <div class="pay-pass">
+      <div class="pay-card"><div class="pay-cardhd"><span class="pay-name">IVANOV IVAN</span><span class="pay-type">Взрослый пассажир</span><span class="pay-tot">Итого: 49 000 000 UZS</span></div><div class="pay-legs"><div class="pay-leg"><div class="pay-leghd" style="color: rgb(245, 239, 232)"><span class="lg-dir">Туда</span><span class="lg-route">Москва — Ташкент</span><span class="lg-pay">К оплате: <b>30 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc" style="color: rgb(245, 239, 232)">
+<div class="pay-svc-col" style="color: rgb(245, 239, 232)">
+<div class="pay-svc-h">Основные услуги</div>
+<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
+</div>
+<div class="pay-svc-col">
+<div class="pay-svc-h">Дополнительные услуги</div>
+<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
+<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
+</div>
+</div></div></div></div><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Обратно</span><span class="lg-route">Ташкент — Москва</span><span class="lg-pay">К оплате: <b>19 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
+<div class="pay-svc-col">
+<div class="pay-svc-h">Основные услуги</div>
+<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
+</div>
+<div class="pay-svc-col">
+<div class="pay-svc-h">Дополнительные услуги</div>
+<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
+<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
+</div>
+</div></div></div></div></div></div>
+      <div class="pay-card"><div class="pay-cardhd"><span class="pay-name">IVANOV ALEXEY</span><span class="pay-type">Ребёнок</span><span class="pay-tot">Итого: 49 000 000 UZS</span></div><div class="pay-legs"><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Туда</span><span class="lg-route">Москва — Ташкент</span><span class="lg-pay">К оплате: <b>30 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
+<div class="pay-svc-col">
+<div class="pay-svc-h">Основные услуги</div>
+<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
+</div>
+<div class="pay-svc-col">
+<div class="pay-svc-h">Дополнительные услуги</div>
+<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
+<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
+</div>
+</div></div></div></div><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Обратно</span><span class="lg-route">Ташкент — Москва</span><span class="lg-pay">К оплате: <b>19 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
+<div class="pay-svc-col">
+<div class="pay-svc-h">Основные услуги</div>
+<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
+</div>
+<div class="pay-svc-col">
+<div class="pay-svc-h">Дополнительные услуги</div>
+<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
+<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
+<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
+</div>
+</div></div></div></div></div></div>
+    </div>
+    <div class="pay-grand-frame" style="border-radius: 20px; background-color: rgb(254, 252, 248)">
+      <div class="g-left">
+        <div class="g-ttl">Итого к оплате:</div>
+        <div class="g-lbl">за всех пассажиров</div>
+      </div>
+      <div class="g-amt">98 000 000 UZS</div>
+    </div>
+    <div class="pay-methods">
+      <div class="pay-methods-l">
+        <div class="pay-mlabel">Выберите способ оплаты:</div>
+        <div class="pay-mcards">
+          <button class="pay-mcard" data-pay="payUH" style="background-color: rgb(255, 255, 255)">
+            <div class="mc-body">
+              <div class="mc-lbl">Оплатить через</div>
+              <div class="mc-logo">
+                <img src="assets/uzcard-humo.png" alt="Uzcard Humo" width="92" height="41">
+              </div>
+            </div>
+            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="pay-mcard" data-pay="payClick">
+            <div class="mc-body">
+              <div class="mc-lbl">Оплатить через</div>
+              <div class="mc-logo"><img src="assets/click.png" alt="Click" width="152" height="40"></div>
+            </div>
+            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="pay-mcard" data-pay="payPayme">
+            <div class="mc-body">
+              <div class="mc-lbl">Оплатить через</div>
+              <div class="mc-logo"><img src="assets/payme.png" alt="Payme" width="210" height="60"></div>
+            </div>
+            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="pay-mcard" data-pay="payCard">
+            <div class="mc-body">
+              <div class="mc-lbl">Оплатить через</div>
+              <div class="mc-logo"><img src="assets/globalpay.png" alt="GlobalPay" width="240" height="46"></div>
+            </div>
+            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="pay-mcard" data-pay="payUpay">
+            <div class="mc-body">
+              <div class="mc-lbl">Оплатить через</div>
+              <div class="mc-logo"><img src="assets/octobank.png" alt="Octobank" width="276" height="44"></div>
+            </div>
+            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      document.querySelectorAll('.pay-leghd').forEach(function(hd){
+        hd.addEventListener('click',function(){ hd.closest('.pay-leg').classList.toggle('open'); });
+      });
+      document.querySelectorAll('.pay-tile, .pay-mcard').forEach(function(t){
+        t.addEventListener('click',function(e){
+          document.querySelectorAll('.pay-tile, .pay-mcard').forEach(function(x){x.classList.remove('sel');});
+          t.classList.add('sel');
+        });
+      });
+    })();
+  </script>
+  <script src="image-slot.js"></script>
+</body>
+</html>
