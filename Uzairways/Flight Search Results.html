@@ -1791,6 +1791,7 @@
     if(up){
       delta=_parseUZS(up.price)-_parseUZS(cur?cur.price:sel.price);
       if(delta<=0 && upT.cabin===sel.cabin && sel.cabin==='economy' && _STEP[sel.nm]!=null) delta=_STEP[sel.nm];
+      if(delta<=0) delta=500000;
     }
     const t=s=>String(s).replace(/\s*GMT[+-]\d+/,'');
     const head=dir==='out'

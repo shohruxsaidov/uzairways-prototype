@@ -734,5 +734,25 @@
       </g>
     </svg>
   </template>
+
+  <script>
+  (function(){
+    var STEP_URLS={
+      'выбор рейсов':'Flight Search Results.html',
+      'заполнение данных о пассажирах':'Passenger Data.html',
+      'выбор дополнительных услуг':'Additional Services.html',
+      'детали и оплата':'Payment Details.html'
+    };
+    document.querySelectorAll('.stepper .step').forEach(function(step){
+      if(!step.classList.contains('done')) return;
+      step.style.cursor='pointer';
+      step.addEventListener('click',function(){
+        var label=step.textContent.trim().toLowerCase();
+        var url=STEP_URLS[label];
+        if(url) window.location.href=url;
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

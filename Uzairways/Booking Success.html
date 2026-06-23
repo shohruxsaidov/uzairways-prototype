@@ -411,202 +411,89 @@
     </div>
   </header>
 
-  <div class="hold-timer" id="holdTimer">
-    <span class="ht-time" id="holdTime" style="color: rgb(18, 23, 79)">00:20:00</span>
-    <span class="ht-desc" style="color: rgb(168, 50, 76)">Неоплаченное бронирование будет аннулировано по истечении 20 минут</span>
-  </div>
-  <script>
-    (function(){
-      var el=document.getElementById('holdTime');
-      var box=document.getElementById('holdTimer');
-      if(!el) return;
-      var t=20*60;
-      function pad(n){return (n<10?'0':'')+n;}
-      function tick(){
-        var h=Math.floor(t/3600), m=Math.floor((t%3600)/60), s=t%60;
-        el.textContent=pad(h)+':'+pad(m)+':'+pad(s);
-        if(t<=0){ box.classList.add('expired'); return; }
-        t--; setTimeout(tick,1000);
-      }
-      tick();
-    })();
-  </script>
-
-  <main class="pay-main">
-
-    <div class="stepper">
-      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
-      <div class="step-line"></div>
-      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Заполнение данных о пассажирах</div>
-      <div class="step-line"></div>
-      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор дополнительных услуг</div>
-      <div class="step-line"></div>
-      <div class="step active"><span class="dot"><i></i></span>Детали и оплата</div>
-    </div>
-    <h2 class="pay-h">Детали и оплата</h2>
-    <div class="pay-pass">
-      <div class="pay-card"><div class="pay-cardhd"><span class="pay-name">IVANOV IVAN</span><span class="pay-type">Взрослый пассажир</span><span class="pay-tot">Итого: 49 000 000 UZS</span></div><div class="pay-legs"><div class="pay-leg"><div class="pay-leghd" style="color: rgb(245, 239, 232)"><span class="lg-dir">Туда</span><span class="lg-route">Москва — Ташкент</span><span class="lg-pay">К оплате: <b>30 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc" style="color: rgb(245, 239, 232)">
-<div class="pay-svc-col" style="color: rgb(245, 239, 232)">
-<div class="pay-svc-h">Основные услуги</div>
-<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
-</div>
-<div class="pay-svc-col">
-<div class="pay-svc-h">Дополнительные услуги</div>
-<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
-<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
-</div>
-</div></div></div></div><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Обратно</span><span class="lg-route">Ташкент — Москва</span><span class="lg-pay">К оплате: <b>19 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
-<div class="pay-svc-col">
-<div class="pay-svc-h">Основные услуги</div>
-<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
-</div>
-<div class="pay-svc-col">
-<div class="pay-svc-h">Дополнительные услуги</div>
-<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
-<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
-</div>
-</div></div></div></div></div></div>
-      <div class="pay-card"><div class="pay-cardhd"><span class="pay-name">IVANOV ALEXEY</span><span class="pay-type">Ребёнок</span><span class="pay-tot">Итого: 49 000 000 UZS</span></div><div class="pay-legs"><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Туда</span><span class="lg-route">Москва — Ташкент</span><span class="lg-pay">К оплате: <b>30 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
-<div class="pay-svc-col">
-<div class="pay-svc-h">Основные услуги</div>
-<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
-</div>
-<div class="pay-svc-col">
-<div class="pay-svc-h">Дополнительные услуги</div>
-<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
-<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
-</div>
-</div></div></div></div><div class="pay-leg"><div class="pay-leghd"><span class="lg-dir">Обратно</span><span class="lg-route">Ташкент — Москва</span><span class="lg-pay">К оплате: <b>19 000 000 UZS</b></span><span class="pay-chev"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="#12174f"/></svg></span></div><div class="pay-legdetail"><div class="pay-legdetail-in"><div class="pay-svc">
-<div class="pay-svc-col">
-<div class="pay-svc-h">Основные услуги</div>
-<div class="pay-svc-row"><span class="sl">Тариф Economy Standart Class A</span><span class="sv">3 500 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Топливный сбор</span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Таксы и сборы<span class="pay-svc-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.5h.01"/></svg></span></span><span class="sv">700 000 UZS</span></div>
-</div>
-<div class="pay-svc-col">
-<div class="pay-svc-h">Дополнительные услуги</div>
-<div class="pay-svc-row"><span class="sl">Выбор места<small>Место 8E</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Дополнительный багаж<small>2 места по 20 × 20 × 60 см 23 кг</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка спортивного инвентаря<small>Лыжи или сноуборд, 1 шт</small></span><span class="sv">800 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Специальное питание<small>Вегетарианское</small></span><span class="sv free">бесплатно</span></div>
-<div class="pay-svc-row"><span class="sl">Платное питание<small>Говяжий стейк на гриле</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Перевозка животных<small>Собака под креслом, 1 переноска</small></span><span class="sv">250 000 UZS</span></div>
-<div class="pay-svc-row"><span class="sl">Страхование багажа</span><span class="sv">700 000 UZS</span></div>
-</div>
-</div></div></div></div></div></div>
-    </div>
-    <div class="pay-grand-frame" style="border-radius: 20px; background-color: rgb(254, 252, 248)">
-      <div class="g-left">
-        <div class="g-ttl">Итого к оплате:</div>
-        <div class="g-lbl">за всех пассажиров</div>
+  <main class="container suc-wrap">
+    <div class="suc-card">
+      <div class="suc-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
       </div>
-      <div class="g-amt">98 000 000 UZS</div>
-    </div>
-    <div class="pay-methods">
-      <div class="pay-methods-l">
-        <div class="pay-mlabel">Выберите способ оплаты:</div>
-        <div class="pay-mcards">
-          <button class="pay-mcard" data-pay="payUH" style="background-color: rgb(255, 255, 255)">
-            <div class="mc-body">
-              <div class="mc-lbl">Оплатить через</div>
-              <div class="mc-logo">
-                <img src="assets/uzcard-humo.png" alt="Uzcard Humo" width="92" height="41">
-              </div>
-            </div>
-            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-          </button>
-          <button class="pay-mcard" data-pay="payClick">
-            <div class="mc-body">
-              <div class="mc-lbl">Оплатить через</div>
-              <div class="mc-logo"><img src="assets/click.png" alt="Click" width="152" height="40"></div>
-            </div>
-            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-          </button>
-          <button class="pay-mcard" data-pay="payPayme">
-            <div class="mc-body">
-              <div class="mc-lbl">Оплатить через</div>
-              <div class="mc-logo"><img src="assets/payme.png" alt="Payme" width="210" height="60"></div>
-            </div>
-            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-          </button>
-          <button class="pay-mcard" data-pay="payCard">
-            <div class="mc-body">
-              <div class="mc-lbl">Оплатить через</div>
-              <div class="mc-logo"><img src="assets/globalpay.png" alt="GlobalPay" width="240" height="46"></div>
-            </div>
-            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-          </button>
-          <button class="pay-mcard" data-pay="payUpay">
-            <div class="mc-body">
-              <div class="mc-lbl">Оплатить через</div>
-              <div class="mc-logo"><img src="assets/octobank.png" alt="Octobank" width="276" height="44"></div>
-            </div>
-            <span class="mc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-          </button>
+      <h1 class="suc-h">Оплата прошла успешно</h1>
+      <p class="suc-sub">Билеты отправлены на вашу почту. Спасибо, что выбрали Uzbekistan Airways!</p>
+
+      <div class="suc-pnr">
+        <div class="suc-pnr-l">
+          <div class="suc-pnr-lbl">Код бронирования (PNR)</div>
+          <div class="suc-pnr-code">UZ7F2K</div>
         </div>
+        <button class="suc-copy" id="sucCopy" type="button">Скопировать</button>
+      </div>
+
+      <div class="suc-rows">
+        <div class="suc-row"><span class="sr-l">Маршрут</span><span class="sr-v">Ташкент → Москва → Ташкент</span></div>
+        <div class="suc-row"><span class="sr-l">Даты</span><span class="sr-v">2 марта — 9 марта 2026</span></div>
+        <div class="suc-row"><span class="sr-l">Пассажиры</span><span class="sr-v">2 взрослых</span></div>
+        <div class="suc-row"><span class="sr-l">Способ оплаты</span><span class="sr-v">Карта Uzcard · 8600</span></div>
+        <hr class="suc-sep">
+        <div class="suc-row total"><span class="sr-l">Итого оплачено</span><span class="sr-v">98 000 000 UZS</span></div>
+      </div>
+
+      <div class="suc-actions">
+        <a class="suc-btn primary" href="#" id="sucTicket">Скачать билеты</a>
+        <a class="suc-btn ghost" href="Home.html">На главную</a>
+      </div>
+
+      <div class="suc-note">
+        <span class="suc-note-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></span>
+        Регистрация на рейс открывается за 24 часа до вылета.
       </div>
     </div>
   </main>
 
-  <script>
-    (function(){
-      document.querySelectorAll('.pay-leghd').forEach(function(hd){
-        hd.addEventListener('click',function(){ hd.closest('.pay-leg').classList.toggle('open'); });
-      });
-      document.querySelectorAll('.pay-tile, .pay-mcard').forEach(function(t){
-        t.addEventListener('click',function(e){
-          var wasSel=t.classList.contains('sel');
-          document.querySelectorAll('.pay-tile, .pay-mcard').forEach(function(x){x.classList.remove('sel');});
-          t.classList.add('sel');
-          // second click on an already-selected payment card → success page
-          if(wasSel && t.classList.contains('pay-mcard')){
-            window.location.href='Booking Success.html';
-          }
-        });
-      });
-    })();
-  </script>
-  <script src="image-slot.js"></script>
+  <style>
+    body{padding-bottom:60px;}
+    .suc-wrap{display:flex;justify-content:center;padding-top:54px;}
+    .suc-card{width:min(620px,100%);background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-xl);box-shadow:var(--sh-lg);padding:48px 52px 40px;text-align:center;}
+    .suc-badge{width:84px;height:84px;border-radius:50%;background:var(--good-bg);color:var(--good);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:sucPop .5s cubic-bezier(.18,.89,.32,1.28) both;}
+    .suc-badge svg{width:42px;height:42px;}
+    @keyframes sucPop{0%{transform:scale(.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
+    .suc-h{font-weight:900;font-size:32px;letter-spacing:-.02em;color:var(--ink);}
+    .suc-sub{margin:12px auto 0;max-width:420px;color:var(--muted);font-size:16px;line-height:1.5;text-wrap:pretty;}
+    .suc-pnr{margin:32px 0 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:18px 24px;text-align:left;}
+    .suc-pnr-lbl{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+    .suc-pnr-code{font-weight:900;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-top:4px;}
+    .suc-copy{flex:none;background:var(--ink);color:#fff;border-radius:12px;padding:12px 22px;font-family:var(--font);font-weight:800;font-size:14px;transition:.15s;}
+    .suc-copy:hover{background:var(--ink-soft);}
+    .suc-copy.done{background:var(--good);}
+    .suc-rows{text-align:left;margin-bottom:30px;}
+    .suc-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:9px 0;font-size:16px;}
+    .suc-row .sr-l{color:var(--muted);font-weight:600;}
+    .suc-row .sr-v{font-weight:800;color:var(--ink);text-align:right;}
+    .suc-row.total{font-size:18px;}
+    .suc-row.total .sr-v{color:var(--accent);}
+    .suc-sep{height:1px;background:var(--line);border:0;margin:10px 0 4px;}
+    .suc-actions{display:flex;gap:14px;}
+    .suc-btn{flex:1;border-radius:14px;padding:16px;font-weight:800;font-size:16px;text-align:center;text-decoration:none;transition:.15s;display:flex;align-items:center;justify-content:center;}
+    .suc-btn.primary{background:var(--accent);color:#fff;}
+    .suc-btn.primary:hover{background:var(--accent-2);}
+    .suc-btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-card);}
+    .suc-btn.ghost:hover{border-color:var(--ink);}
+    .suc-note{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:9px;color:var(--muted);font-size:14px;}
+    .suc-note-ic{display:inline-flex;width:18px;height:18px;color:var(--muted-2);flex:none;}
+    .suc-note-ic svg{width:18px;height:18px;}
+    @media(max-width:560px){ .suc-card{padding:36px 24px 30px;} .suc-actions{flex-direction:column;} .suc-pnr{flex-direction:column;align-items:stretch;} }
+  </style>
 
   <script>
-  (function(){
-    var STEP_URLS={
-      'выбор рейсов':'Flight Search Results.html',
-      'заполнение данных о пассажирах':'Passenger Data.html',
-      'выбор дополнительных услуг':'Additional Services.html',
-      'детали и оплата':'Payment Details.html'
-    };
-    document.querySelectorAll('.stepper .step').forEach(function(step){
-      if(!step.classList.contains('done')) return;
-      step.style.cursor='pointer';
-      step.addEventListener('click',function(){
-        var label=step.textContent.trim().toLowerCase();
-        var url=STEP_URLS[label];
-        if(url) window.location.href=url;
+    (function(){
+      var copy=document.getElementById('sucCopy');
+      if(copy) copy.addEventListener('click',function(){
+        var code='UZ7F2K';
+        if(navigator.clipboard) navigator.clipboard.writeText(code).catch(function(){});
+        copy.textContent='Скопировано'; copy.classList.add('done');
+        setTimeout(function(){ copy.textContent='Скопировать'; copy.classList.remove('done'); },1800);
       });
-    });
-  })();
+      var tk=document.getElementById('sucTicket');
+      if(tk) tk.addEventListener('click',function(e){ e.preventDefault(); });
+    })();
   </script>
 </body>
 </html>
