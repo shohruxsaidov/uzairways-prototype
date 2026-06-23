@@ -206,6 +206,7 @@
   .svc-row{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
   .svc-pic{background:var(--bg-2);min-height:210px;}
   .svc-pic image-slot{width:100%;height:100%;display:block;}
+  .svc-pic .svc-img{width:100%;height:100%;min-height:210px;object-fit:cover;display:block;}
   .svc-info{padding:24px 28px;display:flex;flex-direction:column;}
   .svc-info h4{font-weight:800;font-size:18px;color:var(--ink);}
   .svc-info .desc{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:560px;}
@@ -244,7 +245,7 @@
   /* ===== Seat selection modal ===== */
   .seat-ov{position:fixed;inset:0;background:rgba(18,23,79,.45);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;}
   .seat-ov[hidden]{display:none;}
-  .seat-card{position:relative;background:var(--surface);border-radius:22px;box-shadow:0 30px 80px rgba(18,23,79,.24);width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;}
+  .seat-card{position:relative;background:var(--surface);border-radius:22px;box-shadow:0 30px 80px rgba(18,23,79,.24);width:min(900px,96vw);max-height:90vh;display:flex;flex-direction:column;overflow:auto;}
   .seat-head{position:relative;padding:22px 30px;border-bottom:1px solid var(--line);text-align:center;flex:none;}
   .seat-title{font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.01em;}
   .seat-close{position:absolute;top:15px;right:18px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
@@ -381,7 +382,7 @@
 
     <div class="svc-list" id="svcList">
       <div class="svc-row" data-svc="seat">
-        <div class="svc-pic"><image-slot id="svcSeat" shape="rect" placeholder="Картинка" style="height: 276px"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcSeat.webp" alt=""></div>
         <div class="svc-info">
           <h4>Выбор места</h4>
           <div class="desc">Подберите для себя удобное место, чтобы провести перелёт с комфортом</div>
@@ -399,7 +400,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="bag">
-        <div class="svc-pic"><image-slot id="svcBag" shape="rect" placeholder="Картинка" style="height: 296px"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcBag.webp" alt=""></div>
         <div class="svc-info" style="height: 296px">
           <h4>Дополнительный багаж</h4>
           <div class="desc" style="white-space: nowrap">Оформите дополнительный багаж сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
@@ -417,7 +418,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="sport">
-        <div class="svc-pic"><image-slot id="svcSport" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcSport.webp" alt=""></div>
         <div class="svc-info">
           <h4>Перевозка спортивного инвентаря</h4>
           <div class="desc">Оформите спортивный инвентарь сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
@@ -435,7 +436,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="meal">
-        <div class="svc-pic"><image-slot id="svcMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcMeal.webp" alt=""></div>
         <div class="svc-info">
           <h4>Специальное питание</h4>
           <div class="desc">Если вам не нравится стандартное питание на борту, вы можете выбрать другое по своим предпочтениям</div>
@@ -453,7 +454,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcPaidMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcPaidMeal.webp" alt=""></div>
         <div class="svc-info">
           <h4>Платное питание</h4>
           <div class="desc">Вы можете заказать дополнительное питание к стандартному или специальному</div>
@@ -471,7 +472,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcPet" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcPet.webp" alt=""></div>
         <div class="svc-info">
           <h4>Перевозка животных</h4>
           <div class="desc">В багаже, под креслом или рядом с вами на соседнем кресле</div>
@@ -489,7 +490,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcInsurance" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcInsurance.webp" alt=""></div>
         <div class="svc-info">
           <h4>Страхование багажа от ALFA INVEST</h4>
           <div class="desc">Если ваш багаж повредят, задержат или потеряют при перевозке, мы возместим ущерб. Страховка распространяется на багаж, дополнительный багаж, спортивный инвентарь и клетки для животных суммарной стоимостью до 10 000 000 UZS.</div>

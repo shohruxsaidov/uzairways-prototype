@@ -654,7 +654,16 @@
         // align dropdown top with the calendar (anchor to fields-row bottom)
         var fields=document.querySelector('.hs-fields');
         if(fields){ dd.style.top=(fields.getBoundingClientRect().bottom - rr.top + 14)+'px'; }
-        input.focus();
+        input.focus({preventScroll:true});
+        // nudge the page up a little so the field + dropdown sit comfortably below the header
+        requestAnimationFrame(function(){
+          var hdr=document.querySelector('.site-header')||document.querySelector('header');
+          var pad=(hdr?hdr.offsetHeight:0)+18;
+          var topPos=document.getElementById(which==='from'?'fldFrom':'fldTo').getBoundingClientRect().top;
+          if(topPos>pad+90){
+            window.scrollTo({top:window.scrollY+(topPos-pad-18),behavior:'smooth'});
+          }
+        });
       }
       function close(){ dd.hidden=true; side=null; }
 
