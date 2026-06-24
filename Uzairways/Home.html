@@ -932,6 +932,25 @@
         else err.classList.remove('show');
       });
     })();
+
+    // Scroll nudge: when any search field opens, bring the fields row comfortably below the header
+    (function(){
+      var fields=document.querySelector('.hs-fields');
+      if(!fields) return;
+      function nudge(){
+        requestAnimationFrame(function(){
+          var hdr=document.querySelector('.site-header')||document.querySelector('header');
+          var pad=(hdr?hdr.offsetHeight:0)+18;
+          var topPos=fields.getBoundingClientRect().top;
+          if(topPos>pad+90){
+            window.scrollTo({top:window.scrollY+(topPos-pad-18),behavior:'smooth'});
+          }
+        });
+      }
+      document.querySelectorAll('.hs-cell').forEach(function(cell){
+        cell.addEventListener('click', nudge);
+      });
+    })();
   </script>
 
 </body>
