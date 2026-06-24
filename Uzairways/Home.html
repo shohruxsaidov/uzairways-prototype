@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uzbekistan Airways · Главная</title>
+<link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
@@ -79,6 +80,7 @@
   .hs-tab.active{color:var(--ink);border-bottom-color:var(--accent);}
   .hs-fields{display:grid;grid-template-columns:1.5fr 1.45fr 1fr 0.85fr;gap:0;margin-top:26px;border:1px solid var(--line);border-radius:var(--r-md);overflow:visible;background:var(--bg);position:relative;}
   .hs-cell{position:relative;padding:13px 18px;cursor:pointer;transition:.15s;min-width:0;}
+  #fldFrom{border-radius:var(--r-md) 0 0 var(--r-md);}
   .hs-cell + .hs-cell{border-left:1px solid var(--line);}
   .hs-route + .hs-cell{border-left:1px solid var(--line);}
   .hs-cell:hover{background:#fff;}
@@ -86,19 +88,20 @@
   .hs-val{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;font-weight:800;font-size:15.5px;color:var(--ink);white-space:nowrap;overflow:hidden;min-height:21px;}
   .hs-val .code{color:var(--muted);font-weight:700;font-size:13px;letter-spacing:.06em;}
   .hs-val:has(.code:empty) .city-name{color:var(--muted-2);font-weight:600;}
+  #fldFrom{border-right:1px solid var(--line);}
   #fldFrom:has(.code:empty), #fldTo:has(.code:empty){display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
   #fldFrom:has(.code:empty) .hs-val, #fldTo:has(.code:empty) .hs-val{display:none;}
   #fldDates:has(.date-text:empty){display:flex;flex-direction:row;align-items:center;gap:7px;}
   #fldDates:has(.date-text:empty) .hs-val{display:flex;margin:0 0 0 auto;}
   #fldPax, #fldPay{position:relative;}
+  #fldPay{border-radius:0 var(--r-md) var(--r-md) 0;}
   #fldPax > .hs-val > .chev-i, #fldPay > .hs-val > .chev-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);}
   .date-text.ph{color:var(--muted-2);font-weight:600;}
   .hs-val .chev-i{width:14px;height:14px;color:var(--muted);}
   .hs-route{display:flex;align-items:stretch;position:relative;}
-  .hs-route::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);transform:translateX(-50%);z-index:1;pointer-events:none;}
   .hs-route .hs-cell{flex:1;border-left:0;display:flex;flex-direction:column;justify-content:center;}
   #fldTo{padding-left:26px;}
-  .hs-swap{position:absolute;left:50%;top:32px;transform:translate(-50%,-50%);z-index:4;width:34px;height:34px;flex:none;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(18,23,79,.25);}
+  .hs-swap{position:absolute;left:calc(50% - 4px);top:32px;transform:translate(-50%,-50%);z-index:4;width:34px;height:34px;flex:none;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(18,23,79,.25);}
   .hs-swap svg{width:17px;height:17px;display:block;}
   .hs-foot{display:flex;align-items:center;gap:28px;margin-top:24px;}
   .hs-multi{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);font-size:15px;cursor:pointer;}
@@ -292,11 +295,12 @@
   .news-card .nd{color:var(--muted-2);font-size:12px;letter-spacing:.08em;margin-top:auto;padding-top:22px;text-transform:uppercase;font-weight:700;}
 
   /* ===== Footer ===== */
-  .site-footer{background:var(--surface);border-top:1px solid var(--line);}
-  .ft-top{display:flex;align-items:center;gap:36px;padding:34px 0;border-bottom:1px solid var(--line);}
+  .site-footer{background:#131958;color:#f5efe8;border-top:0;}
+  .ft-top{display:flex;align-items:center;gap:36px;padding:34px 0;border-bottom:1px solid rgba(245,239,232,.18);}
   .ft-search{position:relative;flex:1;max-width:340px;}
-  .ft-search input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--muted-2);padding:10px 30px 10px 2px;font-family:var(--font);font-size:13px;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;outline:none;}
-  .ft-search svg{position:absolute;right:4px;top:8px;width:18px;height:18px;color:var(--muted);}
+  .ft-search input{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(245,239,232,.45);padding:10px 30px 10px 2px;font-family:var(--font);font-size:13px;letter-spacing:.08em;color:#f5efe8;text-transform:uppercase;outline:none;}
+  .ft-search input::placeholder{color:rgba(245,239,232,.65);}
+  .ft-search svg{position:absolute;right:4px;top:8px;width:18px;height:18px;color:rgba(245,239,232,.8);}
   .ft-social{display:flex;gap:12px;margin:0 auto;}
   .ft-social svg{height:36px;width:auto;display:block;}
   .ft-social a{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;}
@@ -308,25 +312,25 @@
   .ft-badge .bt small{display:block;font-size:9px;opacity:.8;letter-spacing:.06em;}
   .ft-badge .bt b{font-size:15px;font-weight:800;}
   .ft-contact{text-align:right;margin-left:auto;}
-  .ft-contact .cl{font-size:11px;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;}
-  .ft-contact .cp{font-size:22px;font-weight:900;color:var(--ink);margin-top:6px;letter-spacing:.01em;}
+  .ft-contact .cl{font-size:11px;letter-spacing:.07em;color:rgba(245,239,232,.7);text-transform:uppercase;}
+  .ft-contact .cp{font-size:22px;font-weight:900;color:#f5efe8;margin-top:6px;letter-spacing:.01em;}
   .ft-cols{display:grid;grid-template-columns:repeat(6,1fr);gap:28px;padding:42px 0;}
-  .ft-col h4{font-size:13px;letter-spacing:.06em;color:var(--ink);text-transform:uppercase;font-weight:800;margin-bottom:18px;white-space:nowrap;}
-  .ft-col a{display:block;color:var(--muted);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:11px;transition:.15s;}
-  .ft-col a:hover{color:var(--accent);}
-  .ft-gov{display:flex;gap:16px;padding:22px 0;border-top:1px solid var(--line);flex-wrap:wrap;}
-  .ft-gov a{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 22px;color:var(--ink-soft);font-weight:700;font-size:14px;text-decoration:none;transition:.15s;}
-  .ft-gov a:hover{border-color:var(--accent);color:var(--accent);}
-  .ft-gov svg{width:18px;height:18px;color:var(--accent);}
+  .ft-col h4{font-size:13px;letter-spacing:.06em;color:#f5efe8;text-transform:uppercase;font-weight:800;margin-bottom:18px;white-space:nowrap;}
+  .ft-col a{display:block;color:rgba(245,239,232,.72);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:11px;transition:.15s;}
+  .ft-col a:hover{color:#fff;}
+  .ft-gov{display:flex;gap:16px;padding:22px 0;border-top:1px solid rgba(245,239,232,.18);flex-wrap:wrap;}
+  .ft-gov a{display:flex;align-items:center;gap:9px;background:rgba(245,239,232,.06);border:1px solid rgba(245,239,232,.2);border-radius:12px;padding:12px 22px;color:#f5efe8;font-weight:700;font-size:14px;text-decoration:none;transition:.15s;}
+  .ft-gov a:hover{border-color:rgba(245,239,232,.55);background:rgba(245,239,232,.12);color:#fff;}
+  .ft-gov svg{width:18px;height:18px;color:rgba(245,239,232,.85);}
   .ft-counter{margin-left:auto;display:flex;align-items:stretch;height:42px;border-radius:6px;overflow:hidden;font-family:'Courier New',monospace;box-shadow:0 1px 3px rgba(18,23,79,.12);}
   .ft-counter .fc-day{background:#e8951f;color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;padding:0 11px;}
   .ft-counter .fc-nums{background:#f5a623;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:3px 9px;gap:1px;}
   .ft-counter .fc-nums span{font-size:10px;font-weight:700;letter-spacing:.08em;line-height:1.15;text-align:right;}
-  .ft-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:22px 0 40px;border-top:1px solid var(--line);}
-  .ft-copy{color:var(--muted);font-size:13px;line-height:1.5;white-space:nowrap;}
+  .ft-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:22px 0 40px;border-top:1px solid rgba(245,239,232,.18);}
+  .ft-copy{color:rgba(245,239,232,.7);font-size:13px;line-height:1.5;white-space:nowrap;}
   .ft-links{display:flex;gap:22px;flex-wrap:wrap;}
-  .ft-links a{color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;transition:.15s;}
-  .ft-links a:hover{color:var(--accent);}
+  .ft-links a{color:#f5efe8;font-weight:700;font-size:14px;text-decoration:none;transition:.15s;}
+  .ft-links a:hover{color:#fff;}
   @media(max-width:1080px){
     .uap-card{grid-template-columns:1fr;gap:28px;}
     .connect-head{display:block;min-height:0;}
@@ -386,9 +390,9 @@
         </div>
         <div class="hs-fields">
           <div class="hs-route" style="height: 6px">
-            <div class="hs-cell" id="fldFrom" style="height: 64px"><div class="hs-lab">Откуда</div><div class="hs-val"><span class="city-name"></span> <span class="code"></span></div></div>
+            <div class="hs-cell" id="fldFrom" style="height: 64px"><div class="hs-lab">Откуда</div><div class="hs-val"><span class="city-name" style="font-weight: 700"></span> <span class="code"></span></div></div>
             <button class="hs-swap" aria-label="Поменять"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 3 8l4 4"/><path d="M3 8h14"/><path d="m17 20 4-4-4-4"/><path d="M21 16H7"/></svg></button>
-            <div class="hs-cell" id="fldTo" style="height: 64px"><div class="hs-lab">Куда</div><div class="hs-val"><span class="city-name"></span> <span class="code"></span></div></div>
+            <div class="hs-cell" id="fldTo" style="height: 64px"><div class="hs-lab">Куда</div><div class="hs-val"><span class="city-name" style="font-weight: 700"></span> <span class="code"></span></div></div>
             <div class="city-dd" id="cityDD" hidden>
               <div class="city-search">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -397,7 +401,7 @@
               <div class="city-list" id="cityList"></div>
             </div>
           </div>
-          <div class="hs-cell" id="fldDates" style="height: 64px"><div class="hs-lab">Даты</div><div class="hs-val" style="align-items: center; text-align: left; height: 22px"><span class="date-text ph"></span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
+          <div class="hs-cell" id="fldDates" style="height: 64px"><div class="hs-lab">Даты</div><div class="hs-val" style="align-items: center; text-align: left; height: 22px"><span class="date-text ph" style="font-weight: 700"></span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
             <div class="cal-dd" id="calDD" hidden>
               <button class="cal-nav prev" id="calPrev" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
               <button class="cal-nav next" id="calNext" aria-label="Вперёд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -405,7 +409,7 @@
               <button class="cal-oneway" id="calOneway" hidden>Обратный билет не нужен</button>
             </div>
           </div>
-          <div class="hs-cell" id="fldPax" style="height: 64px"><div class="hs-lab">Пассажиры</div><div class="hs-val"><span class="pax-text">1 пассажир</span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
+          <div class="hs-cell" id="fldPax" style="height: 64px"><div class="hs-lab">Пассажиры</div><div class="hs-val"><span class="pax-text" style="font-weight: 700">1 пассажир</span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
             <div class="pax-dd" id="paxDD" hidden>
               <div class="pax-h">Пассажиры</div>
               <div class="pax-row">
@@ -423,7 +427,7 @@
               <button class="pax-apply" id="paxApply">Применить</button>
             </div>
           </div>
-          <div class="hs-cell" id="fldPay" style="height: 64px"><div class="hs-lab">Способ оплаты</div><div class="hs-val"><span class="pay-text">UZS</span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
+          <div class="hs-cell" id="fldPay" style="height: 64px"><div class="hs-lab">Способ оплаты</div><div class="hs-val"><span class="pay-text" style="font-weight: 700">UZS</span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
             <div class="pay-dd" id="payDD" hidden>
               <div class="pay-note">Выберите удобные валюту и способ оплаты. Они будут использоваться для расчёта цен и покупки билета</div>
               <button class="pay-opt" data-cur="UZS" data-label="UZS"><b>UZS</b> <span>| UZCARD/HUMO</span></button>
@@ -474,7 +478,7 @@
   </main>
 
   <!-- ===== UzAirPlus promo ===== -->
-  <section class="uap">
+  <section class="uap" style="color: rgb(17, 26, 86)">
     <div class="container">
       <div class="uap-card">
         <div class="uap-left">
@@ -529,21 +533,21 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer class="site-footer">
+  <footer class="site-footer" style="background-color: rgb(17, 26, 86)">
     <div class="container">
-      <div class="ft-top" style="padding: 20px 0px">
+      <div class="ft-top" style="padding: 20px 0px; border-color: rgb(245, 239, 232)">
         <div class="ft-search"><input type="text" placeholder="Поиск по сайту"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <div class="ft-social"><svg viewBox="0 0 228 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="48" width="36" height="36" rx="18" fill="#419FD9"/><rect x="48" width="36" height="36" rx="18" fill="url(#paint0_linear_0_1)"/><path d="M56.0905 17.6032C61.325 15.2747 64.8155 13.7396 66.5619 12.9979C71.5485 10.8803 72.5846 10.5124 73.26 10.5001C73.4085 10.4976 73.7406 10.5352 73.9558 10.7134C74.1374 10.8639 74.1874 11.0672 74.2113 11.2099C74.2352 11.3526 74.265 11.6776 74.2413 11.9316C73.9711 14.8305 72.8019 21.8654 72.207 25.1122C71.9553 26.4861 71.4597 26.9467 70.9799 26.9918C69.9372 27.0898 69.1454 26.2882 68.1355 25.6123C66.5551 24.5546 65.6623 23.8962 64.1283 22.864C62.3555 21.6712 63.5048 21.0156 64.5151 19.9442C64.7795 19.6638 69.3737 15.3972 69.4627 15.0101C69.4738 14.9617 69.4841 14.7812 69.3791 14.686C69.2741 14.5907 69.1192 14.6233 69.0074 14.6492C68.8488 14.6859 66.3242 16.3897 61.4335 19.7604C60.7169 20.2629 60.0678 20.5077 59.4863 20.4948C58.8451 20.4807 57.6119 20.1247 56.6951 19.8204C55.5706 19.4472 54.6769 19.2499 54.7547 18.6161C54.7953 18.286 55.2405 17.9483 56.0905 17.6032Z" fill="white"/><rect x="96" width="36" height="36" rx="18" fill="#1670EB"/><path d="M115.736 35.9999V23.2277H120.159L120.821 18.2502H115.736V15.0722C115.736 13.6311 116.149 12.649 118.281 12.649L121 12.6477V8.19592C120.53 8.13548 118.916 8 117.038 8C113.118 8 110.434 10.3195 110.434 14.5795V18.2503H106V23.2278H110.434V36L115.736 35.9999Z" fill="white"/><rect x="192" width="36" height="36" rx="18" fill="#0077B5"/><path d="M219.994 26.4939C218.812 26.4658 217.659 26.4658 216.478 26.4939C216.225 26.4939 216.169 26.4377 216.169 26.1846C216.169 24.1033 216.169 21.9939 216.169 19.9127C216.169 19.4346 216.141 18.9564 216 18.5064C215.578 17.0439 213.891 16.5096 212.681 17.4939C212.034 18.0002 211.781 18.7033 211.781 19.5471C211.781 21.5158 211.781 23.4846 211.781 25.4533C211.781 25.7064 211.753 25.9596 211.781 26.2408C211.809 26.4658 211.697 26.5221 211.5 26.4939C210.291 26.4939 209.109 26.4939 207.9 26.4939C207.675 26.4939 207.619 26.4377 207.619 26.2127C207.647 24.4408 207.647 22.6689 207.647 20.8689C207.647 18.6752 207.647 16.4814 207.619 14.3158C207.619 14.0627 207.675 14.0064 207.9 14.0064C209.109 14.0064 210.291 14.0064 211.5 14.0064C211.725 14.0064 211.781 14.0627 211.781 14.2877C211.781 14.7377 211.781 15.1877 211.781 15.7221C211.866 15.6377 211.894 15.6096 211.922 15.5814C213.019 13.9783 214.566 13.5283 216.394 13.8096C218.503 14.1471 219.853 15.6096 220.191 17.8596C220.275 18.3939 220.303 18.9283 220.303 19.4627C220.303 21.7127 220.303 23.9346 220.303 26.1846C220.303 26.4096 220.247 26.4939 219.994 26.4939Z" fill="white"/><path d="M205.369 20.2501C205.369 22.2188 205.369 24.1876 205.369 26.1563C205.369 26.4095 205.312 26.4938 205.059 26.4938C203.878 26.4657 202.697 26.4938 201.516 26.4938C201.291 26.4938 201.234 26.4376 201.234 26.2126C201.234 22.247 201.234 18.2532 201.234 14.2876C201.234 14.0907 201.291 14.0063 201.516 14.0063C202.725 14.0063 203.934 14.0063 205.144 14.0063C205.397 14.0063 205.425 14.0907 205.425 14.3157C205.369 16.2845 205.369 18.2532 205.369 20.2501Z" fill="white"/><path d="M205.566 10.7439C205.284 11.8689 204.131 12.5158 202.809 12.2908C201.403 12.0658 200.616 10.6876 201.122 9.33764C201.459 8.49389 202.275 7.98764 203.316 8.01576C204.891 7.98764 205.931 9.25326 205.566 10.7439Z" fill="white"/><rect width="36" height="36" rx="18" fill="url(#paint1_radial_0_1)"/><rect width="36" height="36" rx="18" fill="url(#paint2_radial_0_1)"/><rect width="36" height="36" rx="18" fill="url(#paint3_radial_0_1)" fill-opacity="0.4"/><path d="M14.2511 18C14.2511 15.929 15.9295 14.2497 18.0005 14.2497C20.0715 14.2497 21.7508 15.929 21.7508 18C21.7508 20.071 20.0715 21.7503 18.0005 21.7503C15.9295 21.7503 14.2511 20.071 14.2511 18ZM12.2237 18C12.2237 21.1905 14.81 23.7767 18.0005 23.7767C21.191 23.7767 23.7772 21.1905 23.7772 18C23.7772 14.8095 21.191 12.2233 18.0005 12.2233C14.81 12.2233 12.2237 14.8095 12.2237 18ZM22.6559 11.9942C22.6558 12.2612 22.7349 12.5223 22.8831 12.7443C23.0314 12.9664 23.2422 13.1395 23.4888 13.2418C23.7354 13.3441 24.0069 13.3709 24.2688 13.3189C24.5307 13.2669 24.7713 13.1385 24.9601 12.9497C25.149 12.761 25.2777 12.5205 25.3299 12.2587C25.3821 11.9968 25.3554 11.7253 25.2534 11.4786C25.1513 11.2319 24.9783 11.021 24.7564 10.8726C24.5344 10.7241 24.2735 10.6449 24.0065 10.6447H24.0059C23.648 10.6449 23.3048 10.7871 23.0517 11.0401C22.7986 11.2932 22.6562 11.6363 22.6559 11.9942V11.9942ZM13.4555 27.1572C12.3587 27.1073 11.7625 26.9246 11.3663 26.7702C10.8411 26.5657 10.4663 26.3222 10.0723 25.9287C9.67828 25.5352 9.43438 25.1608 9.2308 24.6356C9.07636 24.2396 8.89366 23.6433 8.8438 22.5464C8.78926 21.3606 8.77837 21.0044 8.77837 18.0001C8.77837 14.9958 8.79016 14.6406 8.8438 13.4537C8.89375 12.3569 9.0778 11.7617 9.2308 11.3646C9.43528 10.8393 9.67882 10.4646 10.0723 10.0705C10.4658 9.67653 10.8402 9.43263 11.3663 9.22905C11.7623 9.07461 12.3587 8.89191 13.4555 8.84205C14.6413 8.78751 14.9975 8.77662 18.0005 8.77662C21.0034 8.77662 21.36 8.78841 22.5468 8.84205C23.6437 8.892 24.2388 9.07605 24.636 9.22905C25.1612 9.43263 25.536 9.67707 25.93 10.0705C26.324 10.464 26.567 10.8393 26.7715 11.3646C26.926 11.7606 27.1087 12.3569 27.1585 13.4537C27.2131 14.6406 27.224 14.9958 27.224 18.0001C27.224 21.0044 27.2131 21.3596 27.1585 22.5464C27.1086 23.6433 26.925 24.2394 26.7715 24.6356C26.567 25.1608 26.3235 25.5356 25.93 25.9287C25.5365 26.3218 25.1612 26.5657 24.636 26.7702C24.24 26.9247 23.6437 27.1074 22.5468 27.1572C21.361 27.2118 21.0048 27.2227 18.0005 27.2227C14.9962 27.2227 14.641 27.2118 13.4555 27.1572V27.1572ZM13.3623 6.81813C12.1647 6.87267 11.3463 7.06257 10.6316 7.34067C9.89149 7.62786 9.26491 8.01315 8.63878 8.63829C8.01265 9.26343 7.62835 9.891 7.34116 10.6312C7.06306 11.3463 6.87316 12.1642 6.81862 13.3618C6.76318 14.5614 6.75049 14.9449 6.75049 18C6.75049 21.0551 6.76318 21.4386 6.81862 22.6381C6.87316 23.8359 7.06306 24.6537 7.34116 25.3688C7.62835 26.1085 8.01274 26.7368 8.63878 27.3617C9.26482 27.9866 9.89149 28.3713 10.6316 28.6593C11.3477 28.9374 12.1647 29.1273 13.3623 29.1819C14.5625 29.2364 14.9453 29.25 18.0005 29.25C21.0556 29.25 21.4391 29.2373 22.6386 29.1819C23.8364 29.1273 24.6542 28.9374 25.3693 28.6593C26.109 28.3713 26.7361 27.9868 27.3622 27.3617C27.9883 26.7366 28.3718 26.1085 28.6598 25.3688C28.9379 24.6537 29.1287 23.8358 29.1824 22.6381C29.2369 21.4377 29.2496 21.0551 29.2496 18C29.2496 14.9449 29.2369 14.5614 29.1824 13.3618C29.1278 12.1641 28.9379 11.3458 28.6598 10.6312C28.3718 9.89145 27.9873 9.26442 27.3622 8.63829C26.7371 8.01216 26.109 7.62786 25.3702 7.34067C24.6542 7.06257 23.8363 6.87177 22.6395 6.81813C21.44 6.76359 21.0565 6.75 18.0014 6.75C14.9462 6.75 14.5625 6.76269 13.3623 6.81813Z" fill="white"/><rect x="144" width="36" height="36" rx="18" fill="#FF0000"/><path d="M162 10.1228C162.021 10.1228 169.046 10.1241 170.804 10.6052C171.767 10.8648 172.527 11.625 172.786 12.5886C173.266 14.3412 173.25 17.9841 173.25 18.0183C173.25 18.0183 173.249 21.6697 172.786 23.4304C172.527 24.3941 171.767 25.1543 170.804 25.4138C169.046 25.8765 162.021 25.8767 162 25.8767C162 25.8767 154.976 25.8771 153.196 25.3953C152.233 25.1358 151.472 24.3756 151.213 23.4119C150.75 21.6697 150.75 17.9998 150.75 17.9998C150.75 17.9642 150.752 14.3409 151.213 12.5886C151.472 11.6249 152.251 10.8462 153.196 10.5867C154.957 10.1233 162 10.1228 162 10.1228ZM159.758 21.3728L165.614 17.9998L159.758 14.6267V21.3728Z" fill="white"/><defs><linearGradient id="paint0_linear_0_1" x1="66" y1="0" x2="66" y2="35.7329" gradientUnits="userSpaceOnUse"><stop stop-color="#2AABEE"/><stop offset="1" stop-color="#229ED9"/></linearGradient><radialGradient id="paint1_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.5 32) rotate(-45.5787) scale(35.0036)"><stop stop-color="#FFD053"/><stop offset="0.484375" stop-color="#F54E53"/><stop offset="1" stop-color="#B431B8"/></radialGradient><radialGradient id="paint2_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.5 3) rotate(48.9452) scale(41.1096 54.6663)"><stop stop-color="#4069CA"/><stop offset="1" stop-color="#E54671" stop-opacity="0"/></radialGradient><radialGradient id="paint3_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.5 32) rotate(-45.5787) scale(35.0036)"><stop stop-color="#FFD053"/><stop offset="0.484375" stop-color="#F54E53"/><stop offset="1" stop-color="#B431B8"/></radialGradient></defs></svg></div>
         <div class="ft-apps">
           <a class="ft-badge" href="#"><svg viewBox="0 0 24 24"><path d="M3.6 2.4 13.4 12 3.6 21.6c-.3-.2-.5-.6-.5-1V3.4c0-.4.2-.8.5-1z" fill="#34A853"/><path d="m3.6 2.4 9.8 9.6 2.7-2.6L5.2 1.6c-.6-.3-1.2-.3-1.6.1z" fill="#EA4335"/><path d="M13.4 12 3.6 21.6c.4.4 1 .4 1.6.1l10.9-6.3-2.7-3.4z" fill="#FBBC04"/><path d="m16.1 9.4 4 2.3c.7.4.7 1.4 0 1.8l-4 2.3L13.4 12l2.7-2.6z" fill="#4285F4"/></svg><span class="bt"><small>GET IT ON</small><b>Google Play</b></span></a>
           <a class="ft-badge" href="#"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.4 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.8zM14.2 6.3c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3z"/></svg><span class="bt"><small>Download on the</small><b>App Store</b></span></a>
         </div>
-        <div class="ft-contact"><div class="cl">Контакт центр, ежедневно 24/7</div><div class="cp" style="font-weight: 800">998 78 140 02 00</div></div>
+        <div class="ft-contact"><div class="cl" style="color: rgb(245, 239, 232)">Контакт центр, ежедневно 24/7</div><div class="cp" style="font-weight: 800; color: rgb(245, 239, 232)">998 78 140 02 00</div></div>
       </div>
       <div class="ft-cols" style="padding: 20px 0px">
-        <div class="ft-col"><h4 style="font-weight: 700">Компания</h4><a href="#">Структура</a><a href="#">История создания</a><a href="#">Связаться с нами</a><a href="#">Вакансии</a></div>
-        <div class="ft-col"><h4 style="font-weight: 700">Перед покупкой</h4><a href="#">Правила перевозки багажа</a><a href="#">Тарифы и условия</a><a href="#">Визовые правила</a><a href="#">Правила перевозок</a><a href="#">Путешествие с детьми</a></div>
-        <div class="ft-col"><h4 style="font-weight: 700">Билеты и услуги</h4><a href="#">Возврат билета</a><a href="#">Премиальный багаж</a><a href="#">Выбор места</a><a href="#">Сверхнормативный багаж</a></div>
+        <div class="ft-col" style="color: rgb(245, 239, 232)"><h4 style="font-weight: 700; color: rgb(245, 239, 232)">Компания</h4><a href="#">Структура</a><a href="#">История создания</a><a href="#">Связаться с нами</a><a href="#">Вакансии</a></div>
+        <div class="ft-col"><h4 style="font-weight: 700; color: rgb(245, 239, 232)">Перед покупкой</h4><a href="#">Правила перевозок</a><a href="#">Тарифы и условия</a><a href="#">Визовые правила</a><a href="#">Путешествие с детьми</a></div>
+        <div class="ft-col"><h4 style="font-weight: 700; color: rgb(245, 239, 232)">Билеты и услуги</h4><a href="#">Возврат билета</a><a href="#">Премиальный багаж</a><a href="#">Выбор места</a><a href="#">Сверхнормативный багаж</a></div>
         <div class="ft-col"><h4 style="font-weight: 700">Перед полётом</h4><a href="#">Таможенные правила</a><a href="#">Авиационная безопасность</a><a href="#">Перевозка пассажиров</a></div>
         <div class="ft-col"><h4 style="font-weight: 700">Услуги в аэропорту</h4><a href="#">Онлайн регистрация</a><a href="#">Лаунж-залы</a></div>
         <div class="ft-col"><h4 style="font-weight: 700">Программа лояльности</h4><a href="#">Условия участия</a><a href="#">Стать участником</a><a href="#">Копить / Тратить баллы</a></div>
