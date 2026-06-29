@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
 <style>
 :root{
     --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
@@ -17,7 +17,7 @@
     --good:#2f7350; --good-bg:#e7f0ea;
     --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
     --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
-    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font:"Plus Jakarta Sans","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
@@ -59,10 +59,10 @@
   .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
   .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
   .pdd-pen{padding:7px 0;}
-  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
-  .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:default;}
+  .pdd-penbtn .chev{display:none;}
   .pdd-pen.open .pdd-penbtn .chev{transform:rotate(180deg);}
-  .pdd-penbody{display:none;flex-direction:column;gap:14px;padding:10px 0 2px;}
+  .pdd-penbody{display:flex;flex-direction:column;gap:14px;padding:10px 0 2px;}
   .pdd-pen.open .pdd-penbody{display:flex;}
   .pdd-penbody .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
   .pdd-penbody .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
@@ -418,12 +418,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
       </div>
       <h1 class="suc-h">Оплата прошла успешно</h1>
-      <p class="suc-sub">Билеты отправлены на вашу почту. Спасибо, что выбрали Uzbekistan Airways!</p>
+      <p class="suc-sub">Билеты отправлены на вашу почту test123@gmail.com. Спасибо, что выбрали Uzbekistan Airways!</p>
 
       <div class="suc-pnr">
         <div class="suc-pnr-l">
-          <div class="suc-pnr-lbl">Код бронирования (PNR)</div>
-          <div class="suc-pnr-code">UZ7F2K</div>
+          <div class="suc-pnr-lbl">Номер заказа</div>
+          <div class="suc-pnr-code">954239582353</div>
+          <div class="suc-pnr-lbl" style="margin-top:12px">Номер билета</div>
+          <div class="suc-pnr-code">21012312312</div>
         </div>
         <button class="suc-copy" id="sucCopy" type="button">Скопировать</button>
       </div>
@@ -432,13 +434,24 @@
         <div class="suc-row"><span class="sr-l">Маршрут</span><span class="sr-v">Ташкент → Москва → Ташкент</span></div>
         <div class="suc-row"><span class="sr-l">Даты</span><span class="sr-v">2 марта — 9 марта 2026</span></div>
         <div class="suc-row"><span class="sr-l">Пассажиры</span><span class="sr-v">2 взрослых</span></div>
-        <div class="suc-row"><span class="sr-l">Способ оплаты</span><span class="sr-v">Карта Uzcard · 8600****1234</span></div>
+        <div class="suc-row"><span class="sr-l">Способ оплаты</span><span class="sr-v">Онлайн</span></div>
         <hr class="suc-sep">
         <div class="suc-row total"><span class="sr-l">Итого оплачено</span><span class="sr-v">38 000 000 UZS</span></div>
       </div>
 
+      <div class="suc-rate" id="sucRate">
+        <div class="suc-rate-t">Оцените удобство покупки билета</div>
+        <div class="suc-stars" id="sucStars" role="radiogroup" aria-label="Оценка">
+          <button type="button" data-v="1" aria-label="1">★</button>
+          <button type="button" data-v="2" aria-label="2">★</button>
+          <button type="button" data-v="3" aria-label="3">★</button>
+          <button type="button" data-v="4" aria-label="4">★</button>
+          <button type="button" data-v="5" aria-label="5">★</button>
+        </div>
+        <div class="suc-rate-done" id="sucRateDone" hidden>Спасибо за вашу оценку!</div>
+      </div>
+
       <div class="suc-actions">
-        <a class="suc-btn primary" href="#" id="sucTicket">Скачать билеты</a>
         <a class="suc-btn ghost" href="Home.html">На главную</a>
       </div>
 
@@ -456,7 +469,7 @@
     .suc-badge{width:84px;height:84px;border-radius:50%;background:var(--good-bg);color:var(--good);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:sucPop .5s cubic-bezier(.18,.89,.32,1.28) both;}
     .suc-badge svg{width:42px;height:42px;}
     @keyframes sucPop{0%{transform:scale(.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
-    .suc-h{font-weight:900;font-size:32px;letter-spacing:-.02em;color:var(--ink);}
+    .suc-h{font-weight:600;font-size:32px;letter-spacing:-.02em;color:var(--ink);}
     .suc-sub{margin:12px auto 0;max-width:420px;color:var(--muted);font-size:16px;line-height:1.5;text-wrap:pretty;}
     .suc-pnr{margin:32px 0 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:18px 24px;text-align:left;}
     .suc-pnr-lbl{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
@@ -481,19 +494,37 @@
     .suc-note-ic{display:inline-flex;width:18px;height:18px;color:var(--muted-2);flex:none;}
     .suc-note-ic svg{width:18px;height:18px;}
     @media(max-width:560px){ .suc-card{padding:36px 24px 30px;} .suc-actions{flex-direction:column;} .suc-pnr{flex-direction:column;align-items:stretch;} }
+    .suc-rate{background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:24px;text-align:center;}
+    .suc-rate-t{font-weight:700;font-size:15.5px;color:var(--ink);margin-bottom:12px;}
+    .suc-stars{display:flex;justify-content:center;gap:8px;}
+    .suc-stars button{border:0;background:none;padding:0;cursor:pointer;font-size:34px;line-height:1;color:#fff;-webkit-text-stroke:1px #e7ddd5;transition:color .12s,transform .12s;}
+    .suc-stars button:hover{transform:scale(1.12);}
+    .suc-stars button.on{color:#e8b923;-webkit-text-stroke:0;}
+    .suc-rate-done{margin-top:12px;color:var(--good);font-weight:700;font-size:14.5px;}
   </style>
 
   <script>
     (function(){
       var copy=document.getElementById('sucCopy');
       if(copy) copy.addEventListener('click',function(){
-        var code='UZ7F2K';
-        if(navigator.clipboard) navigator.clipboard.writeText(code).catch(function(){});
+        var code='954239582353';
+        function fallback(){ try{ var ta=document.createElement('textarea'); ta.value=code; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }catch(e){} }
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(code).catch(fallback); } else { fallback(); }
         copy.textContent='Скопировано'; copy.classList.add('done');
         setTimeout(function(){ copy.textContent='Скопировать'; copy.classList.remove('done'); },1800);
       });
       var tk=document.getElementById('sucTicket');
       if(tk) tk.addEventListener('click',function(e){ e.preventDefault(); });
+      (function(){
+        var box=document.getElementById('sucStars'); if(!box) return;
+        var btns=[].slice.call(box.querySelectorAll('button')); var rated=0;
+        function paint(n){ btns.forEach(function(b,i){ b.classList.toggle('on', i<n); }); }
+        btns.forEach(function(b){
+          b.addEventListener('mouseenter',function(){ if(!rated) paint(+b.dataset.v); });
+          b.addEventListener('click',function(){ rated=+b.dataset.v; paint(rated); var d=document.getElementById('sucRateDone'); if(d) d.hidden=false; });
+        });
+        box.addEventListener('mouseleave',function(){ paint(rated); });
+      })();
     })();
   </script>
 </body>

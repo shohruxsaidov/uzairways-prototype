@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
 <style>
 :root{
     --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
@@ -17,7 +17,7 @@
     --good:#2f7350; --good-bg:#e7f0ea;
     --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
     --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
-    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font:"Plus Jakarta Sans","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
@@ -43,10 +43,10 @@
   .pdd-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(560px,94vw);padding:34px 40px 32px;}
   .pdd-close{position:absolute;top:20px;right:22px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
   .pdd-close:hover{background:var(--bg-2);}
-  .pdd-title{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
+  .pdd-title{text-align:center;font-weight:600;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
   .pdd-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;padding:7px 0;}
   .pdd-row .dl{color:var(--ink-soft);font-weight:600;}
-  .pdd-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pdd-row .dv{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
   .pdd-points{color:var(--good);font-weight:700;font-size:16.5px;padding:7px 0;}
   .pdd-sep{height:1px;background:var(--line);border:0;margin:8px 0 2px;}
   .pdd-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;color:var(--ink);margin-top:8px;}
@@ -59,12 +59,12 @@
   .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
   .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
   .pdd-pen{padding:7px 0;}
-  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
-  .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:default;}
+  .pdd-penbtn .chev{display:none;}
   .pdd-pen.open .pdd-penbtn .chev{transform:rotate(180deg);}
-  .pdd-penbody{display:none;flex-direction:column;gap:14px;padding:10px 0 2px;}
+  .pdd-penbody{display:flex;flex-direction:column;gap:14px;padding:10px 0 2px;}
   .pdd-pen.open .pdd-penbody{display:flex;}
-  .pdd-penbody .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
+  .pdd-penbody .pen-h{font-weight:700;color:var(--ink);font-size:14.5px;line-height:1.4;}
   .pdd-penbody .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
   .pdd-penbody .pen-d{font-weight:600;color:var(--ink-soft);font-size:14px;line-height:1.4;}
   @media(max-width:680px){.pd-bar-inner{flex-wrap:wrap;gap:14px;}.pd-confirm{margin-left:0;width:100%;}}
@@ -107,7 +107,7 @@
   .step-line{flex:1;height:2px;background:var(--line);margin:0 9px;min-width:12px;}
 
   .pax-title{text-align:center;margin-top:40px;}
-  .pax-title h1{font-size:34px;font-weight:900;letter-spacing:-.025em;color:var(--ink);}
+  .pax-title h1{font-size:34px;font-weight:600;letter-spacing:-.025em;color:var(--ink);}
   .pax-title p{color:var(--muted);font-size:16px;margin-top:10px;}
 
   /* Passenger card */
@@ -115,7 +115,7 @@
   .pax-head{display:flex;align-items:center;gap:12px;background:rgb(239,229,226);padding:18px 26px;cursor:pointer;border-radius:var(--r-lg) var(--r-lg) 0 0;}
   .pax-card.collapsed .pax-head{border-radius:var(--r-lg);}
   .pax-head .pn{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;}
-  .pax-head h3{font-size:19px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .pax-head h3{font-size:19px;font-weight:700;color:var(--ink);white-space:nowrap;}
   .pax-head .chev{margin-left:auto;color:var(--ink);font-size:14px;transition:.2s;}
   .pax-head .trash{margin-left:auto;width:34px;height:34px;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;transition:.15s;}
   .pax-head .trash:hover{background:var(--surface);}
@@ -131,8 +131,8 @@
   .fld .inp::placeholder{color:var(--muted-2);font-weight:600;}
   .fld .inp:focus{border-color:var(--ink);background:var(--surface);}
   .fld .inp-ic{position:relative;}
-  .fld .inp-ic .inp{padding-right:44px;cursor:pointer;}
-  .fld .inp-ic .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink);pointer-events:none;}
+  .fld .inp-ic .inp{padding-right:44px;}
+  .fld .inp-ic .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink);cursor:pointer;}
   .fld .inp-ic .ic svg{width:20px;height:20px;display:block;}
   .fld.sel .inp{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;min-width:0;}
   .fld.sel .inp > span:not(.chev){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;}
@@ -170,7 +170,7 @@
   .chk input:checked + .box{background:var(--accent);border-color:var(--accent);}
   .chk input:checked + .box svg{opacity:1;}
   .chk a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
-  .chk.master{font-weight:800;color:var(--ink);font-size:15.5px;}
+  .chk.master{font-weight:600;color:var(--ink);font-size:15.5px;}
   .sub-checks{display:flex;flex-direction:column;gap:14px;padding-left:34px;margin-top:2px;}
 
   .pax-foot{display:flex;justify-content:flex-end;margin-top:38px;}
@@ -225,13 +225,13 @@
 
     <!-- Stepper -->
     <div class="stepper">
-      <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
+      <div class="step done" style="font-weight: 600"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Выбор рейсов</div>
       <div class="step-line"></div>
-      <div class="step active"><span class="dot"><i></i></span>Заполнение данных о пассажирах</div>
+      <div class="step active" style="font-weight: 600"><span class="dot"><i></i></span>Заполнение данных о пассажирах</div>
       <div class="step-line"></div>
-      <div class="step"><span class="dot"></span>Выбор дополнительных услуг</div>
+      <div class="step" style="font-weight: 600"><span class="dot"></span>Выбор дополнительных услуг</div>
       <div class="step-line"></div>
-      <div class="step"><span class="dot"></span>Детали  и  оплата</div>
+      <div class="step" style="font-weight: 600"><span class="dot"></span>Детали  и  оплата</div>
     </div>
 
     <!-- Title -->
@@ -244,38 +244,38 @@
     <div id="paxList">
     <div class="pax-card" id="pax1" data-type="adult">
       <div class="pax-head" data-toggle>
-        <h3>Взрослый пассажир 1</h3>
+        <h3 style="font-weight: 600">Взрослый пассажир 1</h3>
         <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span>
       </div>
       <div class="pax-body">
-        <div class="fld"><label>Фамилия*</label><input class="inp" placeholder="Как в документе"></div>
-        <div class="fld"><label>Имя*</label><input class="inp" placeholder="Как в документе"></div>
-        <div class="gender"><label style="font-size:13px;font-weight:700;color:var(--muted);">Пол*</label>
-          <div class="seg"><button class="on" data-g>Мужчина</button><button data-g>Женщина</button></div>
+        <div class="fld"><label style="font-weight: 600">Фамилия*</label><input class="inp" placeholder="Как в документе"></div>
+        <div class="fld"><label style="font-weight: 600">Имя*</label><input class="inp" placeholder="Как в документе"></div>
+        <div class="gender"><label style="font-size: 13px; font-weight: 600; color: var(--muted)">Пол*</label>
+          <div class="seg"><button class="on" data-g style="font-weight: 600">Мужчина</button><button data-g style="font-weight: 600">Женщина</button></div>
         </div>
-        <div class="fld"><label>Дата рождения*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
+        <div class="fld"><label style="font-weight: 600">Дата рождения*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
 
-        <div class="fld sel"><label>Тип документа</label><div class="inp" data-doctoggle><span>Загранпаспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div><div class="doc-menu"><button type="button" data-doc class="on">Загранпаспорт</button><button type="button" data-doc>Паспорт гражданина РУз / ID-карта</button><button type="button" data-doc>Водительские права</button><button type="button" data-doc>Другой документ</button></div></div>
-        <div class="fld"><label>Серия и номер документа*</label><input class="inp" placeholder="AA 1234567"></div>
-        <div class="fld"><label>Срок действия документа*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
-        <div class="fld"><label>Номер UzAirPlus</label><input class="inp" placeholder="Необязательно"></div>
+        <div class="fld sel"><label style="font-weight: 600">Тип документа</label><div class="inp" data-doctoggle><span>Загранпаспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div><div class="doc-menu"><button type="button" data-doc class="on">Загранпаспорт</button><button type="button" data-doc>Паспорт гражданина РУз / ID-карта</button><button type="button" data-doc>Водительские права</button><button type="button" data-doc>Другой документ</button></div></div>
+        <div class="fld"><label style="font-weight: 600">Серия и номер документа*</label><input class="inp" placeholder="AA 1234567"></div>
+        <div class="fld"><label style="font-weight: 600">Срок действия документа*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg></span></div></div>
+        <div class="fld"><label style="font-weight: 600">Номер UzAirPlus</label><input class="inp" placeholder="Необязательно"></div>
       </div>
     </div>
     </div>
 
     <!-- Add passengers -->
     <div class="add-row">
-      <button class="add-pax" data-add="adult"><span class="plus">+</span> Добавить взрослого (от 12 лет)</button>
-      <button class="add-pax" data-add="child"><span class="plus">+</span> Добавить ребёнка (от 2 до 11 лет включительно)</button>
-      <button class="add-pax" data-add="infant"><span class="plus">+</span> Добавить младенца (до 2 лет)</button>
+      <button class="add-pax" data-add="adult" style="font-weight: 600"><span class="plus">+</span> Добавить взрослого (от 12 лет)</button>
+      <button class="add-pax" data-add="child" style="font-weight: 600"><span class="plus">+</span> Добавить ребёнка (от 2 до 11 лет включительно)</button>
+      <button class="add-pax" data-add="infant" style="font-weight: 600"><span class="plus">+</span> Добавить младенца (до 2 лет)</button>
     </div>
 
     <hr class="pax-div">
 
     <!-- Contact -->
     <div class="contact-grid">
-      <div class="fld"><label>Номер телефона*</label><input class="inp" placeholder="+998 90 123 45 67"><div class="hint">Мы свяжемся по этому номеру при непредвиденных обстоятельствах</div></div>
-      <div class="fld"><label>Почта*</label><input class="inp" placeholder="example@mail.com"><div class="hint">На этот почтовый адрес мы пришлём вам билет и информацию о рейсе после оплаты</div></div>
+      <div class="fld"><label style="font-weight: 600">Номер телефона*</label><input class="inp" placeholder="+998 90 123 45 67"><div class="hint">Мы свяжемся по этому номеру при непредвиденных обстоятельствах</div></div>
+      <div class="fld"><label style="font-weight: 600">Почта*</label><input class="inp" placeholder="example@mail.com"><div class="hint">На этот почтовый адрес мы пришлём вам билет и информацию о рейсе после оплаты</div></div>
     </div>
 
     <!-- Checkboxes -->
@@ -377,6 +377,9 @@
       .dp-day:hover{background:var(--surface-2);}
       .dp-day.empty{visibility:hidden;cursor:default;}
       .dp-day.sel{background:var(--accent);color:#fff;}
+      .dp-sel{display:flex;gap:6px;flex:1;justify-content:center;}
+      .dp-sel select{font-family:var(--font);font-weight:700;font-size:13px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-card);border-radius:8px;padding:5px 6px;cursor:pointer;outline:none;}
+      .dp-sel select:focus{border-color:var(--accent);}
       `;
       document.head.appendChild(css);
 
@@ -390,9 +393,12 @@
       function pad(n){ return n<10?'0'+n:''+n; }
       function render(){
         const first=new Date(view.y,view.m,1).getDay(), lead=(first+6)%7, dim=new Date(view.y,view.m+1,0).getDate();
-        let h='<div class="dp-head"><button type="button" class="dp-nav" data-j="-12">«</button><button type="button" class="dp-nav" data-j="-1">‹</button>'
-          +'<span class="dp-title">'+MON[view.m]+' '+view.y+'</span>'
-          +'<button type="button" class="dp-nav" data-j="1">›</button><button type="button" class="dp-nav" data-j="12">»</button></div>';
+        const yNow=new Date().getFullYear();
+        let mOpts=''; for(let i=0;i<12;i++){ mOpts+='<option value="'+i+'"'+(i===view.m?' selected':'')+'>'+MON[i]+'</option>'; }
+        let yOpts=''; for(let y=yNow;y>=1920;y--){ yOpts+='<option value="'+y+'"'+(y===view.y?' selected':'')+'>'+y+'</option>'; }
+        let h='<div class="dp-head"><button type="button" class="dp-nav" data-j="-1">‹</button>'
+          +'<span class="dp-sel"><select class="dp-msel">'+mOpts+'</select><select class="dp-ysel">'+yOpts+'</select></span>'
+          +'<button type="button" class="dp-nav" data-j="1">›</button></div>';
         h+='<div class="dp-dow">'+DOW.map(d=>'<span>'+d+'</span>').join('')+'</div><div class="dp-days">';
         for(let i=0;i<lead;i++) h+='<div class="dp-day empty"></div>';
         for(let d=1;d<=dim;d++){
@@ -401,6 +407,9 @@
         }
         h+='</div>';
         dp.innerHTML=h;
+        const ms=dp.querySelector('.dp-msel'), ys=dp.querySelector('.dp-ysel');
+        if(ms) ms.addEventListener('change',()=>{ view.m=+ms.value; render(); });
+        if(ys) ys.addEventListener('change',()=>{ view.y=+ys.value; render(); });
       }
       function place(){
         const r=target.getBoundingClientRect();
@@ -418,18 +427,21 @@
           sel=null;
           const lbl=(input.closest('.fld').querySelector('label')||{}).textContent||'';
           const birth=/рожден/i.test(lbl);
-          view={y: birth?1995:2030, m:0};
+          view={y: birth?1995:(new Date().getFullYear()), m:0};
         }
         render(); dp.hidden=false; place();
       }
       function close(){ dp.hidden=true; target=null; }
 
       document.addEventListener('click',e=>{
-        const inp=e.target.closest('input.inp');
-        if(inp && inp.getAttribute('placeholder')==='ДД.ММ.ГГГГ'){
-          e.preventDefault();
-          if(!dp.hidden && target===inp){ close(); } else { open(inp); }
-          return;
+        const icon=e.target.closest('.inp-ic .ic');
+        if(icon){
+          const inp=icon.closest('.inp-ic').querySelector('input.inp');
+          if(inp && inp.getAttribute('placeholder')==='ДД.ММ.ГГГГ'){
+            e.preventDefault();
+            if(!dp.hidden && target===inp){ close(); } else { open(inp); }
+            return;
+          }
         }
         if(dp.hidden) return;
         if(dp.contains(e.target)){
@@ -447,8 +459,18 @@
         }
         close();
       });
-      // make date inputs behave like pickers (no manual typing / mobile keyboard)
-      function tagInputs(root){ (root||document).querySelectorAll('input.inp[placeholder="ДД.ММ.ГГГГ"]').forEach(i=>{ i.setAttribute('readonly',''); i.style.cursor='pointer'; }); }
+      // allow manual keyboard entry with auto-formatting (DD.MM.YYYY)
+      function tagInputs(root){ (root||document).querySelectorAll('input.inp[placeholder="ДД.ММ.ГГГГ"]').forEach(i=>{ i.removeAttribute('readonly'); i.style.cursor='text'; i.setAttribute('inputmode','numeric'); i.setAttribute('maxlength','10'); }); }
+      document.addEventListener('input',e=>{
+        const i=e.target;
+        if(!(i.matches&&i.matches('input.inp[placeholder="ДД.ММ.ГГГГ"]'))) return;
+        let d=i.value.replace(/\D/g,'').slice(0,8);
+        let out=d.slice(0,2);
+        if(d.length>2) out+='.'+d.slice(2,4);
+        if(d.length>4) out+='.'+d.slice(4,8);
+        i.value=out;
+        const fld=i.closest('.fld'); if(fld&&out.length===10) fld.classList.remove('invalid');
+      });
       tagInputs(document);
       const mo=new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{ if(n.nodeType===1) tagInputs(n); })));
       mo.observe(document.getElementById('paxList')||document.body,{childList:true,subtree:true});
@@ -464,8 +486,8 @@
         <div class="tot">9 500 000 UZS</div>
         <div class="lbl">за всех пассажиров</div>
       </div>
-      <button class="pd-details" id="pdDetailsBtn">Детали</button>
-      <button class="pd-confirm" id="pdConfirmBtn">Подтвердить</button>
+      <button class="pd-details" id="pdDetailsBtn" style="font-weight: 700">Детали</button>
+      <button class="pd-confirm" id="pdConfirmBtn" style="font-weight: 600">Подтвердить</button>
     </div>
   </div>
   <div class="pdd-ov" id="pddModal" hidden>
@@ -481,11 +503,10 @@
         <div class="pdd-penbody">
           <div class="pen-group"><div class="pen-h">Переоформление авиабилета до вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
           <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета до вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
-          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета <span class="pen-i">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</span></div></div>
+          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
           <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета после вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
         </div>
       </div>
-      <div class="pdd-points">+ 5 000 баллов UzAirPlus</div>
       <hr class="pdd-sep">
       <div class="pdd-total">Итого: <span style="margin-left:8px;">13 000 000 UZS</span></div>
     </div>
@@ -493,7 +514,7 @@
   <script>
     (function(){
       var ov=document.getElementById('pddModal');
-      document.getElementById('pdDetailsBtn').addEventListener('click',function(){ ov.hidden=false; });
+      document.getElementById('pdDetailsBtn').addEventListener('click',function(){ ov.hidden=false; var pp=ov.querySelector('.pdd-pen'); if(pp) pp.classList.add('open'); });
       document.getElementById('pddClose').addEventListener('click',function(){ ov.hidden=true; });
       ov.addEventListener('click',function(e){ if(e.target===ov) ov.hidden=true; });
       document.getElementById('pddPenBtn').addEventListener('click',function(){ this.closest('.pdd-pen').classList.toggle('open'); });
@@ -503,10 +524,10 @@
   <div class="pdd-ov" id="visaModal" hidden>
     <div class="visa-card" role="dialog" aria-modal="true">
       <button class="pdd-close" id="visaClose" aria-label="Закрыть">✕</button>
-      <div class="visa-msg">Напоминаем, что для перелёта во многие страны требуется виза.<br>Пожалуйста, убедитесь, что она у вас есть.</div>
+      <div class="visa-msg" style="font-weight: 600">Напоминаем, что для перелёта во многие страны требуется виза.<br>Пожалуйста, убедитесь, что она у вас есть.</div>
       <div class="visa-actions">
-        <button class="visa-btn yes" id="visaYes">У меня есть виза</button>
-        <button class="visa-btn no" id="visaNo">Мне виза не нужна</button>
+        <button class="visa-btn yes" id="visaYes" style="font-weight: 600">У меня есть виза</button>
+        <button class="visa-btn no" id="visaNo" style="font-weight: 600">Мне виза не нужна</button>
       </div>
     </div>
   </div>
@@ -516,8 +537,8 @@
       function close(){ ov.hidden=true; }
       document.getElementById('pdConfirmBtn').addEventListener('click',function(){ ov.hidden=false; });
       document.getElementById('visaClose').addEventListener('click',close);
-      document.getElementById('visaYes').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
-      document.getElementById('visaNo').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
+      document.getElementById('visaYes').addEventListener('click',function(){ window.location.href='Additional Services - Seat Open.html'; });
+      document.getElementById('visaNo').addEventListener('click',function(){ window.location.href='Additional Services - Seat Open.html'; });
       ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
     })();
@@ -565,3 +586,7 @@
   </script>
 </body>
 </html>
+<style id="__om-edit-overrides">
+.dp-head >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 700 !important }
+.dp-head >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 700 !important }
+</style>

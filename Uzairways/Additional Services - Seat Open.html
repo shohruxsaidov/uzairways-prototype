@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
 <style>
 :root{
     --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
@@ -17,7 +17,7 @@
     --good:#2f7350; --good-bg:#e7f0ea;
     --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
     --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
-    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font:"Plus Jakarta Sans","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
@@ -33,7 +33,7 @@
   .pd-price{display:flex;flex-direction:column;gap:2px;}
   .pd-price .tot{font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1;white-space:nowrap;}
   .pd-price .lbl{font-size:13.5px;color:var(--muted);font-weight:600;}
-  .pd-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
+  .pd-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:600;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
   .pd-details:hover{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;}
   .pd-confirm{margin-left:auto;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:15px 52px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;white-space:nowrap;}
   .pd-confirm:hover{background:var(--accent-2);}
@@ -43,10 +43,10 @@
   .pdd-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:0 30px 80px rgba(18,23,79,.22);width:min(560px,94vw);padding:34px 40px 32px;}
   .pdd-close{position:absolute;top:20px;right:22px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
   .pdd-close:hover{background:var(--bg-2);}
-  .pdd-title{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
+  .pdd-title{text-align:center;font-weight:600;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 26px;}
   .pdd-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;padding:7px 0;}
   .pdd-row .dl{color:var(--ink-soft);font-weight:600;}
-  .pdd-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .pdd-row .dv{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
   .pdd-points{color:var(--good);font-weight:700;font-size:16.5px;padding:7px 0;}
   .pdd-sep{height:1px;background:var(--line);border:0;margin:8px 0 2px;}
   .pdd-total{display:flex;justify-content:flex-end;font-weight:900;font-size:21px;color:var(--ink);margin-top:8px;}
@@ -59,12 +59,12 @@
   .visa-btn.no{background:transparent;color:var(--ink);border:1.6px solid var(--line);}
   .visa-btn.no:hover{border-color:var(--accent);color:var(--accent);}
   .pdd-pen{padding:7px 0;}
-  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
-  .pdd-penbtn .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .pdd-penbtn{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:default;}
+  .pdd-penbtn .chev{display:none;}
   .pdd-pen.open .pdd-penbtn .chev{transform:rotate(180deg);}
-  .pdd-penbody{display:none;flex-direction:column;gap:14px;padding:10px 0 2px;}
+  .pdd-penbody{display:flex;flex-direction:column;gap:14px;padding:10px 0 2px;}
   .pdd-pen.open .pdd-penbody{display:flex;}
-  .pdd-penbody .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
+  .pdd-penbody .pen-h{font-weight:700;color:var(--ink);font-size:14.5px;line-height:1.4;}
   .pdd-penbody .pen-h .pen-i{font-weight:600;color:var(--ink-soft);}
   .pdd-penbody .pen-d{font-weight:600;color:var(--ink-soft);font-size:14px;line-height:1.4;}
   @media(max-width:680px){.pd-bar-inner{flex-wrap:wrap;gap:14px;}.pd-confirm{margin-left:0;width:100%;}}
@@ -96,7 +96,7 @@
   .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
   /* Stepper */
   .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
-  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
+  .step{display:flex;align-items:center;gap:8px;font-weight:600;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
   .step .dot{width:19px;height:19px;border-radius:50%;border:2px solid var(--muted-2);display:flex;align-items:center;justify-content:center;flex:none;}
   .step.done{color:var(--ink);}
   .step.done .dot{background:var(--good);border-color:var(--good);}
@@ -188,7 +188,7 @@
   .svc-leg .leg-tab{flex:none;width:80px;border-right:1px solid var(--line);padding-right:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
   .svc-leg .leg-tab .lt{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;}
   .svc-leg .leg-tab .ld{font-weight:900;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.1;}
-  .svc-leg .leg-tab .lm{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .svc-leg .leg-tab .lm{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
   .svc-leg .leg-body{flex:1;min-width:0;}
   .svc-leg .lb-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .svc-leg .lb-route{font-weight:800;font-size:15px;color:var(--ink);}
@@ -214,14 +214,14 @@
   .svc-col{position:relative;}
   .svc-col + .svc-col{padding-left:30px;border-left:1px solid var(--line);}
   .svc-col .sc-route{font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:10px;}
-  .svc-pax{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:14px;padding:5px 0;}
-  .svc-pax .nm{font-weight:700;color:var(--ink);}
-  .svc-pax .st{color:var(--muted);font-weight:600;}
+  .svc-pax{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 10px;font-size:14px;padding:5px 0;}
+  .svc-pax .nm{font-weight:700;color:var(--ink);white-space:nowrap;flex:none;}
+  .svc-pax .st{color:var(--muted);font-weight:600;text-align:right;margin-left:auto;}
   .svc-pax .st.set{color:var(--good);}
   .svc-foot{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:auto;padding-top:18px;}
   .svc-price{font-weight:900;font-size:18px;color:var(--ink);white-space:nowrap;}
   .svc-price.free{color:var(--good);}
-  .svc-pick{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 44px;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-pick{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 44px;font-family:var(--font);font-weight:600;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap;}
   .svc-pick:hover{background:var(--accent);}
   .svc-pick.done{background:var(--good);}
   .svc-actions{display:flex;flex-direction:row;align-items:center;gap:18px;}
@@ -231,10 +231,10 @@
   .svc-pax .st .st-del svg{width:15px;height:15px;display:block;}
   .svc-pax .st .st-del:hover{color:var(--accent);}
   .svc-links{margin-top:12px;}
-  .svc-links a{display:block;color:#2a6fdb;font-weight:700;font-size:13.5px;margin-top:5px;text-decoration:none;}
+  .svc-links a{display:block;color:#2a6fdb;font-weight:600;font-size:13.5px;margin-top:5px;text-decoration:none;}
   .svc-links a:hover{text-decoration:underline;}
-  .svc-foot .svc-price-lbl{font-weight:900;font-size:17px;color:var(--ink);text-align:right;line-height:1.3;white-space:nowrap;}
-  .svc-cancel{background:var(--bg-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:12px;padding:11px 32px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .svc-foot .svc-price-lbl{font-weight:600;font-size:18px;color:var(--ink);text-align:right;line-height:1.3;white-space:nowrap;}
+  .svc-cancel{background:var(--bg-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:12px;padding:11px 32px;font-family:var(--font);font-weight:600;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;}
   .svc-cancel:hover{border-color:var(--accent);color:var(--accent);}
   @media(max-width:860px){
     .svc-summary{grid-template-columns:1fr;}
@@ -247,13 +247,13 @@
   .seat-ov[hidden]{display:none;}
   .seat-card{position:relative;background:var(--surface);border-radius:22px;box-shadow:0 30px 80px rgba(18,23,79,.24);width:min(900px,96vw);max-height:90vh;display:flex;flex-direction:column;overflow:auto;}
   .seat-head{position:relative;padding:22px 30px;border-bottom:1px solid var(--line);text-align:center;flex:none;}
-  .seat-title{font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.01em;}
+  .seat-title{font-weight:600;font-size:20px;color:var(--ink);letter-spacing:-.01em;}
   .seat-close{position:absolute;top:15px;right:18px;width:38px;height:38px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s;}
   .seat-close:hover{background:var(--bg-2);}
   .seat-legs{display:flex;align-items:center;gap:14px;padding:18px 30px 6px;flex:none;}
   .seat-pin{flex:none;width:34px;height:34px;color:var(--accent);display:flex;align-items:center;justify-content:center;}
   .seat-pin svg{width:30px;height:30px;}
-  .seat-leg{flex:1;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-family:var(--font);font-weight:800;font-size:15px;color:var(--ink-soft);background:#f5efe8;cursor:pointer;transition:.15s;text-align:center;}
+  .seat-leg{flex:1;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-family:var(--font);font-weight:700;font-size:15px;color:var(--ink-soft);background:#f5efe8;cursor:pointer;transition:.15s;text-align:center;}
   .seat-leg:hover{border-color:var(--accent);color:var(--accent);}
   .seat-leg.active{background:var(--ink);color:#fff;border-style:solid;border-color:var(--ink);}
   .seat-body{display:grid;grid-template-columns:1fr 264px;gap:22px;padding:14px 30px 26px;overflow:hidden;flex:1;min-height:0;}
@@ -283,7 +283,7 @@
   .seat-lav{width:60px;height:46px;border-radius:8px;background:rgba(18,23,79,.06);display:flex;align-items:center;justify-content:center;color:var(--muted-2);}
   .seat-lav svg{width:22px;height:22px;}
   .seat-side{display:flex;flex-direction:column;min-height:0;}
-  .seat-confirm{margin-top:18px;flex:none;width:100%;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 0;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:.15s;}
+  .seat-confirm{margin-top:18px;flex:none;width:100%;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 0;font-family:var(--font);font-weight:600;font-size:15px;cursor:pointer;transition:.15s;}
   .seat-confirm:hover{background:var(--accent-hover,#a8324c);}
   .seat-paxlist{display:flex;flex-direction:column;gap:10px;}
   .seat-pax{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;background:#f5efe8;cursor:pointer;transition:.15s;text-align:left;font-family:var(--font);}
@@ -313,6 +313,75 @@
   @media(max-width:760px){
     .seat-body{grid-template-columns:1fr;}
   }
+
+  /* ===== Доп. багаж modal ===== */
+  .bag-card{width:min(860px,96vw);max-height:90vh;overflow:auto;}
+  .bag-legcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px 30px 0;flex:none;}
+  .bag-legcol{border:1.5px solid var(--line);border-radius:14px;padding:12px;transition:.15s;}
+  .bag-legcol.active{border-color:var(--accent);box-shadow:0 4px 16px rgba(139,39,62,.08);}
+  .bag-leghdr{background:var(--bg-2);border-radius:10px;text-align:center;font-weight:700;font-size:14px;color:var(--ink-soft);padding:11px;margin-bottom:10px;}
+  .bag-legcol.active .bag-leghdr{background:var(--ink);color:#fff;}
+  .bag-paxgrid{display:flex;flex-direction:column;gap:9px;}
+  .bag-pax{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;background:#f5efe8;cursor:pointer;transition:.15s;text-align:left;font-family:var(--font);}
+  .bag-pax:hover{border-color:var(--accent);}
+  .bag-pax.active{border-color:#1f7a4d;background:var(--surface);box-shadow:0 3px 12px rgba(31,122,77,.12);}
+  .bag-pax .nm{font-weight:700;font-size:13.5px;color:var(--ink);}
+  .bag-pax .st{font-size:12.5px;color:var(--muted);font-weight:600;}
+  .bag-pax .bag-cnt{display:flex;align-items:center;gap:8px;}
+  .bag-pax .bag-cnt .ct{font-size:11.5px;color:var(--ink-soft);font-weight:600;line-height:1.25;text-align:right;}
+  .bag-pax .bag-trash{flex:none;width:24px;height:24px;border:0;background:none;color:var(--muted-2);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .bag-pax .bag-trash:hover{color:var(--accent);}
+  .bag-pax .bag-trash svg{width:19px;height:19px;}
+  .bag-body{padding:8px 30px 26px;display:flex;flex-direction:column;align-items:center;}
+  .bag-pic{width:100%;max-width:560px;height:200px;border-radius:14px;overflow:hidden;background:var(--bg-2);margin:18px 0 14px;}
+  .bag-pic img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bag-pic image-slot{width:100%;height:100%;display:block;}
+  .bag-note{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:600;text-align:center;justify-content:center;max-width:560px;margin-bottom:18px;}
+  .bag-note .bag-note-ic{flex:none;width:18px;height:18px;color:var(--muted-2);}
+  .bag-note .bag-note-ic svg{width:18px;height:18px;}
+  .bag-stepper{display:flex;align-items:center;gap:22px;}
+  .bag-step{width:54px;height:54px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;font-family:var(--font);}
+  .bag-step:hover{background:var(--accent);}
+  .bag-step:disabled{background:var(--bg-2);color:var(--muted-2);cursor:not-allowed;}
+  .bag-step svg{width:24px;height:24px;display:block;}
+  .bag-count{min-width:74px;height:54px;border:1.5px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:var(--ink);}
+  .bag-price{margin-top:12px;color:var(--muted);font-size:14px;font-weight:600;}
+  .bag-sport{position:absolute;top:54px;right:30px;color:#2a6fdb;font-weight:700;font-size:14px;text-decoration:none;}
+  .bag-sport:hover{text-decoration:underline;}
+  .bag-confirm{margin-top:22px;max-width:320px;width:100%;}
+
+
+  /* ===== Спортивный инвентарь modal ===== */
+  .sp-card{width:min(960px,96vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden;}
+  .sp-search{margin:16px 30px 6px;display:flex;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;}
+  .sp-search svg{width:18px;height:18px;color:var(--muted-2);flex:none;}
+  .sp-search input{border:0;background:none;outline:none;font-family:var(--font);font-size:14.5px;color:var(--ink);width:100%;}
+  .sp-grid{column-count:2;column-gap:12px;padding:10px 30px 26px;flex:1;overflow-y:auto;min-height:0;}
+  .sp-item{border:1px solid var(--line-card);border-radius:12px;background:var(--surface);overflow:hidden;break-inside:avoid;-webkit-column-break-inside:avoid;width:100%;margin-bottom:12px;}
+  .sp-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:none;border:0;font-family:var(--font);cursor:pointer;text-align:left;}
+  .sp-t{font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;}
+  .sp-t .sp-d{display:block;font-weight:600;font-size:12.5px;color:var(--muted);margin-top:3px;}
+  .sp-head .chev{flex:none;color:var(--muted);font-size:12px;transition:.2s;}
+  .sp-item.open .sp-head .chev{transform:rotate(180deg);}
+  .sp-body{display:none;padding:0 16px 16px;flex-direction:column;gap:12px;}
+  .sp-item.open .sp-body{display:flex;}
+  .sp-row{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .sp-stepper{display:flex;align-items:center;gap:12px;}
+  .sp-step{width:34px;height:34px;border-radius:50%;border:0;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .sp-step:hover{background:var(--accent);}
+  .sp-step:disabled{background:var(--bg-2);color:var(--muted-2);cursor:not-allowed;}
+  .sp-step svg{width:18px;height:18px;display:block;}
+  .sp-qty{min-width:42px;height:34px;border:1.5px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:var(--ink);}
+  .sp-add{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:9px 22px;font-family:var(--font);font-weight:600;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .sp-add:hover{background:var(--accent-2);}
+  .sp-desc{font-weight:600;font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:4px;}
+  .sp-paxrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0;}
+  .sp-paxrow .sp-paxinfo .nm{font-weight:700;font-size:13.5px;color:var(--ink);}
+  .sp-paxrow .sp-paxinfo .pr{font-size:12px;color:var(--muted);margin-top:2px;}
+  .sp-allcb{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13px;color:var(--ink);cursor:pointer;margin-top:6px;}
+  .sp-allcb input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;}
+
+
 </style>
 </head>
 <body>
@@ -357,20 +426,20 @@
     <!-- Trip summary -->
     <div class="svc-summary">
       <div class="svc-leg">
-        <div class="leg-tab" style="text-align: left; width: 80px"><div class="lt">Туда</div><div class="ld" style="text-align: left">2 марта</div><div class="lm">пн</div></div>
+        <div class="leg-tab" style="text-align: left; width: 80px"><div class="lt">Туда</div><div class="ld" style="text-align: left; font-weight: 600">2 марта</div><div class="lm">пн</div></div>
         <div class="leg-body">
-          <div class="lb-top"><span class="lb-route">Ташкент — Москва</span><span class="roundel roundel-pair"><svg width="60" height="26" viewBox="0 0 60 26" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clipUZTR)"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.3515 0.091578C54.8825 0.779509 59.9963 6.27779 59.9963 13.0226C59.9963 20.195 54.1963 25.995 47.0204 25.995C39.8446 25.995 34.0015 20.195 34.0015 13.0226C34.0015 5.84847 39.8015 0.00537109 47.0204 0.00537109C47.4497 0.00537109 47.9222 0.0484745 48.3515 0.091578ZM49.0394 25.0933C55.6997 23.9761 60.2101 17.6623 59.0946 10.9605C58.148 5.41917 53.6377 1.38123 48.3101 0.822613C47.2359 0.693302 46.1187 0.736406 45.0015 0.908819C43.6687 1.12261 42.4222 1.55192 41.3066 2.15365C47.1497 4.17261 50.3291 7.22261 50.5428 10.3157C50.6722 12.2485 49.7704 13.6243 48.567 14.7399L56.9032 14.1812C57.117 14.1812 57.2032 14.4399 56.9463 14.5261L37.0515 20.195C39.0722 22.9881 42.2084 24.8347 45.6877 25.1795C46.8049 25.3071 47.9222 25.3071 49.0394 25.0933ZM43.5825 13.2795C44.6566 9.19848 43.4118 4.90365 40.4463 2.62606C36.4084 5.20365 34.0446 10.0157 34.9032 15.0416C35.1618 16.7157 35.7635 18.2192 36.6222 19.5519C39.8015 18.6916 42.5946 17.0174 43.5825 13.2795Z" fill="white"/><path d="M49.0397 25.0936C55.7 23.9763 60.2104 17.6625 59.0948 10.9608C58.1483 5.41942 53.6379 1.38149 48.3104 0.822867C47.2362 0.693557 46.119 0.736661 45.0017 0.909074C43.669 1.12287 42.4224 1.55218 41.3069 2.1539C47.15 4.17287 50.3293 7.22287 50.5431 10.316C50.6724 12.2487 49.7707 13.6246 48.5673 14.7401L56.9035 14.1815C57.1173 14.1815 57.2035 14.4401 56.9466 14.5263L37.0517 20.1953C39.0724 22.9884 42.2086 24.8349 45.6879 25.1798C46.8052 25.3074 47.9224 25.3074 49.0397 25.0936ZM43.5828 13.2798C44.6569 9.19873 43.4121 4.9039 40.4466 2.62632C36.4086 5.2039 34.0448 10.016 34.9035 15.0418C35.1621 16.716 35.7638 18.2194 36.6224 19.5522C39.8017 18.6918 42.5948 17.0177 43.5828 13.2798Z" fill="#C70A0C"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/><defs><clipPath id="clipUZTR"><rect width="26" height="26" fill="white" transform="translate(34)"/></clipPath></defs></svg></span><span class="lb-fno">HY 404</span></div>
-          <div class="lb-times"><b>10:00</b> TAS&nbsp; - &nbsp;DME <b>15:22</b></div>
+          <div class="lb-top"><span class="lb-route" style="font-weight: 700">Ташкент — Москва</span><span class="roundel roundel-pair"><svg width="60" height="26" viewBox="0 0 60 26" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clipUZTR)"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.3515 0.091578C54.8825 0.779509 59.9963 6.27779 59.9963 13.0226C59.9963 20.195 54.1963 25.995 47.0204 25.995C39.8446 25.995 34.0015 20.195 34.0015 13.0226C34.0015 5.84847 39.8015 0.00537109 47.0204 0.00537109C47.4497 0.00537109 47.9222 0.0484745 48.3515 0.091578ZM49.0394 25.0933C55.6997 23.9761 60.2101 17.6623 59.0946 10.9605C58.148 5.41917 53.6377 1.38123 48.3101 0.822613C47.2359 0.693302 46.1187 0.736406 45.0015 0.908819C43.6687 1.12261 42.4222 1.55192 41.3066 2.15365C47.1497 4.17261 50.3291 7.22261 50.5428 10.3157C50.6722 12.2485 49.7704 13.6243 48.567 14.7399L56.9032 14.1812C57.117 14.1812 57.2032 14.4399 56.9463 14.5261L37.0515 20.195C39.0722 22.9881 42.2084 24.8347 45.6877 25.1795C46.8049 25.3071 47.9222 25.3071 49.0394 25.0933ZM43.5825 13.2795C44.6566 9.19848 43.4118 4.90365 40.4463 2.62606C36.4084 5.20365 34.0446 10.0157 34.9032 15.0416C35.1618 16.7157 35.7635 18.2192 36.6222 19.5519C39.8015 18.6916 42.5946 17.0174 43.5825 13.2795Z" fill="white"/><path d="M49.0397 25.0936C55.7 23.9763 60.2104 17.6625 59.0948 10.9608C58.1483 5.41942 53.6379 1.38149 48.3104 0.822867C47.2362 0.693557 46.119 0.736661 45.0017 0.909074C43.669 1.12287 42.4224 1.55218 41.3069 2.1539C47.15 4.17287 50.3293 7.22287 50.5431 10.316C50.6724 12.2487 49.7707 13.6246 48.5673 14.7401L56.9035 14.1815C57.1173 14.1815 57.2035 14.4401 56.9466 14.5263L37.0517 20.1953C39.0724 22.9884 42.2086 24.8349 45.6879 25.1798C46.8052 25.3074 47.9224 25.3074 49.0397 25.0936ZM43.5828 13.2798C44.6569 9.19873 43.4121 4.9039 40.4466 2.62632C36.4086 5.2039 34.0448 10.016 34.9035 15.0418C35.1621 16.716 35.7638 18.2194 36.6224 19.5522C39.8017 18.6918 42.5948 17.0177 43.5828 13.2798Z" fill="#C70A0C"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/><defs><clipPath id="clipUZTR"><rect width="26" height="26" fill="white" transform="translate(34)"/></clipPath></defs></svg></span><span class="lb-fno">HY 404</span></div>
+          <div class="lb-times" style="color: rgb(139, 39, 62)"><b>10:00</b> TAS&nbsp; - &nbsp;DME <b>15:22</b></div>
           <div class="lb-meta">Пересадка в г. Бишкек (1 ч 59 мин)</div>
           <div class="lb-meta">Общее время в пути 8 ч 22 мин</div>
           <div class="lb-cls" style="text-align:right;">Comfort Class B</div>
         </div>
       </div>
       <div class="svc-leg">
-        <div class="leg-tab"><div class="lt">Обратно</div><div class="ld" style="text-align: left">9 марта</div><div class="lm">пн</div></div>
+        <div class="leg-tab"><div class="lt">Обратно</div><div class="ld" style="text-align: left; font-weight: 600">9 марта</div><div class="lm">пн</div></div>
         <div class="leg-body">
-          <div class="lb-top"><span class="lb-route">Москва — Ташкент</span><span class="roundel"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/></svg></span><span class="lb-fno">HY 555</span></div>
-          <div class="lb-times"><b>10:00</b> DME&nbsp; — &nbsp;TAS <b>18:00</b></div>
+          <div class="lb-top"><span class="lb-route" style="font-weight: 700">Москва — Ташкент</span><span class="roundel"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/></svg></span><span class="lb-fno">HY 555</span></div>
+          <div class="lb-times" style="color: rgb(139, 39, 62)"><b>10:00</b> DME&nbsp; — &nbsp;TAS <b>18:00</b></div>
           <div class="lb-meta">Прямой рейс</div>
           <div class="lb-meta">Общее время в пути 6 ч</div>
           <div class="lb-cls" style="text-align:right;">Saver Class B</div>
@@ -378,124 +447,124 @@
       </div>
     </div>
 
-    <h2 class="svc-h">Дополнительные услуги для вашего комфорта</h2>
+    <h2 class="svc-h" style="font-weight: 600">Дополнительные услуги для вашего комфорта</h2>
 
     <div class="svc-list" id="svcList">
       <div class="svc-row" data-svc="seat">
         <div class="svc-pic"><image-slot id="svcSeat" shape="rect" placeholder="Картинка" style="height: 276px"></image-slot></div>
         <div class="svc-info">
-          <h4>Выбор места</h4>
+          <h4 style="font-weight: 700">Выбор места</h4>
           <div class="desc">Подберите для себя удобное место, чтобы провести перелёт с комфортом</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="seatCancelBtn" hidden style="width: 164px">Отменить</button><button class="svc-pick" id="seatPickBtn">Выбрать</button></div></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="seatCancelBtn" hidden style="width: 164px">Отменить</button><button class="svc-pick" id="seatPickBtn">Выбрать</button></div></div>
         </div>
       </div>
       <div class="svc-row" data-svc="bag">
         <div class="svc-pic"><image-slot id="svcBag" shape="rect" placeholder="Картинка" style="height: 296px"></image-slot></div>
-        <div class="svc-info" style="height: 296px">
-          <h4>Дополнительный багаж</h4>
+        <div class="svc-info" style="min-height: 296px">
+          <h4 style="font-weight: 700">Дополнительный багаж</h4>
           <div class="desc" style="white-space: nowrap">Оформите дополнительный багаж сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="bagCancelBtn" hidden style="width:164px">Отменить</button><button class="svc-pick" id="bagPickBtn">Выбрать</button></div></div>
         </div>
       </div>
       <div class="svc-row" data-svc="sport">
         <div class="svc-pic"><image-slot id="svcSport" shape="rect" placeholder="Картинка"></image-slot></div>
         <div class="svc-info">
-          <h4>Перевозка спортивного инвентаря</h4>
+          <h4 style="font-weight: 700">Перевозка спортивного инвентаря</h4>
           <div class="desc">Оформите спортивный инвентарь сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row" data-svc="meal">
         <div class="svc-pic"><image-slot id="svcMeal" shape="rect" placeholder="Картинка"></image-slot></div>
         <div class="svc-info">
-          <h4>Специальное питание</h4>
+          <h4 style="font-weight: 700">Специальное питание</h4>
           <div class="desc">Если вам не нравится стандартное питание на борту, вы можете выбрать другое по своим предпочтениям</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price free">Бесплатно</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price free" style="font-weight: 700">Бесплатно</span><button class="svc-pick">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row">
         <div class="svc-pic"><image-slot id="svcPaidMeal" shape="rect" placeholder="Картинка"></image-slot></div>
         <div class="svc-info">
-          <h4>Платное питание</h4>
+          <h4 style="font-weight: 700">Платное питание</h4>
           <div class="desc">Вы можете заказать дополнительное питание к стандартному или специальному</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row">
         <div class="svc-pic"><image-slot id="svcPet" shape="rect" placeholder="Картинка"></image-slot></div>
         <div class="svc-info">
-          <h4>Перевозка животных</h4>
+          <h4 style="font-weight: 700">Перевозка животных</h4>
           <div class="desc">В багаже, под креслом или рядом с вами на соседнем кресле</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick" style="font-weight: 600">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row">
         <div class="svc-pic"><image-slot id="svcInsurance" shape="rect" placeholder="Картинка"></image-slot></div>
         <div class="svc-info">
-          <h4>Страхование багажа от ALFA INVEST</h4>
+          <h4 style="font-weight: 700">Страхование багажа от ALFA INVEST</h4>
           <div class="desc">Если ваш багаж повредят, задержат или потеряют при перевозке, мы возместим ущерб. Страховка распространяется на багаж, дополнительный багаж, спортивный инвентарь и клетки для животных суммарной стоимостью до 10 000 000 UZS.</div>
           <div class="svc-links"><a href="#">Условия страхования</a><a href="#">Страховые случаи</a><a href="#">Публичная оферта</a></div>
-          <div class="svc-foot"><span class="svc-price-lbl" style="white-space:nowrap">Цена за всех пассажиров: 111 000 UZS за кг</span><button class="svc-cancel">Отменить</button></div>
+          <div class="svc-foot"><span class="svc-price-lbl" style="white-space: nowrap; font-weight: 700">Цена за всех пассажиров: 111 000 UZS за кг</span><button class="svc-cancel">Отменить</button></div>
         </div>
       </div>
     </div>
@@ -507,6 +576,8 @@
       if(btn.id==="seatPickBtn") return;
       btn.addEventListener("click",function(){
         var row=btn.closest(".svc-row");
+        if(row && row.dataset.svc==="bag"){ if(window.openBagModal) window.openBagModal(); return; }
+        if(row && row.dataset.svc==="sport"){ if(window.openSportModal) window.openSportModal(); return; }
         var done=btn.classList.toggle("done");
         btn.textContent=done?"Выбрано":"Выбрать";
         row.querySelectorAll(".svc-pax .st").forEach(function(st){
@@ -524,7 +595,7 @@
         <div class="lbl">за всех пассажиров</div>
       </div>
       <button class="pd-details" id="pdDetailsBtn">Детали</button>
-      <button class="pd-confirm" id="pdConfirmBtn">Продолжить</button>
+      <button class="pd-confirm" id="pdConfirmBtn" onclick="location.href='Payment Details.html'" style="font-weight: 600">Продолжить</button>
     </div>
   </div>
   <div class="pdd-ov" id="pddModal" hidden>
@@ -540,24 +611,232 @@
         <div class="pdd-penbody">
           <div class="pen-group"><div class="pen-h">Переоформление авиабилета до вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
           <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета до вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
-          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета <span class="pen-i">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</span></div></div>
+          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
           <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета после вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
         </div>
       </div>
-      <div class="pdd-points">+ 5 000 баллов UzAirPlus</div>
       <hr class="pdd-sep">
-      <div class="pdd-total">Итого: <span style="margin-left:8px;">13 000 000 UZS</span></div>
+      <div class="pdd-total" style="font-weight: 600">Итого: <span style="margin-left:8px;">13 000 000 UZS</span></div>
     </div>
   </div>
   <script>
     (function(){
       var ov=document.getElementById('pddModal');
-      document.getElementById('pdDetailsBtn').addEventListener('click',function(){ ov.hidden=false; });
+      document.getElementById('pdDetailsBtn').addEventListener('click',function(){ ov.hidden=false; var pp=ov.querySelector('.pdd-pen'); if(pp) pp.classList.add('open'); });
       document.getElementById('pddClose').addEventListener('click',function(){ ov.hidden=true; });
       ov.addEventListener('click',function(e){ if(e.target===ov) ov.hidden=true; });
       document.getElementById('pddPenBtn').addEventListener('click',function(){ this.closest('.pdd-pen').classList.toggle('open'); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape') ov.hidden=true; });
     })();
+  </script>
+  <div class="seat-ov" id="bagModal" hidden>
+    <div class="seat-card bag-card" role="dialog" aria-modal="true">
+      <div class="seat-head">
+        <h3 class="seat-title" style="font-weight:700">Дополнительный багаж</h3>
+        <a class="bag-sport" href="#" id="bagSportLink">Перевозка спортивного инвентаря</a>
+        <button class="seat-close" id="bagClose" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="bag-legcols" id="bagLegCols"></div>
+      <div class="bag-body">
+        <div class="bag-pic"><image-slot id="bagPic" shape="rounded" radius="14" placeholder="Перетащите изображение"></image-slot></div>
+        <div class="bag-note"><span class="bag-note-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></span>Одна единица багажа — это сумка или чемодан до 13 кг с габаритами до 20 * 20 * 50 см</div>
+        <div class="bag-stepper">
+          <button class="bag-step" id="bagMinus" type="button" aria-label="Убрать"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
+          <div class="bag-count" id="bagCount">0</div>
+          <button class="bag-step" id="bagPlus" type="button" aria-label="Добавить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></button>
+        </div>
+        <div class="bag-price" id="bagPrice">300 000 UZS за 1 место</div>
+        <button class="seat-confirm bag-confirm" id="bagConfirm" type="button" style="font-weight:600">Подтвердить</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var ov=document.getElementById('bagModal'); if(!ov) return;
+    var colsEl=document.getElementById('bagLegCols');
+    var countEl=document.getElementById('bagCount');
+    var priceEl=document.getElementById('bagPrice');
+    var minus=document.getElementById('bagMinus'), plus=document.getElementById('bagPlus');
+    var UNIT=300000, MAXP=10;
+    var LEGS=[{k:'out',t:'Ташкент — Москва'},{k:'ret',t:'Москва — Ташкент'}];
+    var PAX=[{nm:'IVANOV IVAN'},{nm:'IVANOV ALEXEY'}];
+    var state={out:[0,0],ret:[0,0]};
+    var leg='out', pax=0;
+    var TRASH='<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.73001C20.98 6.73001 20.95 6.73001 20.92 6.73001C15.63 6.20001 10.35 6.00001 5.12 6.53001L3.08 6.73001C2.66 6.77001 2.29 6.47001 2.25 6.05001C2.21 5.63001 2.51 5.27001 2.92 5.23001L4.96 5.03001C10.28 4.49001 15.67 4.70001 21.07 5.23001C21.48 5.27001 21.78 5.64001 21.74 6.05001C21.71 6.44001 21.38 6.73001 21 6.73001Z"/><path d="M8.5 5.72C8.46 5.72 8.42 5.72 8.37 5.71C7.97 5.64 7.69 5.25 7.76 4.85L7.98 3.54C8.14 2.58 8.36 1.25 10.69 1.25H13.31C15.65 1.25 15.87 2.63 16.02 3.55L16.24 4.85C16.31 5.26 16.03 5.65 15.63 5.71C15.22 5.78 14.83 5.5 14.77 5.1L14.55 3.8C14.41 2.93 14.38 2.76 13.32 2.76H10.7C9.64 2.76 9.62 2.9 9.47 3.79L9.24 5.09C9.18 5.46 8.86 5.72 8.5 5.72Z"/><path d="M15.21 22.75H8.79C5.3 22.75 5.16 20.82 5.05 19.26L4.4 9.19C4.37 8.78 4.69 8.42 5.1 8.39C5.52 8.37 5.87 8.68 5.9 9.09L6.55 19.16C6.66 20.68 6.7 21.25 8.79 21.25H15.21C17.31 21.25 17.35 20.68 17.45 19.16L18.1 9.09C18.13 8.68 18.49 8.37 18.9 8.39C19.31 8.42 19.63 8.77 19.6 9.19L18.95 19.26C18.84 20.82 18.7 22.75 15.21 22.75Z"/><path d="M13.66 17.25H10.33C9.92 17.25 9.58 16.91 9.58 16.5C9.58 16.09 9.92 15.75 10.33 15.75H13.66C14.07 15.75 14.41 16.09 14.41 16.5C14.41 16.91 14.07 17.25 13.66 17.25Z"/><path d="M14.5 13.25H9.5C9.09 13.25 8.75 12.91 8.75 12.5C8.75 12.09 9.09 11.75 9.5 11.75H14.5C14.91 11.75 15.25 12.09 15.25 12.5C15.25 12.91 14.91 13.25 14.5 13.25Z"/></svg>';
+    function fmt(n){ return n.toLocaleString('ru-RU').replace(/\u00a0/g,' '); }
+    function plural(n){ return n===1?'место':(n>=2&&n<=4?'места':'мест'); }
+    function priceText(c){ return c>0 ? fmt(c*UNIT)+' UZS · '+c+' '+plural(c) : fmt(UNIT)+' UZS за 1 место'; }
+    function renderCols(){
+      colsEl.innerHTML=LEGS.map(function(L){
+        var act=L.k===leg?' active':'';
+        var tiles=PAX.map(function(p,i){
+          var c=state[L.k][i];
+          var on=(L.k===leg&&i===pax)?' active':'';
+          var right = c>0
+            ? '<span class="bag-cnt"><span class="ct">'+c+' '+plural(c)+' по 23 кг<br>20 * 20 * 60 см</span><span class="bag-trash" role="button" tabindex="0" data-leg="'+L.k+'" data-i="'+i+'" aria-label="Удалить">'+TRASH+'</span></span>'
+            : '<span class="st">Не выбрано</span>';
+          return '<button class="bag-pax'+(c>0?' set':'')+on+'" data-leg="'+L.k+'" data-i="'+i+'"><span class="nm">'+p.nm+'</span>'+right+'</button>';
+        }).join('');
+        return '<div class="bag-legcol'+act+'"><div class="bag-leghdr">'+L.t+'</div><div class="bag-paxgrid">'+tiles+'</div></div>';
+      }).join('');
+    }
+    function refresh(){ renderCols(); var c=state[leg][pax]; countEl.textContent=c; priceEl.textContent=priceText(c); minus.disabled=c<=0; plus.disabled=c>=MAXP; }
+    colsEl.addEventListener('click',function(e){
+      var tr=e.target.closest('.bag-trash');
+      if(tr){ e.stopPropagation(); state[tr.dataset.leg][+tr.dataset.i]=0; if(tr.dataset.leg===leg&&+tr.dataset.i===pax){} refresh(); return; }
+      var b=e.target.closest('.bag-pax'); if(!b) return;
+      leg=b.dataset.leg; pax=+b.dataset.i; refresh();
+    });
+    minus.addEventListener('click',function(){ if(state[leg][pax]>0){ state[leg][pax]--; refresh(); } });
+    plus.addEventListener('click',function(){ if(state[leg][pax]<MAXP){ state[leg][pax]++; refresh(); } });
+    function open(){ refresh(); ov.hidden=false; document.body.style.overflow='hidden'; }
+    function close(){ ov.hidden=true; document.body.style.overflow=''; }
+    window.openBagModal=open;
+    var _spLink=document.getElementById('bagSportLink'); if(_spLink) _spLink.addEventListener('click',function(e){ e.preventDefault(); close(); if(window.openSportModal) window.openSportModal(); });
+    document.getElementById('bagClose').addEventListener('click',close);
+    function syncBagRow(){
+      var row=document.querySelector('.svc-row[data-svc="bag"]'); if(!row) return;
+      var cols=row.querySelectorAll('.svc-col'); var keys=['out','ret']; var any=false;
+      keys.forEach(function(k,ci){ var col=cols[ci]; if(!col) return; var tiles=col.querySelectorAll('.svc-pax');
+        PAX.forEach(function(p,i){ var t=tiles[i]; if(!t) return; var st=t.querySelector('.st'); if(!st) return; var c=state[k][i];
+          if(c>0){ st.innerHTML=c+' '+plural(c)+'<button class="st-del" data-leg="'+k+'" data-i="'+i+'" aria-label="Удалить">'+TRASH+'</button>'; st.classList.add('set'); any=true; } else { st.textContent='Не выбрано'; st.classList.remove('set'); }
+        });
+      });
+      var n=0; keys.forEach(function(k){ state[k].forEach(function(c){ n+=c; }); });
+      var priceEl=row.querySelector('.svc-price');
+      var btn=document.getElementById('bagPickBtn');
+      var cancelEl=document.getElementById('bagCancelBtn');
+      if(btn) btn.classList.toggle('done',any);
+      if(any){ if(priceEl) priceEl.textContent='Итого: '+fmt(n*UNIT)+' UZS'; if(btn) btn.textContent='Изменить'; if(cancelEl) cancelEl.hidden=false; }
+      else { if(priceEl) priceEl.textContent='От 200 000 UZS'; if(btn) btn.textContent='Выбрать'; if(cancelEl) cancelEl.hidden=true; }
+    }
+    document.getElementById('bagConfirm').addEventListener('click',function(){ syncBagRow(); close(); });
+    var bagCancel=document.getElementById('bagCancelBtn');
+    if(bagCancel) bagCancel.addEventListener('click',function(){ state={out:[0,0],ret:[0,0]}; if(!ov.hidden) refresh(); syncBagRow(); });
+    var _bagRow=document.querySelector('.svc-row[data-svc="bag"]');
+    if(_bagRow){ var _bc=_bagRow.querySelector('.svc-cols'); if(_bc) _bc.addEventListener('click',function(e){ var d=e.target.closest('.st-del'); if(!d) return; state[d.dataset.leg][+d.dataset.i]=0; if(!ov.hidden) refresh(); syncBagRow(); }); }
+    ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  })();
+  </script>
+  <div class="seat-ov" id="sportModal" hidden>
+    <div class="seat-card sp-card" role="dialog" aria-modal="true">
+      <div class="seat-head">
+        <h3 class="seat-title" style="font-weight:700">Перевозка спортивного инвентаря</h3>
+        <button class="seat-close" id="sportClose" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="bag-legcols" id="sportLegCols"></div>
+      <div class="sp-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input type="text" id="sportSearch" placeholder="Найти"></div>
+      <div class="sp-grid" id="sportGrid"></div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var ov=document.getElementById('sportModal'); if(!ov) return;
+    var colsEl=document.getElementById('sportLegCols');
+    var grid=document.getElementById('sportGrid');
+    var search=document.getElementById('sportSearch');
+    var LEGS=[{k:'out',t:'Ташкент — Москва'},{k:'ret',t:'Москва — Ташкент'}];
+    var PAX=[{nm:'IVANOV IVAN'},{nm:'IVANOV ALEXEY'}];
+    var BIKE='Любой, но без бензинового или электрического мотора. Складной велосипед должен быть в сложенном состоянии в футляре или упаковке. Другие велосипеды принимаются при условии, что руль развёрнут вбок и закреплён, а педали зафиксированы и обёрнуты упаковочным материалом.';
+    var CATS=[
+      {n:'Спортивный велосипед',s:'Велосипеды без мотора, в чехле или упаковке',d:BIKE},
+      {n:'Снаряжение для рыбалки',s:'Удочки, катушки и снасти',d:'Удочки, катушки, садки и прочие снасти принимаются в жёстком чехле или тубусе.'},
+      {n:'Лыжное, снежное и водное снаряжение',s:'Лыжи, ботинки и водные лыжи',d:'Горные и беговые лыжи, водные лыжи и ботинки — в специальном чехле как одно место.'},
+      {n:'Хоккейное снаряжение',s:'Клюшки, коньки и защита',d:'Клюшки, коньки, шлем и защита перевозятся в баульной сумке.'},
+      {n:'Снаряжение для гольфа',s:'Клюшки и мячи в сумке',d:'Набор клюшек, мячи и обувь — в специальной сумке для гольфа.'},
+      {n:'Дельтапланы',s:'Дельтаплан в заводской упаковке',d:'Дельтаплан принимается в разобранном виде в заводской упаковке.'},
+      {n:'Снаряжение для сёрфинга',s:'Доски для сёрфинга в чехле',d:'Сёрф-доски перевозятся в защитном чехле, длина согласуется при оформлении.'},
+      {n:'Снаряжение для фехтования',s:'Шпаги, рапиры и маски',d:'Шпаги, рапиры, маски и защита — в жёстком чехле.'},
+      {n:'Снаряжение для гребли на доске',s:'SUP-доска и весло',d:'SUP-доска и весло принимаются в упаковке как одно место.'},
+      {n:'Сноуборд',s:'Сноуборд и ботинки в чехле',d:'Сноуборд и ботинки перевозятся в специальном чехле.'},
+      {n:'Снаряжение для подводного плавания',s:'Маски, ласты, гидрокостюм',d:'Маски, ласты, регуляторы и гидрокостюм — в сумке для дайвинга.'},
+      {n:'Скейтборд',s:'Скейтборд в сумке или коробке',d:'Скейтборд принимается в сумке или коробке.'},
+      {n:'Каноэ и каяк',s:'Каноэ и каяк в упаковке',d:'Каноэ и каяк перевозятся в упаковке, габариты согласуются при оформлении.'},
+      {n:'Снаряжение для стрельбы из лука',s:'Луки и стрелы в кейсе',d:'Луки и стрелы принимаются в жёстком кейсе.'},
+      {n:'Парапланы',s:'Параплан в рюкзаке-упаковке',d:'Параплан перевозится в заводском рюкзаке-упаковке.'}
+    ];
+    var UNIT=600000;
+    var state={out:[null,null],ret:[null,null]};
+    var leg='out', pax=0;
+    var openSet={}, addAll={};
+    var TRASH='<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.73001C20.98 6.73001 20.95 6.73001 20.92 6.73001C15.63 6.20001 10.35 6.00001 5.12 6.53001L3.08 6.73001C2.66 6.77001 2.29 6.47001 2.25 6.05001C2.21 5.63001 2.51 5.27001 2.92 5.23001L4.96 5.03001C10.28 4.49001 15.67 4.70001 21.07 5.23001C21.48 5.27001 21.78 5.64001 21.74 6.05001C21.71 6.44001 21.38 6.73001 21 6.73001Z"/><path d="M8.5 5.72C8.46 5.72 8.42 5.72 8.37 5.71C7.97 5.64 7.69 5.25 7.76 4.85L7.98 3.54C8.14 2.58 8.36 1.25 10.69 1.25H13.31C15.65 1.25 15.87 2.63 16.02 3.55L16.24 4.85C16.31 5.26 16.03 5.65 15.63 5.71C15.22 5.78 14.83 5.5 14.77 5.1L14.55 3.8C14.41 2.93 14.38 2.76 13.32 2.76H10.7C9.64 2.76 9.62 2.9 9.47 3.79L9.24 5.09C9.18 5.46 8.86 5.72 8.5 5.72Z"/><path d="M15.21 22.75H8.79C5.3 22.75 5.16 20.82 5.05 19.26L4.4 9.19C4.37 8.78 4.69 8.42 5.1 8.39C5.52 8.37 5.87 8.68 5.9 9.09L6.55 19.16C6.66 20.68 6.7 21.25 8.79 21.25H15.21C17.31 21.25 17.35 20.68 17.45 19.16L18.1 9.09C18.13 8.68 18.49 8.37 18.9 8.39C19.31 8.42 19.63 8.77 19.6 9.19L18.95 19.26C18.84 20.82 18.7 22.75 15.21 22.75Z"/><path d="M13.66 17.25H10.33C9.92 17.25 9.58 16.91 9.58 16.5C9.58 16.09 9.92 15.75 10.33 15.75H13.66C14.07 15.75 14.41 16.09 14.41 16.5C14.41 16.91 14.07 17.25 13.66 17.25Z"/><path d="M14.5 13.25H9.5C9.09 13.25 8.75 12.91 8.75 12.5C8.75 12.09 9.09 11.75 9.5 11.75H14.5C14.91 11.75 15.25 12.09 15.25 12.5C15.25 12.91 14.91 13.25 14.5 13.25Z"/></svg>';
+    var MINUS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 12h12"/></svg>';
+    var PLUS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg>';
+    var CHEV='<svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg>';
+    function fmt(n){ return n.toLocaleString('ru-RU').replace(/\u00a0/g,' '); }
+    function qtyOf(L,i,cat){ var v=state[L][i]; return (v&&v.name===cat)?v.qty:0; }
+    function renderCols(){
+      colsEl.innerHTML=LEGS.map(function(L){
+        var act=L.k===leg?' active':'';
+        var tiles=PAX.map(function(p,i){
+          var v=state[L.k][i];
+          var on=(L.k===leg&&i===pax)?' active':'';
+          var right=v?'<span class="bag-cnt"><span class="ct">'+v.name+', '+v.qty+' шт</span><span class="bag-trash" role="button" tabindex="0" data-leg="'+L.k+'" data-i="'+i+'" aria-label="Удалить">'+TRASH+'</span></span>':'<span class="st">Не выбрано</span>';
+          return '<button class="bag-pax'+(v?' set':'')+on+'" data-leg="'+L.k+'" data-i="'+i+'"><span class="nm">'+p.nm+'</span>'+right+'</button>';
+        }).join('');
+        return '<div class="bag-legcol'+act+'"><div class="bag-leghdr">'+L.t+'</div><div class="bag-paxgrid">'+tiles+'</div></div>';
+      }).join('');
+    }
+    function renderGrid(){
+      var q=(search.value||'').trim().toLowerCase();
+      grid.innerHTML=CATS.filter(function(c){ return c.n.toLowerCase().indexOf(q)>=0; }).map(function(c){
+        var op=openSet[c.n];
+        var body='';
+        if(op){
+          var rows=PAX.map(function(p,i){
+            var qty=qtyOf(leg,i,c.n);
+            return '<div class="sp-paxrow"><div class="sp-paxinfo"><div class="nm">'+p.nm+'</div><div class="pr">'+fmt(UNIT)+' UZS</div></div><div class="sp-stepper"><button class="sp-step sp-minus" type="button" data-cat="'+c.n+'" data-i="'+i+'" aria-label="Убрать">'+MINUS+'</button><div class="sp-qty">'+qty+'</div><button class="sp-step sp-plus" type="button" data-cat="'+c.n+'" data-i="'+i+'" aria-label="Добавить">'+PLUS+'</button></div></div>';
+          }).join('');
+          body='<div class="sp-body" style="display:flex"><div class="sp-desc">'+c.d+'</div>'+rows+'<label class="sp-allcb"><input type="checkbox" class="sp-all" data-cat="'+c.n+'"'+(addAll[c.n]?' checked':'')+'> Добавить на все рейсы</label></div>';
+        }
+        return '<div class="sp-item'+(op?' open':'')+'" data-name="'+c.n+'"><button class="sp-head" type="button" data-cat="'+c.n+'"><span class="sp-t">'+c.n+'<span class="sp-d">'+c.s+'</span></span><span class="chev">'+CHEV+'</span></button>'+body+'</div>';
+      }).join('');
+    }
+    function render(){ renderCols(); renderGrid(); }
+    function setQty(cat,i,qv){
+      var legs = addAll[cat]?['out','ret']:[leg];
+      legs.forEach(function(L){ state[L][i]= qv>0?{name:cat,qty:qv}:null; });
+    }
+    colsEl.addEventListener('click',function(e){
+      var tr=e.target.closest('.bag-trash');
+      if(tr){ e.stopPropagation(); state[tr.dataset.leg][+tr.dataset.i]=null; render(); syncSportRow(); return; }
+      var b=e.target.closest('.bag-pax'); if(!b) return;
+      leg=b.dataset.leg; pax=+b.dataset.i; render();
+    });
+    grid.addEventListener('click',function(e){
+      var head=e.target.closest('.sp-head');
+      if(head){ var n=head.dataset.cat; var wasOpen=openSet[n]; openSet={}; if(!wasOpen) openSet[n]=true; renderGrid(); return; }
+      var mn=e.target.closest('.sp-minus'), pl=e.target.closest('.sp-plus');
+      if(mn||pl){ var btn=mn||pl; var cat=btn.dataset.cat, i=+btn.dataset.i; var cur=qtyOf(leg,i,cat); var nv=pl?Math.min(cur+1,20):Math.max(cur-1,0); setQty(cat,i,nv); render(); syncSportRow(); return; }
+    });
+    grid.addEventListener('change',function(e){
+      var cb=e.target.closest('.sp-all'); if(!cb) return;
+      var cat=cb.dataset.cat; addAll[cat]=cb.checked;
+      if(cb.checked){ PAX.forEach(function(p,i){ var qv=qtyOf(leg,i,cat); if(qv>0) setQty(cat,i,qv); }); }
+      render(); syncSportRow();
+    });
+    search.addEventListener('input',renderGrid);
+    function syncSportRow(){
+      var row=document.querySelector('.svc-row[data-svc="sport"]'); if(!row) return;
+      var cols=row.querySelectorAll('.svc-col'); var keys=['out','ret']; var any=false;
+      keys.forEach(function(k,ci){ var col=cols[ci]; if(!col) return; var tiles=col.querySelectorAll('.svc-pax');
+        PAX.forEach(function(p,i){ var t=tiles[i]; if(!t) return; var st=t.querySelector('.st'); if(!st) return; var v=state[k][i];
+          if(v){ st.innerHTML=v.name+', '+v.qty+' шт<button class="st-del" data-leg="'+k+'" data-i="'+i+'" aria-label="Удалить">'+TRASH+'</button>'; st.classList.add('set'); any=true; }
+          else { st.textContent='Не выбрано'; st.classList.remove('set'); }
+        });
+      });
+      var btn=row.querySelector('.svc-pick'); if(btn){ btn.textContent=any?'Изменить':'Выбрать'; btn.classList.toggle('done',any); }
+    }
+    var _spRow=document.querySelector('.svc-row[data-svc="sport"]');
+    if(_spRow){ var _sc=_spRow.querySelector('.svc-cols'); if(_sc) _sc.addEventListener('click',function(e){ var d=e.target.closest('.st-del'); if(!d) return; state[d.dataset.leg][+d.dataset.i]=null; if(!ov.hidden) render(); syncSportRow(); }); }
+    function open(){ render(); ov.hidden=false; document.body.style.overflow='hidden'; }
+    function close(){ ov.hidden=true; document.body.style.overflow=''; }
+    window.openSportModal=open;
+    document.getElementById('sportClose').addEventListener('click',close);
+    ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  })();
   </script>
   <div class="seat-ov" id="seatModal" hidden>
     <div class="seat-card" role="dialog" aria-modal="true">
@@ -657,7 +936,7 @@
         paxListEl.innerHTML=ph;
       }
       function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '); }
-      var TRASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13M10 11v6M14 11v6"/></svg>';
+      var TRASH='<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.73001C20.98 6.73001 20.95 6.73001 20.92 6.73001C15.63 6.20001 10.35 6.00001 5.12 6.53001L3.08 6.73001C2.66 6.77001 2.29 6.47001 2.25 6.05001C2.21 5.63001 2.51 5.27001 2.92 5.23001L4.96 5.03001C10.28 4.49001 15.67 4.70001 21.07 5.23001C21.48 5.27001 21.78 5.64001 21.74 6.05001C21.71 6.44001 21.38 6.73001 21 6.73001Z"/><path d="M8.5 5.72C8.46 5.72 8.42 5.72 8.37 5.71C7.97 5.64 7.69 5.25 7.76 4.85L7.98 3.54C8.14 2.58 8.36 1.25 10.69 1.25H13.31C15.65 1.25 15.87 2.63 16.02 3.55L16.24 4.85C16.31 5.26 16.03 5.65 15.63 5.71C15.22 5.78 14.83 5.5 14.77 5.1L14.55 3.8C14.41 2.93 14.38 2.76 13.32 2.76H10.7C9.64 2.76 9.62 2.9 9.47 3.79L9.24 5.09C9.18 5.46 8.86 5.72 8.5 5.72Z"/><path d="M15.21 22.75H8.79C5.3 22.75 5.16 20.82 5.05 19.26L4.4 9.19C4.37 8.78 4.69 8.42 5.1 8.39C5.52 8.37 5.87 8.68 5.9 9.09L6.55 19.16C6.66 20.68 6.7 21.25 8.79 21.25H15.21C17.31 21.25 17.35 20.68 17.45 19.16L18.1 9.09C18.13 8.68 18.49 8.37 18.9 8.39C19.31 8.42 19.63 8.77 19.6 9.19L18.95 19.26C18.84 20.82 18.7 22.75 15.21 22.75Z"/><path d="M13.66 17.25H10.33C9.92 17.25 9.58 16.91 9.58 16.5C9.58 16.09 9.92 15.75 10.33 15.75H13.66C14.07 15.75 14.41 16.09 14.41 16.5C14.41 16.91 14.07 17.25 13.66 17.25Z"/><path d="M14.5 13.25H9.5C9.09 13.25 8.75 12.91 8.75 12.5C8.75 12.09 9.09 11.75 9.5 11.75H14.5C14.91 11.75 15.25 12.09 15.25 12.5C15.25 12.91 14.91 13.25 14.5 13.25Z"/></svg>';
       function syncCard(){
         var any=state.out.some(Boolean)||state.ret.some(Boolean);
         var row=openBtn.closest('.svc-row');
@@ -689,11 +968,9 @@
         var s=e.target.closest('.seat'); if(!s) return; var stx=s.dataset.st; if(stx==='o'||stx==='x') return;
         var code=s.dataset.code, picks=state[leg];
         var existing=picks.indexOf(code);
-        if(existing>=0){ picks[existing]=null; refresh(); syncCard(); return; }
-        picks[activePax]=code;
-        // advance active to next unset passenger
-        var next=picks.indexOf(null);
-        if(next>=0) activePax=next;
+        if(existing>=0 && existing!==activePax){ return; } // место занято другим пассажиром
+        if(existing===activePax){ picks[activePax]=null; refresh(); syncCard(); return; } // повторный клик — снять
+        picks[activePax]=code; // новое место заменяет предыдущее у текущего пассажира
         refresh(); syncCard();
       });
       paxListEl.addEventListener('click',function(e){

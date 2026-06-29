@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f5efe8; --bg-2:#efe6dd; --surface:#fefcf8; --surface-2:#f3e8e4;
@@ -17,7 +17,7 @@
     --good:#2f7350; --good-bg:#e7f0ea;
     --r-pill:999px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
     --sh-sm:0 1px 2px rgba(18,23,79,.05); --sh-md:0 8px 24px rgba(18,23,79,.06); --sh-lg:0 18px 50px rgba(18,23,79,.08);
-    --font:"ABC Schengen A Variable Unlicensed Trial","ABC Schengen A Unlicensed Trial","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font:"Plus Jakarta Sans","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
@@ -55,7 +55,7 @@
   .field-in{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 18px;font-weight:700;color:var(--ink);font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;transition:.15s;}
   .field-in:hover{border-color:var(--ink);}
   .field-in .code{color:var(--muted);font-weight:700;font-size:12.5px;letter-spacing:.06em;}
-  .arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px;}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:26px;}
   .chev-i{width:13px;height:13px;display:inline-block;vertical-align:middle;flex:none;}
   .field-in.date .chev{color:var(--muted);font-size:12px;}
   .del-btn{width:44px;height:46px;border-radius:var(--r-md);background:var(--bg);border:1px solid var(--line);color:var(--accent);display:flex;align-items:center;justify-content:center;}
@@ -257,10 +257,10 @@
   .det-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:16.5px;}
   .det-row .dl{color:var(--ink-soft);font-weight:600;}
   .det-row .dv{font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
-  .det-pen{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:pointer;}
-  .det-pen .chev{transition:.2s;font-size:13px;color:var(--muted);}
+  .det-pen{border:0;background:transparent;padding:0;font-family:var(--font);display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:16.5px;cursor:default;}
+  .det-pen .chev{display:none;}
   .det-card.pen-open .det-pen .chev{transform:rotate(180deg);}
-  .det-pen-body{display:none;padding:6px 0 2px;flex-direction:column;gap:14px;}
+  .det-pen-body{display:flex;padding:6px 0 2px;flex-direction:column;gap:14px;}
   .det-card.pen-open .det-pen-body{display:flex;}
   .pen-group{display:flex;flex-direction:column;gap:2px;}
   .pen-h{font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.4;}
@@ -278,7 +278,7 @@
   .warn-title{font-weight:900;font-size:30px;letter-spacing:-.02em;color:var(--ink);margin:2px 0 18px;}
   .warn-text{color:var(--muted);font-size:16px;line-height:1.55;max-width:430px;margin:0 auto 30px;}
   .warn-text b{color:var(--ink);font-weight:800;}
-  .warn-confirm{background:var(--accent);color:#fff;border:0;border-radius:var(--r-md);padding:16px 40px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;min-width:280px;transition:.15s;}
+  .warn-confirm{background:var(--accent);color:#fff;border:0;border-radius:var(--r-md);padding:16px 40px;font-family:var(--font);font-weight:600;font-size:17px;cursor:pointer;min-width:280px;transition:.15s;}
   .warn-confirm:hover{background:var(--accent-2);}
   @media(max-width:1100px){.cf-cols{grid-template-columns:1fr;}}
 
@@ -437,6 +437,7 @@
   .fcard{border:1px solid var(--line-card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:var(--surface);box-shadow:var(--sh-sm);}
   .fcard-head{padding:13px 14px;text-align:center;border-bottom:1px solid var(--line-card);background:var(--surface-2);height:98px;display:flex;flex-direction:column;justify-content:center;gap:5px;}
   .fcard.akcia .fcard-head{background:#eaf4ee;}
+  .fcard .fcard-pts{color:#1f7a4d;font-weight:700;font-size:11.5px;line-height:1.2;}
   .fcard.sold{background:#f1f0ee;border-color:#e3e1dd;filter:grayscale(1);opacity:.72;}
   .fcard.sold .fcard-head{background:#e7e5e1;}
   .fcard .ribbon{background:#1f7a4d;color:#fff;font-weight:800;font-size:14px;padding:5px 6px;line-height:1.15;border-radius:8px;}
@@ -475,6 +476,22 @@
     .fare-cells{border-left:0;border-top:1px solid var(--line-card);}
     .summary{grid-template-columns:1fr;}
   }
+
+  /* page sticky bar */
+  .pd-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--surface);border:1px solid var(--line-card);box-shadow:0 -2px 24px rgba(18,23,79,.08);}
+  .pd-bar-inner{display:flex;align-items:center;gap:30px;padding:18px 28px;}
+  .pd-pax{display:flex;align-items:center;gap:20px;}
+  .pd-pax .pdx{display:flex;align-items:center;gap:6px;font-weight:800;font-size:17px;color:var(--ink);}
+  .pd-pax .pdx svg{width:20px;height:20px;}
+  .pd-price{display:flex;flex-direction:column;gap:2px;}
+  .pd-price .tot{font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1;white-space:nowrap;}
+  .pd-price .lbl{font-size:13.5px;color:var(--muted);font-weight:600;}
+  .pd-details{background:transparent;border:0;color:var(--accent);font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;padding:0;white-space:nowrap;transition:.15s;}
+  .pd-details:hover{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;}
+  .pd-confirm{margin-left:auto;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:15px 52px;font-family:var(--font);font-weight:800;font-size:17px;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .pd-confirm:hover{background:var(--accent-2);}
+  body{padding-bottom:96px;}
+  .modal.confirm{padding-bottom:104px;}
 </style>
 </head>
 <body>
@@ -530,26 +547,26 @@
     <!-- ===== Trip summary ===== -->
     <section class="summary">
       <div class="sum-card" id="sumOut">
-        <div class="sum-tab">Туда<b>2 марта</b>пн</div>
+        <div class="sum-tab">Туда<b style="font-weight: 700">2 марта</b>пн</div>
         <div class="sum-body">
-          <div class="rt">Ташкент — Москва</div>
+          <div class="rt" style="font-weight: 700">Ташкент — Москва</div>
           <div class="st">Рейс ещё не выбран</div>
-          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>
+          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt" style="font-weight: 700">от 5 000 000 UZS</span></div>
         </div>
       </div>
       <div class="sum-card" id="sumRet">
-        <div class="sum-tab">Обратно<b>9 марта</b>пн</div>
+        <div class="sum-tab">Обратно<b style="font-weight: 700">9 марта</b>пн</div>
         <div class="sum-body">
-          <div class="rt">Москва — Ташкент</div>
+          <div class="rt" style="font-weight: 700">Москва — Ташкент</div>
           <div class="st">Рейс ещё не выбран</div>
-          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>
+          <div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt" style="font-weight: 700">от 5 000 000 UZS</span></div>
         </div>
       </div>
     </section>
 
     <!-- ===== Results head ===== -->
     <div class="results-head">
-      <h1 id="resHeading">Выберите рейс из Ташкента в Москву</h1>
+      <h1 id="resHeading" style="font-weight: 600">Выберите рейс из Ташкента в Москву</h1>
       <a class="info-link" href="#"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0054 8L11.9964 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Информация перед полётом</a>
     </div>
 
@@ -572,9 +589,9 @@
     <div class="filter-bar">
       <span class="filter-note">Время вылета и прилёта местное</span>
       <div class="spacer"></div>
-      <button class="chip">Прямые рейсы</button>
+      <button class="chip" style="font-weight: 600">Прямые рейсы</button>
       <div class="sort-wrap">
-        <button class="chip" id="sortBtn">Сортировка <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
+        <button class="chip" id="sortBtn" style="font-weight: 600">Сортировка <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></button>
         <div class="sort-menu" id="sortMenu">
           <div class="sort-grp">
             <div class="gh">По цене</div>
@@ -612,7 +629,7 @@
 
     <!-- HY 202 — direct -->
     <article class="flight-card">
-      <div class="tags"><span class="tag tag-stops">Прямой рейс</span><span class="tag tag-fast">Самый быстрый</span></div>
+      <div class="tags"><span class="tag tag-stops">Прямой рейс</span><span class="tag tag-fast">РЕКОМЕНДУЕМ</span></div>
       <div class="flight-body">
         <div class="flight-main">
           <div class="flight-id">
@@ -771,10 +788,10 @@
   <div class="modal-overlay" id="fareModal" hidden>
     <div class="modal wide" role="dialog" aria-modal="true">
       <button class="modal-close" data-close-fare aria-label="Закрыть">✕</button>
-      <div class="modal-head"><h2 id="fTitle"></h2><button class="collapse" data-close-fare aria-label="Свернуть"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></button></div>
+      <div class="modal-head"><h2 id="fTitle" style="font-weight: 600"></h2><button class="collapse" data-close-fare aria-label="Свернуть"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></button></div>
       <div class="cabin-tabs">
-        <button class="cabin-tab" data-cabin="economy">Economy</button>
-        <button class="cabin-tab" data-cabin="business">Business</button>
+        <button class="cabin-tab" data-cabin="economy" style="font-weight: 600">Economy</button>
+        <button class="cabin-tab" data-cabin="business" style="font-weight: 600">Business</button>
       </div>
       <div class="fare-grid" id="fareGrid"></div>
     </div>
@@ -794,19 +811,9 @@
   <div class="modal-overlay" id="confirmModal" hidden>
     <div class="modal confirm" role="dialog" aria-modal="true">
       <button class="modal-close" data-close-confirm aria-label="Закрыть">✕</button>
-      <div class="modal-head"><h2>Подтвердите выбранные билеты</h2></div>
+      <div class="modal-head"><h2 style="font-weight: 600">Подтвердите выбранные билеты</h2></div>
       <div class="confirm-sub">Если выбранные вами билеты отображены правильно, нажмите на кнопку «Подтвердить»</div>
-      <div class="confirm-note"><span class="ni"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16L12 11" stroke="#8B273E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0059 8L11.9969 8" stroke="#8B273E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Если бронирование включает разные тарифы, применяются правила более низкого тарифа. Например, при «Saver» в одну сторону и «Comfort» обратно — правила возврата и обмена тарифа «Saver».</span></div>
       <div class="cf-cols" id="cfCols"></div>
-      <div class="cf-sumbar">
-        <div class="cf-sb-pax" id="cfPaxCount">1 взрослый пассажир</div>
-        <div class="cf-sb-price">
-          <div class="tot" id="cfTotal">— UZS</div>
-          <div class="lbl">за всех пассажиров</div>
-        </div>
-        <button class="cf-sb-details" id="cfDetails">Детали</button>
-        <button class="cf-sb-confirm btn-confirm">Подтвердить</button>
-      </div>
     </div>
   </div>
 
@@ -843,7 +850,7 @@
               <div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div>
             </div>
             <div class="pen-group">
-              <div class="pen-h">Переоформление авиабилета после вылета <span class="pen-i">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</span></div>
+              <div class="pen-h">Переоформление авиабилета после вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div>
             </div>
             <div class="pen-group">
               <div class="pen-h">Удержание при возврате авиабилета после вылета</div>
@@ -852,7 +859,6 @@
             </div>
           </div>
         </div>
-        <div class="det-points">+ <b id="detPoints">5 000</b> баллов UzAirPlus</div>
         <hr class="det-sep">
         <div class="det-total">Итого: <span id="detTotal" style="margin-left:8px;">—</span></div>
       </div>
@@ -1019,7 +1025,7 @@
   const _statusRow=(icon,label,val)=>`<div class="frow"><div class="top">${IC[icon](NK)}<span>${label}</span></div><div class="val muted">${val}</div></div>`;
   const _tierRow=(icon,label,arr)=>`<div class="frow"><div class="top">${IC[icon](NK)}<span>${label}</span></div>${_tiers(arr)}</div>`;
   const fareCard=f=>`<div class="fcard ${f.akcia?'akcia':''} ${f.left?'':'sold'}">
-    <div class="fcard-head">${f.akcia?`<div class="ribbon">Акция</div>`:`<div class="nm">${f.nm}</div>`}<div class="cls">${f.cls}</div></div>
+    <div class="fcard-head">${f.akcia?`<div class="ribbon">Акция</div>`:`<div class="nm">${f.nm}</div>`}<div class="cls">${f.cls}</div><div class="fcard-pts">+5000 баллов UzAirPlus</div></div>
     ${_lug('carryon','Ручная кладь',f.carryon)}
     ${_lug('bag','Багаж',f.bag)}
     ${_seat(f.seat)}
@@ -1298,20 +1304,20 @@
     document.getElementById('detRetP').textContent=_uzs(_parseUZS(window.retSel.price));
     document.getElementById('detFuel').textContent=_uzs(CF_FUEL);
     document.getElementById('detTax').textContent=_uzs(CF_TAXES);
-    document.getElementById('detPoints').textContent=CF_POINTS.toLocaleString('ru-RU').replace(/\u00a0/g,' ');
+    var _dp=document.getElementById('detPoints'); if(_dp) _dp.textContent=CF_POINTS.toLocaleString('ru-RU').replace(/\u00a0/g,' ');
     document.getElementById('detTotal').textContent=_uzs(_cfTotalNum());
-    detOv.querySelector('.det-card').classList.remove('pen-open');
+    detOv.querySelector('.det-card').classList.add('pen-open');
     detOv.hidden=false; document.body.style.overflow='hidden';
   }
   function closeDetails(){ detOv.hidden=true; if(!cfov.hidden) document.body.style.overflow='hidden'; else document.body.style.overflow=''; }
   document.getElementById('detClose').addEventListener('click',closeDetails);
   detOv.addEventListener('click',e=>{ if(e.target===detOv) closeDetails(); });
   document.getElementById('detPenBtn').addEventListener('click',()=>{ detOv.querySelector('.det-card').classList.toggle('pen-open'); });
-  document.getElementById('cfDetails').addEventListener('click',openDetails);
+  var _cfd=document.getElementById('cfDetails'); if(_cfd) _cfd.addEventListener('click',openDetails); window.openDetails=openDetails;
   function closeConfirm(){ cfov.hidden=true; document.body.style.overflow=''; }
   cfov.addEventListener('click',e=>{ if(e.target===cfov) closeConfirm(); });
   document.querySelectorAll('[data-close-confirm]').forEach(b=>b.addEventListener('click',closeConfirm));
-  document.querySelector('.confirm .btn-confirm').addEventListener('click',()=>{ window.location.href='Passenger Data.html'; });
+  var _cfc=document.querySelector('.confirm .btn-confirm'); if(_cfc) _cfc.addEventListener('click',()=>{ window.location.href='Passenger Data.html'; });
   // edit pencil → return to that leg's fare grid with its cabin pre-selected
   cfov.addEventListener('click',e=>{
     const pen=e.target.closest('.cf-edit'); if(!pen) return;
@@ -1390,5 +1396,89 @@
       });
     })();
   </script>
+  <div class="pd-bar">
+    <div class="container pd-bar-inner">
+      <div class="pd-pax"><span class="pdx"><b>2</b><svg viewBox="4 0 12 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span><span class="pdx"><b>1</b><svg viewBox="50 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span><span class="pdx"><b>1</b><svg viewBox="95 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0898 4.45754C11.1712 4.40902 12.0081 3.4841 11.9591 2.39166C11.9101 1.29924 10.9937 0.45298 9.91236 0.501498C8.83096 0.550014 7.99404 1.47494 8.04306 2.56736C8.09206 3.6598 9.00844 4.50606 10.0898 4.45754Z" fill="#8B273E"/><path d="M14.6 10.1004L13.24 6.40041C12.92 5.52041 12.06 4.92041 11.12 4.92041H8.88C7.94 4.92041 7.1 5.50041 6.76 6.40041L5.4 10.1204C5.24 10.5404 5.46 11.0204 5.88 11.1604C6.3 11.3204 6.78 11.1004 6.92 10.6804L7.82 8.22041V18.5204C7.82 19.0204 8.18 19.4604 8.68 19.5004C9.24 19.5604 9.72 19.1204 9.72 18.5604V12.4804C9.72 12.3204 9.84 12.2004 10 12.2004C10.16 12.2004 10.28 12.3204 10.28 12.4804V18.5204C10.28 19.0204 10.64 19.4604 11.14 19.5004C11.7 19.5604 12.18 19.1204 12.18 18.5604V8.22041L13.08 10.6804C13.2 11.0004 13.52 11.2204 13.84 11.2204C13.98 11.2204 14.14 11.1804 14.28 11.1004C14.6 10.9004 14.74 10.4604 14.6 10.1004Z" fill="#8B273E"/><path d="M63.1769 5.28889L59.9102 8.55556V17.7556C59.9102 18.0889 59.7769 18.4 59.5325 18.6444C59.288 18.8889 58.9991 19.0222 58.6436 19.0222C58.3102 19.0222 57.9991 18.8889 57.7547 18.6444C57.5102 18.4 57.3769 18.1111 57.3769 17.7556V13.4667H56.6658V17.7556C56.6658 18.0889 56.5325 18.4 56.288 18.6444C56.0436 18.8889 55.7547 19.0222 55.3991 19.0222C55.0658 19.0222 54.7547 18.8889 54.5102 18.6444C54.2658 18.4 54.1325 18.1111 54.1325 17.7556V8.55556L50.8658 5.28889C50.6658 5.08889 50.5547 4.82222 50.5547 4.53333C50.5547 4.24444 50.6658 3.97778 50.8658 3.77778C51.088 3.57778 51.3325 3.46669 51.6214 3.46669C51.9102 3.46669 52.1769 3.57778 52.3769 3.77778L55.888 6.33333H56.9769H58.0214L61.5769 3.77778C61.7769 3.57778 62.0436 3.46669 62.3325 3.46669C62.6214 3.46669 62.888 3.57778 63.088 3.77778C63.288 3.97778 63.3991 4.17778 63.4436 4.53333C63.488 4.88889 63.3991 5.06667 63.1769 5.28889ZM58.8436 1.6889C59.3325 2.17779 59.5769 2.7778 59.5769 3.46669C59.5769 4.15558 59.3325 4.75558 58.8436 5.24447C58.3547 5.73336 57.7547 5.97778 57.0658 5.97778C56.3769 5.97778 55.7769 5.73336 55.288 5.24447C54.7991 4.75558 54.5547 4.15558 54.5547 3.46669C54.5547 2.7778 54.7991 2.17779 55.288 1.6889C55.7769 1.20001 56.3769 0.955566 57.0658 0.955566C57.7547 0.955566 58.3547 1.20001 58.8436 1.6889Z" fill="#8B273E"/><path d="M97.9004 5.49893C97.9004 5.16753 98.169 4.89893 98.5004 4.89893C98.8318 4.89893 99.1004 5.16753 99.1004 5.49893C99.1004 5.83033 98.8318 6.09893 98.5004 6.09893C98.169 6.09893 97.9004 5.83033 97.9004 5.49893Z" fill="#8B273E"/><path d="M100.898 5.49893C100.898 5.16753 101.167 4.89893 101.498 4.89893C101.83 4.89893 102.098 5.16753 102.098 5.49893C102.098 5.83033 101.83 6.09893 101.498 6.09893C101.167 6.09893 100.898 5.83033 100.898 5.49893Z" fill="#8B273E"/><path d="M99.8072 13.4118C98.477 14.053 97.0142 14.441 95.4752 14.5344C95.2996 13.8258 95.1992 13.0202 95.1992 12.1006C95.1992 11.5488 95.2554 11.0146 95.3568 10.5044C96.5754 11.8182 98.355 12.831 99.8072 13.4118Z" fill="#8B273E"/><path d="M104.8 12.1C104.8 16.4616 102.651 18.4 100 18.4C98.1552 18.4 96.5556 17.458 95.752 15.417C99.3296 15.141 102.512 13.3922 104.654 10.5698C104.747 11.0602 104.8 11.5718 104.8 12.1Z" fill="#8B273E"/><path d="M95.6445 9.45181C95.7829 9.06021 95.9525 8.69261 96.1467 8.34961C97.0219 9.52981 98.4209 10.2994 99.9997 10.2994C101.579 10.2994 102.977 9.52981 103.853 8.34981C104.045 8.68981 104.214 9.05341 104.352 9.44121C103.419 10.8352 102.231 11.9836 100.86 12.8346C99.3287 12.3446 96.9045 11.099 95.6445 9.45181Z" fill="#8B273E"/><path d="M99.9996 9.4001C102.15 9.4001 103.9 7.6505 103.9 5.5001C103.9 3.3497 102.15 1.6001 99.9996 1.6001C97.8492 1.6001 96.0996 3.3497 96.0996 5.5001C96.0996 7.6505 97.8492 9.4001 99.9996 9.4001ZM99.0786 2.6599C98.8348 3.4927 99.1612 4.6083 99.9994 4.7065C100.441 4.7583 100.624 4.0729 100.22 3.8643C100.126 3.8011 100.052 3.7187 99.998 3.6257C99.696 3.1013 100.263 2.4667 100.844 2.6367C102.087 3.0007 103 4.1405 103 5.5001C103 7.3683 101.283 8.8433 99.3442 8.4303C98.1962 8.1857 97.2784 7.2433 97.0566 6.0907C96.7522 4.5087 97.7024 3.1079 99.0786 2.6599Z" fill="#8B273E"/></svg></span></div>
+      <div class="pd-price">
+        <div class="tot">9 500 000 UZS</div>
+        <div class="lbl">за всех пассажиров</div>
+      </div>
+      <button class="pd-details" id="pdDetailsBtn">Детали</button>
+      <button class="pd-confirm" id="pdConfirmBtn" style="font-weight: 600">Подтвердить</button>
+    </div>
+  </div>
+
+  <script>(function(){
+    var conf=document.getElementById('pdConfirmBtn'), det=document.getElementById('pdDetailsBtn');
+    function ready(){ return window.outSel && window.retSel; }
+    if(conf) conf.addEventListener('click',function(){ if(ready()){ window.location.href='Passenger Data.html'; } else { if(window.showToast) showToast('Выберите тариф туда и обратно'); } });
+    if(det) det.addEventListener('click',function(){ if(ready()){ if(window.openDetails) openDetails(); } else { if(window.showToast) showToast('Выберите тариф туда и обратно'); } });
+  })();</script>
 </body>
 </html>
+
+<style id="__om-edit-overrides">
+#fareGrid >.akcia >div:nth-child(2) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.akcia >div:nth-child(3) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.akcia >div:nth-child(4) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.akcia >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 700 !important }
+#fareGrid >.akcia >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.akcia >div:nth-child(6) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(2) >div:nth-child(6) span { font-weight: 600 !important }
+#fareGrid >div:nth-child(2) >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(2) >div:nth-child(4) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+div:nth-child(2) >div:nth-child(3) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+div:nth-child(3) >div:nth-child(2) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(3) >div:nth-child(3) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(3) >div:nth-child(4) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(3) >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(3) >div:nth-child(6) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.sold >div:nth-child(6) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.sold >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >.sold >div:nth-child(4) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > span:nth-child(2) { font-weight: 600 !important }
+div:nth-child(5) >div:nth-child(2) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+div:nth-child(5) >div:nth-child(3) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+div:nth-child(5) >div:nth-child(4) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid .val >.free { font-weight: 600 !important }
+#fareGrid >div:nth-child(5) >div:nth-child(5) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(5) >div:nth-child(6) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#fareGrid >div:nth-child(5) .fbtn { font-weight: 600 !important }
+#fareGrid >div:nth-child(3) .fbtn { font-weight: 600 !important }
+#fareGrid >div:nth-child(2) .fbtn { font-weight: 600 !important }
+#fareGrid >.akcia .fbtn { font-weight: 600 !important }
+#fareGrid .ribbon { font-weight: 600 !important }
+#fareModal >[role="dialog"] div:nth-child(2) .nm { font-weight: 700 !important }
+#fareModal >[role="dialog"] div:nth-child(3) .nm { font-weight: 700 !important }
+#fareModal >[role="dialog"] .sold .nm { font-weight: 700 !important }
+#fareModal >[role="dialog"] div:nth-child(5) .nm { font-weight: 700 !important }
+div:nth-child(2) >div:nth-child(2) >.top >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#cfCols >div:nth-child(2) >.cf-card .cf-foot { font-weight: 600 !important }
+#cfCols >div:nth-child(1) >.cf-card .cf-foot { font-weight: 600 !important }
+#cfCols >div:nth-child(1) >.cf-leghead >b { font-weight: 600 !important }
+#cfCols >div:nth-child(2) >.cf-leghead >b { font-weight: 600 !important }
+#cfCols >div:nth-child(1) >.cf-card .cf-dur { font-weight: 600 !important }
+#cfCols >div:nth-child(2) >.cf-card .cf-dur { font-weight: 600 !important }
+#cfCols >div:nth-child(1) >.cf-card .cf-fbadge { font-weight: 600 !important }
+#cfCols >div:nth-child(1) >.cf-card .cf-fbadge { font-weight: 700 !important }
+#cfCols >div:nth-child(1) >.cf-card .cf-fbadge { font-weight: 600 !important }
+#cfCols >div:nth-child(2) >.cf-card .cf-fbadge { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(3) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div:nth-child(3) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(4) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(4) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div:nth-child(3) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(3) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > b:nth-child(1) { font-weight: 600 !important }
+#cfCols > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > b:nth-child(1) { font-weight: 600 !important }
+  .modal.confirm{padding-bottom:104px;}
+</style>
