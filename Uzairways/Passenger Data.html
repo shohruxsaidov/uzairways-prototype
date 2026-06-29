@@ -537,8 +537,8 @@
       function close(){ ov.hidden=true; }
       document.getElementById('pdConfirmBtn').addEventListener('click',function(){ ov.hidden=false; });
       document.getElementById('visaClose').addEventListener('click',close);
-      document.getElementById('visaYes').addEventListener('click',function(){ window.location.href='Additional Services - Seat Open.html'; });
-      document.getElementById('visaNo').addEventListener('click',function(){ window.location.href='Additional Services - Seat Open.html'; });
+      document.getElementById('visaYes').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
+      document.getElementById('visaNo').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
       ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
     })();

@@ -187,7 +187,7 @@
   .svc-leg{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:12px 22px;display:flex;gap:16px;}
   .svc-leg .leg-tab{flex:none;width:80px;border-right:1px solid var(--line);padding-right:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
   .svc-leg .leg-tab .lt{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;}
-  .svc-leg .leg-tab .ld{font-weight:600;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.1;}
+  .svc-leg .leg-tab .ld{font-weight:900;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.1;}
   .svc-leg .leg-tab .lm{font-size:11px;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
   .svc-leg .leg-body{flex:1;min-width:0;}
   .svc-leg .lb-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
@@ -202,25 +202,24 @@
   .svc-leg .roundel.roundel-pair{width:50px;height:22px;}
   .svc-leg .roundel svg{width:100%;height:100%;display:block;}
 
-  .svc-h{text-align:center;font-weight:600;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:38px 0 24px;}
+  .svc-h{text-align:center;font-weight:900;font-size:28px;letter-spacing:-.02em;color:var(--ink);margin:38px 0 24px;}
   .svc-list{display:flex;flex-direction:column;gap:20px;}
   .svc-row{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
   .svc-pic{background:var(--bg-2);min-height:210px;}
   .svc-pic image-slot{width:100%;height:100%;display:block;}
-  .svc-pic .svc-img{width:100%;height:100%;min-height:210px;object-fit:cover;display:block;}
   .svc-info{padding:24px 28px;display:flex;flex-direction:column;}
-  .svc-info h4{font-weight:700;font-size:18px;color:var(--ink);}
+  .svc-info h4{font-weight:800;font-size:18px;color:var(--ink);}
   .svc-info .desc{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:560px;}
   .svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:18px;}
   .svc-col{position:relative;}
   .svc-col + .svc-col{padding-left:30px;border-left:1px solid var(--line);}
-  .svc-col .sc-route{font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:10px;}
+  .svc-col .sc-route{font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:10px;}
   .svc-pax{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 10px;font-size:14px;padding:5px 0;}
   .svc-pax .nm{font-weight:700;color:var(--ink);white-space:nowrap;flex:none;}
   .svc-pax .st{color:var(--muted);font-weight:600;text-align:right;margin-left:auto;}
   .svc-pax .st.set{color:var(--good);}
   .svc-foot{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:auto;padding-top:18px;}
-  .svc-price{font-weight:800;font-size:18px;color:var(--ink);white-space:nowrap;}
+  .svc-price{font-weight:900;font-size:18px;color:var(--ink);white-space:nowrap;}
   .svc-price.free{color:var(--good);}
   .svc-pick{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 44px;font-family:var(--font);font-weight:600;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap;}
   .svc-pick:hover{background:var(--accent);}
@@ -357,8 +356,8 @@
   .sp-search{margin:16px 30px 6px;display:flex;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;}
   .sp-search svg{width:18px;height:18px;color:var(--muted-2);flex:none;}
   .sp-search input{border:0;background:none;outline:none;font-family:var(--font);font-size:14.5px;color:var(--ink);width:100%;}
-  .sp-grid{column-count:2;column-gap:12px;padding:10px 30px 26px;flex:1;overflow-y:auto;min-height:0;}
-  .sp-item{border:1px solid var(--line-card);border-radius:12px;background:var(--surface);overflow:hidden;break-inside:avoid;-webkit-column-break-inside:avoid;width:100%;margin-bottom:12px;}
+  .sp-grid{display:flex;flex-wrap:wrap;align-content:flex-start;gap:12px;padding:10px 30px 26px;flex:1;overflow-y:auto;min-height:0;}
+  .sp-item{border:1px solid var(--line-card);border-radius:12px;background:var(--surface);overflow:hidden;width:calc(50% - 6px);align-self:flex-start;}
   .sp-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:none;border:0;font-family:var(--font);cursor:pointer;text-align:left;}
   .sp-t{font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;}
   .sp-t .sp-d{display:block;font-weight:600;font-size:12.5px;color:var(--muted);margin-top:3px;}
@@ -427,7 +426,7 @@
     <!-- Trip summary -->
     <div class="svc-summary">
       <div class="svc-leg">
-        <div class="leg-tab" style="text-align: left; width: 80px; font-weight: 700"><div class="lt">Туда</div><div class="ld" style="text-align: left; font-weight: 600; font-size: 18px">2 марта</div><div class="lm">пн</div></div>
+        <div class="leg-tab" style="text-align: left; width: 80px"><div class="lt">Туда</div><div class="ld" style="text-align: left; font-weight: 600">2 марта</div><div class="lm">пн</div></div>
         <div class="leg-body">
           <div class="lb-top"><span class="lb-route" style="font-weight: 700">Ташкент — Москва</span><span class="roundel roundel-pair"><svg width="60" height="26" viewBox="0 0 60 26" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clipUZTR)"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.3515 0.091578C54.8825 0.779509 59.9963 6.27779 59.9963 13.0226C59.9963 20.195 54.1963 25.995 47.0204 25.995C39.8446 25.995 34.0015 20.195 34.0015 13.0226C34.0015 5.84847 39.8015 0.00537109 47.0204 0.00537109C47.4497 0.00537109 47.9222 0.0484745 48.3515 0.091578ZM49.0394 25.0933C55.6997 23.9761 60.2101 17.6623 59.0946 10.9605C58.148 5.41917 53.6377 1.38123 48.3101 0.822613C47.2359 0.693302 46.1187 0.736406 45.0015 0.908819C43.6687 1.12261 42.4222 1.55192 41.3066 2.15365C47.1497 4.17261 50.3291 7.22261 50.5428 10.3157C50.6722 12.2485 49.7704 13.6243 48.567 14.7399L56.9032 14.1812C57.117 14.1812 57.2032 14.4399 56.9463 14.5261L37.0515 20.195C39.0722 22.9881 42.2084 24.8347 45.6877 25.1795C46.8049 25.3071 47.9222 25.3071 49.0394 25.0933ZM43.5825 13.2795C44.6566 9.19848 43.4118 4.90365 40.4463 2.62606C36.4084 5.20365 34.0446 10.0157 34.9032 15.0416C35.1618 16.7157 35.7635 18.2192 36.6222 19.5519C39.8015 18.6916 42.5946 17.0174 43.5825 13.2795Z" fill="white"/><path d="M49.0397 25.0936C55.7 23.9763 60.2104 17.6625 59.0948 10.9608C58.1483 5.41942 53.6379 1.38149 48.3104 0.822867C47.2362 0.693557 46.119 0.736661 45.0017 0.909074C43.669 1.12287 42.4224 1.55218 41.3069 2.1539C47.15 4.17287 50.3293 7.22287 50.5431 10.316C50.6724 12.2487 49.7707 13.6246 48.5673 14.7401L56.9035 14.1815C57.1173 14.1815 57.2035 14.4401 56.9466 14.5263L37.0517 20.1953C39.0724 22.9884 42.2086 24.8349 45.6879 25.1798C46.8052 25.3074 47.9224 25.3074 49.0397 25.0936ZM43.5828 13.2798C44.6569 9.19873 43.4121 4.9039 40.4466 2.62632C36.4086 5.2039 34.0448 10.016 34.9035 15.0418C35.1621 16.716 35.7638 18.2194 36.6224 19.5522C39.8017 18.6918 42.5948 17.0177 43.5828 13.2798Z" fill="#C70A0C"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/><defs><clipPath id="clipUZTR"><rect width="26" height="26" fill="white" transform="translate(34)"/></clipPath></defs></svg></span><span class="lb-fno">HY 404</span></div>
           <div class="lb-times" style="color: rgb(139, 39, 62)"><b>10:00</b> TAS&nbsp; - &nbsp;DME <b>15:22</b></div>
@@ -437,7 +436,7 @@
         </div>
       </div>
       <div class="svc-leg">
-        <div class="leg-tab" style="font-weight: 700"><div class="lt">Обратно</div><div class="ld" style="text-align: left; font-weight: 600; font-size: 18px">9 марта</div><div class="lm">пн</div></div>
+        <div class="leg-tab"><div class="lt">Обратно</div><div class="ld" style="text-align: left; font-weight: 600">9 марта</div><div class="lm">пн</div></div>
         <div class="leg-body">
           <div class="lb-top"><span class="lb-route" style="font-weight: 700">Москва — Ташкент</span><span class="roundel"><svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0.000139471C16.4309 -0.0145478 19.7272 1.33389 22.1641 3.74897C24.6011 6.16405 25.9791 9.44808 25.9954 12.879C25.9791 16.3099 24.6011 19.5939 22.1641 22.009C19.7272 24.424 16.4309 25.7725 13 25.7578C9.5683 25.7737 6.27081 24.4258 3.83287 22.0106C1.39493 19.5954 0.0162161 16.3107 0 12.879C0.0162161 9.44727 1.39493 6.16254 3.83287 3.74733C6.27081 1.33211 9.5683 -0.0157825 13 0.000139471Z" fill="#E6101E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9979 1.05529C16.1482 1.04184 19.1748 2.27999 21.4123 4.49752C23.6499 6.71506 24.9152 9.73043 24.9301 12.8807C24.9152 16.0309 23.6499 19.0462 21.4123 21.2638C19.1748 23.4813 16.1482 24.7195 12.9979 24.706C9.84731 24.7201 6.8201 23.4822 4.58204 21.2646C2.34398 19.047 1.07834 16.0313 1.06348 12.8807C1.07834 9.73003 2.34398 6.7143 4.58204 4.4967C6.8201 2.2791 9.84731 1.04122 12.9979 1.05529Z" fill="#FFD141"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3799 15.7598C21.2039 15.998 20.9816 16.1983 20.7263 16.3485C20.471 16.4986 20.1879 16.5956 19.8941 16.6335L12.4015 16.6275C12.0277 16.4367 11.9864 16.1716 12.4015 16.0095H16.6376C16.8246 16.016 17.0104 15.9771 17.1791 15.8963C17.3478 15.8154 17.4945 15.695 17.6066 15.5452C18.8834 13.8873 20.3115 12.3045 21.4216 10.5221C21.0213 10.9634 20.4822 11.2547 19.8937 11.3476H14.689C14.4442 11.3358 14.2003 11.3857 13.9798 11.4928C13.7592 11.5999 13.5692 11.7608 13.4271 11.9605L10.3062 15.8921C7.62029 19.0734 5.75989 12.0445 9.39339 13.1635L7.90768 11.3133C7.82327 11.2171 7.71931 11.14 7.60273 11.0872C7.48616 11.0344 7.35966 11.0071 7.23168 11.0071C7.1037 11.0071 6.9772 11.0344 6.86062 11.0872C6.74405 11.14 6.64008 11.2171 6.55568 11.3133C4.31689 14.1515 4.27557 18.5269 8.98946 18.9448H19.0617L21.3831 15.7584L21.3799 15.7598ZM19.8273 6.83989C19.6796 6.97587 19.5049 7.07922 19.3146 7.14322C19.1243 7.20721 18.9226 7.23043 18.7227 7.21133H14.1486C13.8996 7.2026 13.6518 7.25002 13.4237 7.35008C13.1955 7.45015 12.9928 7.60028 12.8305 7.78936L9.91246 11.4665L10.7347 12.5181L11.7376 11.2808C11.8945 11.1015 12.0888 10.9587 12.3068 10.8624C12.5248 10.7662 12.7612 10.7188 12.9995 10.7236H15.8614C17.2681 10.7236 19.136 7.67886 19.8277 6.8385L19.8273 6.83989Z" fill="#3C792F"/></svg></span><span class="lb-fno">HY 555</span></div>
           <div class="lb-times" style="color: rgb(139, 39, 62)"><b>10:00</b> DME&nbsp; — &nbsp;TAS <b>18:00</b></div>
@@ -448,38 +447,38 @@
       </div>
     </div>
 
-    <h2 class="svc-h">Дополнительные услуги для вашего комфорта</h2>
+    <h2 class="svc-h" style="font-weight: 600">Дополнительные услуги для вашего комфорта</h2>
 
     <div class="svc-list" id="svcList">
       <div class="svc-row" data-svc="seat">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcSeat.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Выбор места</h4>
+        <div class="svc-pic"><image-slot id="svcSeat" shape="rect" placeholder="Картинка" style="height: 276px"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Выбор места</h4>
           <div class="desc">Подберите для себя удобное место, чтобы провести перелёт с комфортом</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot" style="margin: 68px 0px 0px"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="seatCancelBtn" hidden style="width: 164px">Отменить</button><button class="svc-pick" id="seatPickBtn">Выбрать</button></div></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="seatCancelBtn" hidden style="width: 164px">Отменить</button><button class="svc-pick" id="seatPickBtn">Выбрать</button></div></div>
         </div>
       </div>
-      <div class="svc-row" data-svc="bag" style="min-height: 296px">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcBag.webp" alt=""></div>
+      <div class="svc-row" data-svc="bag">
+        <div class="svc-pic"><image-slot id="svcBag" shape="rect" placeholder="Картинка" style="height: 296px"></image-slot></div>
         <div class="svc-info" style="min-height: 296px">
-          <h4>Дополнительный багаж</h4>
+          <h4 style="font-weight: 700">Дополнительный багаж</h4>
           <div class="desc" style="white-space: nowrap">Оформите дополнительный багаж сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
@@ -488,34 +487,34 @@
         </div>
       </div>
       <div class="svc-row" data-svc="sport">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcSport.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Перевозка спортивного инвентаря</h4>
+        <div class="svc-pic"><image-slot id="svcSport" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Перевозка спортивного инвентаря</h4>
           <div class="desc">Оформите спортивный инвентарь сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot" style="margin: 68px 0px 0px"><span class="svc-price" style="font-weight: 700">От 600 000 UZS</span><div class="svc-actions"><button class="svc-cancel" id="sportCancelBtn" hidden>Отменить</button><button class="svc-pick" id="sportPickBtn">Выбрать</button></div></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row" data-svc="meal">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcMeal.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Специальное питание</h4>
+        <div class="svc-pic"><image-slot id="svcMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Специальное питание</h4>
           <div class="desc">Если вам не нравится стандартное питание на борту, вы можете выбрать другое по своим предпочтениям</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
@@ -524,16 +523,16 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcPaidMeal.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Платное питание</h4>
+        <div class="svc-pic"><image-slot id="svcPaidMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Платное питание</h4>
           <div class="desc">Вы можете заказать дополнительное питание к стандартному или специальному</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
@@ -542,30 +541,30 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcPet.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Перевозка животных</h4>
+        <div class="svc-pic"><image-slot id="svcPet" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Перевозка животных</h4>
           <div class="desc">В багаже, под креслом или рядом с вами на соседнем кресле</div>
           <div class="svc-cols">
-            <div class="svc-col"><div class="sc-route">Ташкент — Москва</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Ташкент — Москва</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
-            <div class="svc-col"><div class="sc-route">Москва — Ташкент</div>
+            <div class="svc-col"><div class="sc-route" style="font-weight: 700">Москва — Ташкент</div>
               <div class="svc-pax"><span class="nm">IVANOV IVAN</span><span class="st">Не выбрано</span></div>
               <div class="svc-pax"><span class="nm">IVANOV ALEXEY</span><span class="st">Не выбрано</span></div>
             </div>
           </div>
-          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick">Выбрать</button></div>
+          <div class="svc-foot"><span class="svc-price" style="font-weight: 700">От 200 000 UZS</span><button class="svc-pick" style="font-weight: 600">Выбрать</button></div>
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><img class="svc-img" src="assets/svcInsurance.webp" alt=""></div>
-        <div class="svc-info" style="min-height: 296px">
-          <h4>Страхование багажа от ALFA INVEST</h4>
+        <div class="svc-pic"><image-slot id="svcInsurance" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-info">
+          <h4 style="font-weight: 700">Страхование багажа от ALFA INVEST</h4>
           <div class="desc">Если ваш багаж повредят, задержат или потеряют при перевозке, мы возместим ущерб. Страховка распространяется на багаж, дополнительный багаж, спортивный инвентарь и клетки для животных суммарной стоимостью до 10 000 000 UZS.</div>
           <div class="svc-links"><a href="#">Условия страхования</a><a href="#">Страховые случаи</a><a href="#">Публичная оферта</a></div>
-          <div class="svc-foot"><span class="svc-price-lbl" style="white-space: nowrap; font-weight: 700; font-size: 18px">Цена за всех пассажиров: 111 000 UZS за кг</span><button class="svc-cancel">Отменить</button></div>
+          <div class="svc-foot"><span class="svc-price-lbl" style="white-space: nowrap; font-weight: 700">Цена за всех пассажиров: 111 000 UZS за кг</span><button class="svc-cancel">Отменить</button></div>
         </div>
       </div>
     </div>
@@ -595,14 +594,14 @@
         <div class="tot">9 500 000 UZS</div>
         <div class="lbl">за всех пассажиров</div>
       </div>
-      <button class="pd-details" id="pdDetailsBtn" style="font-weight: 700">Детали</button>
+      <button class="pd-details" id="pdDetailsBtn">Детали</button>
       <button class="pd-confirm" id="pdConfirmBtn" onclick="location.href='Payment Details.html'" style="font-weight: 600">Продолжить</button>
     </div>
   </div>
   <div class="pdd-ov" id="pddModal" hidden>
     <div class="pdd-card" role="dialog" aria-modal="true">
       <button class="pdd-close" id="pddClose" aria-label="Закрыть">✕</button>
-      <h3 class="pdd-title" style="font-weight: 600">Детали</h3>
+      <h3 class="pdd-title">Детали</h3>
       <div class="pdd-row"><span class="dl">Туда: Economy Comfort</span><span class="dv">6 000 000 UZS</span></div>
       <div class="pdd-row"><span class="dl">Обратно: Economy Comfort</span><span class="dv">6 000 000 UZS</span></div>
       <div class="pdd-row"><span class="dl">Топливный сбор</span><span class="dv">300 000 UZS</span></div>
@@ -611,9 +610,9 @@
         <button class="pdd-penbtn" id="pddPenBtn">Штрафы <span class="chev">▾</span></button>
         <div class="pdd-penbody">
           <div class="pen-group"><div class="pen-h">Переоформление авиабилета до вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
-          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета до вылета</div><div class="pen-d">Штраф за возврат - Цена 230 000 UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена 30 000 UZS</div></div>
-          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена 320 000 UZS</div></div>
-          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета после вылета</div><div class="pen-d">Штраф за возврат - Цена 320 000 UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена 23 000 UZS</div></div>
+          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета до вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
+          <div class="pen-group"><div class="pen-h">Переоформление авиабилета после вылета</div><div class="pen-d">(Если тариф нового класса бронирования выше, взимается разница) - Цена UZS</div></div>
+          <div class="pen-group"><div class="pen-h">Удержание при возврате авиабилета после вылета</div><div class="pen-d">Штраф за возврат - Цена UZS</div><div class="pen-d">Сбор за использование системы бронирования (YR) - Цена UZS</div></div>
         </div>
       </div>
       <hr class="pdd-sep">
@@ -633,8 +632,8 @@
   <div class="seat-ov" id="bagModal" hidden>
     <div class="seat-card bag-card" role="dialog" aria-modal="true">
       <div class="seat-head">
-        <h3 class="seat-title" style="font-weight: 600">Дополнительный багаж</h3>
-        <a class="bag-sport" href="#" style="font-weight: 600">Перевозка спортивного инвентаря</a>
+        <h3 class="seat-title" style="font-weight:700">Дополнительный багаж</h3>
+        <a class="bag-sport" href="#" id="bagSportLink">Перевозка спортивного инвентаря</a>
         <button class="seat-close" id="bagClose" aria-label="Закрыть">✕</button>
       </div>
       <div class="bag-legcols" id="bagLegCols"></div>
@@ -828,14 +827,7 @@
         });
       });
       var btn=row.querySelector('.svc-pick'); if(btn){ btn.textContent=any?'Изменить':'Выбрать'; btn.classList.toggle('done',any); }
-      var n=0; keys.forEach(function(k){ state[k].forEach(function(v){ if(v) n+=v.qty; }); });
-      var priceEl=row.querySelector('.svc-price');
-      var cancelEl=document.getElementById('sportCancelBtn');
-      if(priceEl) priceEl.textContent=any?('Итого: '+fmt(n*UNIT)+' UZS'):'От 600 000 UZS';
-      if(cancelEl) cancelEl.hidden=!any;
     }
-    var _spCancel=document.getElementById('sportCancelBtn');
-    if(_spCancel) _spCancel.addEventListener('click',function(){ state={out:[null,null],ret:[null,null]}; if(!ov.hidden) render(); syncSportRow(); });
     var _spRow=document.querySelector('.svc-row[data-svc="sport"]');
     if(_spRow){ var _sc=_spRow.querySelector('.svc-cols'); if(_sc) _sc.addEventListener('click',function(e){ var d=e.target.closest('.st-del'); if(!d) return; state[d.dataset.leg][+d.dataset.i]=null; if(!ov.hidden) render(); syncSportRow(); }); }
     function open(){ render(); ov.hidden=false; document.body.style.overflow='hidden'; }
@@ -849,12 +841,12 @@
   <div class="seat-ov" id="seatModal" hidden>
     <div class="seat-card" role="dialog" aria-modal="true">
       <div class="seat-head">
-        <h3 class="seat-title" style="font-weight: 700">Места на борту</h3>
+        <h3 class="seat-title">Места на борту</h3>
         <button class="seat-close" id="seatClose" aria-label="Закрыть">✕</button>
       </div>
       <div class="seat-legs">
-        <button class="seat-leg active" data-leg="out" style="border-style: solid; font-weight: 700">Ташкент — Москва</button>
-        <button class="seat-leg" data-leg="ret" style="border-style: solid; font-weight: 700">Москва — Ташкент</button>
+        <button class="seat-leg active" data-leg="out">Ташкент — Москва</button>
+        <button class="seat-leg" data-leg="ret">Москва — Ташкент</button>
       </div>
       <div class="seat-body">
         <div class="seat-main">
@@ -881,7 +873,7 @@
             <div class="seat-lg"><span class="sw unavail"></span><span class="lgt">Место недоступно</span></div>
             <div class="seat-lg"><span class="sw sel"></span><span class="lgt">Выбранное место</span></div>
           </div>
-          <button class="seat-confirm" id="seatConfirm" style="font-weight: 700">Подтвердить</button>
+          <button class="seat-confirm" id="seatConfirm">Подтвердить</button>
         </aside>
       </div>
     </div>
@@ -1008,27 +1000,7 @@
       ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
       buildMap(); refresh();
-    })();
-
-    // Drag-and-drop image replacement on service cards (with persistence)
-    (function(){
-      var imgs=document.querySelectorAll('.svc-pic .svc-img');
-      imgs.forEach(function(img,i){
-        var key='svcimg:'+(img.getAttribute('src')||('idx'+i)).split('/').pop();
-        // restore saved image
-        try{ var saved=localStorage.getItem(key); if(saved) img.src=saved; }catch(e){}
-        var pic=img.closest('.svc-pic'); if(!pic) return;
-        pic.addEventListener('dragover',function(e){ e.preventDefault(); pic.style.outline='2px dashed var(--accent)'; pic.style.outlineOffset='-4px'; });
-        pic.addEventListener('dragleave',function(){ pic.style.outline=''; });
-        pic.addEventListener('drop',function(e){
-          e.preventDefault(); pic.style.outline='';
-          var file=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
-          if(!file||!/^image\//.test(file.type)) return;
-          var rd=new FileReader();
-          rd.onload=function(){ img.src=rd.result; try{ localStorage.setItem(key,rd.result); }catch(err){} };
-          rd.readAsDataURL(file);
-        });
-      });
+      open();
     })();
   </script>
   <script src="image-slot.js"></script>
@@ -1062,15 +1034,3 @@
   </script>
 </body>
 </html>
-<style id="__om-edit-overrides">
-#seatPaxList >button:nth-child(1) b { font-weight: 800 !important }
-#seatPaxList >button:nth-child(1) b { font-weight: 700 !important }
-#seatPaxList >.active b { font-weight: 700 !important }
-#bagModal >[role="dialog"] .active >.bag-leghdr { font-weight: 600 !important }
-#bagLegCols >div:nth-child(2) >.bag-leghdr { font-weight: 600 !important }
-#sportLegCols > div:nth-child(1) > div:nth-child(2) > button:nth-child(2) > span:nth-child(2) > span:nth-child(1) { width: 224px !important }
-#sportLegCols > div:nth-child(1) > div:nth-child(2) > button:nth-child(2) > span:nth-child(2) > span:nth-child(1) { width: 244px !important }
-#sportLegCols > div:nth-child(1) > div:nth-child(2) > button:nth-child(2) > span:nth-child(2) > span:nth-child(1) { height: 15px !important }
-#sportLegCols > div:nth-child(1) > div:nth-child(2) > button:nth-child(2) > span:nth-child(2) > span:nth-child(1) { width: 250px !important }
-#sportLegCols > div:nth-child(1) > div:nth-child(2) > button:nth-child(2) > span:nth-child(2) > span:nth-child(1) { height: 14px !important }
-</style>
