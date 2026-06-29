@@ -206,7 +206,7 @@
   .svc-list{display:flex;flex-direction:column;gap:20px;}
   .svc-row{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
   .svc-pic{background:var(--bg-2);min-height:210px;}
-  .svc-pic image-slot{width:100%;height:100%;display:block;}
+  .svc-pic img{width:100%;height:100%;object-fit:cover;display:block;}
   .svc-info{padding:24px 28px;display:flex;flex-direction:column;}
   .svc-info h4{font-weight:800;font-size:18px;color:var(--ink);}
   .svc-info .desc{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:560px;}
@@ -335,7 +335,6 @@
   .bag-body{padding:8px 30px 26px;display:flex;flex-direction:column;align-items:center;}
   .bag-pic{width:100%;max-width:560px;height:200px;border-radius:14px;overflow:hidden;background:var(--bg-2);margin:18px 0 14px;}
   .bag-pic img{width:100%;height:100%;object-fit:cover;display:block;}
-  .bag-pic image-slot{width:100%;height:100%;display:block;}
   .bag-note{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:600;text-align:center;justify-content:center;max-width:560px;margin-bottom:18px;}
   .bag-note .bag-note-ic{flex:none;width:18px;height:18px;color:var(--muted-2);}
   .bag-note .bag-note-ic svg{width:18px;height:18px;}
@@ -451,7 +450,7 @@
 
     <div class="svc-list" id="svcList">
       <div class="svc-row" data-svc="seat">
-        <div class="svc-pic"><image-slot id="svcSeat" shape="rect" placeholder="Картинка" style="height: 276px"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcSeat.webp" alt="" style="height: 276px"></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Выбор места</h4>
           <div class="desc">Подберите для себя удобное место, чтобы провести перелёт с комфортом</div>
@@ -469,7 +468,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="bag">
-        <div class="svc-pic"><image-slot id="svcBag" shape="rect" placeholder="Картинка" style="height: 296px"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcBag.webp" alt="" style="height: 296px"></div>
         <div class="svc-info" style="min-height: 296px">
           <h4 style="font-weight: 700">Дополнительный багаж</h4>
           <div class="desc" style="white-space: nowrap">Оформите дополнительный багаж сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
@@ -487,7 +486,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="sport">
-        <div class="svc-pic"><image-slot id="svcSport" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcSport.webp" alt=""></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Перевозка спортивного инвентаря</h4>
           <div class="desc">Оформите спортивный инвентарь сейчас, чтобы не стоять в очереди в аэропорту в день вылета</div>
@@ -505,7 +504,7 @@
         </div>
       </div>
       <div class="svc-row" data-svc="meal">
-        <div class="svc-pic"><image-slot id="svcMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcMeal.webp" alt=""></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Специальное питание</h4>
           <div class="desc">Если вам не нравится стандартное питание на борту, вы можете выбрать другое по своим предпочтениям</div>
@@ -523,7 +522,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcPaidMeal" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcPaidMeal.webp" alt=""></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Платное питание</h4>
           <div class="desc">Вы можете заказать дополнительное питание к стандартному или специальному</div>
@@ -541,7 +540,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcPet" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcPet.webp" alt=""></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Перевозка животных</h4>
           <div class="desc">В багаже, под креслом или рядом с вами на соседнем кресле</div>
@@ -559,7 +558,7 @@
         </div>
       </div>
       <div class="svc-row">
-        <div class="svc-pic"><image-slot id="svcInsurance" shape="rect" placeholder="Картинка"></image-slot></div>
+        <div class="svc-pic"><img class="svc-img" src="assets/svcInsurance.webp" alt=""></div>
         <div class="svc-info">
           <h4 style="font-weight: 700">Страхование багажа от ALFA INVEST</h4>
           <div class="desc">Если ваш багаж повредят, задержат или потеряют при перевозке, мы возместим ущерб. Страховка распространяется на багаж, дополнительный багаж, спортивный инвентарь и клетки для животных суммарной стоимостью до 10 000 000 UZS.</div>
@@ -638,7 +637,7 @@
       </div>
       <div class="bag-legcols" id="bagLegCols"></div>
       <div class="bag-body">
-        <div class="bag-pic"><image-slot id="bagPic" shape="rounded" radius="14" placeholder="Перетащите изображение"></image-slot></div>
+        <div class="bag-pic"><img src="assets/bagPic.webp" alt=""></div>
         <div class="bag-note"><span class="bag-note-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></span>Одна единица багажа — это сумка или чемодан до 13 кг с габаритами до 20 * 20 * 50 см</div>
         <div class="bag-stepper">
           <button class="bag-step" id="bagMinus" type="button" aria-label="Убрать"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
@@ -1003,7 +1002,6 @@
       open();
     })();
   </script>
-  <script src="image-slot.js"></script>
   <template id="__bundler_thumbnail">
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <rect width="100" height="100" fill="#12174f"/>
