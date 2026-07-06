@@ -424,10 +424,12 @@
         <div class="suc-pnr-l">
           <div class="suc-pnr-lbl">Номер заказа</div>
           <div class="suc-pnr-code">954239582353</div>
-          <div class="suc-pnr-lbl" style="margin-top:12px">Номер билета</div>
-          <div class="suc-pnr-code">21012312312</div>
+          <div class="suc-pnr-lbl" style="margin-top:14px">Номера билетов</div>
+          <div class="suc-tk-list">
+            <div class="suc-tk"><span class="suc-tk-nm">IVANOV IVAN</span><span class="suc-tk-r"><span class="suc-tk-code">21012312312</span><button class="suc-tk-copy" type="button" data-code="21012312312" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></span></div>
+            <div class="suc-tk"><span class="suc-tk-nm">IVANOVA ANNA</span><span class="suc-tk-r"><span class="suc-tk-code">21012312313</span><button class="suc-tk-copy" type="button" data-code="21012312313" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></span></div>
+          </div>
         </div>
-        <button class="suc-copy" id="sucCopy" type="button">Скопировать</button>
       </div>
 
       <div class="suc-rows">
@@ -474,6 +476,15 @@
     .suc-pnr{margin:32px 0 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:18px 24px;text-align:left;}
     .suc-pnr-lbl{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
     .suc-pnr-code{font-weight:900;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-top:4px;}
+    .suc-tk-list{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+    .suc-pnr-l{flex:1;min-width:0;}
+    .suc-tk{display:flex;align-items:baseline;justify-content:space-between;gap:20px;}
+    .suc-tk-nm{font-weight:700;font-size:14px;color:var(--muted);letter-spacing:.02em;white-space:nowrap;}
+    .suc-tk-code{font-weight:900;font-size:22px;letter-spacing:.06em;color:var(--ink);}
+    .suc-tk-r{display:flex;align-items:center;gap:12px;}
+    .suc-tk-copy{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--cream-2,#efe6dd);color:var(--ink);transition:.15s;cursor:pointer;}
+    .suc-tk-copy:hover{background:var(--blush,#f3e8e4);color:var(--accent,#8b273e);}
+    .suc-tk-copy.done{background:var(--accent,#8b273e);color:#fff;}
     .suc-copy{flex:none;background:var(--ink);color:#fff;border-radius:12px;padding:12px 22px;font-family:var(--font);font-weight:700;font-size:14px;transition:.15s;}
     .suc-copy:hover{background:var(--ink-soft);}
     .suc-copy.done{background:var(--good);}
@@ -505,16 +516,17 @@
 
   <script>
     (function(){
-      var copy=document.getElementById('sucCopy');
-      if(copy) copy.addEventListener('click',function(){
-        var code='954239582353';
-        function fallback(){ try{ var ta=document.createElement('textarea'); ta.value=code; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }catch(e){} }
-        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(code).catch(fallback); } else { fallback(); }
-        copy.textContent='Скопировано'; copy.classList.add('done');
-        setTimeout(function(){ copy.textContent='Скопировать'; copy.classList.remove('done'); },1800);
-      });
       var tk=document.getElementById('sucTicket');
       if(tk) tk.addEventListener('click',function(e){ e.preventDefault(); });
+      [].slice.call(document.querySelectorAll('.suc-tk-copy')).forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var code=btn.getAttribute('data-code');
+          function fallback(){ try{ var ta=document.createElement('textarea'); ta.value=code; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }catch(e){} }
+          if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(code).catch(fallback); } else { fallback(); }
+          btn.classList.add('done');
+          setTimeout(function(){ btn.classList.remove('done'); },1400);
+        });
+      });
       (function(){
         var box=document.getElementById('sucStars'); if(!box) return;
         var btns=[].slice.call(box.querySelectorAll('button')); var rated=0;

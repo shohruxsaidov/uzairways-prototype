@@ -126,7 +126,7 @@
   .pax-body{padding:28px 26px;display:grid;grid-template-columns:1fr 1fr auto 1fr;gap:22px 20px;align-items:end;}
 
   .fld{display:flex;flex-direction:column;gap:7px;min-width:0;}
-  .fld label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.01em;}
+  .fld label{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.01em;}
   .fld .inp{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 16px;font-family:var(--font);font-weight:600;font-size:15px;color:var(--ink);width:100%;outline:none;transition:.15s;}
   .fld .inp::placeholder{color:var(--muted-2);font-weight:600;}
   .fld .inp:focus{border-color:var(--ink);background:var(--surface);}
@@ -142,7 +142,7 @@
   /* gender toggle */
   .gender{display:flex;flex-direction:column;gap:7px;}
   .gender .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:4px;gap:4px;}
-  .gender .seg button{flex:1;padding:10px 18px;border-radius:10px;font-family:var(--font);font-weight:700;font-size:14px;color:var(--muted);background:transparent;white-space:nowrap;transition:.15s;}
+  .gender .seg button{flex:1;padding:10px 18px;border-radius:10px;font-family:var(--font);font-weight:600;font-size:14px;color:var(--muted);background:transparent;white-space:nowrap;transition:.15s;}
   .gender .seg button.on{background:var(--accent);color:#fff;}
 
   /* add buttons */
@@ -171,6 +171,11 @@
   .chk input:checked + .box svg{opacity:1;}
   .chk a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
   .chk.master{font-weight:600;color:var(--ink);font-size:15.5px;}
+  .chk.err .box{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,39,62,.15);}
+  .checks.err-shake{animation:chkShake .4s;}
+  @keyframes chkShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+  .checks-err{display:none;color:var(--accent);font-size:13.5px;font-weight:600;padding-left:34px;margin-top:-4px;}
+  .checks-err.show{display:block;}
   .sub-checks{display:flex;flex-direction:column;gap:14px;padding-left:34px;margin-top:2px;}
 
   .pax-foot{display:flex;justify-content:flex-end;margin-top:38px;}
@@ -289,6 +294,7 @@
         <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Я ознакомлен с <a href="#">требованиями к документам для въезда в страны назначения и транзита</a></span></label>
         <label class="chk"><input type="checkbox" class="agree-sub"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Я даю своё согласие на обработку своих персональных данных</label>
       </div>
+      <div class="checks-err" id="checksErr">Подтвердите согласие со всеми правилами и условиями, чтобы продолжить</div>
     </div>
 
   </main>
@@ -299,13 +305,14 @@
     const trashSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13M10 11v6M14 11v6"/></svg>';
     const MAX=9;
 
-    function bodyHTML(){
+    function bodyHTML(type){
+      var driver=(type==='child'||type==='infant')?'':'<button type="button" data-doc>Водительские права</button>';
       return '<div class="pax-body">'
         +'<div class="fld"><label>Фамилия*</label><input class="inp" placeholder="Как в документе"></div>'
         +'<div class="fld"><label>Имя*</label><input class="inp" placeholder="Как в документе"></div>'
-        +'<div class="gender"><label style="font-size:13px;font-weight:700;color:var(--muted);">Пол*</label><div class="seg"><button class="on" data-g>Мужчина</button><button data-g>Женщина</button></div></div>'
+        +'<div class="gender"><label style="font-size:13px;font-weight:600;color:var(--muted);">Пол*</label><div class="seg"><button class="on" data-g>Мужчина</button><button data-g>Женщина</button></div></div>'
         +'<div class="fld"><label>Дата рождения*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic">'+calSvg+'</span></div></div>'
-        +'<div class="fld sel"><label>Тип документа</label><div class="inp" data-doctoggle><span>Загранпаспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div><div class="doc-menu"><button type="button" data-doc class="on">Загранпаспорт</button><button type="button" data-doc>Паспорт гражданина РУз / ID-карта</button><button type="button" data-doc>Водительские права</button><button type="button" data-doc>Другой документ</button></div></div>'
+        +'<div class="fld sel"><label>Тип документа</label><div class="inp" data-doctoggle><span>Загранпаспорт</span><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div><div class="doc-menu"><button type="button" data-doc class="on">Загранпаспорт</button><button type="button" data-doc>Паспорт гражданина РУз / ID-карта</button>'+driver+'<button type="button" data-doc>Другой документ</button></div></div>'
         +'<div class="fld"><label>Серия и номер документа*</label><input class="inp" placeholder="AA 1234567"></div>'
         +'<div class="fld"><label>Срок действия документа*</label><div class="inp-ic"><input class="inp" placeholder="ДД.ММ.ГГГГ"><span class="ic">'+calSvg+'</span></div></div>'
         +'<div class="fld"><label>Номер UzAirPlus</label><input class="inp" placeholder="Необязательно"></div>'
@@ -315,7 +322,7 @@
       const card=document.createElement('div');
       card.className='pax-card';
       card.dataset.type=type;
-      card.innerHTML='<div class="pax-head" data-toggle><h3></h3><button class="trash" type="button" aria-label="Удалить пассажира">'+trashSvg+'</button><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>'+bodyHTML();
+      card.innerHTML='<div class="pax-head" data-toggle><h3></h3><button class="trash" type="button" aria-label="Удалить пассажира">'+trashSvg+'</button><span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>'+bodyHTML(type);
       return card;
     }
     function count(){ return paxList.querySelectorAll('.pax-card').length; }
@@ -380,6 +387,14 @@
       .dp-sel{display:flex;gap:6px;flex:1;justify-content:center;}
       .dp-sel select{font-family:var(--font);font-weight:700;font-size:13px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-card);border-radius:8px;padding:5px 6px;cursor:pointer;outline:none;}
       .dp-sel select:focus{border-color:var(--accent);}
+      .dp-ywrap{position:relative;}
+      .dp-ybtn{display:flex;align-items:center;gap:4px;font-family:var(--font);font-weight:700;font-size:13px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-card);border-radius:8px;padding:5px 8px;cursor:pointer;outline:none;}
+      .dp-ybtn:focus{border-color:var(--accent);}
+      .dp-ylist{position:absolute;top:calc(100% + 4px);left:0;z-index:5;width:96px;max-height:200px;overflow-y:auto;background:var(--surface);border:1px solid var(--line-card);border-radius:10px;box-shadow:var(--sh-md);padding:4px;}
+      .dp-ylist[hidden]{display:none;}
+      .dp-yopt{display:block;width:100%;text-align:left;font-family:var(--font);font-size:13px;font-weight:600;color:var(--ink);background:none;border:0;border-radius:6px;padding:6px 10px;cursor:pointer;}
+      .dp-yopt:hover{background:var(--surface-2);}
+      .dp-yopt.on{background:var(--accent);color:#fff;}
       `;
       document.head.appendChild(css);
 
@@ -395,9 +410,9 @@
         const first=new Date(view.y,view.m,1).getDay(), lead=(first+6)%7, dim=new Date(view.y,view.m+1,0).getDate();
         const yNow=new Date().getFullYear();
         let mOpts=''; for(let i=0;i<12;i++){ mOpts+='<option value="'+i+'"'+(i===view.m?' selected':'')+'>'+MON[i]+'</option>'; }
-        let yOpts=''; for(let y=yNow;y>=1920;y--){ yOpts+='<option value="'+y+'"'+(y===view.y?' selected':'')+'>'+y+'</option>'; }
+        let yBtns=''; for(let y=yNow;y>=1920;y--){ yBtns+='<button type="button" class="dp-yopt'+(y===view.y?' on':'')+'" data-y="'+y+'">'+y+'</button>'; }
         let h='<div class="dp-head"><button type="button" class="dp-nav" data-j="-1">‹</button>'
-          +'<span class="dp-sel"><select class="dp-msel">'+mOpts+'</select><select class="dp-ysel">'+yOpts+'</select></span>'
+          +'<span class="dp-sel"><select class="dp-msel">'+mOpts+'</select><span class="dp-ywrap"><button type="button" class="dp-ybtn">'+view.y+'<svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dp-ylist" hidden>'+yBtns+'</div></span></span>'
           +'<button type="button" class="dp-nav" data-j="1">›</button></div>';
         h+='<div class="dp-dow">'+DOW.map(d=>'<span>'+d+'</span>').join('')+'</div><div class="dp-days">';
         for(let i=0;i<lead;i++) h+='<div class="dp-day empty"></div>';
@@ -407,9 +422,8 @@
         }
         h+='</div>';
         dp.innerHTML=h;
-        const ms=dp.querySelector('.dp-msel'), ys=dp.querySelector('.dp-ysel');
+        const ms=dp.querySelector('.dp-msel');
         if(ms) ms.addEventListener('change',()=>{ view.m=+ms.value; render(); });
-        if(ys) ys.addEventListener('change',()=>{ view.y=+ys.value; render(); });
       }
       function place(){
         const r=target.getBoundingClientRect();
@@ -445,6 +459,10 @@
         }
         if(dp.hidden) return;
         if(dp.contains(e.target)){
+          const ybtn=e.target.closest('.dp-ybtn');
+          if(ybtn){ const lst=dp.querySelector('.dp-ylist'); if(lst){ lst.hidden=!lst.hidden; if(!lst.hidden){ const on=lst.querySelector('.dp-yopt.on'); if(on) lst.scrollTop=on.offsetTop-80; } } return; }
+          const yopt=e.target.closest('.dp-yopt');
+          if(yopt){ view.y=+yopt.dataset.y; render(); return; }
           const nav=e.target.closest('.dp-nav');
           if(nav){ let t=view.y*12+view.m+ (+nav.dataset.j); view.y=Math.floor(t/12); view.m=((t%12)+12)%12; render(); return; }
           const day=e.target.closest('.dp-day');
@@ -535,7 +553,33 @@
     (function(){
       var ov=document.getElementById('visaModal');
       function close(){ ov.hidden=true; }
-      document.getElementById('pdConfirmBtn').addEventListener('click',function(){ ov.hidden=false; });
+      document.getElementById('pdConfirmBtn').addEventListener('click',function(){
+        var master=document.getElementById('agreeAll');
+        var subs=[...document.querySelectorAll('.agree-sub')];
+        var required=[master].concat(subs);
+        var allOk=required.every(function(c){ return c.checked; });
+        if(!allOk){
+          required.forEach(function(c){ c.closest('.chk').classList.toggle('err',!c.checked); });
+          var err=document.getElementById('checksErr'); if(err) err.classList.add('show');
+          var checks=document.querySelector('.checks');
+          if(checks){ checks.classList.remove('err-shake'); void checks.offsetWidth; checks.classList.add('err-shake'); }
+          var firstBad=required.find(function(c){ return !c.checked; });
+          if(firstBad) firstBad.closest('.chk').scrollIntoView({block:'center',behavior:'smooth'});
+          return;
+        }
+        ov.hidden=false;
+      });
+      // clear error styling as the user checks boxes
+      [document.getElementById('agreeAll')].concat([...document.querySelectorAll('.agree-sub')]).forEach(function(c){
+        c.addEventListener('change',function(){
+          if(c.checked) c.closest('.chk').classList.remove('err');
+          var master=document.getElementById('agreeAll');
+          var subs=[...document.querySelectorAll('.agree-sub')];
+          if([master].concat(subs).every(function(x){return x.checked;})){
+            var err=document.getElementById('checksErr'); if(err) err.classList.remove('show');
+          }
+        });
+      });
       document.getElementById('visaClose').addEventListener('click',close);
       document.getElementById('visaYes').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
       document.getElementById('visaNo').addEventListener('click',function(){ window.location.href='Additional Services.html'; });
