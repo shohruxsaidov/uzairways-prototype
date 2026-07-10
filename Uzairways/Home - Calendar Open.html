@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uzbekistan Airways · Главная</title>
-<link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
@@ -93,8 +92,7 @@
   #fldFrom:has(.code:empty) .hs-val, #fldTo:has(.code:empty) .hs-val{display:none;}
   #fldDates:has(.date-text:empty){display:flex;flex-direction:row;align-items:center;gap:7px;}
   #fldDates:has(.date-text:empty) .hs-val{display:flex;margin:0 0 0 auto;}
-  #fldPax, #fldPay, #fldDates{position:relative;}
-  #fldPax > .hs-val > .chev-i, #fldPay > .hs-val > .chev-i, #fldDates > .hs-val > .chev-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);}
+  #fldPax, #fldPay{position:relative;}
   #fldPay{border-radius:0 var(--r-md) var(--r-md) 0;}
   #fldPax > .hs-val > .chev-i, #fldPay > .hs-val > .chev-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);}
   .date-text.ph{color:var(--muted-2);font-weight:600;}
@@ -814,7 +812,7 @@
         var val=2.31 + ((seed%15))/10;
         return val;
       }
-      function fmtPrice(v){ return v.toFixed(2).replace('.',',')+' млн'; }
+      function fmtPrice(v){ return 'от '+v.toFixed(2).replace('.',',')+' млн'; }
       function setField(){
         function lbl(o){ var wd=new Date(o.y,o.m,o.d).getDay(); return o.d+' '+MON_SHORT[o.m]+', '+DOW_SHORT[wd]; }
         dateText.classList.remove('ph');
@@ -1167,7 +1165,7 @@
       // ---- shared date dropdown (single month, single date) ----
       var calDD=null, calGrid=null, activeDate=null, view={y:2026,m:2};
       function priceForMc(y,m,d){ var seed=(d*7+m*13+(y%100)*3); if(seed%19===0) return null; return 2.31+((seed%15))/10; }
-      function fmtMcPrice(v){ return v.toFixed(2).replace('.',',')+' млн'; }
+      function fmtMcPrice(v){ return 'от '+v.toFixed(2).replace('.',',')+' млн'; }
       function mcMonthHTML(y,m){
         var first=new Date(y,m,1).getDay(); var lead=(first+6)%7;
         var dim=new Date(y,m+1,0).getDate();
@@ -1245,6 +1243,9 @@
       });
     })();
   </script>
+  <script>
+    window.addEventListener('load',function(){ setTimeout(function(){ document.dispatchEvent(new CustomEvent('open:calendar')); },250); });
+  </script>
 
 </body>
 </html>
@@ -1290,6 +1291,6 @@
 #calGrid >div:nth-child(2) span:nth-child(7) { color: rgb(18, 23, 79) !important }
 #calGrid >div:nth-child(1) span:nth-child(3) { color: rgb(18, 23, 79) !important }
 #calGrid >div:nth-child(1) span:nth-child(3) { color: rgb(18, 23, 79) !important }
-#calGrid >div:nth-child(2) >.cal-month-title { font-weight: 500 !important }
-#calGrid >div:nth-child(1) >.cal-month-title { font-weight: 500 !important }
+#calGrid >div:nth-child(2) >.cal-month-title { font-weight: 700 !important }
+#calGrid >div:nth-child(1) >.cal-month-title { font-weight: 700 !important }
 </style>
