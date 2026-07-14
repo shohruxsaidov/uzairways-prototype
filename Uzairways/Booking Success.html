@@ -423,11 +423,11 @@
       <div class="suc-pnr">
         <div class="suc-pnr-l">
           <div class="suc-pnr-lbl">Номер заказа</div>
-          <div class="suc-pnr-code">954239582353</div>
+          <div class="suc-tk" style="align-items:center;margin-top:4px"><span class="suc-pnr-code" style="margin-top:0">954239582353</span><span class="suc-tipwrap"><button class="suc-tk-copy" type="button" data-code="954239582353" aria-label="Скопировать номер заказа"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button><span class="suc-tip">Скопируйте номер заказа — он понадобится при обращении в службу поддержки.</span></span></div>
           <div class="suc-pnr-lbl" style="margin-top:14px">Номера билетов</div>
           <div class="suc-tk-list">
-            <div class="suc-tk"><span class="suc-tk-nm">IVANOV IVAN</span><span class="suc-tk-r"><span class="suc-tk-code">21012312312</span><button class="suc-tk-copy" type="button" data-code="21012312312" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></span></div>
-            <div class="suc-tk"><span class="suc-tk-nm">IVANOVA ANNA</span><span class="suc-tk-r"><span class="suc-tk-code">21012312313</span><button class="suc-tk-copy" type="button" data-code="21012312313" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></span></div>
+            <div class="suc-tk"><span class="suc-tk-nm">IVANOV IVAN</span><span class="suc-tk-r"><span class="suc-tk-code">21012312312</span><span class="suc-tipwrap"><button class="suc-tk-copy" type="button" data-code="21012312312" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button><span class="suc-tip">Скопируйте номер билета — он понадобится для покупки дополнительных услуг к перелёту.</span></span></span></div>
+            <div class="suc-tk"><span class="suc-tk-nm">IVANOVA ANNA</span><span class="suc-tk-r"><span class="suc-tk-code">21012312313</span><span class="suc-tipwrap"><button class="suc-tk-copy" type="button" data-code="21012312313" aria-label="Скопировать номер билета"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button><span class="suc-tip">Скопируйте номер билета — он понадобится для покупки дополнительных услуг к перелёту.</span></span></span></div>
           </div>
         </div>
       </div>
@@ -471,16 +471,16 @@
     .suc-badge{width:84px;height:84px;border-radius:50%;background:var(--good-bg);color:var(--good);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:sucPop .5s cubic-bezier(.18,.89,.32,1.28) both;}
     .suc-badge svg{width:42px;height:42px;}
     @keyframes sucPop{0%{transform:scale(.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
-    .suc-h{font-weight:600;font-size:32px;letter-spacing:-.02em;color:var(--ink);}
+    .suc-h{font-weight:400;font-size:32px;letter-spacing:-.02em;color:var(--ink);}
     .suc-sub{margin:12px auto 0;max-width:420px;color:var(--muted);font-size:16px;line-height:1.5;text-wrap:pretty;}
     .suc-pnr{margin:32px 0 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:18px 24px;text-align:left;}
-    .suc-pnr-lbl{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-    .suc-pnr-code{font-weight:900;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-top:4px;}
+    .suc-pnr-lbl{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+    .suc-pnr-code{font-weight:700;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-top:4px;}
     .suc-tk-list{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
     .suc-pnr-l{flex:1;min-width:0;}
     .suc-tk{display:flex;align-items:baseline;justify-content:space-between;gap:20px;}
     .suc-tk-nm{font-weight:700;font-size:14px;color:var(--muted);letter-spacing:.02em;white-space:nowrap;}
-    .suc-tk-code{font-weight:900;font-size:22px;letter-spacing:.06em;color:var(--ink);}
+    .suc-tk-code{font-weight:700;font-size:22px;letter-spacing:.06em;color:var(--ink);}
     .suc-tk-r{display:flex;align-items:center;gap:12px;}
     .suc-tk-copy{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--cream-2,#efe6dd);color:var(--ink);transition:.15s;cursor:pointer;}
     .suc-tk-copy:hover{background:var(--blush,#f3e8e4);color:var(--accent,#8b273e);}
@@ -488,15 +488,19 @@
     .suc-copy{flex:none;background:var(--ink);color:#fff;border-radius:12px;padding:12px 22px;font-family:var(--font);font-weight:700;font-size:14px;transition:.15s;}
     .suc-copy:hover{background:var(--ink-soft);}
     .suc-copy.done{background:var(--good);}
+    .suc-tipwrap{position:relative;display:inline-flex;}
+    .suc-tip{position:absolute;bottom:calc(100% + 9px);right:0;width:230px;background:var(--ink);color:#fff;font-size:12px;font-weight:500;line-height:1.4;padding:9px 11px;border-radius:9px;text-align:left;text-transform:none;letter-spacing:0;opacity:0;visibility:hidden;transform:translateY(4px);transition:.15s;z-index:30;box-shadow:0 8px 24px rgba(18,23,79,.18);}
+    .suc-tip::after{content:"";position:absolute;top:100%;right:16px;border:6px solid transparent;border-top-color:var(--ink);}
+    .suc-tipwrap:hover .suc-tip,.suc-tipwrap:focus-within .suc-tip{opacity:1;visibility:visible;transform:translateY(0);}
     .suc-rows{text-align:left;margin-bottom:30px;}
     .suc-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:9px 0;font-size:16px;}
     .suc-row .sr-l{color:var(--muted);font-weight:600;}
-    .suc-row .sr-v{font-weight:700;color:var(--ink);text-align:right;}
+    .suc-row .sr-v{font-weight:600;color:var(--ink);text-align:right;}
     .suc-row.total{font-size:18px;}
     .suc-row.total .sr-v{color:var(--accent);}
     .suc-sep{height:1px;background:var(--line);border:0;margin:10px 0 4px;}
     .suc-actions{display:flex;gap:14px;}
-    .suc-btn{flex:1;border-radius:14px;padding:16px;font-weight:700;font-size:16px;text-align:center;text-decoration:none;transition:.15s;display:flex;align-items:center;justify-content:center;}
+    .suc-btn{flex:1;border-radius:14px;padding:16px;font-weight:600;font-size:16px;text-align:center;text-decoration:none;transition:.15s;display:flex;align-items:center;justify-content:center;}
     .suc-btn.primary{background:var(--accent);color:#fff;}
     .suc-btn.primary:hover{background:var(--accent-2);}
     .suc-btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-card);}
@@ -506,7 +510,7 @@
     .suc-note-ic svg{width:18px;height:18px;}
     @media(max-width:560px){ .suc-card{padding:36px 24px 30px;} .suc-actions{flex-direction:column;} .suc-pnr{flex-direction:column;align-items:stretch;} }
     .suc-rate{background:var(--surface-2);border:1px solid var(--line-card);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:24px;text-align:center;}
-    .suc-rate-t{font-weight:700;font-size:15.5px;color:var(--ink);margin-bottom:12px;}
+    .suc-rate-t{font-weight:600;font-size:15.5px;color:var(--ink);margin-bottom:12px;}
     .suc-stars{display:flex;justify-content:center;gap:8px;}
     .suc-stars button{border:0;background:none;padding:0;cursor:pointer;font-size:34px;line-height:1;color:#fff;-webkit-text-stroke:1px #e7ddd5;transition:color .12s,transform .12s;}
     .suc-stars button:hover{transform:scale(1.12);}

@@ -100,7 +100,7 @@
   .pax-main{max-width:980px;margin:0 auto;padding:0 28px;}
   /* Stepper */
   .stepper{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:18px 20px;margin-top:26px;}
-  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
+  .step{display:flex;align-items:center;gap:8px;font-weight:600;font-size:12.5px;color:var(--muted-2);white-space:nowrap;}
   .step .dot{width:19px;height:19px;border-radius:50%;border:2px solid var(--muted-2);display:flex;align-items:center;justify-content:center;flex:none;}
   .step.done{color:var(--ink);}
   .step.done .dot{background:var(--good);border-color:var(--good);}
@@ -154,7 +154,9 @@
   .add-pax:disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);border-style:solid;color:var(--muted-2);background:var(--bg);}
   .add-pax:disabled .plus{background:var(--muted-2);}
   .add-pax:disabled:hover{border-style:solid;background:var(--bg);border-color:var(--line);}
-  .add-pax .plus{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex:none;}
+  .add-pax .plus{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;font-weight:600;flex:none;}
+  .add-pax .plus::before{content:"+";display:block;font-size:17px;transform:translateY(1px);}
+  .add-pax .plus{font-size:0;}
 
   .pax-div{height:1px;background:var(--line);margin:34px 0;border:0;}
 
@@ -320,7 +322,7 @@
 
   /* ===== Детали и оплата ===== */
   .pay-main{max-width:1000px;margin:0 auto;padding:0 28px;}
-  .pay-h{text-align:center;font-weight:600;font-size:30px;letter-spacing:-.02em;color:var(--ink);margin:6px 0 28px;}
+  .pay-h{text-align:center;font-weight:400;font-size:30px;letter-spacing:-.02em;color:var(--ink);margin:6px 0 28px;}
   .pay-pass{display:flex;flex-direction:column;gap:22px;}
   .pay-card{background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:22px 24px 24px;}
   .pay-cardhd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin-bottom:16px;}
@@ -330,7 +332,7 @@
   .pay-legs{display:flex;flex-direction:column;gap:12px;}
   .pay-leg{background:var(--bg);border:1px solid var(--line-card);border-radius:var(--r-md);overflow:hidden;transition:.15s;}
   .pay-leghd{display:flex;align-items:center;gap:16px;padding:15px 18px;cursor:pointer;}
-  .pay-leghd .lg-dir{font-weight:800;font-size:15px;color:var(--ink);min-width:64px;}
+  .pay-leghd .lg-dir{font-weight:600;font-size:15px;color:var(--ink);min-width:64px;}
   .pay-leghd .lg-route{font-weight:600;font-size:14.5px;color:var(--ink-soft);}
   .pay-leghd .lg-pay{margin-left:auto;font-weight:600;font-size:14px;color:var(--muted);white-space:nowrap;}
   .pay-leghd .lg-pay b{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;}
