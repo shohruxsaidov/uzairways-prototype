@@ -98,6 +98,10 @@
   #fldPay{border-radius:0 var(--r-md) var(--r-md) 0;}
   #fldPax > .hs-val > .chev-i, #fldPay > .hs-val > .chev-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);}
   .date-text.ph{color:var(--muted-2);font-weight:600;}
+  .date-clear{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);border-radius:50%;transition:.15s;}
+  .date-clear:hover{background:var(--blush);color:var(--accent);}
+  .date-clear[hidden]{display:none;}
+  .date-clear svg{width:16px;height:16px;}
   .hs-val .chev-i{width:14px;height:14px;color:var(--muted);}
   .hs-route{display:flex;align-items:stretch;position:relative;}
   .hs-route .hs-cell{flex:1;border-left:0;display:flex;flex-direction:column;justify-content:center;}
@@ -112,6 +116,8 @@
   .cal-dd.mccal{padding:26px 26px 22px;}
   .mc-pill{justify-content:space-between;}
   .mc-pill .mc-lbl{display:inline-flex;align-items:center;gap:6px;}
+  .mc-pill .mc-lbl .pdx{display:inline-flex;align-items:center;gap:5px;font-weight:700;color:var(--ink);}
+  .mc-pill .mc-lbl .pdx svg{width:20px;height:20px;display:block;}
   .mc-pill .chev-i{margin-left:auto;}
   .home-search.mc-on .hs-fields, .home-search.mc-on > .hs-foot{display:none;}
   .home-search.mc-on .hs-mc{display:block;}
@@ -191,7 +197,10 @@
   .city-loc{display:flex;align-items:center;gap:11px;padding:15px 18px;border-radius:14px;background:var(--surface-2);cursor:pointer;margin-bottom:8px;font-weight:600;font-size:14.5px;color:var(--ink);transition:background .12s;}
   .city-loc:hover{background:var(--blush);}
   .city-loc svg{width:20px;height:20px;color:var(--accent);flex:none;}
-  .city-empty{padding:22px;text-align:center;color:var(--muted);font-size:14px;}
+  .city-empty{padding:30px 22px 34px;text-align:center;color:var(--muted);}
+  .city-empty svg{width:34px;height:34px;color:var(--ink);opacity:.85;margin-bottom:12px;}
+  .city-empty .ce-t{font-weight:600;font-size:16px;color:var(--ink);margin-bottom:4px;}
+  .city-empty .ce-d{font-size:13.5px;color:var(--muted);line-height:1.4;}
   .city-list::-webkit-scrollbar{width:8px;}
   .city-list::-webkit-scrollbar-track{background:var(--surface-2);border-radius:4px;}
   .city-list::-webkit-scrollbar-thumb{background:var(--ink);border-radius:4px;}
@@ -463,7 +472,7 @@
               <div class="city-list" id="cityList"></div>
             </div>
           </div>
-          <div class="hs-cell" id="fldDates" style="height: 64px"><div class="hs-lab">Даты</div><div class="hs-val" style="align-items: center; text-align: left; height: 22px"><span class="date-text ph" style="font-weight: 600"></span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></div>
+          <div class="hs-cell" id="fldDates" style="height: 64px"><div class="hs-lab">Даты</div><div class="hs-val" style="align-items: center; text-align: left; height: 22px"><span class="date-text ph" style="font-weight: 600"></span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg><button type="button" class="date-clear" id="datesClear" aria-label="Сбросить даты" hidden><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
             <div class="cal-dd" id="calDD" hidden style="width: 930px">
               <button class="cal-nav prev" id="calPrev" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
               <button class="cal-nav next" id="calNext" aria-label="Вперёд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -685,6 +694,8 @@
       ];
       var dd=document.getElementById('cityDD');
       window.__CITIES={recent:RECENT, all:ALL};
+      var CITY_EMPTY='<div class="city-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg><div class="ce-t">Ничего не нашли</div><div class="ce-d">Проверьте, правильно ли вы<br>написали название</div></div>';
+      window.CITY_EMPTY=CITY_EMPTY;
       var list=document.getElementById('cityList');
       var input=document.getElementById('cityInput');
       var fldFrom=document.getElementById('fldFrom');
@@ -713,7 +724,7 @@
         } else {
           var seen={}, filtered=ALL.concat(RECENT).filter(function(it){ if(!match(it))return false; if(seen[it.c])return false; seen[it.c]=1; return true; });
           if(filtered.length){ filtered.forEach(function(it){ html+=row(it); }); }
-          else html='<div class="city-empty">Ничего не найдено</div>';
+          else html=CITY_EMPTY;
         }
         list.innerHTML=html;
       }
@@ -817,9 +828,18 @@
       function fmtPrice(v){ return v.toFixed(2).replace('.',',')+' млн'; }
       function setField(){
         function lbl(o){ var wd=new Date(o.y,o.m,o.d).getDay(); return o.d+' '+MON_SHORT[o.m]+', '+DOW_SHORT[wd]; }
-        dateText.classList.remove('ph');
-        if(depart&&ret) dateText.textContent=lbl(depart)+' — '+lbl(ret);
-        else if(depart) dateText.textContent=lbl(depart);
+        var clearBtn=document.getElementById('datesClear');
+        var chev=fld.querySelector('.hs-val .chev-i');
+        window.__hsDepart=depart?{y:depart.y,m:depart.m,d:depart.d}:null;
+        if(depart){
+          dateText.classList.remove('ph');
+          if(depart&&ret) dateText.textContent=lbl(depart)+' — '+lbl(ret);
+          else dateText.textContent=lbl(depart);
+          if(clearBtn) clearBtn.hidden=false; if(chev) chev.style.display='none';
+        } else {
+          dateText.classList.add('ph'); dateText.textContent='';
+          if(clearBtn) clearBtn.hidden=true; if(chev) chev.style.display='';
+        }
         var dc=document.getElementById('fldDates'); if(dc) dc.classList.remove('invalid');
         if(window.__revalidateSearch) window.__revalidateSearch();
       }
@@ -855,7 +875,7 @@
       }
       function open(){ dd.hidden=false; render(); document.dispatchEvent(new CustomEvent('dd:open',{detail:'calDD'})); }
       function close(){ dd.hidden=true; }
-      fld.addEventListener('click',function(e){ if(dd.contains(e.target)) return; e.stopPropagation(); dd.hidden?open():close(); });
+      fld.addEventListener('click',function(e){ if(dd.contains(e.target)) return; if(e.target.closest('#datesClear')){ e.stopPropagation(); depart=null; ret=null; setField(); render(); return; } e.stopPropagation(); dd.hidden?open():close(); });
       document.getElementById('calPrev').addEventListener('click',function(e){ e.stopPropagation(); view.m--; if(view.m<0){view.m=11;view.y--;} render(); });
       document.getElementById('calNext').addEventListener('click',function(e){ e.stopPropagation(); view.m++; if(view.m>11){view.m=0;view.y++;} render(); });
       grid.addEventListener('click',function(e){
@@ -1124,8 +1144,8 @@
         });
       }
       function cityRowHTML(it){
-        var sub=it.country+(it.air?(' · '+it.air):'');
-        return '<div class="city-row" data-n="'+it.n+', '+it.country+'" data-c="'+it.c+'"><span class="cn">'+it.n+', '+it.country+' <span class="ci">('+it.c+')</span></span><span class="cc">'+it.c+'</span></div>';
+        var label=it.air?it.n+', '+it.air:it.n;
+        return '<div class="city-row" data-n="'+it.n+', '+it.country+'" data-c="'+it.c+'"><span class="cn">'+label+' (<span class="cc">'+it.c+'</span>), '+it.country+'</span></div>';
       }
       function renderCity(q){
         var D=window.__CITIES||{recent:[],all:[]};
@@ -1140,7 +1160,7 @@
         } else {
           var f=D.all.concat(D.recent).filter(function(it){ return (it.n+' '+it.country+' '+it.c).toLowerCase().indexOf(q)>=0; });
           if(f.length) f.forEach(function(it){ html+=cityRowHTML(it); });
-          else html='<div class="city-empty" style="padding:18px;text-align:center;color:var(--muted-2);">Ничего не найдено</div>';
+          else html=window.CITY_EMPTY||'';
         }
         cityList.innerHTML=html;
       }
@@ -1218,8 +1238,8 @@
 
       // ---- pax + currency pills ----
       var mcPaxEl=document.getElementById('mcPax'), mcCurEl=document.getElementById('mcCur');
-      if(mcPaxEl) mcPaxEl.addEventListener('click',function(e){ e.stopPropagation(); closeCity(); closeDate(); var pdd=document.getElementById('paxDD'); if(pdd&&!pdd.hidden&&pdd.parentElement===mcPaxEl){ pdd.hidden=true; return; } if(window.openPaxPicker) window.openPaxPicker(mcPaxEl); });
-      if(mcCurEl) mcCurEl.addEventListener('click',function(e){ e.stopPropagation(); closeCity(); closeDate(); var pdd=document.getElementById('payDD'); if(pdd&&!pdd.hidden&&pdd.parentElement===mcCurEl){ pdd.hidden=true; return; } if(window.openPayPicker) window.openPayPicker(mcCurEl); });
+      if(mcPaxEl) mcPaxEl.addEventListener('click',function(e){ if(e.target.closest('#paxDD')) return; e.stopPropagation(); closeCity(); closeDate(); var pdd=document.getElementById('paxDD'); if(pdd&&!pdd.hidden&&pdd.parentElement===mcPaxEl){ pdd.hidden=true; return; } if(window.openPaxPicker) window.openPaxPicker(mcPaxEl); });
+      if(mcCurEl) mcCurEl.addEventListener('click',function(e){ if(e.target.closest('#payDD')) return; e.stopPropagation(); closeCity(); closeDate(); var pdd=document.getElementById('payDD'); if(pdd&&!pdd.hidden&&pdd.parentElement===mcCurEl){ pdd.hidden=true; return; } if(window.openPayPicker) window.openPayPicker(mcCurEl); });
       document.addEventListener('click',function(e){
         if(cityDD&&!cityDD.hidden&&!cityDD.contains(e.target)&&!e.target.closest('.mc-field')) closeCity();
         if(calDD&&!calDD.hidden&&!calDD.contains(e.target)&&!e.target.closest('.mc-date')) closeDate();
@@ -1238,6 +1258,17 @@
       trigger.addEventListener('click',function(){
         var on=search.classList.toggle('mc-on');
         if(on){ initRows();
+          // carry over from/to cities + depart date from the simple search into row 1
+          (function(){
+            var firstRow=rowsEl.querySelector('.mc-row'); if(!firstRow) return;
+            var sFn=document.querySelector('#fldFrom .city-name'), sFc=document.querySelector('#fldFrom .code');
+            var sTn=document.querySelector('#fldTo .city-name'), sTc=document.querySelector('#fldTo .code');
+            var fF=firstRow.querySelector('[data-role="from"]'), fT=firstRow.querySelector('[data-role="to"]'), fD=firstRow.querySelector('[data-role="date"]');
+            if(sFn&&sFc&&sFc.textContent.trim()&&fF){ fF.classList.remove('ph','invalid'); fF.innerHTML='<span class="cty">'+sFn.textContent.trim()+'</span> <span class="code">'+sFc.textContent.trim()+'</span>'; }
+            if(sTn&&sTc&&sTc.textContent.trim()&&fT){ fT.classList.remove('ph','invalid'); fT.innerHTML='<span class="cty">'+sTn.textContent.trim()+'</span> <span class="code">'+sTc.textContent.trim()+'</span>'; }
+            var dep=window.__hsDepart;
+            if(dep&&fD){ var dt=new Date(dep.y,dep.m,dep.d); fD.classList.remove('ph','invalid'); fD.innerHTML=dep.d+' '+MON_SHORT[dep.m]+', '+DOW_LBL[dt.getDay()]+'<span class="chev-i"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span>'; }
+          })();
           // sync pax + currency pills from single-search state
           var pax=document.querySelector('#fldPax .pax-text'); if(pax){ var mp=document.getElementById('mcPax'); var mpl=mp&&mp.querySelector('.mc-lbl'); if(mpl){ if(pax.classList.contains('has-icons')) mpl.innerHTML=pax.innerHTML; else mpl.textContent=pax.textContent.trim(); } }
           var cur=document.querySelector('#fldPay .pay-text'); if(cur){ var mc=document.getElementById('mcCur'); var mcl=mc&&mc.querySelector('.mc-lbl'); if(mcl) mcl.textContent=(cur.textContent.trim()||'UZS'); }
@@ -1292,4 +1323,7 @@
 #calGrid >div:nth-child(1) span:nth-child(3) { color: rgb(18, 23, 79) !important }
 #calGrid >div:nth-child(2) >.cal-month-title { font-weight: 500 !important }
 #calGrid >div:nth-child(1) >.cal-month-title { font-weight: 500 !important }
+#cityDD .city-loc span { font-weight: 600 !important }
+#cityDD .city-group-h { font-weight: 600 !important }
+#cityDD .city-row .cn { font-weight: 600 !important }
 </style>

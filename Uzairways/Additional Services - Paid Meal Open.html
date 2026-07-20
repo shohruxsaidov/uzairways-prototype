@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Дополнительные услуги · Uzbekistan Airways</title>
-<link rel="icon" type="image/png" href="https://www.uzairways.com/themes/uzairways/images/favicons/favicon-16x16.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
@@ -1310,7 +1310,7 @@
     });
     function pmPicSrc(n){ if(n==='Говяжий стейк на гриле') return 'assets/paidMeal-steak.jpg'; if(n==='Итальянская запеканка') return 'assets/paidMeal-lasagna.jpg'; if(n==='Мясное ассорти с говядиной и свининой') return 'assets/paidMeal-assorti.jpg'; if(n==='Протеиновый злаковый коктейль') return 'assets/paidMeal-shake.jpg'; if(n==='Детское овощное рагу') return 'assets/paidMeal-vegstew.jpg'; if(n==='Овощная тарелка') return 'assets/paidMeal-vegplate.jpg'; return 'assets/svcPaidMeal.webp'; }
     (function(){
-      function loadInto(pic,file){ if(!file||!/^image\//.test(file.type)) return; var img=pic.querySelector('img'); var url=URL.createObjectURL(file); img.src=url; }
+      function loadInto(pic,file){ if(!file||!/^image\//.test(file.type)) return; var img=pic.querySelector('img'); var dish=pic.dataset.dish; var r=new FileReader(); r.onload=function(){ img.src=r.result; try{ localStorage.setItem('uzr_pmPic_'+dish,r.result); }catch(e){} }; r.readAsDataURL(file); }
       listEl.addEventListener('click',function(e){ if(e.target.matches('input[type=file]')) return; var pic=e.target.closest('.pm-pic'); if(!pic) return; pic.querySelector('input[type=file]').click(); });
       listEl.addEventListener('change',function(e){ if(!e.target.matches('.pm-pic input[type=file]')) return; var pic=e.target.closest('.pm-pic'); if(e.target.files&&e.target.files[0]) loadInto(pic,e.target.files[0]); });
       listEl.addEventListener('dragover',function(e){ var pic=e.target.closest('.pm-pic'); if(!pic) return; e.preventDefault(); pic.classList.add('dragover'); });
@@ -1684,6 +1684,9 @@
     });
   })();
   </script>
+  <script>window.addEventListener('load',function(){ setTimeout(function(){ if(window.openPaidMealModal) window.openPaidMealModal(); },60); });</script>
+
+  <template id="__bundler_thumbnail"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#12174f"/><g fill="none" stroke="#f5efe8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="40" width="32" height="34" rx="5"/><path d="M43 40v-6a7 7 0 0 1 14 0v6"/><path d="M50 50v14"/></g></svg></template>
   <script>
   (function(){
     var tot=document.querySelector('.pd-bar .tot'); if(!tot) return;

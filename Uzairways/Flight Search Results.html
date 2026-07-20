@@ -1268,7 +1268,16 @@
         }
         fld.innerHTML='<span class="pax-text" style="display:inline-flex;align-items:center;gap:11px;vertical-align:middle">'+inner+'</span> ';
         if(chev) fld.appendChild(chev);
+        if(window.renderPdPax) window.renderPdPax();
       }
+      function pdPaxHTML(){
+        var out='<span class="pdx"><b>'+counts.adult+'</b><svg viewBox="4 0 12 20" xmlns="http://www.w3.org/2000/svg">'+PAX_P+'</svg></span>';
+        if(counts.child>0) out+='<span class="pdx"><b>'+counts.child+'</b><svg viewBox="50 0 15 20" xmlns="http://www.w3.org/2000/svg">'+PAX_P+'</svg></span>';
+        if(counts.infant>0) out+='<span class="pdx"><b>'+counts.infant+'</b><svg viewBox="95 0 14 20" xmlns="http://www.w3.org/2000/svg">'+PAX_P+'</svg></span>';
+        return out;
+      }
+      window.renderPdPax=function(){ document.querySelectorAll('.pd-pax').forEach(function(el){ el.innerHTML=pdPaxHTML(); }); };
+      window.renderPdPax();
       function sync(){
         for(var k in counts) els[k].textContent=counts[k];
         dd.querySelectorAll('.pax-btn.minus').forEach(function(b){ var key=b.getAttribute('data-pax'); var floor=(key==='adult')?1:0; b.disabled=counts[key]<=floor; });
@@ -1979,21 +1988,11 @@
   cfov.addEventListener('click',e=>{
     const pen=e.target.closest('.cf-edit'); if(!pen) return;
     const dir=pen.dataset.dir;
+    // Pencil must NOT clear the chosen fare. Just close confirm and switch to
+    // that direction so the user can re-pick; the current fare stays selected
+    // (bottom bar keeps its total) until a new fare is chosen.
     closeConfirm();
-    window.editing=dir;
-    if(dir==='out'){
-      window.outSel=null; if(window.updatePdBar)updatePdBar();
-      window.leg='outbound';
-      const out=document.getElementById('sumOut');
-      out.classList.remove('selected');
-      out.querySelector('.sum-body').innerHTML='<div class="rt">Ташкент — Москва</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
-    }else{
-      window.retSel=null; if(window.updatePdBar)updatePdBar();
-      window.leg='return';
-      const ret=document.getElementById('sumRet');
-      ret.classList.remove('selected');
-      ret.querySelector('.sum-body').innerHTML='<div class="rt">Москва — Ташкент</div><div class="st">Рейс ещё не выбран</div><div class="pr"><span class="lab">Тариф ещё не выбран</span><span class="amt">от 5 000 000 UZS</span></div>';
-    }
+    editLeg(dir);
   });
   // upgrade button → warn that the fare applies to all directions, then apply on confirm
   const warnOv=document.getElementById('warnModal');
@@ -2077,7 +2076,7 @@
   <script>(function(){
     var conf=document.getElementById('pdConfirmBtn'), det=document.getElementById('pdDetailsBtn');
     function ready(){ return window.outSel && window.retSel; }
-    function updatePdBar(){ var bar=document.querySelector('.pd-bar'); if(bar) bar.style.display=ready()?'':'none'; }
+    function updatePdBar(){ var bar=document.querySelector('.pd-bar'); if(bar) bar.style.display=ready()?'':'none'; if(window.renderPdPax) window.renderPdPax(); }
     window.updatePdBar=updatePdBar; updatePdBar();
     if(conf) conf.addEventListener('click',function(){ if(ready()){ window.location.href='Passenger Data.html'; } else { if(window.showToast) showToast('Выберите тариф туда и обратно'); } });
     if(det) det.addEventListener('click',function(){ if(ready()){ if(window.openDetails) openDetails(); } else { if(window.showToast) showToast('Выберите тариф туда и обратно'); } });
