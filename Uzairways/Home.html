@@ -205,7 +205,7 @@
   .city-list::-webkit-scrollbar-track{background:var(--surface-2);border-radius:4px;}
   .city-list::-webkit-scrollbar-thumb{background:var(--ink);border-radius:4px;}
   /* calendar dropdown */
-  .cal-dd{position:absolute;top:calc(100% + 14px);left:87px;transform:translateX(-50%);width:792px;max-width:94vw;background:var(--surface);border:1px solid var(--line-card);border-radius:20px;box-shadow:0 24px 64px rgba(18,23,79,.18);padding:26px 30px 30px;z-index:42;}
+  .cal-dd{position:absolute;top:calc(100% + 14px);left:calc(50% + 43px);transform:translateX(-50%);width:1202px;max-width:96vw;background:var(--surface);border:1px solid var(--line-card);border-radius:20px;box-shadow:0 24px 64px rgba(18,23,79,.18);padding:26px 30px 30px;z-index:42;}
   .cal-dd[hidden]{display:none;}
   .cal-dd::before{content:"";position:absolute;top:-7px;left:calc(50% - 7px);width:14px;height:14px;background:var(--surface);border-left:1px solid var(--line-card);border-top:1px solid var(--line-card);transform:rotate(45deg);}
   .cal-nav{position:absolute;top:24px;width:34px;height:34px;border-radius:50%;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;}
@@ -473,7 +473,7 @@
             </div>
           </div>
           <div class="hs-cell" id="fldDates" style="height: 64px"><div class="hs-lab">Даты</div><div class="hs-val" style="align-items: center; text-align: left; height: 22px"><span class="date-text ph" style="font-weight: 600"></span> <svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg><button type="button" class="date-clear" id="datesClear" aria-label="Сбросить даты" hidden><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-            <div class="cal-dd" id="calDD" hidden style="width: 930px">
+            <div class="cal-dd" id="calDD" hidden style="width: 1202px">
               <button class="cal-nav prev" id="calPrev" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
               <button class="cal-nav next" id="calNext" aria-label="Вперёд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
               <div class="cal-grid" id="calGrid"></div>
@@ -1326,4 +1326,6 @@
 #cityDD .city-loc span { font-weight: 600 !important }
 #cityDD .city-group-h { font-weight: 600 !important }
 #cityDD .city-row .cn { font-weight: 600 !important }
+#cityDD, #cityDD .cn, #cityDD .cc, #cityDD .ci, #cityDD .city-loc span, #cityDD .city-search input { font-weight: 600 !important }
+#cityDD .city-group-h { font-weight: 700 !important }
 </style>

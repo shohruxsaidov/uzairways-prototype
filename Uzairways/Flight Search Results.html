@@ -49,7 +49,18 @@
   .btn-login:hover{background:var(--accent-2);}
 
   /* ---------- Search card ---------- */
-  .search-card{position:relative;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-xl);box-shadow:var(--sh-md);padding:22px;margin-top:26px;}
+  .search-card{position:relative;background:var(--surface);border:1px solid var(--line-card);border-radius:var(--r-xl);box-shadow:var(--sh-md);padding:22px;margin-top:26px;transition:padding .2s;}
+  /* collapsed multi-direction state */
+  .search-card.sc-collapsed .route-row:nth-child(n+3){display:none;}
+  .search-card.sc-collapsed .search-foot{display:none;}
+  .search-card.sc-collapsed .route-max-warn{display:none!important;}
+  .sc-bar{display:none;position:relative;align-items:center;justify-content:center;margin-top:14px;min-height:26px;}
+  .search-card.sc-multi .sc-bar{display:flex;}
+  .sc-more-txt{position:absolute;left:0;top:50%;transform:translateY(-50%);font-weight:600;font-size:13.5px;color:var(--ink);display:none;}
+  .search-card.sc-collapsed .sc-more-txt{display:block;}
+  .sc-toggle{border:0;background:transparent;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;padding:4px;}
+  .sc-toggle svg{width:20px;height:20px;display:block;transition:transform .2s;transform:rotate(180deg);}
+  .search-card.sc-collapsed .sc-toggle svg{transform:rotate(0deg);}
   .field-in[data-city]{cursor:pointer;}
   /* city picker dropdown */
   .city-dd{position:absolute;width:392px;max-width:92vw;background:var(--surface);border:1px solid var(--line-card);border-radius:18px;box-shadow:0 24px 64px rgba(18,23,79,.18);padding:14px;z-index:60;}
@@ -60,13 +71,13 @@
   .city-search input{border:0;outline:0;background:transparent;font-family:var(--font);font-size:15px;font-weight:600;color:var(--ink);width:100%;}
   .city-search input::placeholder{color:var(--muted-2);font-weight:500;}
   .city-list{max-height:312px;overflow-y:auto;margin:0 -6px;padding:0 6px;}
-  .city-group-h{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);padding:14px 10px 6px;}
+  .city-group-h{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);padding:14px 10px 6px;}
   .city-row{display:block;padding:15px 18px;border-radius:14px;background:var(--surface-2);margin-bottom:12px;cursor:pointer;position:relative;transition:background .12s;}
   .city-row:hover,.city-row.active{background:var(--bg-2);}
   .city-row.active::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:2px;background:var(--accent);}
-  .city-row .cn{font-weight:800;font-size:14.5px;color:var(--ink);line-height:1.45;}
+  .city-row .cn{font-weight:600;font-size:14.5px;color:var(--ink);line-height:1.45;}
   .city-row .cc{font-weight:800;letter-spacing:.04em;color:var(--accent);}
-  .city-loc{display:flex;align-items:center;gap:11px;padding:15px 18px;border-radius:14px;background:var(--surface-2);cursor:pointer;margin-bottom:8px;font-weight:700;font-size:14.5px;color:var(--ink);transition:background .12s;}
+  .city-loc{display:flex;align-items:center;gap:11px;padding:15px 18px;border-radius:14px;background:var(--surface-2);cursor:pointer;margin-bottom:8px;font-weight:600;font-size:14.5px;color:var(--ink);transition:background .12s;}
   .city-loc:hover{background:var(--bg-2);}
   .city-loc svg{width:20px;height:20px;color:var(--accent);flex:none;}
   .city-empty{padding:22px;text-align:center;color:var(--muted);font-size:14px;}
@@ -85,16 +96,16 @@
   .cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;}
   .cal-month-title{text-align:center;font-weight:800;font-size:20px;color:var(--ink);margin-bottom:18px;letter-spacing:-.01em;}
   .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:8px;}
-  .cal-dow span{text-align:center;font-size:12px;font-weight:700;color:var(--muted-2);padding:6px 0;background:var(--bg-2);border-radius:7px;}
+  .cal-dow span{text-align:center;font-size:12px;font-weight:700;color:var(--muted-2);padding:6px 0;background:#fff;border-radius:7px;}
   .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
-  .cal-day{position:relative;height:52px;border-radius:9px;background:var(--bg-2);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background .12s,color .12s;border:1px solid transparent;}
-  .cal-day.empty{background:transparent;cursor:default;}
+  .cal-day{position:relative;height:52px;border-radius:9px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background .12s,color .12s;border:1px solid transparent;}
+  .cal-day.empty{background:transparent;cursor:default;border-color:transparent;}
   .cal-day .dn{font-weight:700;font-size:14px;color:var(--ink);line-height:1;text-align:center;}
   .cal-day .dp{font-size:9.5px;font-weight:600;color:var(--muted);margin-top:3px;line-height:1.1;text-align:center;width:100%;}
   .cal-day:hover:not(.empty):not(.disabled){background:var(--surface-2);}
   .cal-day.cheap .dp{color:rgb(35,164,98);}
-  .cal-day.cheap{background:rgb(231,240,234);}
-  .cal-day.disabled{cursor:not-allowed;background:rgb(228,228,228);}
+  .cal-day.cheap{background:transparent;}
+  .cal-day.disabled{cursor:not-allowed;background:transparent;}
   .cal-day.disabled .dn{color:var(--muted-2);}
   .cal-day.disabled .dp{color:var(--muted-2);}
   .cal-day.inrange{background:rgba(139,39,62,.13);}
@@ -690,6 +701,7 @@
         <div class="mini-field" id="fldPayFS" style="width: 172px; font-weight: 600">UZS <span class="chev"><svg class="chev-i" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></span></div>
         <button class="btn btn-accent" id="updateSearchBtn" style="width: 246px; font-weight: 600">Обновить поиск</button>
       </div>
+      <div class="sc-bar" id="scBar"><span class="sc-more-txt">И ещё 1 направление</span><button class="sc-toggle" id="scToggle" type="button" aria-label="Свернуть/развернуть"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9334 6.81689H9.7417H5.0667C4.2667 6.81689 3.8667 7.78356 4.43337 8.35023L8.75003 12.6669C9.4417 13.3586 10.5667 13.3586 11.2584 12.6669L12.9 11.0252L15.575 8.35023C16.1334 7.78356 15.7334 6.81689 14.9334 6.81689Z" fill="currentColor"/></svg></button></div>
       <div class="city-dd" id="cityDD" hidden>
         <div class="city-search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -697,7 +709,7 @@
         </div>
         <div class="city-list" id="cityList"></div>
       </div>
-      <div class="cal-dd" id="calDD" hidden>
+      <div class="cal-dd" id="calDD" hidden style="width: 1058px; margin-left: -10px; margin-top: -4px">
               <button class="cal-nav prev" id="calPrev" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
               <button class="cal-nav next" id="calNext" aria-label="Вперёд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
               <div class="cal-grid" id="calGrid"></div>
@@ -1206,7 +1218,7 @@
         var first=new Date(y,m,1).getDay(), lead=(first+6)%7, dim=new Date(y,m+1,0).getDate();
         var min=99, prices={};
         for(var d=1;d<=dim;d++){ var p=priceFor(y,m,d); prices[d]=p; if(p!==null&&p<min) min=p; }
-        var html='<div><div class="cal-month-title">'+MON[m]+' '+y+'</div><div class="cal-dow">';
+        var html='<div><div class="cal-month-title" style="font-weight:500">'+MON[m]+' '+y+'</div><div class="cal-dow">';
         DOW.forEach(function(w){ html+='<span>'+w+'</span>'; });
         html+='</div><div class="cal-days">';
         for(var i=0;i<lead;i++) html+='<div class="cal-day empty"></div>';
@@ -1379,7 +1391,35 @@
     updateAdd();
   })();
 
-  // ---- «Обновить поиск» loading state ----
+  // ---- Collapse / expand search card on scroll (multi-direction) ----
+  (function(){
+    var card=document.querySelector('.search-card');
+    var rows=document.getElementById('routeRows');
+    var bar=document.getElementById('scBar');
+    var toggle=document.getElementById('scToggle');
+    if(!card||!rows||!bar||!toggle) return;
+    var txt=bar.querySelector('.sc-more-txt');
+    function rowCount(){ return rows.querySelectorAll('.route-row').length; }
+    function plural(n){ var a=n%10, b=n%100; if(a===1&&b!==11) return 'направление'; if(a>=2&&a<=4&&(b<10||b>=20)) return 'направления'; return 'направлений'; }
+    function updateMoreTxt(){ var n=Math.max(0,rowCount()-2); txt.textContent='И ещё '+n+' '+plural(n); txt.style.visibility=n>0?'visible':'hidden'; }
+    function updateMulti(){ card.classList.toggle('sc-multi', rowCount()>2); if(rowCount()<=2) card.classList.remove('sc-collapsed'); }
+    var userExpanded=false;
+    function collapse(){ if(rowCount()<=2) return; updateMoreTxt(); card.classList.add('sc-collapsed'); }
+    function expand(){ card.classList.remove('sc-collapsed'); }
+    toggle.addEventListener('click',function(e){ e.stopPropagation(); if(card.classList.contains('sc-collapsed')){ expand(); } else { collapse(); } });
+    card.addEventListener('click',function(e){
+      if(!card.classList.contains('sc-collapsed')) return;
+      if(e.target.closest('#scBar')) return;
+      return;
+    });
+    window.addEventListener('scroll',function(){
+      updateMulti();
+      if(rowCount()<=2) return;
+      if(window.scrollY>card.offsetTop+140) collapse();
+    },{passive:true});
+    new MutationObserver(function(){ updateMulti(); if(card.classList.contains('sc-collapsed')) updateMoreTxt(); }).observe(rows,{childList:true});
+    updateMulti();
+  })();
   (function(){
     var btn=document.getElementById('updateSearchBtn');
     if(!btn) return;
